@@ -1,0 +1,9 @@
+# Raw gaussian-splat training artifacts — never commit (huge, redundant with .sog)
+raw/
+*.ply
+
+# OS noise
+.DS_Store
+
+# Node
+node_modules/
