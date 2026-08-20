@@ -39,11 +39,11 @@ Two per-scene adjustments to expect:
   the scene on the mean splat position at load (`calcFocalPoint`), so a camera at
   `[0,0,0]` sits at the centroid, not at the PLY origin. For a PLY whose content is
   far from the origin, convert `position`/`target` as `ply_coords - centroid`.
-- **Floater haze** — 360°/fisheye captures can contain a small number of very
-  large, faint blobs that fog every view from inside the scene. Drop them with a
-  size cap: `-V scale_0,lt,0.1 -V scale_1,lt,0.1 -V scale_2,lt,0.1` (values are
-  decoded sizes in scene units; `--filter-floaters` does not catch these). The
-  Insta360 ambulance scene uses 0.1; tune per scene by eye.
+- **Floater haze (optional, not used so far)** — 360°/fisheye captures can contain
+  a few very large, faint blobs that fog views from inside the scene. If a scene
+  needs it, a size cap removes them: `-V scale_0,lt,0.3 -V scale_1,lt,0.3
+  -V scale_2,lt,0.3` (decoded sizes in scene units; `--filter-floaters` does not
+  catch these). It is lossy — the published scenes ship the full splat set.
 
 The in-browser rendering is done by
 [@playcanvas/supersplat-viewer](https://github.com/playcanvas/supersplat-viewer) (MIT).
