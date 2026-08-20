@@ -32,10 +32,18 @@ Two per-scene adjustments to expect:
 - **Initial camera** — the exported `viewers/<scene>/settings.json` defaults to
   position `[2,2,-2]` targeting the origin, which is usually wrong (for interior
   scenes it starts inside a wall). Edit `cameras[0].initial` (`position`, `target`,
-  `fov`) after conversion; a good target is the median of high-opacity splat
-  positions. Candidate cameras can be tested without re-converting via the
-  `?settings=<url>` viewer parameter. Note that re-running the converter with `-w`
-  overwrites `settings.json` — re-apply the camera afterwards.
+  `fov`) after conversion. Candidate cameras can be tested without re-converting
+  via the `?settings=<url>` viewer parameter. Note that re-running the converter
+  with `-w` overwrites `settings.json` — re-apply the camera afterwards.
+- **Camera coordinates are relative to the scene centroid.** The viewer re-centers
+  the scene on the mean splat position at load (`calcFocalPoint`), so a camera at
+  `[0,0,0]` sits at the centroid, not at the PLY origin. For a PLY whose content is
+  far from the origin, convert `position`/`target` as `ply_coords - centroid`.
+- **Floater haze** — 360°/fisheye captures can contain a small number of very
+  large, faint blobs that fog every view from inside the scene. Drop them with a
+  size cap: `-V scale_0,lt,0.1 -V scale_1,lt,0.1 -V scale_2,lt,0.1` (values are
+  decoded sizes in scene units; `--filter-floaters` does not catch these). The
+  Insta360 ambulance scene uses 0.1; tune per scene by eye.
 
 The in-browser rendering is done by
 [@playcanvas/supersplat-viewer](https://github.com/playcanvas/supersplat-viewer) (MIT).
