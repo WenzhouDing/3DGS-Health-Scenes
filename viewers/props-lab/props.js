@@ -13,6 +13,15 @@ const GRAVITY = -9.81;      // m/s^2, world -Y
 const RESTITUTION = 0.25;   // bounce energy retained on floor hit
 const REST_SPEED = 0.25;    // m/s — below this after a bounce, come to rest
 const MAX_DT = 0.05;        // clamp dt against loading hitches
+const RAY_LIFT = 0.1;       // rays start this far above the prop bottom
+const SNAP_UP = 0.15;       // max upward correction out of a penetrated surface
+// Voxel solids mark the dense core of the splats, which sits below the surface
+// the renderer (and the picker) shows — measured ~0.13–0.19 m on the ambulance
+// scene (visual floor −0.50 vs voxel top −0.70; bench −0.04 vs −0.20). Land
+// props this much above the voxel hit.
+const VOXEL_SURFACE_BIAS = 0.16;
+const PLANE_GRACE = 0.05;   // prop this far below the ground plane still lands on it
+const MAX_FALL = 25;        // fall distance safety: stop + restore after this
 
 export const initProps = async ({ viewer, config }) => {
     // ---- resolve viewer internals -----------------------------------------
@@ -41,11 +50,15 @@ export const initProps = async ({ viewer, config }) => {
 
     // ---- state ------------------------------------------------------------
     const state = {
-        groundY: 0,
-        props: [],          // { uid, id, name, url, entity, euler, scale, falling, vy }
+        groundY: null,      // manual ground plane; null = rely on scene collision only
+        props: [],          // { uid, id, name, url, entity, euler, scale, falling, vy, dropStart }
         selected: null,     // uid
         nextUid: 1
     };
+
+    // voxel/mesh collision the viewer loaded for this scene (null until the
+    // splat finishes loading, or when no index.voxel.json exists)
+    const getCollision = () => viewer.inputController?.collision ?? null;
 
     // saved-layout entries whose GLB failed to load; kept so a re-save never
     // silently drops them (cleared only by the Clear button)
@@ -208,7 +221,7 @@ export const initProps = async ({ viewer, config }) => {
         requestRender();
     };
 
-    // ---- gravity + ground collision ---------------------------------------
+    // ---- gravity + collision (scene voxels first, manual plane fallback) ---
     app.on('update', (rawDt) => {
         const dt = Math.min(rawDt, MAX_DT);
         let active = false;
@@ -217,18 +230,80 @@ export const initProps = async ({ viewer, config }) => {
             active = true;
             p.vy += GRAVITY * dt;
             const pos = p.entity.getPosition();
+            if (!p.dropStart) p.dropStart = [pos.x, pos.y, pos.z];
+
+            // fall-distance safety: nothing to land on — restore and stop
+            if (p.dropStart[1] - pos.y > MAX_FALL) {
+                p.entity.setPosition(...p.dropStart);
+                p.falling = false;
+                p.vy = 0;
+                p.dropStart = null;
+                setStatus(`${p.name}: nothing to land on below — position restored. Set ground Y or check collision.`, true);
+                saveLayout();
+                refreshUI();
+                continue;
+            }
+
             const aabb = worldAabb(p.entity);
-            const dy = p.vy * dt;
-            // collide only when the prop's bottom actually crosses the plane
-            // from above this frame (a prop already below the plane falls free)
-            const bottomBefore = aabb ? aabb.min.y : Infinity;
-            if (aabb && p.vy < 0 && bottomBefore >= state.groundY - 1e-3 && bottomBefore + dy <= state.groundY) {
-                p.entity.setPosition(pos.x, pos.y + (state.groundY - bottomBefore), pos.z);
+            const dy = p.vy * dt;   // negative while falling
+            if (!aabb) {
+                p.entity.setPosition(pos.x, pos.y + dy, pos.z);
+                continue;
+            }
+            const bottom = aabb.min.y;
+
+            // find the highest support under the prop this frame
+            let support = null;
+            let supportSrc = '';
+
+            // (a) scene collision: rays cast down from just above the prop's
+            // bottom footprint (center + 4 inset corners, like walk mode)
+            const col = getCollision();
+            if (col && p.vy < 0) {
+                const cx = (aabb.min.x + aabb.max.x) / 2;
+                const cz = (aabb.min.z + aabb.max.z) / 2;
+                const ix = (aabb.max.x - aabb.min.x) * 0.3;
+                const iz = (aabb.max.z - aabb.min.z) * 0.3;
+                // Long rays: the surface below is the standing target even when
+                // it is still metres away — landing happens only when the prop
+                // actually crosses it. The center ray decides where the prop
+                // rests; corner rays matter only when the center hangs over a
+                // void (else a corner nicking nearby clutter voxels would leave
+                // the prop floating mid-air).
+                const castDown = (ox, oz) => {
+                    const hit = col.queryRay(ox, bottom + RAY_LIFT, oz, 0, -1, 0, RAY_LIFT + 3);
+                    if (!hit) return null;
+                    const surfaceY = hit.y + VOXEL_SURFACE_BIAS;
+                    return surfaceY <= bottom + SNAP_UP ? surfaceY : null;
+                };
+                let sceneY = castDown(cx, cz);
+                if (sceneY === null) {
+                    for (const [ox, oz] of [[cx - ix, cz - iz], [cx - ix, cz + iz], [cx + ix, cz - iz], [cx + ix, cz + iz]]) {
+                        const y = castDown(ox, oz);
+                        if (y !== null && (sceneY === null || y > sceneY)) sceneY = y;
+                    }
+                }
+                if (sceneY !== null) {
+                    support = sceneY;
+                    supportSrc = 'scene surface';
+                }
+            }
+
+            // (b) manual ground plane, unless the prop is already well below it
+            if (state.groundY !== null && bottom >= state.groundY - PLANE_GRACE && (support === null || state.groundY > support)) {
+                support = state.groundY;
+                supportSrc = 'ground plane';
+            }
+
+            if (support !== null && bottom + dy <= support && p.vy < 0) {
+                // land: lift bottom onto the support, then bounce or rest
+                p.entity.setPosition(pos.x, pos.y + (support - bottom), pos.z);
                 p.vy = -p.vy * RESTITUTION;
                 if (p.vy < REST_SPEED) {
                     p.vy = 0;
                     p.falling = false;
-                    setStatus(`${p.name} landed at ground Y = ${state.groundY.toFixed(3)}.`);
+                    p.dropStart = null;
+                    setStatus(`${p.name} landed on ${supportSrc} (Y = ${support.toFixed(3)}).`);
                     saveLayout();
                     refreshUI();
                 }
@@ -304,6 +379,7 @@ export const initProps = async ({ viewer, config }) => {
         if (!p) return;
         p.falling = false;
         p.vy = 0;
+        p.dropStart = null;
         p.entity.setPosition(+inX.value || 0, +inY.value || 0, +inZ.value || 0);
         p.euler = [+inRX.value || 0, +inRY.value || 0, +inRZ.value || 0];
         p.entity.setEulerAngles(...p.euler);
@@ -454,6 +530,7 @@ export const initProps = async ({ viewer, config }) => {
             const lift = aabb ? pos.y - aabb.min.y : 0; // keep bottom on the surface
             p.falling = false;
             p.vy = 0;
+            p.dropStart = null;
             p.entity.setPosition(hit.position.x, hit.position.y + lift, hit.position.z);
             refreshTransformInputs();
             saveLayout();
@@ -465,14 +542,18 @@ export const initProps = async ({ viewer, config }) => {
     const placeBtn = el('button', { text: 'Place at click', title: 'Then click a spot in the scene', onclick: () => armPick('place') });
     const groundPickBtn = el('button', { text: 'Ground from click', title: 'Click a floor point to set the ground plane', onclick: () => armPick('ground') });
 
-    // physics controls
-    const groundInput = numInput(0.05, () => { state.groundY = +groundInput.value || 0; saveLayout(); });
-    groundInput.value = '0';
+    // physics controls; empty ground field = rely on scene collision only
+    const groundInput = numInput(0.05, () => {
+        state.groundY = groundInput.value === '' ? null : (+groundInput.value || 0);
+        saveLayout();
+    });
+    groundInput.setAttribute('placeholder', 'auto');
     const dropBtn = el('button', { class: 'pl-primary', text: 'Drop (gravity)', onclick: () => {
         const p = getSelected();
         if (!p) return;
         p.falling = !p.falling;
         p.vy = 0;
+        p.dropStart = null;
         if (!p.falling) saveLayout();   // persist a deliberately frozen mid-air pose
         refreshUI();
         requestRender();
@@ -543,6 +624,7 @@ export const initProps = async ({ viewer, config }) => {
         ),
         el('div', { class: 'pl-section' },
             el('div', { class: 'pl-section-title', text: 'Gravity / collision' }),
+            el('div', { class: 'pl-hint', text: 'Drop lands on the scene itself (voxel collision). Ground Y is an optional override plane — leave it on "auto".' }),
             el('div', { class: 'pl-row' }, el('label', { text: 'ground Y' }), groundInput),
             el('div', { class: 'pl-row' }, groundPickBtn, groundFromPropBtn),
             el('div', { class: 'pl-row' }, dropBtn)
@@ -593,8 +675,8 @@ export const initProps = async ({ viewer, config }) => {
     const saved = await loadSavedLayout();
     const restoreEpoch = epoch;
     if (saved) {
-        state.groundY = saved.groundY ?? 0;
-        groundInput.value = String(state.groundY);
+        state.groundY = saved.groundY ?? null;
+        groundInput.value = state.groundY === null ? '' : String(state.groundY);
         restoring = true;
         try {
             for (const sp of saved.props ?? []) {

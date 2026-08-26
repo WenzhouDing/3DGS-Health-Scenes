@@ -18,8 +18,8 @@
 
             const posterUrl = url.searchParams.get('poster');
             const skyboxUrl = url.searchParams.get('skybox');
-            const collisionUrl = url.searchParams.get('collision') ?? url.searchParams.get('voxel');
             const scene = url.searchParams.get('scene') || 'ambulance';
+            const collisionUrl = url.searchParams.get('collision') ?? url.searchParams.get('voxel') ?? `../${scene}/index.voxel.json`;
             const settingsUrl = url.searchParams.has('settings') ? url.searchParams.get('settings') : `../${scene}/settings.json`;
             const contentUrl = url.searchParams.has('content') ? url.searchParams.get('content') : `../${scene}/index.sog`;
 
