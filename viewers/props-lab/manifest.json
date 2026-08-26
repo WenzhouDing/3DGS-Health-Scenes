@@ -1,0 +1,54 @@
+{
+  "props": [
+    {
+      "id": "ambulance_stretcher",
+      "name": "Ambulance Stretcher",
+      "url": "../../assets/props/ambulance_stretcher.glb"
+    },
+    {
+      "id": "bp_cuff",
+      "name": "BP Cuff",
+      "url": "../../assets/props/bp_cuff.glb"
+    },
+    {
+      "id": "cardiac_monitor_defib",
+      "name": "Cardiac Monitor Defib",
+      "url": "../../assets/props/cardiac_monitor_defib.glb"
+    },
+    {
+      "id": "cervical_collar",
+      "name": "Cervical Collar",
+      "url": "../../assets/props/cervical_collar.glb"
+    },
+    {
+      "id": "limb_splint_set",
+      "name": "Limb Splint Set",
+      "url": "../../assets/props/limb_splint_set.glb"
+    },
+    {
+      "id": "oxygen_cylinder",
+      "name": "Oxygen Cylinder",
+      "url": "../../assets/props/oxygen_cylinder.glb"
+    },
+    {
+      "id": "stair_chair",
+      "name": "Stair Chair",
+      "url": "../../assets/props/stair_chair.glb"
+    },
+    {
+      "id": "stethoscope",
+      "name": "Stethoscope",
+      "url": "../../assets/props/stethoscope.glb"
+    },
+    {
+      "id": "suction_unit",
+      "name": "Suction Unit",
+      "url": "../../assets/props/suction_unit.glb"
+    },
+    {
+      "id": "traction_splint",
+      "name": "Traction Splint",
+      "url": "../../assets/props/traction_splint.glb"
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+/* Props Lab overlay panel */
+#propsPanel {
+    position: absolute;
+    top: max(12px, env(safe-area-inset-top));
+    left: max(12px, env(safe-area-inset-left));
+    width: 292px;
+    max-height: calc(100vh - 96px);
+    overflow-y: auto;
+    background: rgba(16, 16, 20, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    color: #eee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 12px;
+    padding: 10px 12px 12px;
+    z-index: 30;
+    backdrop-filter: blur(6px);
+    user-select: none;
+}
+
+#propsPanel.collapsed > *:not(.pl-header) {
+    display: none;
+}
+
+#propsPanel .pl-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+#propsPanel .pl-header .pl-scene {
+    font-weight: 400;
+    color: #9ab;
+    font-size: 11px;
+    margin-left: 6px;
+    flex: 1;
+}
+
+#propsPanel .pl-row {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-top: 8px;
+}
+
+#propsPanel .pl-row label {
+    color: #aab;
+    min-width: 14px;
+}
+
+#propsPanel select,
+#propsPanel input[type="number"],
+#propsPanel input[type="text"] {
+    background: #24242c;
+    color: #eee;
+    border: 1px solid #3a3a46;
+    border-radius: 5px;
+    padding: 4px 6px;
+    font-size: 12px;
+    min-width: 0;
+}
+
+#propsPanel select { flex: 1; }
+
+#propsPanel input[type="number"] {
+    width: 64px;
+    flex: 1;
+}
+
+#propsPanel button {
+    background: #2e3040;
+    color: #eee;
+    border: 1px solid #44475a;
+    border-radius: 5px;
+    padding: 4px 8px;
+    font-size: 12px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+#propsPanel button:hover { background: #3a3d52; }
+#propsPanel button:active { background: #4a4e6a; }
+#propsPanel button:disabled { opacity: 0.45; cursor: default; }
+
+#propsPanel button.pl-primary {
+    background: #2b5ba8;
+    border-color: #3a6fc4;
+}
+#propsPanel button.pl-primary:hover { background: #336ac2; }
+
+#propsPanel button.pl-danger  { border-color: #a44; }
+#propsPanel button.pl-active  { background: #7c4a12; border-color: #c07a2a; }
+
+#propsPanel .pl-section {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#propsPanel .pl-section-title {
+    color: #9ab;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+}
+
+#propsPanel .pl-list {
+    max-height: 110px;
+    overflow-y: auto;
+    margin-top: 6px;
+}
+
+#propsPanel .pl-list-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 6px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#propsPanel .pl-list-item:hover { background: rgba(255, 255, 255, 0.07); }
+#propsPanel .pl-list-item.selected { background: #2b5ba8; }
+
+#propsPanel .pl-list-item .pl-name {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#propsPanel .pl-list-item button {
+    padding: 1px 6px;
+    font-size: 11px;
+}
+
+#propsPanel .pl-nudge {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 4px;
+    margin-top: 6px;
+}
+
+#propsPanel .pl-nudge button { padding: 3px 0; }
+
+#propsPanel .pl-hint {
+    color: #778;
+    font-size: 11px;
+    margin-top: 6px;
+    line-height: 1.4;
+    user-select: text;
+}
+
+#propsPanel .pl-status {
+    color: #8c8;
+    font-size: 11px;
+    margin-top: 6px;
+    min-height: 14px;
+}
+
+#propsPanel .pl-status.error { color: #e88; }
+
+#propsPanel .pl-flex1 { flex: 1; }
