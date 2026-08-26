@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SfM Review — Ambulance</title>
+<link rel="icon" href="../../favicon.ico">
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --card-bg: #ffffff;
+    --text: #1a1d21;
+    --muted: #5c646e;
+    --accent: #0b66c3;
+    --border: #e2e5e9;
+    --chip-bg: #eef1f4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14161a;
+      --card-bg: #1d2025;
+      --text: #e8eaed;
+      --muted: #9aa2ac;
+      --accent: #5ca8f0;
+      --border: #2b2f36;
+      --chip-bg: #262a30;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+    color: var(--text);
+    font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  header {
+    flex: none;
+    display: flex;
+    align-items: baseline;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+    padding: 0.7rem 1.1rem;
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border);
+  }
+  header a.back { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+  header a.back:hover { color: var(--accent); }
+  header h1 { margin: 0; font-size: 1.05rem; letter-spacing: -0.01em; font-weight: 600; }
+  header .chips { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-left: auto; }
+  .chip {
+    background: var(--chip-bg); color: var(--muted);
+    border-radius: 999px; padding: 0.13rem 0.6rem; font-size: 0.75rem; white-space: nowrap;
+  }
+  button.help {
+    background: var(--chip-bg); color: var(--muted); border: 1px solid var(--border);
+    border-radius: 999px; padding: 0.13rem 0.7rem; font-size: 0.75rem; cursor: pointer;
+  }
+  button.help:hover { color: var(--accent); border-color: var(--accent); }
+  #guide {
+    flex: none; display: none; padding: 0.9rem 1.1rem;
+    background: var(--card-bg); border-bottom: 1px solid var(--border);
+    color: var(--muted); font-size: 0.86rem;
+  }
+  #guide.open { display: block; }
+  #guide .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.6rem; max-width: 1200px; }
+  #guide h2 { margin: 0 0 0.45rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text); }
+  #guide p { margin: 0 0 0.4rem; }
+  #guide dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 0.18rem 0.6rem; align-items: baseline; }
+  #guide dt { color: var(--text); white-space: nowrap; }
+  #guide dd { margin: 0; }
+  .swatch { display: inline-block; width: 0.8rem; height: 0.8rem; border-radius: 3px; vertical-align: -1px; }
+
+  /* coverage colour chart */
+  .scale { margin: 0 0 0.9rem; }
+  .scale .label { color: var(--text); font-size: 0.8rem; margin-bottom: 0.25rem; }
+  .scale .bar { height: 12px; border-radius: 3px; border: 1px solid var(--border); }
+  .scale .ticks { display: flex; justify-content: space-between; font-size: 0.72rem; margin-top: 0.15rem; font-variant-numeric: tabular-nums; }
+  .viridis {
+    background: linear-gradient(to right,
+      rgb(68,1,84), rgb(72,40,120), rgb(62,74,137), rgb(49,104,142), rgb(38,130,142),
+      rgb(31,158,137), rgb(53,183,121), rgb(109,205,89), rgb(253,231,37));
+  }
+  .magma {
+    background: linear-gradient(to right,
+      rgb(0,0,4), rgb(40,11,84), rgb(101,21,110), rgb(159,42,99), rgb(212,72,66),
+      rgb(245,125,21), rgb(250,193,39), rgb(252,253,191));
+  }
+  #viewer { flex: 1 1 auto; min-height: 0; position: relative; background: #12141a; }
+  #status {
+    position: absolute; inset: 0; z-index: 10; display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 2rem; color: #9aa2ac; font-size: 0.9rem; pointer-events: none;
+  }
+  #status.hidden { display: none; }
+  /* once it is showing a diagnosis rather than a spinner, it must be clickable */
+  #status.diag { pointer-events: auto; background: #12141a; text-align: left; }
+  #status.diag .box { max-width: 34rem; }
+  #status.diag h2 { margin: 0 0 0.6rem; font-size: 1rem; color: #e8eaed; }
+  #status.diag code { background: #262a30; padding: 0.05rem 0.3rem; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="back" href="../../">&larr; Gallery</a>
+  <h1>SfM Review &mdash; Ambulance</h1>
+  <div class="chips">
+    <span class="chip">2027 posed cameras</span>
+    <span class="chip">8075 registered images</span>
+    <span class="chip">18 clips</span>
+    <button class="help" id="toggle-guide" aria-expanded="false">How to read this</button>
+  </div>
+</header>
+
+<div id="guide">
+  <div class="cols">
+    <div>
+      <h2>What&rsquo;s on screen</h2>
+      <p>
+        The camera solve behind the ambulance scene, levelled so <b>+Z is up</b> with the floor
+        at <b>z&nbsp;=&nbsp;0</b>. Drag to orbit, scroll to zoom, right-drag to pan.
+      </p>
+      <dl>
+        <dt>grey cloud</dt><dd>the reconstructed points, real colour</dd>
+        <dt>coloured dots</dt><dd>where the camera was &mdash; one colour per clip</dd>
+        <dt>coloured lines</dt><dd>the path walked, cut where frames dropped out</dd>
+        <dt>white frustum</dt><dd>the live camera &mdash; press play or drag the timeline</dd>
+      </dl>
+      <p style="margin-top:0.55rem">
+        Side plots track the capture frame by frame. The top two are scaled so <b>1.0 is
+        normal</b>; a spike over ~5 would mean a broken track. This solve never exceeds 3.4.
+      </p>
+    </div>
+
+    <div>
+      <h2>Floor &amp; ceiling coverage</h2>
+      <p>
+        Hidden by default. Turn on <code>world &rsaquo; coverage</code> in the tree at left to
+        lay a grid over the floor or ceiling showing how well it was actually filmed.
+      </p>
+
+      <div class="scale">
+        <div class="label"><b>views</b> &mdash; how many cameras saw each cell</div>
+        <div class="bar viridis"></div>
+        <div class="ticks"><span>ceiling &le;8</span><span>22</span><span>59</span><span>&ge;162</span></div>
+        <div class="ticks"><span>floor &le;32</span><span>62</span><span>119</span><span>&ge;229</span></div>
+        <div style="font-size:0.7rem;opacity:0.75;margin-top:0.1rem">log scale &mdash; each step is roughly a tripling</div>
+      </div>
+
+      <div class="scale">
+        <div class="label"><b>spread</b> &mdash; how many <i>directions</i> they saw it from</div>
+        <div class="bar magma"></div>
+        <div class="ticks"><span>0&deg;</span><span>20&deg;</span><span>40&deg;</span><span>60&deg;</span></div>
+      </div>
+
+      <p>
+        Spread is the one that matters: a cell seen 100&times; from one spot is worse constrained
+        than one seen 10&times; from all around. <b>Dark is the warning colour</b> on both bars.
+      </p>
+    </div>
+
+    <div>
+      <h2>How this scene reads</h2>
+      <p>
+        Mostly green-to-yellow and red-to-gold, so coverage is healthy throughout. Two spots
+        worth knowing:
+      </p>
+      <dl>
+        <dt><span class="swatch" style="background:rgb(49,104,142)"></span></dt>
+        <dd>the blue patch at the south end of the ceiling &mdash; ~10&ndash;30 views instead of
+          ~150. Still fine, but artifacts will show there first.</dd>
+      </dl>
+      <p style="margin-top:0.5rem">
+        Gaps in the grey cloud are <b>not</b> coverage holes. A fifth of the ceiling has no
+        reconstructed points because blank panelling gives nothing to match &mdash; it was
+        filmed, it just has no texture. Coverage is measured on the grid, never on the cloud.
+      </p>
+      <p><b>Scale is arbitrary.</b> Floor to ceiling is 6.55 scene units, not metres.</p>
+    </div>
+  </div>
+</div>
+
+<div id="viewer">
+  <!-- No loading UI of our own: the web-viewer package paints its own "Loading Rerun…"
+       overlay into this container, and a second one on top just reads as a glitch.
+       #status stays hidden and is only used to report a failure. -->
+  <div id="status" class="hidden"></div>
+</div>
+
+<script type="module">
+  const statusEl = document.getElementById("status");
+  const host = document.getElementById("viewer");
+  const params = new URLSearchParams(location.search);
+
+  const guide = document.getElementById("guide");
+  const toggle = document.getElementById("toggle-guide");
+  toggle.addEventListener("click", () => {
+    const open = guide.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", String(open));
+  });
+
+  // ./app/ is Rerun's own viewer, mirrored verbatim from app.rerun.io — see app/SOURCE.md.
+  // It ships as a complete page, so we embed it same-origin rather than re-implementing
+  // its bootstrap. Same-origin matters: a cross-origin frame of rerun.io did not work.
+  const rrd = params.get("rrd") || new URL("./sfm-review.rrd", location.href).toString();
+  const q = new URLSearchParams({ url: rrd });
+  q.set("hide_welcome_screen", "");
+
+  // Safari must be sent to WebGL. Under WebGPU the 3D viewport renders black on Safari
+  // 26.4+ while the rest of the UI draws normally and nothing is logged --
+  // rerun-io/rerun#12788. Rerun ships a Safari->WebGL default (PR #12789), but their
+  // index.html sets render_backend from the query param unconditionally, so an absent
+  // ?renderer arrives as an explicit null and defeats it. Passing it explicitly is what
+  // actually works here; verified on Safari 26.6.2.
+  const isSafari = /^((?!chrome|android|crios|fxios|edg).)*safari/i.test(navigator.userAgent)
+    && navigator.vendor === "Apple Computer, Inc.";
+  const renderer = params.get("renderer") || (isSafari ? "webgl" : null);
+  if (renderer) q.set("renderer", renderer);
+
+  const frame = document.createElement("iframe");
+  frame.src = `./app/?${q}`;
+  frame.title = "Rerun viewer";
+  frame.style.cssText = "width:100%;height:100%;border:0;display:block";
+  frame.addEventListener("error", () => {
+    statusEl.classList.remove("hidden");
+    statusEl.classList.add("diag");
+    statusEl.innerHTML = `<div class="box"><h2>The viewer failed to load</h2>
+      <p>Could not load <code>./app/</code>. It is a ~40&nbsp;MB WebAssembly build; a slow
+      connection can take a while on first visit.</p></div>`;
+  });
+  host.appendChild(frame);
+  statusEl.classList.add("hidden");
+</script>
+
+</body>
+</html>

@@ -165,9 +165,33 @@
         <a class="open" href="viewers/ambulance-insta360/">Open viewer &rarr;</a>
       </div>
     </div>
+
+    <!-- scene: sfm-review -->
+    <div class="card">
+      <a class="thumb" href="viewers/sfm-review/" aria-label="Open SfM review viewer">
+        <img src="assets/sfm-review.jpg" alt="Top-down plan of the ambulance interior with 18 coloured camera paths" loading="lazy">
+        <span class="play">&#9654;&ensp;Open interactive viewer</span>
+      </a>
+      <div class="body">
+        <h2>SfM Review &mdash; Ambulance</h2>
+        <p class="caption">
+          The camera solve behind the ambulance scene: 8075 registered images across 18
+          clips, levelled so +Z is up. Scrub the capture, check per-frame continuity, and
+          toggle coverage grids showing how well the ceiling and floor were filmed.
+        </p>
+        <div class="chips">
+          <span class="chip">2027 posed cameras</span>
+          <span class="chip">~50 MB download</span>
+        </div>
+        <a class="open" href="viewers/sfm-review/">Open viewer &rarr;</a>
+      </div>
+    </div>
   </div>
 
   <footer>
+    The SfM review page embeds the
+    <a href="https://github.com/rerun-io/rerun">Rerun</a> web viewer (MIT / Apache-2.0),
+    vendored under <code>viewers/sfm-review/app/</code>.
     Scenes are converted to the compressed
     <a href="https://developer.playcanvas.com/user-manual/gaussian-splatting/splat-formats/">SOG format</a>
     with <a href="https://github.com/playcanvas/splat-transform">@playcanvas/splat-transform</a> (MIT)
