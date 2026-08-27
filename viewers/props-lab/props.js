@@ -15,11 +15,12 @@ const REST_SPEED = 0.25;    // m/s — below this after a bounce, come to rest
 const MAX_DT = 0.05;        // clamp dt against loading hitches
 const RAY_LIFT = 0.1;       // rays start this far above the prop bottom
 const SNAP_UP = 0.15;       // max upward correction out of a penetrated surface
-// Voxel solids mark the dense core of the splats, which sits below the surface
-// the renderer (and the picker) shows — measured ~0.13–0.19 m on the ambulance
-// scene (visual floor −0.50 vs voxel top −0.70; bench −0.04 vs −0.20). Land
-// props this much above the voxel hit.
-const VOXEL_SURFACE_BIAS = 0.16;
+// Voxel solids mark the dense core of the splats. On sharp surfaces the voxel
+// top matches what the renderer shows (bias ~0), but diffuse regions (the dark
+// rubber floor) voxelize up to ~0.25 m below the visible surface. The bias is
+// therefore calibrated per drop by comparing a picker sample of the visible
+// surface with a voxel ray at the same spot; this is the clamp for it.
+const MAX_LAND_BIAS = 0.35;
 const PLANE_GRACE = 0.05;   // prop this far below the ground plane still lands on it
 const MAX_FALL = 25;        // fall distance safety: stop + restore after this
 
@@ -59,6 +60,69 @@ export const initProps = async ({ viewer, config }) => {
     // voxel/mesh collision the viewer loaded for this scene (null until the
     // splat finishes loading, or when no index.voxel.json exists)
     const getCollision = () => viewer.inputController?.collision ?? null;
+
+    // First voxel surface below a point, skipping a thin phantom slab (fuzz
+    // voxelizes as ~1-voxel floating sheets above real surfaces) when a real
+    // surface lies just beneath it.
+    const voxelSurfaceBelow = (col, x, y, z, maxDist) => {
+        const hit = col.queryRay(x, y, z, 0, -1, 0, maxDist);
+        if (!hit) return null;
+        if (col.isFreeAt && col.isFreeAt(x, hit.y - 0.08, z)) {
+            const below = col.queryRay(x, hit.y - 0.08, z, 0, -1, 0, 0.35);
+            if (below) return below;
+        }
+        return hit;
+    };
+
+    // Per-drop landing-bias calibration. The voxel ray gives the predicted
+    // landing point on the target surface; project THAT point to the screen
+    // and ask the splat picker (which ignores meshes, so the prop is
+    // transparent to it) where the visible surface sits at that pixel. The
+    // difference is the local fuzz bias between rendered surface and voxel
+    // core. Falls back to 0 when the landing spot is off-screen or occluded.
+    const calibrateDropBias = async (p) => {
+        try {
+            const col = getCollision();
+            if (!col || !viewer.picker) return 0;
+            const aabb = worldAabb(p.entity);
+            if (!aabb) return 0;
+            const cx = (aabb.min.x + aabb.max.x) / 2;
+            const cz = (aabb.min.z + aabb.max.z) / 2;
+            const vhit = voxelSurfaceBelow(col, cx, aabb.min.y + RAY_LIFT, cz, 5);
+            if (!vhit) return 0;
+            const cam = viewer.global?.camera?.camera;
+            if (!cam) return 0;
+            const s = cam.worldToScreen({ x: vhit.x, y: vhit.y, z: vhit.z });
+            const cv = app.graphicsDevice.canvas;
+            const nx = s.x / cv.clientWidth;
+            const ny = s.y / cv.clientHeight;
+            if (s.z < 0 || nx < 0.02 || nx > 0.98 || ny < 0.02 || ny > 0.98) return 0;
+            // median of a few samples around the landing pixel; negative bias is
+            // allowed — phantom fuzz voxels can sit ABOVE the visible surface,
+            // and the prop should sink through them onto what the eye sees
+            const samples = [];
+            const rejects = [];
+            for (const [ox, oy] of [[0, 0], [-0.02, 0], [0.02, 0], [0, -0.02], [0, 0.02]]) {
+                const sx = nx + ox;
+                const sy = ny + oy;
+                if (sx < 0.02 || sx > 0.98 || sy < 0.02 || sy > 0.98) continue;
+                const hit = await viewer.picker.pickSurface(sx, sy);
+                if (!hit?.position) { rejects.push('miss'); continue; }
+                // same surface only: a distant pick means the spot is occluded
+                const d = Math.hypot(hit.position.x - vhit.x, hit.position.z - vhit.z);
+                if (d > 0.4) { rejects.push(`dist ${d.toFixed(2)}`); continue; }
+                const b = hit.position.y - vhit.y;
+                if (b >= -0.3 && b <= MAX_LAND_BIAS) samples.push(b);
+                else rejects.push(`bias ${b.toFixed(2)}`);
+            }
+            window.__plCalib = { vhit: [vhit.x, vhit.y, vhit.z], samples: [...samples], rejects };
+            if (!samples.length) return 0;
+            samples.sort((a, b) => a - b);
+            return samples[Math.floor(samples.length / 2)];
+        } catch {
+            return 0;
+        }
+    };
 
     // saved-layout entries whose GLB failed to load; kept so a re-save never
     // silently drops them (cleared only by the Clear button)
@@ -137,14 +201,19 @@ export const initProps = async ({ viewer, config }) => {
     };
 
     const loadSavedLayout = async () => {
-        // localStorage first (latest working state), then optional checked-in file
-        try {
-            const stored = localStorage.getItem(storageKey);
-            if (stored) return JSON.parse(stored);
-        } catch { /* ignore */ }
+        // the committed default layout is the source of truth on load; the
+        // localStorage autosave only fills in when no file is shipped (use
+        // Download to bake in-browser arrangements into the file)
         try {
             const resp = await fetch(`./layout-${scene}.json`);
             if (resp.ok) return await resp.json();
+        } catch { /* ignore */ }
+        try {
+            const stored = localStorage.getItem(storageKey);
+            if (stored) {
+                const parsed = JSON.parse(stored);
+                if (parsed?.props?.length) return parsed;
+            }
         } catch { /* ignore */ }
         return null;
     };
@@ -270,10 +339,11 @@ export const initProps = async ({ viewer, config }) => {
                 // rests; corner rays matter only when the center hangs over a
                 // void (else a corner nicking nearby clutter voxels would leave
                 // the prop floating mid-air).
+                const landBias = p.landBias ?? 0;
                 const castDown = (ox, oz) => {
-                    const hit = col.queryRay(ox, bottom + RAY_LIFT, oz, 0, -1, 0, RAY_LIFT + 3);
+                    const hit = voxelSurfaceBelow(col, ox, bottom + RAY_LIFT, oz, RAY_LIFT + 3);
                     if (!hit) return null;
-                    const surfaceY = hit.y + VOXEL_SURFACE_BIAS;
+                    const surfaceY = hit.y + landBias;
                     return surfaceY <= bottom + SNAP_UP ? surfaceY : null;
                 };
                 let sceneY = castDown(cx, cz);
@@ -463,6 +533,58 @@ export const initProps = async ({ viewer, config }) => {
         requestRender();
     };
 
+    // ---- walk-mode spawn fix ----------------------------------------------
+    // Entering walk mode seeds the controller's spawn search from the current
+    // camera, so an orbit camera above the scene lands the player on the roof.
+    // The collision voxels are built with a standing pocket carved at the
+    // curated initial ("video") viewpoint, so seeding the camera there makes
+    // the spawn search accept that exact spot. Entries from anim mode defer
+    // and re-enter via orbit, whose exit does not clobber the seeded pose.
+    const videoPose = () => {
+        const cam0 = viewer.global.settings?.cameras?.[0]?.initial;
+        if (!Array.isArray(cam0?.position) || !Array.isArray(cam0?.target)) return null;
+        const [px, py, pz] = cam0.position;
+        const [tx, , tz] = cam0.target;
+        return { px, py, pz, yawDeg: Math.atan2(-(tx - px), -(tz - pz)) * 180 / Math.PI };
+    };
+    const seedWalkPose = () => {
+        const cm = viewer.cameraManager;
+        const pose = videoPose();
+        if (!cm?.camera?.position || !pose) return false;
+        cm.camera.position.set(pose.px, pose.py, pose.pz);
+        cm.camera.angles.set(0, pose.yawDeg, 0);
+        return true;
+    };
+    // default to fly ("drone") mode once the scene is up — the stock viewer
+    // would otherwise auto-pick walk/orbit
+    const flyDefault = setInterval(() => {
+        if (!viewer.cameraManager) return;
+        clearInterval(flyDefault);
+        try { viewer.global.state.cameraMode = 'fly'; } catch { /* ignore */ }
+    }, 200);
+
+    let reseeding = false;
+    viewer.global?.events?.on('cameraMode:changed', (mode, prev) => {
+        if (mode !== 'walk' || reseeding) return;
+        try {
+            if (!viewer.cameraManager?.camera?.position || prev === 'anim') {
+                // initial entry at load (cameraManager not assigned yet) or an
+                // entry from anim, whose onExit restores the track pose
+                reseeding = true;
+                setTimeout(() => { reseeding = false; }, 500);
+                setTimeout(() => {
+                    try {
+                        if (viewer.global.state.cameraMode !== 'walk') return;
+                        viewer.global.state.cameraMode = 'orbit';
+                        if (seedWalkPose()) viewer.global.state.cameraMode = 'walk';
+                    } catch { /* ignore */ }
+                }, 100);
+                return;
+            }
+            seedWalkPose();
+        } catch { /* ignore */ }
+    });
+
     // ---- click-picking on the splat surface -------------------------------
     // viewer.picker is created once the splat finishes loading; access lazily.
     let pickMode = null; // null | 'place' | 'ground'
@@ -548,13 +670,20 @@ export const initProps = async ({ viewer, config }) => {
         saveLayout();
     });
     groundInput.setAttribute('placeholder', 'auto');
-    const dropBtn = el('button', { class: 'pl-primary', text: 'Drop (gravity)', onclick: () => {
+    const dropBtn = el('button', { class: 'pl-primary', text: 'Drop (gravity)', onclick: async () => {
         const p = getSelected();
         if (!p) return;
-        p.falling = !p.falling;
-        p.vy = 0;
-        p.dropStart = null;
-        if (!p.falling) saveLayout();   // persist a deliberately frozen mid-air pose
+        if (p.falling) {
+            p.falling = false;
+            p.vy = 0;
+            p.dropStart = null;
+            saveLayout();   // persist a deliberately frozen mid-air pose
+        } else {
+            p.landBias = await calibrateDropBias(p);
+            p.falling = true;
+            p.vy = 0;
+            p.dropStart = null;
+        }
         refreshUI();
         requestRender();
     } });
