@@ -1,0 +1,57 @@
+{
+  "scene": "ambulance",
+  "groundY": null,
+  "props": [
+    {
+      "id": "cardiac_monitor_defib",
+      "name": "Cardiac Monitor Defib",
+      "url": "../../assets/props/cardiac_monitor_defib.glb",
+      "position": [
+        0.0997,
+        -0.34,
+        0.5994
+      ],
+      "eulerAngles": [
+        0,
+        -165,
+        0
+      ],
+      "scale": 1.9531,
+      "visible": true
+    },
+    {
+      "id": "suction_unit",
+      "name": "Suction Unit",
+      "url": "../../assets/props/suction_unit.glb",
+      "position": [
+        -0.2462,
+        -0.363,
+        0.695
+      ],
+      "eulerAngles": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1.9531,
+      "visible": true
+    },
+    {
+      "id": "stethoscope",
+      "name": "Stethoscope",
+      "url": "../../assets/props/stethoscope.glb",
+      "position": [
+        0.1212,
+        -0.2471,
+        -0.32
+      ],
+      "eulerAngles": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "visible": true
+    }
+  ]
+}

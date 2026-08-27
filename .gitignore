@@ -7,3 +7,8 @@ raw/
 
 # Node
 node_modules/
+
+# Python bytecode and the pose cache tools/sfm_vis.py writes
+__pycache__/
+*.pyc
+*.npz
