@@ -4,16 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>3DGS Health Scenes</title>
-<link rel="icon" href="favicon.ico">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" href="favicon.ico" sizes="32x32">
 <style>
   :root {
+    color-scheme: light dark;
     --bg: #f6f7f9;
     --card-bg: #ffffff;
     --text: #1a1d21;
     --muted: #5c646e;
-    --accent: #0b66c3;
+    --accent: #0e7c86;
     --border: #e2e5e9;
     --chip-bg: #eef1f4;
+    --num: #848c96;
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -21,9 +24,10 @@
       --card-bg: #1d2025;
       --text: #e8eaed;
       --muted: #9aa2ac;
-      --accent: #5ca8f0;
+      --accent: #5fc6cf;
       --border: #2b2f36;
       --chip-bg: #262a30;
+      --num: #646d7a;
     }
   }
   * { box-sizing: border-box; }
@@ -33,23 +37,35 @@
     color: var(--text);
     font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
-  main { max-width: 960px; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
-  header h1 { margin: 0 0 0.5rem; font-size: 2rem; letter-spacing: -0.02em; }
-  header p.lede { margin: 0; color: var(--muted); max-width: 46rem; }
-  .note {
-    margin: 1.5rem 0 0;
-    padding: 0.75rem 1rem;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: var(--card-bg);
-    color: var(--muted);
-    font-size: 0.9rem;
+  main { max-width: 1020px; margin: 0 auto; padding: 3.5rem 1.25rem 4rem; }
+
+  header.site { display: flex; align-items: center; gap: 0.9rem; }
+  header.site img { width: 44px; height: 44px; border-radius: 10px; }
+  header.site h1 { margin: 0; font-size: 1.7rem; letter-spacing: -0.02em; }
+  header.site p { margin: 0.1rem 0 0; color: var(--muted); font-size: 0.95rem; }
+
+  section.source { margin-top: 3rem; }
+  .source-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.6rem;
+    margin-bottom: 1.25rem;
   }
+  .source-head .num {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--num);
+    letter-spacing: 0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  .source-head h2 { margin: 0; font-size: 1.25rem; letter-spacing: -0.01em; }
+
   .grid {
-    margin-top: 2.5rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.25rem;
+    gap: 1.1rem;
   }
   .card {
     display: flex;
@@ -63,164 +79,130 @@
   .card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
   .card a.thumb {
     display: block;
-    aspect-ratio: 16/9;
+    overflow: hidden;
     background: linear-gradient(135deg, #2c3e50, #4b6584);
-    position: relative;
-    text-decoration: none;
   }
-  .card a.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .card a.thumb .play {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 0.95rem;
-    font-weight: 600;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
-  }
-  .card .body { padding: 1rem 1.1rem 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
-  .card h2 { margin: 0; font-size: 1.1rem; }
-  .card p.caption { margin: 0; color: var(--muted); font-size: 0.9rem; flex: 1; }
-  .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-  .chip {
-    background: var(--chip-bg);
-    border-radius: 999px;
-    padding: 0.15rem 0.6rem;
-    font-size: 0.78rem;
-    color: var(--muted);
-    white-space: nowrap;
-  }
+  /* ratio lives on the img: on the flex-item anchor it loses to the
+     content-based minimum height and thumbnails render ragged */
+  .card a.thumb img { width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; display: block; }
+  .card .body { padding: 0.9rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.45rem; flex: 1; }
+  .card .title-row { display: flex; align-items: baseline; gap: 0.6rem; }
+  .card h3 { margin: 0; font-size: 1.02rem; }
+  .card .size { margin-left: auto; color: var(--muted); font-size: 0.78rem; white-space: nowrap; }
+  .card p { margin: 0; color: var(--muted); font-size: 0.88rem; line-height: 1.5; flex: 1; }
   .card a.open {
-    margin-top: 0.35rem;
     align-self: flex-start;
     color: var(--accent);
     font-weight: 600;
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
   .card a.open:hover { text-decoration: underline; }
-  footer { margin-top: 3.5rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); padding-top: 1.25rem; }
+
+  /* single wide card for a section with one viewer */
+  .card.wide { flex-direction: row; grid-column: 1 / -1; }
+  .card.wide a.thumb { flex: 0 0 42%; min-height: 190px; }
+  .card.wide a.thumb img { height: 100%; aspect-ratio: auto; }
+  .card.wide .body { justify-content: center; gap: 0.55rem; }
+  .card.wide p { flex: none; }
+  @media (max-width: 640px) {
+    .card.wide { flex-direction: column; }
+    .card.wide a.thumb { flex: none; min-height: 0; }
+    .card.wide a.thumb img { height: auto; aspect-ratio: 16/9; }
+  }
+
+  footer {
+    margin-top: 3.5rem;
+    color: var(--muted);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+    padding-top: 1.1rem;
+    line-height: 1.7;
+  }
   footer a { color: var(--accent); text-decoration: none; }
   footer a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
 <main>
-  <header>
-    <h1>3DGS Health Scenes</h1>
-    <p class="lede">
-      Interactive 3D Gaussian Splatting reconstructions of health-care and indoor
-      environments, trained with
-      <a href="https://github.com/nerfstudio-project/gsplat" style="color:var(--accent);text-decoration:none">gsplat</a>
-      and viewable directly in the browser &mdash; orbit, pan, and zoom in real time. No
-      plugins or downloads required beyond the scene data itself.
-    </p>
-    <p class="note">
-      Each viewer streams its scene on first open &mdash; the download size is listed on
-      every card. A WebGL2-capable browser is required; recent Chrome, Safari, Firefox,
-      and Edge all work, on desktop and mobile.
-    </p>
+  <header class="site">
+    <img src="assets/favicon.svg" alt="">
+    <div>
+      <h1>3DGS Health Scenes</h1>
+      <p>Health-care environments as 3D Gaussian Splats — explore them in the browser.</p>
+    </div>
   </header>
 
-  <div class="grid">
-    <!-- scene: ambulance -->
-    <div class="card">
-      <a class="thumb" href="viewers/ambulance/" aria-label="Open ambulance viewer">
-        <img src="assets/ambulance.jpg" alt="Rendered view of the ambulance patient compartment" loading="lazy">
-        <span class="play">&#9654;&ensp;Open interactive viewer</span>
-      </a>
-      <div class="body">
-        <h2>Ambulance</h2>
-        <p class="caption">
-          Interior of an ambulance, reconstructed from video. Explore the patient
-          compartment, equipment mounts, and cabinetry in full 3D.
-        </p>
-        <div class="chips">
-          <span class="chip">6.5M splats</span>
-          <span class="chip" data-size-for="ambulance">63 MB download</span>
-        </div>
-        <a class="open" href="viewers/ambulance/">Open viewer &rarr;</a>
-      </div>
+  <!-- 1 · iPhone capture -->
+  <section class="source">
+    <div class="source-head">
+      <span class="num" aria-hidden="true">01</span>
+      <h2>Ambulance &mdash; iPhone</h2>
     </div>
+    <div class="grid">
+      <div class="card">
+        <a class="thumb" href="viewers/ambulance/" aria-label="Open ambulance viewer">
+          <img src="assets/ambulance.jpg" alt="Ambulance patient compartment" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="title-row"><h3>Scene Viewer</h3><span class="size">6.5M splats · 63 MB</span></div>
+          <p>The full patient compartment, reconstructed from an iPhone video walkthrough.</p>
+          <a class="open" href="viewers/ambulance/" aria-label="Open Scene Viewer — iPhone capture">Open &rarr;</a>
+        </div>
+      </div>
 
-    <!-- scene: ambulance-insta360 -->
-    <div class="card">
-      <a class="thumb" href="viewers/ambulance-insta360/" aria-label="Open ambulance (Insta360) viewer">
-        <img src="assets/ambulance-insta360.jpg" alt="Ambulance interior, Insta360 capture: seat harness and supply cabinet" loading="lazy">
-        <span class="play">&#9654;&ensp;Open interactive viewer</span>
-      </a>
-      <div class="body">
-        <h2>Ambulance &mdash; Insta360 capture</h2>
-        <p class="caption">
-          The same ambulance captured with an Insta360 camera. Smaller scene with
-          view-dependent color (SH degree 3). Opens at the supply cabinet and
-          attendant seat.
-        </p>
-        <div class="chips">
-          <span class="chip">1.0M splats</span>
-          <span class="chip">~16 MB download</span>
+      <div class="card">
+        <a class="thumb" href="viewers/props-lab/?scene=ambulance" aria-label="Open Props Lab">
+          <img src="assets/props-lab.jpg" alt="Medical props placed in the ambulance scene" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="title-row"><h3>Props Lab</h3><span class="size">10 props · 33 MB</span></div>
+          <p>Stage medical equipment in the scene — drop props with gravity onto real surfaces, then export the layout.</p>
+          <a class="open" href="viewers/props-lab/?scene=ambulance" aria-label="Open Props Lab">Open &rarr;</a>
         </div>
-        <a class="open" href="viewers/ambulance-insta360/">Open viewer &rarr;</a>
       </div>
-    </div>
 
-    <!-- tool: props-lab -->
-    <div class="card">
-      <a class="thumb" href="viewers/props-lab/?scene=ambulance" aria-label="Open Props Lab">
-        <img src="assets/props-lab.jpg" alt="Stethoscope prop resting on the ambulance squad bench, with the Props Lab panel" loading="lazy">
-        <span class="play">&#9654;&ensp;Open interactive viewer</span>
-      </a>
-      <div class="body">
-        <h2>Props Lab</h2>
-        <p class="caption">
-          Place 3D medical equipment props &mdash; stethoscope, monitor, stretcher, and
-          more &mdash; inside the splat scenes. Drop them with gravity onto real scene
-          surfaces, adjust pose and scale, and export the layout as JSON.
-        </p>
-        <div class="chips">
-          <span class="chip">10 props &middot; 33 MB set</span>
-          <span class="chip">scene collision</span>
+      <div class="card">
+        <a class="thumb" href="viewers/sfm-review/" aria-label="Open SfM review">
+          <img src="assets/sfm-review.jpg" alt="Camera paths of the ambulance capture" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="title-row"><h3>SfM Review</h3><span class="size">2,027 cameras · 50 MB</span></div>
+          <p>The camera solve behind the scene — scrub the capture and inspect coverage.</p>
+          <a class="open" href="viewers/sfm-review/" aria-label="Open SfM Review">Open &rarr;</a>
         </div>
-        <a class="open" href="viewers/props-lab/?scene=ambulance">Ambulance &rarr;</a>
-        <a class="open" href="viewers/props-lab/?scene=ambulance-insta360">Insta360 scene &rarr;</a>
       </div>
     </div>
+  </section>
 
-    <!-- scene: sfm-review -->
-    <div class="card">
-      <a class="thumb" href="viewers/sfm-review/" aria-label="Open SfM review viewer">
-        <img src="assets/sfm-review.jpg" alt="Top-down plan of the ambulance interior with 18 coloured camera paths" loading="lazy">
-        <span class="play">&#9654;&ensp;Open interactive viewer</span>
-      </a>
-      <div class="body">
-        <h2>SfM Review &mdash; Ambulance</h2>
-        <p class="caption">
-          The camera solve behind the ambulance scene: 8075 registered images across 18
-          clips, levelled so +Z is up. Scrub the capture, check per-frame continuity, and
-          toggle coverage grids showing how well the ceiling and floor were filmed.
-        </p>
-        <div class="chips">
-          <span class="chip">2027 posed cameras</span>
-          <span class="chip">~50 MB download</span>
+  <!-- 2 · Insta360 capture -->
+  <section class="source">
+    <div class="source-head">
+      <span class="num" aria-hidden="true">02</span>
+      <h2>Ambulance &mdash; Insta360</h2>
+    </div>
+    <div class="grid">
+      <div class="card wide">
+        <a class="thumb" href="viewers/ambulance-insta360/" aria-label="Open ambulance Insta360 viewer">
+          <img src="assets/ambulance-insta360.jpg" alt="Ambulance interior, Insta360 capture" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="title-row"><h3>Scene Viewer</h3><span class="size">1.0M splats · 16 MB</span></div>
+          <p>The same ambulance from a single Insta360 capture — smaller scene with view-dependent color, opening at the supply cabinet and attendant seat.</p>
+          <a class="open" href="viewers/ambulance-insta360/" aria-label="Open Scene Viewer — Insta360 capture">Open &rarr;</a>
         </div>
-        <a class="open" href="viewers/sfm-review/">Open viewer &rarr;</a>
       </div>
     </div>
-  </div>
+  </section>
 
   <footer>
-    The SfM review page embeds the
-    <a href="https://github.com/rerun-io/rerun">Rerun</a> web viewer (MIT / Apache-2.0),
-    vendored under <code>viewers/sfm-review/app/</code>.
-    Scenes are converted to the compressed
-    <a href="https://developer.playcanvas.com/user-manual/gaussian-splatting/splat-formats/">SOG format</a>
-    with <a href="https://github.com/playcanvas/splat-transform">@playcanvas/splat-transform</a> (MIT)
-    and rendered with
-    <a href="https://github.com/playcanvas/supersplat-viewer">@playcanvas/supersplat-viewer</a> (MIT).
-    Props Lab meshes were generated with <a href="https://www.meshy.ai">Meshy AI</a> and
-    optimized with <a href="https://gltf-transform.dev">glTF Transform</a> (MIT).
+    Scenes trained with <a href="https://github.com/nerfstudio-project/gsplat">gsplat</a>, packed to
+    <a href="https://developer.playcanvas.com/user-manual/gaussian-splatting/splat-formats/">SOG</a> with
+    <a href="https://github.com/playcanvas/splat-transform">splat-transform</a>, rendered with
+    <a href="https://github.com/playcanvas/supersplat-viewer">SuperSplat Viewer</a> (MIT).
+    Props generated with <a href="https://www.meshy.ai">Meshy AI</a>, optimized with
+    <a href="https://gltf-transform.dev">glTF Transform</a>. SfM review embeds
+    <a href="https://github.com/rerun-io/rerun">Rerun</a>.
   </footer>
 </main>
 </body>
