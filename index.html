@@ -37,7 +37,7 @@
     color: var(--text);
     font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
-  main { max-width: 1020px; margin: 0 auto; padding: 3.5rem 1.25rem 4rem; }
+  main { max-width: 1280px; margin: 0 auto; padding: 3.5rem 1.25rem 4rem; }
 
   header.site { display: flex; align-items: center; gap: 0.9rem; }
   header.site img { width: 44px; height: 44px; border-radius: 10px; }
@@ -62,9 +62,11 @@
   }
   .source-head h2 { margin: 0; font-size: 1.25rem; letter-spacing: -0.01em; }
 
+  /* up to 4 per row; auto-fit collapses the empty tracks so a short
+     section (3 cards) stretches to fill the row instead of leaving a gap */
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.1rem;
   }
   .card {
@@ -98,6 +100,52 @@
     font-size: 0.9rem;
   }
   .card a.open:hover { text-decoration: underline; }
+
+  /* flip card: two captures of one scene sharing a single slot */
+  .card.flip { background: none; border-color: transparent; overflow: visible; perspective: 1400px; }
+  /* both faces share one grid cell, so the card is as tall as the taller face */
+  .flip-inner {
+    display: grid;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .card.flip.flipped .flip-inner { transform: rotateY(180deg); }
+  .flip-face {
+    grid-area: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .flip-face.back { transform: rotateY(180deg); }
+  .thumb-wrap { position: relative; display: flex; }
+  .thumb-wrap a.thumb { flex: 1; }
+  .flip-btn {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.32rem 0.62rem;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(10, 12, 15, 0.7);
+    color: #fff;
+    font: 600 0.74rem/1 inherit;
+    cursor: pointer;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
+  .flip-btn:hover { background: rgba(10, 12, 15, 0.88); }
+  .flip-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { .flip-inner { transition: none; } }
 
   /* single wide card for a section with one viewer */
   .card.wide { flex-direction: row; grid-column: 1 / -1; }
@@ -133,21 +181,44 @@
     </div>
   </header>
 
-  <!-- 1 · iPhone capture -->
+  <!-- 1 · Scenes -->
   <section class="source">
     <div class="source-head">
       <span class="num" aria-hidden="true">01</span>
-      <h2>Ambulance &mdash; iPhone</h2>
+      <h2>Scenes</h2>
     </div>
     <div class="grid">
-      <div class="card">
-        <a class="thumb" href="viewers/ambulance/" aria-label="Open ambulance viewer">
-          <img src="assets/ambulance.jpg" alt="Ambulance patient compartment" loading="lazy">
-        </a>
-        <div class="body">
-          <div class="title-row"><h3>Scene Viewer</h3><span class="size">5.1M splats · 57 MB</span></div>
-          <p>The full patient compartment, reconstructed from an iPhone video walkthrough. Blurred frames are dropped and the solve is bootstrapped, so edges and lettering come out sharper.</p>
-          <a class="open" href="viewers/ambulance/" aria-label="Open Scene Viewer — iPhone capture">Open &rarr;</a>
+      <div class="card flip">
+        <div class="flip-inner">
+
+          <div class="flip-face front">
+            <div class="thumb-wrap">
+              <a class="thumb" href="viewers/ambulance/" aria-label="Open ambulance viewer, iPhone capture">
+                <img src="assets/ambulance.jpg" alt="Ambulance patient compartment" loading="lazy">
+              </a>
+              <button type="button" class="flip-btn" aria-label="Flip to the Insta360 capture">Insta360 &#8634;</button>
+            </div>
+            <div class="body">
+              <div class="title-row"><h3>Ambulance &mdash; iPhone</h3><span class="size">5.1M splats · 57 MB</span></div>
+              <p>The full patient compartment from an iPhone video walkthrough. Blurred frames are dropped and the solve is bootstrapped, so edges and lettering come out sharper.</p>
+              <a class="open" href="viewers/ambulance/" aria-label="Open Ambulance &mdash; iPhone">Open &rarr;</a>
+            </div>
+          </div>
+
+          <div class="flip-face back" inert>
+            <div class="thumb-wrap">
+              <a class="thumb" href="viewers/ambulance-insta360/" aria-label="Open ambulance viewer, Insta360 capture">
+                <img src="assets/ambulance-insta360.jpg" alt="Ambulance interior, Insta360 capture" loading="lazy">
+              </a>
+              <button type="button" class="flip-btn" aria-label="Flip to the iPhone capture">iPhone &#8634;</button>
+            </div>
+            <div class="body">
+              <div class="title-row"><h3>Ambulance &mdash; Insta360</h3><span class="size">1.0M splats · 16 MB</span></div>
+              <p>The same ambulance from a single Insta360 capture &mdash; smaller scene with view-dependent color, opening at the supply cabinet and attendant seat.</p>
+              <a class="open" href="viewers/ambulance-insta360/" aria-label="Open Ambulance &mdash; Insta360">Open &rarr;</a>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -157,7 +228,7 @@
         </a>
         <div class="body">
           <div class="title-row"><h3>Props Lab</h3><span class="size">10 props · 33 MB</span></div>
-          <p>Stage medical equipment in the scene — drop props with gravity onto real surfaces, then export the layout.</p>
+          <p>Stage medical equipment in the scene &mdash; drop props with gravity onto real surfaces, then export the layout.</p>
           <a class="open" href="viewers/props-lab/?scene=ambulance" aria-label="Open Props Lab">Open &rarr;</a>
         </div>
       </div>
@@ -168,28 +239,61 @@
         </a>
         <div class="body">
           <div class="title-row"><h3>SfM Review</h3><span class="size">8,075 frames · 997K pts · 50 MB</span></div>
-          <p>The COLMAP solve behind the scene — scrub per-clip camera trajectories, frame-to-frame pose diagnostics, and floor/ceiling coverage grids.</p>
+          <p>The COLMAP solve behind the scene &mdash; scrub per-clip camera trajectories, frame-to-frame pose diagnostics, and floor/ceiling coverage grids.</p>
           <a class="open" href="viewers/sfm-review/" aria-label="Open SfM Review">Open &rarr;</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 2 · Insta360 capture -->
+  <!-- 2 · Medical equipment (object scans) -->
   <section class="source">
     <div class="source-head">
       <span class="num" aria-hidden="true">02</span>
-      <h2>Ambulance &mdash; Insta360</h2>
+      <h2>Medical Equipment</h2>
     </div>
     <div class="grid">
-      <div class="card wide">
-        <a class="thumb" href="viewers/ambulance-insta360/" aria-label="Open ambulance Insta360 viewer">
-          <img src="assets/ambulance-insta360.jpg" alt="Ambulance interior, Insta360 capture" loading="lazy">
+      <div class="card">
+        <a class="thumb" href="viewers/laryngoscope/" aria-label="Open laryngoscope viewer">
+          <img src="assets/laryngoscope.jpg" alt="Laryngoscope with curved blade" loading="lazy">
         </a>
         <div class="body">
-          <div class="title-row"><h3>Scene Viewer</h3><span class="size">1.0M splats · 16 MB</span></div>
-          <p>The same ambulance from a single Insta360 capture — smaller scene with view-dependent color, opening at the supply cabinet and attendant seat.</p>
-          <a class="open" href="viewers/ambulance-insta360/" aria-label="Open Scene Viewer — Insta360 capture">Open &rarr;</a>
+          <div class="title-row"><h3>Laryngoscope</h3><span class="size">577K splats &middot; 6.8 MB</span></div>
+          <p>A curved-blade laryngoscope scanned as a single object &mdash; chrome blade and knurled handle.</p>
+          <a class="open" href="viewers/laryngoscope/" aria-label="Open Laryngoscope">Open &rarr;</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <a class="thumb" href="viewers/endotracheal-tube/" aria-label="Open endotracheal tube viewer">
+          <img src="assets/endotracheal-tube.jpg" alt="Cuffed endotracheal tube" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="title-row"><h3>Endotracheal Tube</h3><span class="size">70K splats &middot; 0.9 MB</span></div>
+          <p>A cuffed endotracheal tube with its connector and pilot balloon line.</p>
+          <a class="open" href="viewers/endotracheal-tube/" aria-label="Open Endotracheal Tube">Open &rarr;</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <a class="thumb" href="viewers/bag-valve-mask/" aria-label="Open bag valve mask viewer">
+          <img src="assets/bag-valve-mask.jpg" alt="Bag valve mask with mask and reservoir bag" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="title-row"><h3>Bag Valve Mask</h3><span class="size">80K splats &middot; 3.3 MB</span></div>
+          <p>A self-inflating bag valve mask with the face mask and reservoir bag attached.</p>
+          <a class="open" href="viewers/bag-valve-mask/" aria-label="Open Bag Valve Mask">Open &rarr;</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <a class="thumb" href="viewers/defibrillator/" aria-label="Open defibrillator viewer">
+          <img src="assets/defibrillator.jpg" alt="Zoll defibrillator in its soft carry case" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="title-row"><h3>Zoll Defibrillator</h3><span class="size">768K splats &middot; 9.9 MB</span></div>
+          <p>A Zoll defibrillator in its grey-and-yellow soft carry case, handle up.</p>
+          <a class="open" href="viewers/defibrillator/" aria-label="Open Zoll Defibrillator">Open &rarr;</a>
         </div>
       </div>
     </div>
@@ -215,48 +319,6 @@
     </div>
   </section>
 
-  <!-- 4 · Medical equipment (object scans) -->
-  <section class="source">
-    <div class="source-head">
-      <span class="num" aria-hidden="true">04</span>
-      <h2>Medical Equipment</h2>
-    </div>
-    <div class="grid">
-      <div class="card">
-        <a class="thumb" href="viewers/laryngoscope/" aria-label="Open laryngoscope viewer">
-          <img src="assets/laryngoscope.jpg" alt="Laryngoscope with curved blade" loading="lazy">
-        </a>
-        <div class="body">
-          <div class="title-row"><h3>Laryngoscope</h3><span class="size">80K splats &middot; 3.2 MB</span></div>
-          <p>A curved-blade laryngoscope scanned as a single object &mdash; chrome blade and knurled handle.</p>
-          <a class="open" href="viewers/laryngoscope/" aria-label="Open Laryngoscope">Open &rarr;</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <a class="thumb" href="viewers/bag-valve-mask/" aria-label="Open bag valve mask viewer">
-          <img src="assets/bag-valve-mask.jpg" alt="Bag valve mask with mask and reservoir bag" loading="lazy">
-        </a>
-        <div class="body">
-          <div class="title-row"><h3>Bag Valve Mask</h3><span class="size">80K splats &middot; 3.3 MB</span></div>
-          <p>A self-inflating bag valve mask with the face mask and reservoir bag attached.</p>
-          <a class="open" href="viewers/bag-valve-mask/" aria-label="Open Bag Valve Mask">Open &rarr;</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <a class="thumb" href="viewers/defibrillator/" aria-label="Open defibrillator viewer">
-          <img src="assets/defibrillator.jpg" alt="Defibrillator in its soft carry case" loading="lazy">
-        </a>
-        <div class="body">
-          <div class="title-row"><h3>Defibrillator</h3><span class="size">80K splats &middot; 3.6 MB</span></div>
-          <p>A defibrillator in its grey-and-yellow soft carry case, handle up.</p>
-          <a class="open" href="viewers/defibrillator/" aria-label="Open Defibrillator">Open &rarr;</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <footer>
     Scenes trained with <a href="https://github.com/nerfstudio-project/gsplat">gsplat</a>, packed to
     <a href="https://developer.playcanvas.com/user-manual/gaussian-splatting/splat-formats/">SOG</a> with
@@ -267,5 +329,15 @@
     <a href="https://github.com/rerun-io/rerun">Rerun</a>.
   </footer>
 </main>
+<script>
+  document.querySelectorAll(".card.flip .flip-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const card = btn.closest(".card.flip");
+      const flipped = card.classList.toggle("flipped");
+      card.querySelector(".flip-face.front").inert = flipped;
+      card.querySelector(".flip-face.back").inert = !flipped;
+    });
+  });
+</script>
 </body>
 </html>
