@@ -1,0 +1,149 @@
+{
+  "description": "Corresponding physical torso side-panel ports, cap, fan and external openings. Seeds are Y/Z in the explicitly saved initial front-aligned frame; full 3D selected point centers are then fitted rigidly. Recessed black hole X is weakly observed.",
+  "scale": 0.928,
+  "sources": {
+    "front": "raw/mannequin_front_119999.ply",
+    "back": "raw/mannequin_back_119999.ply"
+  },
+  "initialTransform": {
+    "scale": 0.928,
+    "rotation": [
+      [
+        -0.9997347986390729,
+        0.0161109645349232,
+        -0.016455066449162743
+      ],
+      [
+        -0.01605313945292347,
+        -0.9998645136841185,
+        -0.0036401907816416995
+      ],
+      [
+        -0.016511483997415335,
+        -0.0033750699216763998,
+        0.9998579798147467
+      ]
+    ],
+    "translation": [
+      -0.008281602105215424,
+      -0.037096574408893086,
+      0.40091212425585765
+    ]
+  },
+  "features": [
+    {
+      "name": "left_aux",
+      "sideSign": 1,
+      "frontSeedYZ": [
+        -0.006,
+        0.382
+      ],
+      "backSeedYZ": [
+        -0.016,
+        0.405
+      ],
+      "radius": 0.007,
+      "colorKind": "dark",
+      "fitWeightsXYZ": [
+        0.05,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "left_cable",
+      "sideSign": 1,
+      "frontSeedYZ": [
+        0.012,
+        0.429
+      ],
+      "backSeedYZ": [
+        0.001,
+        0.453
+      ],
+      "radius": 0.01,
+      "colorKind": "dark",
+      "fitWeightsXYZ": [
+        0.3,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "left_port",
+      "sideSign": 1,
+      "frontSeedYZ": [
+        0.02,
+        0.369
+      ],
+      "backSeedYZ": [
+        0.013,
+        0.397
+      ],
+      "radius": 0.009,
+      "colorKind": "dark",
+      "fitWeightsXYZ": [
+        0.3,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "left_metal",
+      "sideSign": 1,
+      "frontSeedYZ": [
+        0.018,
+        0.334
+      ],
+      "backSeedYZ": [
+        0.011,
+        0.362
+      ],
+      "radius": 0.009,
+      "colorKind": "bright",
+      "fitWeightsXYZ": [
+        0.3,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "right_aux",
+      "sideSign": -1,
+      "frontSeedYZ": [
+        -0.043,
+        0.384
+      ],
+      "backSeedYZ": [
+        -0.041,
+        0.418
+      ],
+      "radius": 0.007,
+      "colorKind": "dark",
+      "fitWeightsXYZ": [
+        0.3,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "right_fan",
+      "sideSign": -1,
+      "frontSeedYZ": [
+        -0.01,
+        0.339
+      ],
+      "backSeedYZ": [
+        -0.01,
+        0.374
+      ],
+      "radius": 0.008,
+      "colorKind": "dark",
+      "fitWeightsXYZ": [
+        0.3,
+        1,
+        1
+      ]
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Manikin · Fusion Review</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a class="brand" href="../mannequin-articulation/">3DGS HEALTH SCENES</a>
+    <span class="divider">/</span>
+    <strong>Fusion review</strong>
+    <span class="badge">REFINED</span>
+    <a class="back-link" href="../mannequin-joints/">Annotate joints ↗</a>
+  </header>
+  <main>
+    <section id="viewport" aria-label="Registered Gaussian scans">
+      <canvas id="canvas" aria-label="Orbitable scan comparison"></canvas>
+      <div class="view-title">
+        <span class="eyebrow">MANIKIN / TWO CAPTURES</span>
+        <h1>Coverage, from both sides.</h1>
+        <p id="scene-summary">Loading the registered scans…</p>
+      </div>
+      <div class="view-indicator"><span id="visible-indicator">Both captures</span><span id="view-label">Perspective</span></div>
+      <div id="source-legend" class="source-legend" hidden><span><i class="front-swatch"></i>Front capture</span><span><i class="back-swatch"></i>Back capture</span></div>
+      <div class="view-tools" aria-label="Camera views">
+        <button data-view="perspective" class="active" aria-pressed="true">Perspective</button>
+        <button data-view="front" title="Ventral surface · camera at +Y" aria-pressed="false">Front</button>
+        <button data-view="back" title="Dorsal surface · camera at −Y" aria-pressed="false">Back</button>
+        <button data-view="left" title="Camera at +X" aria-pressed="false">Left</button>
+        <button data-view="right" title="Camera at −X" aria-pressed="false">Right</button>
+        <button data-view="head" title="Camera at +Z" aria-pressed="false">Head</button>
+        <button data-view="feet" title="Camera at −Z" aria-pressed="false">Feet</button>
+        <button id="fit" title="Fit the selected part, or the complete scan">Fit ↗</button>
+      </div>
+      <div class="view-bottom"><span>Drag to orbit · right-drag to pan · scroll to zoom</span><span id="fps"></span></div>
+      <div id="loading" role="status"><span class="loader"></span><strong id="load-title">Loading the registered scans</strong><p id="load-detail">Reading the prepared fusion data…</p></div>
+    </section>
+    <aside>
+      <section class="panel-section">
+        <span class="overline">01 / COMPARE COVERAGE</span>
+        <h2>Visible captures</h2>
+        <div class="segmented" role="group" aria-label="Visible captures">
+          <button data-source="both" class="active" aria-pressed="true">Both</button>
+          <button data-source="front" aria-pressed="false">Front only</button>
+          <button data-source="back" aria-pressed="false">Back only</button>
+        </div>
+        <div class="capture-counts"><div><span><i class="front-swatch"></i>Front capture</span><strong id="front-count">—</strong></div><div><span><i class="back-swatch"></i>Back capture</span><strong id="back-count">—</strong></div></div>
+        <p class="hint">Switch captures without moving the camera to see which scan supplies each surface. Keys 1 / 2 / 3 select front / back / both.</p>
+        <label for="color-mode">Color display</label>
+        <select id="color-mode"><option value="natural">Natural scan colors</option><option value="source">Capture colors · blue / amber</option><option value="part">Body-part colors</option></select>
+      </section>
+      <section class="panel-section">
+        <span class="overline">02 / INSPECT A REGION</span>
+        <h2>Solo body part</h2>
+        <label class="visually-hidden" for="part-select">Body part</label>
+        <select id="part-select"><option value="all">All body parts</option></select>
+        <div id="part-summary" class="muted">Preparing body-part counts…</div>
+        <button id="fit-part" class="wide">Frame selection ↗</button>
+        <p class="hint">Check the front, back and sides of every region. Capture colors make doubled surfaces and gaps easier to see.</p>
+      </section>
+      <section class="panel-section metrics-section">
+        <span class="overline">03 / ALIGNMENT EVIDENCE</span>
+        <h2 id="metrics-title">Registration report</h2>
+        <p id="metrics-note" class="hint">Registration metrics appear here when supplied by the fusion recipe.</p>
+        <dl id="metrics"></dl>
+        <details id="report-details" hidden><summary>Full registration report</summary><pre id="raw-report"></pre></details>
+      </section>
+      <section class="panel-section final-section">
+        <div class="local-note"><span class="status-dot"></span>Registered scan comparison</div>
+        <p class="hint">This view displays the prepared captures together. Use the source toggles to inspect their agreement and complementary coverage.</p>
+        <a class="guide-link" href="README.md" target="_blank">Fusion recipe &amp; tuning guide ↗</a>
+        <div id="local-reviews" hidden>
+        <a class="guide-link" href="../../raw/mannequin-fused/finger-side-review/" target="_blank">Finger sides · before / after ↗</a>
+        <a class="guide-link" href="../../raw/mannequin-fused/hand-gap-review/" target="_blank">Earlier rigid arm fit ↗</a>
+        <a class="guide-link" href="../../raw/mannequin-fused/left-hand-review/" target="_blank">Earlier left fingertips review ↗</a>
+        <a class="guide-link" href="../../raw/mannequin-fused/hand-review/" target="_blank">Earlier hands from below review ↗</a>
+        <a class="guide-link" href="../../raw/mannequin-fused/cable-review/" target="_blank">Earlier grey cable & arm review ↗</a>
+        <a class="guide-link" href="../../raw/mannequin-fused/refinement-review/" target="_blank">Earlier hand, arm & feet review ↗</a>
+        <a class="guide-link" href="../../raw/mannequin-fused/cleanup-review/" target="_blank">Earlier cleanup review ↗</a>
+        <a class="guide-link" href="../../raw/mannequin-fused/render-review/" target="_blank">Earlier alignment review ↗</a>
+        </div>
+      </section>
+    </aside>
+  </main>
+  <footer id="status" role="status">Starting…</footer>
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>

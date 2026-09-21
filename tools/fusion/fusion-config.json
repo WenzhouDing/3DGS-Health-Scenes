@@ -1,0 +1,437 @@
+{
+  "front": "raw/mannequin_front_119999.ply",
+  "back": "raw/mannequin_back_119999.ply",
+  "frontLandmarks": "tools/fusion/front-landmarks.json",
+  "backLandmarks": "tools/fusion/back-landmarks.json",
+  "output": "raw/mannequin-fused",
+  "review": "viewers/mannequin-fusion",
+  "previewMaxPerSource": 2000000,
+  "filter": {
+    "minOpacity": 0.025,
+    "minScale": 1.5e-05,
+    "maxScale": 0.04,
+    "anatomyRadiusMultiplier": 1.8,
+    "densityVoxel": 0.0025,
+    "isolatedSpacing": 0.026,
+    "contactDepth": 0.005,
+    "contactSpacing": 0.012,
+    "partOverrides": {
+      "back": {
+        "left_foot": {
+          "maxScale": 0.008620689655172414
+        }
+      }
+    }
+  },
+  "alignment": {
+    "scale": 0.928,
+    "voxel": 0.004,
+    "maxDistance": 0.02,
+    "maxAnteriorNormal": 0.78,
+    "minPairs": 60,
+    "iterations": 15,
+    "maxRotationDegrees": 6,
+    "maxTranslation": 0.022
+  },
+  "fusion": {
+    "feather": 0.009,
+    "minWeight": 0.035,
+    "donorColumnRadius": 0.02,
+    "partOverrides": {
+      "head": {
+        "preserveUniqueBack": false
+      },
+      "neck": {
+        "preserveUniqueBack": false
+      },
+      "left_foot": {
+        "depthBias": 0.04
+      },
+      "left_shin": {
+        "depthBias": 0.03
+      },
+      "left_hand": {
+        "depthBias": 0.008,
+        "feather": 0.004,
+        "preserveUniqueFront": false,
+        "preserveUniqueBack": false
+      }
+    }
+  },
+  "partRadii": {},
+  "adjustments": {},
+  "exclusions": {
+    "back": [
+      {
+        "min": [
+          -0.47,
+          -0.3,
+          -0.025
+        ],
+        "max": [
+          -0.255,
+          0.3,
+          0.2
+        ],
+        "reason": "Visually verified dangling cable outside torso; arm lies outside this box."
+      },
+      {
+        "min": [
+          -0.015,
+          0.06,
+          -0.445
+        ],
+        "max": [
+          0.1,
+          0.2,
+          -0.41
+        ],
+        "reason": "Inspected small anterior cervical contact remnant in back capture; became a floating brown fleck after pose alignment."
+      }
+    ],
+    "front": [
+      {
+        "min": [
+          -0.12,
+          -0.02,
+          0.01
+        ],
+        "max": [
+          0.12,
+          0.5,
+          0.08
+        ],
+        "reason": "Inspected sparse posterior neck contact sheet in front capture; caused silver ghost over clean back torso label."
+      }
+    ]
+  },
+  "featureTransforms": "tools/fusion/feature-transforms.json",
+  "cervicalSegmentation": "tools/fusion/head-feature-evidence.json",
+  "segmentationOverrides": {
+    "front": [
+      {
+        "id": "left-shoulder-pad",
+        "part": "left_upper_arm",
+        "type": "orientedEllipseSlab",
+        "center": [
+          0.28082375264922893,
+          -0.006021772859953858,
+          0.1215281739221422
+        ],
+        "axes": [
+          [
+            -0.7798078625320578,
+            -0.12369671421488776,
+            -0.6136764786315538
+          ],
+          [
+            -0.23755105671810892,
+            0.9654350062429973,
+            0.10726017048603767
+          ],
+          [
+            0.5791970243235831,
+            0.22942182026351465,
+            -0.78223809380628
+          ]
+        ],
+        "radii": [
+          0.06469078955504308,
+          0.04472319892461155
+        ],
+        "halfDepth": 0.015,
+        "patchPoints": 2588,
+        "reassignedPoints": 506,
+        "coveredRimFraction": 1.0
+      },
+      {
+        "id": "right-shoulder-pad",
+        "part": "right_upper_arm",
+        "type": "orientedEllipseSlab",
+        "center": [
+          -0.2722626213547983,
+          -0.0731111409805676,
+          0.13110258410448405
+        ],
+        "axes": [
+          [
+            -0.7669323343202002,
+            0.13219322291213143,
+            0.6279647652458471
+          ],
+          [
+            0.00925462324373456,
+            0.9807294903405768,
+            -0.1951512713894771
+          ],
+          [
+            -0.6416612396917747,
+            -0.14385624279959597,
+            -0.7533765558369858
+          ]
+        ],
+        "radii": [
+          0.063104066131518,
+          0.041407443634087535
+        ],
+        "halfDepth": 0.015,
+        "patchPoints": 5455,
+        "reassignedPoints": 1414,
+        "coveredRimFraction": 0.9978540772532188
+      }
+    ],
+    "back": [
+      {
+        "id": "left-shoulder-pad",
+        "part": "left_upper_arm",
+        "type": "orientedEllipseSlab",
+        "center": [
+          -0.295813967873225,
+          -0.028493055847741013,
+          -0.285676067313211
+        ],
+        "axes": [
+          [
+            -0.8406501242724752,
+            0.1691633007348411,
+            0.5144814343056169
+          ],
+          [
+            0.02799232618676071,
+            -0.9351247815335384,
+            0.35321108792973355
+          ],
+          [
+            0.5408546923484397,
+            0.31132847708866207,
+            0.7813774895134419
+          ]
+        ],
+        "radii": [
+          0.07191378827702943,
+          0.044705340844400566
+        ],
+        "halfDepth": 0.015,
+        "patchPoints": 6552,
+        "reassignedPoints": 2,
+        "coveredRimFraction": 1.0
+      },
+      {
+        "id": "right-shoulder-pad",
+        "part": "right_upper_arm",
+        "type": "orientedEllipseSlab",
+        "center": [
+          0.3048232763075172,
+          0.007509497476558912,
+          -0.24494999909521284
+        ],
+        "axes": [
+          [
+            0.7230248992575244,
+            0.2858863870940679,
+            0.6288910626872888
+          ],
+          [
+            -0.0005817634944765081,
+            -0.9100995555982851,
+            0.41438926198809795
+          ],
+          [
+            -0.6908217256317893,
+            0.2999796202646182,
+            0.6578583212371886
+          ]
+        ],
+        "radii": [
+          0.06749295561069416,
+          0.04436111301003592
+        ],
+        "halfDepth": 0.015,
+        "patchPoints": 5115,
+        "reassignedPoints": 0,
+        "coveredRimFraction": 0.9935158501440923
+      }
+    ]
+  },
+  "revision": "feature-guided-v11-finger-side-coverage",
+  "hairFullness": {
+    "amount": 0.014,
+    "centerX": 0.006,
+    "centerZ": -0.225,
+    "radiusX": 0.15,
+    "radiusZ": 0.215,
+    "depthFade": [
+      -0.012,
+      0.035
+    ],
+    "napeFadeZ": [
+      -0.095,
+      -0.13
+    ],
+    "crownLiftRatio": 0.5,
+    "crownFadeSpan": 0.11,
+    "jacobianStep": 1e-05
+  },
+  "cleanupMasks": [
+    "tools/fusion/cleanup-masks/pants-back.json",
+    "tools/fusion/cleanup-masks/legs-front.json",
+    "tools/fusion/cleanup-masks/legs-back.json",
+    "tools/fusion/cleanup-masks/hand-front.json",
+    "tools/fusion/cleanup-masks/hand-back.json",
+    "tools/fusion/cleanup-masks/hand-v4-front.json",
+    "tools/fusion/cleanup-masks/hand-v4-back.json",
+    "tools/fusion/cleanup-masks/feet-v4-back.json",
+    "tools/fusion/cleanup-masks/hand-v6-right-front.json",
+    "tools/fusion/cleanup-masks/hand-v6-right-back.json",
+    "tools/fusion/cleanup-masks/hand-v6-left-front.json",
+    "tools/fusion/cleanup-masks/hand-v6-left-back.json"
+  ],
+  "colorOverrides": [
+    "tools/fusion/cleanup-masks/feet-v4-color-front.json",
+    "tools/fusion/cleanup-masks/feet-v4-color-back.json",
+    "tools/fusion/cleanup-masks/right-hand-front-side-color-v11.json",
+    "tools/fusion/cleanup-masks/right-hand-back-side-color-v11.json"
+  ],
+  "colorRepairStrength": 1.0,
+  "jointBoundaries": {
+    "front": [
+      {
+        "landmark": "right_elbow",
+        "proximalPart": "right_upper_arm",
+        "distalPart": "right_forearm",
+        "pivot": [
+          -0.3590852533890853,
+          -0.03833235509794086,
+          0.27896079951802905
+        ],
+        "axis": [
+          -0.6249087788154958,
+          0.1817470761592546,
+          0.7592476660924866
+        ],
+        "maximumAbsStation": 0.11,
+        "maximumRadius": 0.11
+      },
+      {
+        "landmark": "left_elbow",
+        "proximalPart": "left_upper_arm",
+        "distalPart": "left_forearm",
+        "pivot": [
+          0.3722547562366865,
+          0.008709922093973962,
+          0.27039340269981293
+        ],
+        "axis": [
+          0.6339159206348934,
+          0.13906095342803715,
+          0.7607973822229548
+        ],
+        "maximumAbsStation": 0.11,
+        "maximumRadius": 0.11
+      }
+    ],
+    "back": [
+      {
+        "landmark": "right_elbow",
+        "proximalPart": "right_upper_arm",
+        "distalPart": "right_forearm",
+        "pivot": [
+          0.3869903624693549,
+          0.07179026012496578,
+          -0.08718074506009052
+        ],
+        "axis": [
+          0.5816871206946954,
+          0.34526505020450465,
+          0.7364999244570203
+        ],
+        "maximumAbsStation": 0.11,
+        "maximumRadius": 0.11
+      },
+      {
+        "landmark": "left_elbow",
+        "proximalPart": "left_upper_arm",
+        "distalPart": "left_forearm",
+        "pivot": [
+          -0.4108869620473415,
+          0.020252585788967697,
+          -0.13842931713185627
+        ],
+        "axis": [
+          -0.7787412649097246,
+          0.20093827047516102,
+          0.5942944167542319
+        ],
+        "maximumAbsStation": 0.11,
+        "maximumRadius": 0.11
+      }
+    ]
+  },
+  "sourcePartAssignments": [
+    {
+      "selection": "tools/fusion/part-masks/back-left-gray-cable.json",
+      "part": "left_upper_arm",
+      "allowedParts": [
+        "left_upper_arm",
+        "left_forearm"
+      ],
+      "requireRetained": true
+    }
+  ],
+  "surfaceRestorations": [
+    {
+      "selection": "tools/fusion/surface-restorations/left-hand-back-v6.json",
+      "part": "left_hand",
+      "minimumWeight": 1.0
+    },
+    {
+      "selection": "tools/fusion/surface-restorations/left-hand-front-caps-v7.json",
+      "part": "left_hand",
+      "minimumWeight": 1.0
+    },
+    {
+      "selection": "tools/fusion/surface-restorations/left-hand-back-caps-v7.json",
+      "part": "left_hand",
+      "minimumWeight": 1.0
+    },
+    {
+      "selection": "tools/fusion/surface-restorations/right-hand-front-sides-v11.json",
+      "part": "right_hand",
+      "minimumWeight": 1.0
+    },
+    {
+      "selection": "tools/fusion/surface-restorations/right-hand-back-sides-v11.json",
+      "part": "right_hand",
+      "minimumWeight": 1.0
+    }
+  ],
+  "leftHandDigitAlignment": {
+    "amount": 0.0033,
+    "origin": [
+      0.704,
+      0.065,
+      0.584
+    ],
+    "longitudinalAxis": [
+      0.68,
+      0,
+      0.7332
+    ],
+    "lateralAxis": [
+      0.7332,
+      0,
+      -0.68
+    ],
+    "longitudinalFade": [
+      0.08,
+      0.125
+    ],
+    "thumbFade": [
+      0.043,
+      0.055
+    ]
+  },
+  "rigidParts": {
+    "right_hand": "right_forearm"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "purpose": "Reviewed localized finger-side color correction paired with native source-coverage restoration",
+  "sourceCapture": "front",
+  "sourceFile": "raw/mannequin_front_119999.ply",
+  "sourceSha256": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+  "sourceHashes": {
+    "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+    "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+  },
+  "uniqueSourceIndices": 1054,
+  "overrideFile": "tools/fusion/cleanup-masks/right-hand-front-side-color-v11.npz",
+  "method": "Same-source, same-finger trusted observed neighbors within .005 raw units (expand to .008 only if fewer than8); at most36 nearest, robust median and MAD; replace only >.035RGB and >2.5MAD outliers. No geometry, covariance or opacity changes. Two traced back-source index discoloration rows additionally use up to24 plausible same-finger opposite-capture neighbors within .012 scan units, RGB change capped at .25 per channel.",
+  "selectedRowsExcludedFromDonors": true,
+  "actuallyChangedColors": 348,
+  "unchangedInsufficientDonors": 290,
+  "maximumNeighborDistance": 0.007999936118721962,
+  "minimumDonorCount": 0,
+  "evidence": "tools/fusion/right-finger-seam-evidence.json",
+  "reproduce": ".venv-fusion/bin/python -B tools/fusion/audit_hand_coverage_v11.py --broad-sector\n.venv-fusion/bin/python -B tools/fusion/audit_hand_coverage_v11.py --stabilize-all broad-sidewall\n.venv-fusion/bin/python -B tools/fusion/audit_hand_coverage_v11.py --fix-green-patch",
+  "targetedGreenPatchRows": 0,
+  "greenPatchEvidence": "tools/fusion/right-finger-seam-evidence.json",
+  "status": "accepted after isolated and full-hand multi-angle review"
+}

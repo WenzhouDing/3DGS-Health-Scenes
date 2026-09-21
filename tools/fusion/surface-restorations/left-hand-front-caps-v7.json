@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "purpose": "Restore observed left finger curved surfaces removed by straight source coverage plane; added rows disjoint from existing restorations",
+  "sourceCapture": "front",
+  "sourceFile": "raw/mannequin_front_119999.ply",
+  "sourceSha256": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+  "sourceHashes": {
+    "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+    "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+  },
+  "maskFile": "tools/fusion/surface-restorations/left-hand-front-caps-v7.npy",
+  "uniqueSourceIndices": 8038,
+  "part": "left_hand",
+  "maskMeaning": "sorted original source PLY vertex rows; surface restoration, not deletion",
+  "algorithm": {
+    "method": "native observed-surface visible alpha flux from full quality-clean original hand Gaussians",
+    "nativeObservedCamera": [
+      0,
+      -1,
+      0
+    ],
+    "nativeOppositeCamera": [
+      0,
+      1,
+      0
+    ],
+    "visibilitySize": 900,
+    "visibilitySpan": 0.3,
+    "cameraCenter": "mean full quality-clean native hand positions",
+    "projectionVariancePixels": 0.3,
+    "sigmaCutoff": 3,
+    "minimumPixelOpacity": 0.00392156862745098,
+    "opacity": "original source sigmoid opacity",
+    "frame": "frozen v7 aligned front raw",
+    "origin": [
+      0.704,
+      0.065,
+      0.584
+    ],
+    "longitudinalAxis": [
+      0.6800060384804327,
+      0.0,
+      0.7332065109027254
+    ],
+    "minimumLongitudinal": 0.105,
+    "minimumObservedVisibilityRatio": 0.05,
+    "minimumObservedVisibleAlphaFlux": 0.05,
+    "observedFluxMustExceedOppositeFlux": true,
+    "lateralRestriction": null,
+    "excludeAllExistingRestorationRows": true
+  },
+  "baseline": "raw/fusion-work/refinement-v7/baseline",
+  "reproduce": ".venv-fusion/bin/python -B tools/fusion/refine_left_caps_v7.py --raw-verify",
+  "sourceCache": "raw/fusion-work/refinement-v6/left-hand/stage-data.npz",
+  "sourceVisibilityCache": "raw/fusion-work/refinement-v6/left-hand/native-front-visibility.npz"
+}

@@ -1,0 +1,94 @@
+{
+  "status": "historical accepted version 9; superseded by version 10 rigid arm-chain fit",
+  "extraTwistDegrees": 10.0,
+  "totalTwistDegrees": 17.112438336701047,
+  "sourceHashes": {
+    "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+    "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+  },
+  "sharedParts": [
+    "right_forearm",
+    "right_hand"
+  ],
+  "sourceToFrontRaw": {
+    "scale": 0.928,
+    "rotation": [
+      [
+        -0.9702836564122319,
+        0.17739232551126768,
+        -0.16456484724574388
+      ],
+      [
+        -0.24167431658754185,
+        -0.6768317848324659,
+        0.6953360768307976
+      ],
+      [
+        0.011964564398877523,
+        0.7144443280551712,
+        0.6995899879990719
+      ]
+    ],
+    "translation": [
+      -0.03619070252386786,
+      0.1503925298052326,
+      0.2848015218763443
+    ]
+  },
+  "mechanicalConstraint": {
+    "parentPart": "right_upper_arm",
+    "childPart": "right_forearm",
+    "pivotFrontRaw": [
+      -0.3590852533890853,
+      -0.03833235509794086,
+      0.27896079951802905
+    ],
+    "axisFrontRaw": [
+      -0.6249087788154958,
+      0.1817470761592546,
+      0.7592476660924866
+    ],
+    "twistDegrees": 17.112438336701047,
+    "formula": "Rc=Q Rp; tc=Q(tp-pivot)+pivot; Q=axisAngle(axis,twist)",
+    "independentTranslation": [
+      0,
+      0,
+      0
+    ],
+    "independentSwingDegrees": 0
+  },
+  "handObservedContourMetrics": {
+    "front": {
+      "mean": 0.004349754770867685,
+      "median": 0.003990521313691932,
+      "p90": 0.00820243866176395
+    },
+    "outer": {
+      "mean": 0.009986509373398525,
+      "median": 0.008226670438815191,
+      "p90": 0.021302584270579107
+    },
+    "distal": {
+      "mean": 0.011342271574146334,
+      "median": 0.010675060812529544,
+      "p90": 0.02269251146825483
+    }
+  },
+  "metricCaveat": "front projection compares finger outlines; outer/distal partial-surface contours also include real complementary thickness and are visual diagnostics, not a shell-collapse objective",
+  "reproduce": ".venv-fusion/bin/python -B tools/fusion/audit_rigid_wrist_v9.py --sweep",
+  "baseline": "raw/fusion-work/refinement-v9/baseline",
+  "revision": "feature-guided-v9-rigid-right-wrist",
+  "physicalConstraint": "The right hand, wrist pad and forearm are one rigid body. No wrist joint or local hand deformation.",
+  "activeConfig": "rigidParts.right_hand = right_forearm; rightWristRegistration removed",
+  "qualityDecision": "Existing source cleanup unchanged. Stronger visibility pruning removed observed finger surfaces but did not close the duplicate, so rejected.",
+  "sweep": "raw/fusion-work/refinement-v9/registration/axial-sweep.json",
+  "review": "raw/mannequin-fused/rigid-wrist-review/",
+  "selectionReason": "Extra10 degrees closes the large below/outer duplicate while keeping clean pad and tip contours; +15/+20 develop fuzzy overlapping tip shelves. Shoulder pose and collar pivot/axis unchanged.",
+  "preserved": "Original source means, covariance eigenvalues and colors; one shared global scale. All regions except the right forearm and hand remain unchanged.",
+  "independentAudit": "raw/fusion-work/refinement-v9/registration/rigid-arm-evidence.json",
+  "exportVerification": "raw/mannequin-fused/right-wrist-verification.json",
+  "gaussianCount": 2696843,
+  "pipelineTestsPassed": 34,
+  "residual": "Small source reconstruction seams remain visible at grazing angles; the hand itself has no independent bend or deformation.",
+  "supersededBy": "tools/fusion/right-arm-gap-evidence.json"
+}

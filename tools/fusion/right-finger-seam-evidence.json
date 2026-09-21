@@ -1,0 +1,324 @@
+{
+  "version": 1,
+  "revision": "feature-guided-v11-finger-side-coverage",
+  "status": "accepted, exported and independently verified",
+  "baseline": "raw/fusion-work/refinement-v11/baseline",
+  "sourceHashes": {
+    "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+    "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+  },
+  "problem": "Residual separation along the finger sides at grazing/bottom-up views. Rigid fit already close; missing weak near-side coverage remained after cleanup.",
+  "method": "Restore narrowly selected original-source rows and native opacity, with separate source-guarded localized color corrections. No source means/covariance or rigid pose changes.",
+  "handPart": "right_hand",
+  "rigidWith": "right_forearm",
+  "all16RigidPosesUnchanged": true,
+  "wristJointOrLocalDeformation": false,
+  "syntheticGaussians": false,
+  "covarianceExtension": false,
+  "restorationSelections": [
+    "tools/fusion/surface-restorations/right-hand-front-sides-v11.json",
+    "tools/fusion/surface-restorations/right-hand-back-sides-v11.json"
+  ],
+  "colorOverrides": [
+    "tools/fusion/cleanup-masks/right-hand-front-side-color-v11.json",
+    "tools/fusion/cleanup-masks/right-hand-back-side-color-v11.json"
+  ],
+  "candidate": "raw/fusion-work/refinement-v11/coverage-review/broad-sidewall-final.npz",
+  "counts": {
+    "addedOriginalRows": 877,
+    "frontAdded": 341,
+    "backAdded": 536,
+    "restorationSelected": 1983,
+    "frontSelected": 1054,
+    "backSelected": 929,
+    "previouslyRetainedSelected": 1106,
+    "expectedFusedGaussians": 2698682,
+    "expectedRightHandGaussians": 36007,
+    "actuallyChangedColors": 812
+  },
+  "colorRecipe": [
+    {
+      "version": 1,
+      "purpose": "Reviewed localized finger-side color correction paired with native source-coverage restoration",
+      "sourceCapture": "front",
+      "sourceFile": "raw/mannequin_front_119999.ply",
+      "sourceSha256": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+      "sourceHashes": {
+        "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+        "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+      },
+      "uniqueSourceIndices": 1054,
+      "overrideFile": "tools/fusion/cleanup-masks/right-hand-front-side-color-v11.npz",
+      "method": "Same-source, same-finger trusted observed neighbors within .005 raw units (expand to .008 only if fewer than8); at most36 nearest, robust median and MAD; replace only >.035RGB and >2.5MAD outliers. No geometry, covariance or opacity changes. Two traced back-source index discoloration rows additionally use up to24 plausible same-finger opposite-capture neighbors within .012 scan units, RGB change capped at .25 per channel.",
+      "selectedRowsExcludedFromDonors": true,
+      "actuallyChangedColors": 348,
+      "unchangedInsufficientDonors": 290,
+      "maximumNeighborDistance": 0.007999936118721962,
+      "minimumDonorCount": 0,
+      "evidence": "tools/fusion/right-finger-seam-evidence.json",
+      "reproduce": ".venv-fusion/bin/python -B tools/fusion/audit_hand_coverage_v11.py --broad-sector\n.venv-fusion/bin/python -B tools/fusion/audit_hand_coverage_v11.py --stabilize-all broad-sidewall\n.venv-fusion/bin/python -B tools/fusion/audit_hand_coverage_v11.py --fix-green-patch",
+      "targetedGreenPatchRows": 0,
+      "greenPatchEvidence": "tools/fusion/right-finger-seam-evidence.json",
+      "status": "accepted after isolated and full-hand multi-angle review"
+    },
+    {
+      "version": 1,
+      "purpose": "Reviewed localized finger-side color correction paired with native source-coverage restoration",
+      "sourceCapture": "back",
+      "sourceFile": "raw/mannequin_back_119999.ply",
+      "sourceSha256": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e",
+      "sourceHashes": {
+        "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+        "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+      },
+      "uniqueSourceIndices": 929,
+      "overrideFile": "tools/fusion/cleanup-masks/right-hand-back-side-color-v11.npz",
+      "method": "Same-source, same-finger trusted observed neighbors within .005 raw units (expand to .008 only if fewer than8); at most36 nearest, robust median and MAD; replace only >.035RGB and >2.5MAD outliers. No geometry, covariance or opacity changes. Two traced back-source index discoloration rows additionally use up to24 plausible same-finger opposite-capture neighbors within .012 scan units, RGB change capped at .25 per channel.",
+      "selectedRowsExcludedFromDonors": true,
+      "actuallyChangedColors": 464,
+      "unchangedInsufficientDonors": 122,
+      "maximumNeighborDistance": 0.007999919354915619,
+      "minimumDonorCount": 0,
+      "evidence": "tools/fusion/right-finger-seam-evidence.json",
+      "reproduce": ".venv-fusion/bin/python -B tools/fusion/audit_hand_coverage_v11.py --broad-sector\n.venv-fusion/bin/python -B tools/fusion/audit_hand_coverage_v11.py --stabilize-all broad-sidewall\n.venv-fusion/bin/python -B tools/fusion/audit_hand_coverage_v11.py --fix-green-patch",
+      "targetedGreenPatchRows": 2,
+      "greenPatchEvidence": "tools/fusion/right-finger-seam-evidence.json",
+      "status": "accepted after isolated and full-hand multi-angle review"
+    }
+  ],
+  "nativeSelectionEvidence": {
+    "status": "low-confidence original-source restored coverage; diagnostic only",
+    "counts": {
+      "front": {
+        "selectedPerFinger": {
+          "index": 409,
+          "middle": 302,
+          "ring": 343
+        },
+        "selected": 1054,
+        "missingFromBaseline": 341
+      },
+      "back": {
+        "selectedPerFinger": {
+          "index": 327,
+          "middle": 277,
+          "ring": 325
+        },
+        "selected": 929,
+        "missingFromBaseline": 536
+      }
+    },
+    "sectionEvidence": "raw/fusion-work/refinement-v10/gap-audit/resliced-shaft-center-audit.json",
+    "angleAroundPositiveV": [
+      -60,
+      60
+    ],
+    "stationRange": [
+      0.12,
+      0.165
+    ],
+    "radialTolerance": 0.0035,
+    "normalRadialAlignmentMinimum": 0.35,
+    "nativeVisibilityRequired": false,
+    "meansCovarianceColorUnchanged": true
+  },
+  "independentScopeEvidence": {
+    "scope": "Exact entire right hand; candidate contains only a cropped forearm context, so excluded context is not counted as deleted model rows.",
+    "front": {
+      "baselineSelected": 15658,
+      "candidateSelected": 15999,
+      "addedOriginalRows": 341,
+      "removedBaselineRows": 0,
+      "maxExistingMeanDifference": 0.0,
+      "maxExistingQuaternionAndScaleDifference": 0.0,
+      "changedExistingOpacity": 713,
+      "changedExistingDC": 0,
+      "labelsMatch": true,
+      "addedIDsFoundInQualityCleanSource": true,
+      "addedMaxNativeMeanDifference": 0.0,
+      "addedMaxNativeQuaternionScaleDifference": 0.0
+    },
+    "back": {
+      "baselineSelected": 19472,
+      "candidateSelected": 20008,
+      "addedOriginalRows": 536,
+      "removedBaselineRows": 0,
+      "maxExistingMeanDifference": 0.0,
+      "maxExistingQuaternionAndScaleDifference": 0.0,
+      "changedExistingOpacity": 391,
+      "changedExistingDC": 0,
+      "labelsMatch": true,
+      "addedIDsFoundInQualityCleanSource": true,
+      "addedMaxNativeMeanDifference": 0.0,
+      "addedMaxNativeQuaternionScaleDifference": 0.0
+    },
+    "colorVsNativeRestoration": {
+      "sameIndices": true,
+      "allGeometryCovarianceOpacityExact": true,
+      "changedDC": 481
+    }
+  },
+  "conditionalCoverageEvidence": "raw/fusion-work/refinement-v11/gap-audit/broad-sidewall-color-side-covariance-support.json",
+  "conditionalCoverageFinding": "All12 sampled positive-side sections have overlapping alpha>0.1 support after restoration. This nearest-support metric alone does not establish watertightness; isolated depth and actual color renders are also inspected.",
+  "rejectedApproaches": [
+    "Additional shoulder/axial pose fitting: negligible seam improvement.",
+    "Narrow strong-observed restoration: insufficient near-side coverage.",
+    "Tangential covariance enlargement: little visible benefit; not enabled.",
+    "Unrestricted native distal restoration: ghosts and poor appearance."
+  ],
+  "review": "raw/mannequin-fused/finger-side-review/",
+  "limitations": [
+    "Original scans are not metrically calibrated.",
+    "The new side selections contain lower-confidence source rows accepted by shell proximity and support; no newly captured detail.",
+    "Molded creases, source softness and minor native texture irregularity remain; this is not a watertight mesh reconstruction."
+  ],
+  "reproduceCandidate": [
+    ".venv-fusion/bin/python -B tools/fusion/audit_hand_coverage_v11.py --broad-sector",
+    ".venv-fusion/bin/python -B tools/fusion/audit_hand_coverage_v11.py --stabilize-all broad-sidewall",
+    ".venv-fusion/bin/python -B tools/fusion/audit_hand_coverage_v11.py --fix-green-patch"
+  ],
+  "greenPatchEvidence": {
+    "method": "Trace exact front-to-back alpha contributions to index green pixels in fixed canonical +V grazing camera; replace only offending source-row colors from plausible same-finger opposite-capture neighbors. Original guards preserved in merged overrides.",
+    "greenPixelCount": 172,
+    "pixelBBox": [
+      368,
+      189,
+      387,
+      201
+    ],
+    "changes": [
+      {
+        "source": "back",
+        "originalRow": 63804,
+        "localVYU": [
+          -0.02872980199754238,
+          0.02890811674296856,
+          0.12390100955963135
+        ],
+        "greenMaskVisibleAlphaFlux": 137.11752176705835,
+        "oldRGB": [
+          0.1495518982410431,
+          0.13980787992477417,
+          0.0021390020847320557
+        ],
+        "replacementRGB": [
+          0.34598639607429504,
+          0.2672765851020813,
+          0.20353421568870544
+        ],
+        "donorSource": "front",
+        "donorOriginalRows": [
+          1307974,
+          1307904,
+          1307794,
+          1307793,
+          1307900,
+          1307896,
+          1307621,
+          1307785,
+          1307801,
+          1308000,
+          1307712,
+          1307889,
+          1307788,
+          1307570,
+          1307490,
+          1307848,
+          1307554,
+          1307888,
+          1307861,
+          1307482,
+          1307479,
+          1307481,
+          1307757,
+          1307831
+        ],
+        "maximumDonorDistance": 0.011471198871731758,
+        "maximumRGBChannelChange": 0.2013952136039734
+      },
+      {
+        "source": "back",
+        "originalRow": 63808,
+        "localVYU": [
+          -0.030782213434576988,
+          0.029904844239354134,
+          0.12177994847297668
+        ],
+        "greenMaskVisibleAlphaFlux": 0.0959656157820541,
+        "oldRGB": [
+          0.3354129195213318,
+          0.3243253231048584,
+          0.04483911395072937
+        ],
+        "replacementRGB": [
+          0.3374308943748474,
+          0.26105332374572754,
+          0.20406746864318848
+        ],
+        "donorSource": "front",
+        "donorOriginalRows": [
+          1307904,
+          1307974,
+          1307794,
+          1307793,
+          1307900,
+          1307712,
+          1307785,
+          1307889,
+          1307621,
+          1307896,
+          1307490,
+          1307848,
+          1307831,
+          1307788,
+          1307841,
+          1307888,
+          1308000,
+          1307861,
+          1307801,
+          1307554,
+          1307842,
+          1307845,
+          1307843,
+          1307482
+        ],
+        "maximumDonorDistance": 0.011215277016162872,
+        "maximumRGBChannelChange": 0.1592283546924591
+      }
+    ],
+    "maximumAllowedNeighborDistance": 0.012,
+    "maximumAllowedRGBChannelChange": 0.25,
+    "allMeansCovarianceOpacityUnchanged": true,
+    "allOtherColorsUnchangedFromAllSelectedColorTrial": true,
+    "metadata": [
+      "raw/fusion-work/refinement-v11/coverage-review/broad-sidewall-final-color-front.json",
+      "raw/fusion-work/refinement-v11/coverage-review/broad-sidewall-final-color-back.json"
+    ]
+  },
+  "geometryReview": "Root reviewed isolated +V Gaussian color/depth before/after: near-side longitudinal strips filled much more continuously, green index artifact removed; native fine ridges/softness remain.",
+  "exportVerification": {
+    "passed": true,
+    "gaussianCount": 2698682,
+    "rightArmGaussiansChecked": 210857,
+    "unchangedOtherParts": 15,
+    "allRigidPosesUnchanged": 16,
+    "measuredPadRowsBitExact": 11772,
+    "padBoundaryPairs": 277,
+    "sourceHashesVerified": true,
+    "testSuitePassed": 45
+  },
+  "finalVisualReview": {
+    "matchedFullExportRenders": 48,
+    "regions": [
+      "right-finger-sides",
+      "right-hand-under",
+      "right-wrist-pad"
+    ],
+    "isolatedFingerReview": "raw/mannequin-fused/finger-side-review/final-hand-isolated-comparison.png",
+    "browserLoadedGaussians": 2698682,
+    "assessment": "Materially more continuous near-side coverage at grazing angles; the traced green artifact is removed. Native creases and source softness remain. The hand/forearm pose and original Gaussian shapes are unchanged.",
+    "prototypeEvidenceFile": "raw/fusion-work/refinement-v11/coverage-review/evidence.json"
+  },
+  "finalParityEvidence": "raw/mannequin-fused/finger-side-review/final-export-parity.json",
+  "finalParityPassed": true
+}

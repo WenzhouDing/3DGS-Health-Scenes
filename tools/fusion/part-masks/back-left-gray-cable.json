@@ -1,0 +1,112 @@
+{
+  "version": 1,
+  "purpose": "source part ownership: keep the continuous gray cable attached to its upper-arm socket",
+  "sourceCapture": "back",
+  "sourceFile": "raw/mannequin_back_119999.ply",
+  "sourceSha256": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e",
+  "sourceHashes": {
+    "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+    "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+  },
+  "baseline": "raw/fusion-work/refinement-v5/baseline",
+  "maskFile": "tools/fusion/part-masks/back-left-gray-cable.npy",
+  "uniqueSourceIndices": 18084,
+  "maskMeaning": "sorted original source PLY vertex rows belonging to the visible gray cable",
+  "applyStage": "after joint boundaries, assign existing retained cable rows to left_upper_arm",
+  "part": "left_upper_arm",
+  "allowedParts": [
+    "left_upper_arm",
+    "left_forearm"
+  ],
+  "anatomicalSide": "left; appears on screen-right in the user screenshot",
+  "algorithm": {
+    "frame": "back original native XYZ",
+    "method": "union of narrow capsules around reviewed native cable centerline",
+    "path": [
+      [
+        -0.325226665,
+        -0.056645535,
+        -0.177797079
+      ],
+      [
+        -0.335654855,
+        -0.066558499,
+        -0.156659901
+      ],
+      [
+        -0.352352649,
+        -0.06300899,
+        -0.137839079
+      ],
+      [
+        -0.377889365,
+        -0.047244374,
+        -0.11311321
+      ],
+      [
+        -0.396680921,
+        -0.035138723,
+        -0.096713796
+      ],
+      [
+        -0.419605762,
+        -0.018297317,
+        -0.077197969
+      ],
+      [
+        -0.436803728,
+        0.000826395,
+        -0.059817389
+      ],
+      [
+        -0.447356045,
+        0.022476419,
+        -0.044226285
+      ],
+      [
+        -0.453683197,
+        0.051098667,
+        -0.024798727
+      ],
+      [
+        -0.449847728,
+        0.081102382,
+        -0.009476733
+      ],
+      [
+        -0.438820004,
+        0.101033665,
+        0.006951213
+      ],
+      [
+        -0.432499498,
+        0.110606745,
+        0.016455023
+      ],
+      [
+        -0.427,
+        0.118,
+        0.022
+      ]
+    ],
+    "radius": 0.008,
+    "maxSourceScale": 0.04,
+    "minSourceOpacityLogit": -4.6,
+    "colorSelection": "none; neutral color was used only to measure path, not discard cable texture"
+  },
+  "observations": [
+    "The back original capture contains one smooth unbroken cable crossing the rigid arm collar.",
+    "The socket lies on the upper arm; splitting this flexible cable between upper and lower arm rigid transforms creates an artificial kink.",
+    "The front capture does not provide a reliable matching posterior cable or socket. No paired feature or cable-derived twist is claimed.",
+    "Posterior, lateral, and oblique renders of cable-only and cable-removed data show selection follows the cable without removing a skin strip.",
+    "The connector at the free tip is included. The surrounding rubber grommet remains naturally upper-arm-owned."
+  ],
+  "socketExitNative": [
+    -0.325226665,
+    -0.056645535,
+    -0.177797079
+  ],
+  "recommendation": "Apply the upper-arm transform to every selected retained cable row, regardless of which side of the collar it crosses. Treat future flexible cable animation separately from skin axial articulation.",
+  "proof": "raw/fusion-work/refinement-v5/cable/back-cable-final-review.png",
+  "reproduce": ".venv-fusion/bin/python -B tools/fusion/refine_cable_v5.py --extract-only"
+}

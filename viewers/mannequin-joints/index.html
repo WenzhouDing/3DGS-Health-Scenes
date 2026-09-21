@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Manikin · Joint annotations</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <a class="brand" href="../mannequin-fusion/">3DGS HEALTH SCENES</a>
+  <span class="slash">/</span><strong>Joint annotations</strong>
+  <div class="file-actions">
+    <button id="import" disabled>Import</button><button id="export" disabled>Export JSON</button>
+    <button id="save" class="primary" hidden disabled>Save for articulation</button>
+  </div>
+  <input id="import-file" type="file" accept=".json,application/json" hidden>
+</header>
+<main>
+  <section id="viewport" aria-label="Joint annotation viewport">
+    <canvas id="canvas" aria-label="Orbitable fused mannequin"></canvas>
+    <svg id="overlay" aria-label="Joint centers and rotation axis"></svg>
+    <div class="view-heading"><span class="eyebrow">FUSED MANIKIN / JOINT MAP</span><h1>Mark how it moves.</h1><p id="scene-info">Loading the fused scan…</p></div>
+    <div class="view-badge"><span id="view-name">Perspective</span><span id="mode-name">Drag a joint marker to move it</span></div>
+
+    <nav class="views" aria-label="Camera views">
+      <button data-view="perspective" class="active" aria-pressed="true" disabled>Orbit</button>
+      <button data-view="front" aria-pressed="false" disabled>Front</button><button data-view="back" aria-pressed="false" disabled>Back</button>
+      <button data-view="left" aria-pressed="false" disabled>Left</button><button data-view="right" aria-pressed="false" disabled>Right</button>
+      <button data-view="top" aria-pressed="false" disabled>Above</button><button data-view="bottom" aria-pressed="false" disabled>Below</button>
+      <button id="fit-all" disabled>Full body</button>
+    </nav>
+    <div class="view-help">Drag background to orbit · right-drag to pan · scroll to zoom</div>
+    <div id="loading"><div class="loader"></div><strong id="load-title">Preparing the annotation view</strong><p id="load-detail">Loading the same fused scan you reviewed.</p></div>
+  </section>
+  <aside>
+    <section class="panel intro">
+      <div class="section-head"><span class="eyebrow">01 / CHOOSE A JOINT</span><span id="progress">0 checked</span></div>
+      <label for="joint-select">Joint</label><div class="joint-nav"><button id="previous" aria-label="Previous joint" disabled>‹</button><select id="joint-select" disabled></select><button id="next" aria-label="Next joint" disabled>›</button></div>
+      <div class="row"><button id="focus" disabled>Focus joint</button><label class="check"><input id="isolate" type="checkbox" disabled> Isolate region</label></div>
+    <div class="floating-tools" aria-label="Annotation tools">
+      <button id="place-center" disabled title="Click the scan to place this joint in the current view plane">Place center</button>
+      <button id="set-axis" disabled title="Click a direction from the center to set the rotation axis in this view">Set axis</button>
+      <button id="undo" disabled title="Undo · Ctrl / Cmd Z">Undo</button><button id="redo" disabled title="Redo · Ctrl / Cmd Shift Z">Redo</button>
+    </div>
+      <p class="hint">Place the center in <b>Front</b>, then check its depth in <b>Left</b> or <b>Right</b>. Markers show through the scan so hidden joints stay editable.</p>
+      <div class="capture-row"><label for="capture">Scan view</label><select id="capture" disabled><option value="both">Both captures</option><option value="front">Front capture</option><option value="back">Back capture</option></select></div>
+    </section>
+    <fieldset id="editor" disabled>
+      <section class="panel">
+        <span class="eyebrow">02 / CENTER & MOTION</span>
+        <label for="joint-label">Name</label><input id="joint-label" type="text" maxlength="100">
+        <label for="joint-type">Joint type</label><select id="joint-type"><option value="ball">Ball · rotates in 3 directions</option><option value="swivel">Swivel · twists around an axis</option><option value="hinge">Hinge · bends around an axis</option><option value="fixed">Fixed · no movement</option></select>
+        <p class="hint" id="type-help"></p>
+        <div class="field-head"><span>Joint center</span><span class="tiny">scan coordinates</span></div>
+        <div class="vector" id="pivot-fields"><label>X<input aria-label="Joint center X" id="pivot-0" type="number" step="0.001"></label><label>Y<input aria-label="Joint center Y" id="pivot-1" type="number" step="0.001"></label><label>Z<input aria-label="Joint center Z" id="pivot-2" type="number" step="0.001"></label></div>
+        <p class="hint small">X: left / right · Y: front / back · Z: up / down. Dragging changes the current view plane; depth stays fixed until you change views.</p>
+        <div id="axis-section">
+          <div class="field-head"><span>Rotation axis</span><span class="axis-chip">yellow handle</span></div>
+          <div class="axis-presets"><button data-axis="0">Along X</button><button data-axis="1">Along Y</button><button data-axis="2">Along Z</button><button id="flip-axis">Flip</button></div>
+          <div class="vector"><label>X<input aria-label="Rotation axis X" id="axis-0" type="number" step="0.01"></label><label>Y<input aria-label="Rotation axis Y" id="axis-1" type="number" step="0.01"></label><label>Z<input aria-label="Rotation axis Z" id="axis-2" type="number" step="0.01"></label></div>
+        </div>
+        <div id="limits-section"><div class="field-head"><span>Movement limits</span><span class="tiny">degrees from rest</span></div><div id="limits"></div></div>
+        <details id="dynamics"><summary>Resistance & return</summary><p class="hint">Settings for the later articulation. Zero stiffness allows free rotation; damping slows motion. These are starting values, not measured forces.</p><div class="pair"><label>Stiffness<input id="stiffness" type="number" min="0" max="100000" step="1"></label><label>Damping<input id="damping-value" type="number" min="0" max="100000" step="0.5"></label></div></details>
+      </section>
+      <section class="panel">
+        <span class="eyebrow">03 / ATTACH & REVIEW</span>
+        <details><summary>Connected body parts</summary><label for="parent-part">Attached to</label><select id="parent-part"></select><div class="field-head">Moves with this joint</div><div id="child-parts" class="part-list"></div><p class="hint">Each body region belongs to one joint. Keep the hand with the forearm when there is no wrist joint.</p></details>
+        <label for="notes">Notes for articulation</label><textarea id="notes" rows="3" maxlength="2000" placeholder="For example: hard stop here; only twists; pad stays with forearm…"></textarea>
+        <label class="check reviewed"><input type="checkbox" id="reviewed"> I checked this joint from multiple views</label>
+        <div class="row"><button id="reset-joint">Reset this joint</button><button id="next-unchecked">Next unchecked →</button></div>
+      </section>
+    </fieldset>
+    <section class="panel save-note"><strong id="save-state">Editable starting positions</strong><p id="save-detail">Save for articulation writes a local file for our next step. Export JSON keeps an extra copy.</p><a href="../mannequin-articulation/">Open articulation ↗</a><a href="README.md">How to annotate ↗</a><a href="../mannequin-fusion/">Return to fusion view ↗</a></section>
+  </aside>
+</main>
+<footer id="status" role="status">Loading…</footer>
+<script type="module" src="app.mjs"></script>
+</body>
+</html>

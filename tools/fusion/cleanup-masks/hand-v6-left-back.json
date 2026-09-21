@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "purpose": "Remove original hand layers seen more strongly from the unobserved source side; all colors",
+  "sourceCapture": "back",
+  "sourceFile": "raw/mannequin_back_119999.ply",
+  "sourceSha256": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e",
+  "sourceHashes": {
+    "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+    "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+  },
+  "baseline": "raw/fusion-work/refinement-v6/baseline",
+  "maskFile": "tools/fusion/cleanup-masks/hand-v6-left-back.npy",
+  "uniqueSourceIndices": 11860,
+  "part": "left_hand",
+  "algorithm": {
+    "method": "front-to-back visible alpha flux from full quality-clean native hand Gaussians",
+    "nativeObservedCamera": [
+      0,
+      -1,
+      0
+    ],
+    "nativeOppositeCamera": [
+      0,
+      1,
+      0
+    ],
+    "cameraCenter": "mean full quality-clean native hand positions",
+    "visibilitySize": 900,
+    "visibilitySpan": 0.3,
+    "projectionVariancePixels": 0.3,
+    "sigmaCutoff": 3,
+    "minimumPixelOpacity": 0.00392156862745098,
+    "opacity": "original source sigmoid opacity",
+    "cleanupCriterion": "opposite visible alpha flux > observed visible alpha flux",
+    "colorRestriction": null
+  },
+  "reproduce": ".venv-fusion/bin/python -B tools/fusion/refine_left_hand_v6.py --export",
+  "proof": "raw/fusion-work/refinement-v6/left-hand/accepted-before-after.png",
+  "maskMeaning": "sorted original source PLY vertex rows"
+}

@@ -1,0 +1,2109 @@
+{
+  "schema": "mannequin-joint-refinement",
+  "version": 1,
+  "inputAnnotationSha256": "c1cdd681f38846b6f0627255c23d137bb00f79f568c25aee2be5300659541e7d",
+  "inputSceneRevision": "feature-guided-v11-finger-side-coverage",
+  "coordinateFrame": "fused-viewer-x-y-z",
+  "method": "Opacity/scale-screened fused Gaussian centers; balanced 48-sector robust ellipse sections from both captures; three orthogonal projections; visible hinge-cap connected components and four threshold sensitivity fits. Opposing shells estimate a visible envelope center, not hidden hardware.",
+  "limitations": [
+    "Scan units are not calibrated physical length.",
+    "Stiffness and damping are normalized interaction settings, not measured mechanical properties.",
+    "Clothing and shoulder pads cannot establish hidden ball-joint centers.",
+    "Knee and ankle axes pass through visible opposing metal cap centers, with color-threshold sensitivity reported; cap centers are not calibrated internal shaft measurements."
+  ],
+  "sourceFiles": [
+    "raw/mannequin-fused/joint-annotations.json",
+    "viewers/mannequin-fusion/fusion.json"
+  ],
+  "joints": [
+    {
+      "id": "neck",
+      "pivotBefore": [
+        0.006,
+        0.055,
+        -0.045
+      ],
+      "pivotAfter": [
+        0.00509961428650268,
+        0.06098224708266526,
+        -0.045
+      ],
+      "axisBefore": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "axisAfter": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "status": "refined",
+      "confidence": "medium",
+      "method": "Centered the pivot between opposing visible surfaces using the median of three balanced cross sections; preserved its accepted position along the limb.",
+      "metrics": {
+        "analysisPointCount": 34523,
+        "capturePointCounts": {
+          "front": 17134,
+          "back": 17389
+        },
+        "sections": [
+          {
+            "center": [
+              0.0036179839745880725,
+              0.06333397525268543,
+              -0.028999999999999998
+            ],
+            "offsetUV": [
+              -0.0023820160254119276,
+              -0.008333975252685425
+            ],
+            "radii": [
+              0.07323680014070859,
+              0.06497487390694473
+            ],
+            "medianResidual": 0.005863552925388818,
+            "p90Residual": 0.014151817951070844,
+            "angularBins": 48,
+            "pointCount": 3256,
+            "station": -0.016
+          },
+          {
+            "center": [
+              0.00509961428650268,
+              0.06098224708266526,
+              -0.045
+            ],
+            "offsetUV": [
+              -0.0009003857134973203,
+              -0.00598224708266526
+            ],
+            "radii": [
+              0.08673930358762921,
+              0.06292102733478981
+            ],
+            "medianResidual": 0.005269974453284341,
+            "p90Residual": 0.021637920543034185,
+            "angularBins": 48,
+            "pointCount": 3381,
+            "station": 0
+          },
+          {
+            "center": [
+              0.00594651805533447,
+              0.058737842744387626,
+              -0.061
+            ],
+            "offsetUV": [
+              -5.3481944665530105e-05,
+              -0.0037378427443876274
+            ],
+            "radii": [
+              0.1100424895929038,
+              0.06431190429397388
+            ],
+            "medianResidual": 0.005904135756558597,
+            "p90Residual": 0.016594239480905028,
+            "angularBins": 48,
+            "pointCount": 4291,
+            "station": 0.016
+          }
+        ],
+        "candidateCenter": [
+          0.00509961428650268,
+          0.06098224708266526,
+          -0.045
+        ],
+        "candidateShift": 0.006049625987705942,
+        "neighborSectionSpread": 0.002779542006671349,
+        "medianSectionResidual": 0.005863552925388818,
+        "appliedShift": 0.006049625987705942,
+        "appliedAxisDegrees": 0.0,
+        "appliedAxisLineDegrees": 0.0
+      },
+      "plot": "raw/fusion-work/joint-analysis/neck.png",
+      "gaussianPlot": "raw/fusion-work/joint-analysis/neck-gaussians.png"
+    },
+    {
+      "id": "waist",
+      "pivotBefore": [
+        0.0,
+        0.078,
+        -0.575
+      ],
+      "pivotAfter": [
+        0.0,
+        0.078,
+        -0.575
+      ],
+      "axisBefore": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "axisAfter": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "status": "retained",
+      "confidence": "low",
+      "method": "Retained accepted position: shoulder pad / shorts / body shell is not the hidden ball-joint surface. A bulk silhouette fit would give false precision.",
+      "metrics": {
+        "analysisPointCount": 12750,
+        "capturePointCounts": {
+          "front": 10417,
+          "back": 2333
+        },
+        "sections": [],
+        "appliedShift": 0.0,
+        "appliedAxisDegrees": 0.0,
+        "appliedAxisLineDegrees": 0.0
+      },
+      "plot": "raw/fusion-work/joint-analysis/waist.png",
+      "gaussianPlot": null
+    },
+    {
+      "id": "left_shoulder",
+      "pivotBefore": [
+        0.23,
+        0.02,
+        -0.16
+      ],
+      "pivotAfter": [
+        0.23,
+        0.02,
+        -0.16
+      ],
+      "axisBefore": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "axisAfter": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "status": "retained",
+      "confidence": "low",
+      "method": "Retained accepted position: shoulder pad / shorts / body shell is not the hidden ball-joint surface. A bulk silhouette fit would give false precision.",
+      "metrics": {
+        "analysisPointCount": 33480,
+        "capturePointCounts": {
+          "front": 7069,
+          "back": 26411
+        },
+        "sections": [
+          {
+            "center": [
+              0.21394385971376656,
+              0.017076407088987486,
+              -0.15350240157742515
+            ],
+            "offsetUV": [
+              -0.004710417965557758,
+              0.00551160450788418
+            ],
+            "radii": [
+              0.06972500413489444,
+              0.06126416561303896
+            ],
+            "medianResidual": 0.005772397106978119,
+            "p90Residual": 0.02869814551584302,
+            "angularBins": 45,
+            "pointCount": 5039,
+            "station": -0.016
+          },
+          {
+            "center": [
+              0.2319198267008464,
+              0.020131123826193423,
+              -0.1575601809716536
+            ],
+            "offsetUV": [
+              0.003104515157115497,
+              -0.00013278007907655085
+            ],
+            "radii": [
+              0.0667372329555987,
+              0.05386335817396266
+            ],
+            "medianResidual": 0.0028440632699692882,
+            "p90Residual": 0.018546411939779982,
+            "angularBins": 48,
+            "pointCount": 2935,
+            "station": 0
+          },
+          {
+            "center": [
+              0.2349305374202797,
+              0.015137868384547172,
+              -0.1788094064277898
+            ],
+            "offsetUV": [
+              -0.011837048273510918,
+              0.002372463157799547
+            ],
+            "radii": [
+              0.08116897905272406,
+              0.05265873122576951
+            ],
+            "medianResidual": 0.002844568462076554,
+            "p90Residual": 0.018214986524474612,
+            "angularBins": 45,
+            "pointCount": 2549,
+            "station": 0.016
+          }
+        ],
+        "candidateCenter": [
+          0.2264265465062693,
+          0.01765713012887828,
+          -0.16318929223974954
+        ],
+        "candidateShift": 0.005331997195741267,
+        "neighborSectionSpread": 0.008245220784132628,
+        "medianSectionResidual": 0.002844568462076554,
+        "appliedShift": 0.0,
+        "appliedAxisDegrees": 0.0,
+        "appliedAxisLineDegrees": 0.0
+      },
+      "plot": "raw/fusion-work/joint-analysis/left_shoulder.png",
+      "gaussianPlot": null
+    },
+    {
+      "id": "left_arm_swivel",
+      "pivotBefore": [
+        0.3722547562366865,
+        -0.008709922093973962,
+        -0.27039340269981293
+      ],
+      "pivotAfter": [
+        0.3722547562366865,
+        -0.008709922093973962,
+        -0.27039340269981293
+      ],
+      "axisBefore": [
+        0.6339159206348934,
+        -0.13906095342803715,
+        -0.7607973822229548
+      ],
+      "axisAfter": [
+        0.6339159206348934,
+        -0.13906095342803715,
+        -0.7607973822229548
+      ],
+      "status": "retained",
+      "confidence": "high",
+      "method": "Preserved measured mechanical collar center and plane normal from prior fusion review. Broad sleeve sections are a check, not a replacement for the measured collar rim.",
+      "metrics": {
+        "analysisPointCount": 18422,
+        "capturePointCounts": {
+          "front": 6746,
+          "back": 11676
+        },
+        "sections": [
+          {
+            "center": [
+              0.3597623647347652,
+              -0.009014539944164969,
+              -0.25971613858374604
+            ],
+            "offsetUV": [
+              -0.0027625322914951547,
+              0.0025544122248821327
+            ],
+            "radii": [
+              0.04145624087612603,
+              0.04544853371419082
+            ],
+            "medianResidual": 0.003892090414044371,
+            "p90Residual": 0.020225185948428585,
+            "angularBins": 41,
+            "pointCount": 1639,
+            "station": -0.016
+          },
+          {
+            "center": [
+              0.37192284538132786,
+              -0.008210442574147315,
+              -0.2707612557974019
+            ],
+            "offsetUV": [
+              -0.0004904703412724644,
+              -0.0005043801665104047
+            ],
+            "radii": [
+              0.04855362400786093,
+              0.05253720252998694
+            ],
+            "medianResidual": 0.0009812542063534389,
+            "p90Residual": 0.004252665584667818,
+            "angularBins": 46,
+            "pointCount": 3074,
+            "station": 0
+          },
+          {
+            "center": [
+              0.3799244843424892,
+              -0.008980691510620923,
+              -0.2849838627262641
+            ],
+            "offsetUV": [
+              -0.0034475124743304866,
+              -0.0019733795419876977
+            ],
+            "radii": [
+              0.0378557283197549,
+              0.04770003499364122
+            ],
+            "medianResidual": 0.0017194511952664056,
+            "p90Residual": 0.006568249689024917,
+            "angularBins": 36,
+            "pointCount": 1011,
+            "station": 0.016
+          }
+        ],
+        "candidateCenter": [
+          0.3699050194649235,
+          -0.008210442574147315,
+          -0.2718888966993133
+        ],
+        "candidateShift": 0.002829707580271018,
+        "neighborSectionSpread": 0.0030290726248662484,
+        "medianSectionResidual": 0.0017194511952664056,
+        "appliedShift": 0.0,
+        "appliedAxisDegrees": 0.0,
+        "appliedAxisLineDegrees": 0.0
+      },
+      "plot": "raw/fusion-work/joint-analysis/left_arm_swivel.png",
+      "gaussianPlot": null
+    },
+    {
+      "id": "left_hip",
+      "pivotBefore": [
+        0.128,
+        0.06,
+        -0.73
+      ],
+      "pivotAfter": [
+        0.128,
+        0.06,
+        -0.73
+      ],
+      "axisBefore": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "axisAfter": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "status": "retained",
+      "confidence": "low",
+      "method": "Retained accepted position: shoulder pad / shorts / body shell is not the hidden ball-joint surface. A bulk silhouette fit would give false precision.",
+      "metrics": {
+        "analysisPointCount": 22780,
+        "capturePointCounts": {
+          "front": 8475,
+          "back": 14305
+        },
+        "sections": [
+          {
+            "center": [
+              0.10646743975367544,
+              0.040092010905478995,
+              -0.7204334983701477
+            ],
+            "offsetUV": [
+              -0.015490357065910834,
+              0.02134352295085601
+            ],
+            "radii": [
+              0.14989854088004714,
+              0.10869082954612164
+            ],
+            "medianResidual": 0.0037654679510443637,
+            "p90Residual": 0.009594641931402827,
+            "angularBins": 36,
+            "pointCount": 2117,
+            "station": -0.016
+          },
+          {
+            "center": [
+              0.11260112076677617,
+              0.03989129144927276,
+              -0.735271672430202
+            ],
+            "offsetUV": [
+              -0.016185794228481598,
+              0.020181581618448716
+            ],
+            "radii": [
+              0.14513259102684237,
+              0.10564855118173758
+            ],
+            "medianResidual": 0.005074695713813523,
+            "p90Residual": 0.01211151944567982,
+            "angularBins": 36,
+            "pointCount": 2282,
+            "station": 0
+          },
+          {
+            "center": [
+              0.1265764785124008,
+              0.03817358103930713,
+              -0.7463204338238136
+            ],
+            "offsetUV": [
+              -0.008172911646586945,
+              0.0205421287477202
+            ],
+            "radii": [
+              0.1347975631147784,
+              0.10143476429145579
+            ],
+            "medianResidual": 0.0039573212896851576,
+            "p90Residual": 0.01130786570452243,
+            "angularBins": 40,
+            "pointCount": 2078,
+            "station": 0.016
+          }
+        ],
+        "candidateCenter": [
+          0.11319010072073107,
+          0.039532046208815785,
+          -0.7348889610713295
+        ],
+        "candidateShift": 0.025732706608849333,
+        "neighborSectionSpread": 0.007317761756744312,
+        "medianSectionResidual": 0.0039573212896851576,
+        "appliedShift": 0.0,
+        "appliedAxisDegrees": 0.0,
+        "appliedAxisLineDegrees": 0.0
+      },
+      "plot": "raw/fusion-work/joint-analysis/left_hip.png",
+      "gaussianPlot": null
+    },
+    {
+      "id": "left_knee",
+      "pivotBefore": [
+        0.321,
+        0.021,
+        -1.145
+      ],
+      "pivotAfter": [
+        0.3103969693183899,
+        0.01676641113590449,
+        -1.1497683823108673
+      ],
+      "axisBefore": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "axisAfter": [
+        -0.9273006109298916,
+        0.19632677670795426,
+        -0.31869950379081996
+      ],
+      "status": "refined",
+      "confidence": "medium-high",
+      "method": "Located the two visible metal hinge caps as compact low-chroma components in 3D; set the pivot midway between cap centers and the axis through them. Four color-threshold perturbations verify stability. Checked against front/back/side/oblique Gaussian projections. Cap surface centers remain scan estimates, not a calibrated shaft measurement. Oriented the axis toward -X so positive knee flexion bends toward the back. Limits remain editable.",
+      "metrics": {
+        "analysisPointCount": 15124,
+        "capturePointCounts": {
+          "front": 6304,
+          "back": 8820
+        },
+        "sections": [
+          {
+            "center": [
+              0.3096816494211076,
+              0.019962793506951893,
+              -1.1319511565461395
+            ],
+            "offsetUV": [
+              -0.006427269131152372,
+              0.0014640301004510737
+            ],
+            "radii": [
+              0.055928877606539744,
+              0.0584729274877292
+            ],
+            "medianResidual": 0.0017884250710710238,
+            "p90Residual": 0.0050112760230814875,
+            "angularBins": 48,
+            "pointCount": 2288,
+            "station": -0.016
+          },
+          {
+            "center": [
+              0.3132334539940175,
+              0.0160954824026706,
+              -1.1475500872236846
+            ],
+            "offsetUV": [
+              -0.008173438284077286,
+              0.004906259388815094
+            ],
+            "radii": [
+              0.05190459991324935,
+              0.055270740366245324
+            ],
+            "medianResidual": 0.0028229762630003702,
+            "p90Residual": 0.00584333357904003,
+            "angularBins": 48,
+            "pointCount": 2670,
+            "station": 0
+          },
+          {
+            "center": [
+              0.3183262682791402,
+              0.011989806267366041,
+              -1.1626088683461273
+            ],
+            "offsetUV": [
+              -0.008286686094374138,
+              0.008586938361213256
+            ],
+            "radii": [
+              0.05281643851310184,
+              0.0499802360688888
+            ],
+            "medianResidual": 0.002051415325881483,
+            "p90Residual": 0.00639121489168953,
+            "angularBins": 45,
+            "pointCount": 1464,
+            "station": 0.016
+          }
+        ],
+        "candidateCenter": [
+          0.3132334539940175,
+          0.0160954824026706,
+          -1.1474944589058607
+        ],
+        "candidateShift": 0.009518185486666293,
+        "neighborSectionSpread": 0.003853211321908268,
+        "medianSectionResidual": 0.002051415325881483,
+        "centerlineSections": [
+          {
+            "center": [
+              0.3265148217501326,
+              0.010141057041562231,
+              -1.1798354817611645
+            ],
+            "offsetUV": [
+              -0.006183624330655547,
+              0.009929928538518666
+            ],
+            "radii": [
+              0.041809858942960874,
+              0.05003394467285138
+            ],
+            "medianResidual": 0.002663716265823209,
+            "p90Residual": 0.007340638247030408,
+            "angularBins": 40,
+            "pointCount": 708,
+            "station": 0.035
+          },
+          {
+            "center": [
+              0.33266542497102114,
+              0.004460143140450673,
+              -1.2040110076088564
+            ],
+            "offsetUV": [
+              -0.008279459835869647,
+              0.014946523626838274
+            ],
+            "radii": [
+              0.03590797842215105,
+              0.0517476630616886
+            ],
+            "medianResidual": 0.0017859163471895718,
+            "p90Residual": 0.004007182889041965,
+            "angularBins": 37,
+            "pointCount": 461,
+            "station": 0.06
+          },
+          {
+            "center": [
+              0.3394124748646146,
+              0.0020139591988774276,
+              -1.2280713071199836
+            ],
+            "offsetUV": [
+              -0.009773969789899936,
+              0.016727239972892168
+            ],
+            "radii": [
+              0.0341708814662459,
+              0.05140375482779202
+            ],
+            "medianResidual": 0.0015833700363426934,
+            "p90Residual": 0.005313583558111852,
+            "angularBins": 42,
+            "pointCount": 614,
+            "station": 0.085
+          },
+          {
+            "center": [
+              0.3471556459641386,
+              0.0009225631753549644,
+              -1.251825007411362
+            ],
+            "offsetUV": [
+              -0.010226867233209145,
+              0.0171526872612085
+            ],
+            "radii": [
+              0.036287346070844884,
+              0.051133387194041584
+            ],
+            "medianResidual": 0.0012051836914438955,
+            "p90Residual": 0.004027246637904785,
+            "angularBins": 34,
+            "pointCount": 544,
+            "station": 0.11
+          }
+        ],
+        "centerlineDirection": [
+          0.27307606413136587,
+          -0.11970440518575548,
+          -0.954515750827427
+        ],
+        "centerlineRms": 0.001238042625356307,
+        "candidateAxis": [
+          0.9614288311973254,
+          -0.0,
+          0.275053817538577
+        ],
+        "candidateAxisChangeDegrees": 15.965221361379307,
+        "hardwareCaps": {
+          "centers": [
+            [
+              0.25725576281547546,
+              0.02801739238202572,
+              -1.1680322289466858
+            ],
+            [
+              0.3635381758213043,
+              0.005515429889783263,
+              -1.1315045356750488
+            ]
+          ],
+          "pointCounts": [
+            186,
+            178
+          ],
+          "extents": [
+            [
+              0.015541404485702515,
+              0.012954384088516235,
+              0.011478781700134277
+            ],
+            [
+              0.012366384267807007,
+              0.013396866546827368,
+              0.017194628715515137
+            ]
+          ],
+          "capSeparation": 0.11461484199740737,
+          "candidatePairCount": 1,
+          "colorSensitivityFits": 4,
+          "centerSensitivity": 0.0001189592393875557,
+          "axisSensitivityDegrees": 0.17165396758102514,
+          "midpoint": [
+            0.3103969693183899,
+            0.01676641113590449,
+            -1.1497683823108673
+          ],
+          "axisTowardPositiveX": [
+            0.9273006109298916,
+            -0.19632677670795426,
+            0.31869950379081996
+          ]
+        },
+        "positiveFlexionConvention": "Positive knee angle moves the lower leg posteriorly (viewer -Y); this is an interaction convention, not a measured mechanical stop.",
+        "appliedShift": 0.012372752489561531,
+        "appliedAxisDegrees": 158.01786468617283,
+        "appliedAxisLineDegrees": 21.982135313827172
+      },
+      "plot": "raw/fusion-work/joint-analysis/left_knee.png",
+      "gaussianPlot": "raw/fusion-work/joint-analysis/left_knee-gaussians.png"
+    },
+    {
+      "id": "left_ankle",
+      "pivotBefore": [
+        0.456,
+        0.01,
+        -1.535
+      ],
+      "pivotAfter": [
+        0.45564060658216476,
+        0.021015675272792578,
+        -1.5379415154457092
+      ],
+      "axisBefore": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "axisAfter": [
+        0.9506584464739496,
+        -0.09944104982730105,
+        0.29387071265606035
+      ],
+      "status": "refined",
+      "confidence": "medium-high",
+      "method": "Located the two visible metal hinge caps as compact low-chroma components in 3D; set the pivot midway between cap centers and the axis through them. Four color-threshold perturbations verify stability. Checked against front/back/side/oblique Gaussian projections. Cap surface centers remain scan estimates, not a calibrated shaft measurement.",
+      "metrics": {
+        "analysisPointCount": 6533,
+        "capturePointCounts": {
+          "front": 5330,
+          "back": 1203
+        },
+        "sections": [
+          {
+            "center": [
+              0.4456144466005931,
+              0.017005854381925478,
+              -1.5218551207779194
+            ],
+            "offsetUV": [
+              -0.005514374472898798,
+              -0.006581887188975699
+            ],
+            "radii": [
+              0.026490831999623966,
+              0.039809906704699694
+            ],
+            "medianResidual": 0.0011403543721163094,
+            "p90Residual": 0.0028692598205172777,
+            "angularBins": 33,
+            "pointCount": 919,
+            "station": -0.016
+          },
+          {
+            "center": [
+              0.45424174744404205,
+              0.015709569648780935,
+              -1.5357696650286945
+            ],
+            "offsetUV": [
+              -0.0019132897405084875,
+              -0.005711597346633751
+            ],
+            "radii": [
+              0.03470767693576168,
+              0.03133167958484553
+            ],
+            "medianResidual": 0.0026494335621882604,
+            "p90Residual": 0.005330322870490244,
+            "angularBins": 41,
+            "pointCount": 1813,
+            "station": 0
+          },
+          {
+            "center": [
+              0.45990593462313795,
+              0.012960751288069047,
+              -1.5506689335737889
+            ],
+            "offsetUV": [
+              -0.001434419874136495,
+              -0.0033882580236043584
+            ],
+            "radii": [
+              0.027004510590165683,
+              0.03622390134704945
+            ],
+            "medianResidual": 0.001996979386595396,
+            "p90Residual": 0.005230997725137861,
+            "angularBins": 43,
+            "pointCount": 1077,
+            "station": 0.016
+          }
+        ],
+        "candidateCenter": [
+          0.45424174744404205,
+          0.015709569648780935,
+          -1.5357696650286945
+        ],
+        "candidateShift": 0.006023538983123507,
+        "neighborSectionSpread": 0.0037047558164524934,
+        "medianSectionResidual": 0.001996979386595396,
+        "centerlineSections": [],
+        "hardwareCaps": {
+          "centers": [
+            [
+              0.42043063044548035,
+              0.024698719382286072,
+              -1.548825740814209
+            ],
+            [
+              0.4908505827188492,
+              0.017332631163299084,
+              -1.5270572900772095
+            ]
+          ],
+          "pointCounts": [
+            173,
+            88
+          ],
+          "extents": [
+            [
+              0.017140865325927734,
+              0.01793775148689747,
+              0.015118122100830078
+            ],
+            [
+              0.006075829267501831,
+              0.00915049109607935,
+              0.011187553405761719
+            ]
+          ],
+          "capSeparation": 0.07407492410608747,
+          "candidatePairCount": 1,
+          "colorSensitivityFits": 4,
+          "centerSensitivity": 0.001362802463079962,
+          "axisSensitivityDegrees": 1.641618644634946,
+          "midpoint": [
+            0.45564060658216476,
+            0.021015675272792578,
+            -1.5379415154457092
+          ],
+          "axisTowardPositiveX": [
+            0.9506584464739496,
+            -0.09944104982730105,
+            0.29387071265606035
+          ]
+        },
+        "appliedShift": 0.01140731249952168,
+        "appliedAxisDegrees": 18.073661623273072,
+        "appliedAxisLineDegrees": 18.073661623273072
+      },
+      "plot": "raw/fusion-work/joint-analysis/left_ankle.png",
+      "gaussianPlot": "raw/fusion-work/joint-analysis/left_ankle-gaussians.png"
+    },
+    {
+      "id": "right_shoulder",
+      "pivotBefore": [
+        -0.23,
+        0.056,
+        -0.16
+      ],
+      "pivotAfter": [
+        -0.23,
+        0.056,
+        -0.16
+      ],
+      "axisBefore": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "axisAfter": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "status": "retained",
+      "confidence": "low",
+      "method": "Retained accepted position: shoulder pad / shorts / body shell is not the hidden ball-joint surface. A bulk silhouette fit would give false precision.",
+      "metrics": {
+        "analysisPointCount": 35476,
+        "capturePointCounts": {
+          "front": 11904,
+          "back": 23572
+        },
+        "sections": [
+          {
+            "center": [
+              -0.1875273031377577,
+              0.05394727637460953,
+              -0.18205335638807635
+            ],
+            "offsetUV": [
+              0.044999999999999096,
+              0.003673442665096684
+            ],
+            "radii": [
+              0.09576969104336525,
+              0.06939563776487913
+            ],
+            "medianResidual": 0.003420422316661081,
+            "p90Residual": 0.010809496412916257,
+            "angularBins": 35,
+            "pointCount": 4534,
+            "station": -0.016
+          },
+          {
+            "center": [
+              -0.2244014910960598,
+              0.06136120963005382,
+              -0.1668712121284254
+            ],
+            "offsetUV": [
+              0.00884679051109852,
+              -0.00538829513032065
+            ],
+            "radii": [
+              0.05867072527467831,
+              0.05938131200758651
+            ],
+            "medianResidual": 0.0034923587304644672,
+            "p90Residual": 0.019270588721944003,
+            "angularBins": 48,
+            "pointCount": 3832,
+            "station": 0
+          },
+          {
+            "center": [
+              -0.22881391904380022,
+              0.06183979278200709,
+              -0.18588355235441884
+            ],
+            "offsetUV": [
+              0.01983741836516363,
+              -0.007479644567815414
+            ],
+            "radii": [
+              0.07768810715764382,
+              0.055164636698137814
+            ],
+            "medianResidual": 0.002762061846614858,
+            "p90Residual": 0.011400320822258007,
+            "angularBins": 44,
+            "pointCount": 2739,
+            "station": 0.016
+          }
+        ],
+        "candidateCenter": [
+          -0.21710736064030828,
+          0.06136120963005382,
+          -0.17509516630162703
+        ],
+        "candidateShift": 0.020562751859375016,
+        "neighborSectionSpread": 0.026752468312540748,
+        "medianSectionResidual": 0.003420422316661081,
+        "appliedShift": 0.0,
+        "appliedAxisDegrees": 0.0,
+        "appliedAxisLineDegrees": 0.0
+      },
+      "plot": "raw/fusion-work/joint-analysis/right_shoulder.png",
+      "gaussianPlot": null
+    },
+    {
+      "id": "right_arm_swivel",
+      "pivotBefore": [
+        -0.3590852533890853,
+        0.03833235509794086,
+        -0.27896079951802905
+      ],
+      "pivotAfter": [
+        -0.3590852533890853,
+        0.03833235509794086,
+        -0.27896079951802905
+      ],
+      "axisBefore": [
+        -0.6249087788154958,
+        -0.1817470761592546,
+        -0.7592476660924866
+      ],
+      "axisAfter": [
+        -0.6249087788154958,
+        -0.1817470761592546,
+        -0.7592476660924866
+      ],
+      "status": "retained",
+      "confidence": "high",
+      "method": "Preserved measured mechanical collar center and plane normal from prior fusion review. Broad sleeve sections are a check, not a replacement for the measured collar rim.",
+      "metrics": {
+        "analysisPointCount": 17295,
+        "capturePointCounts": {
+          "front": 6010,
+          "back": 11285
+        },
+        "sections": [
+          {
+            "center": [
+              -0.3466682181077673,
+              0.044349706321861845,
+              -0.2695477318540171
+            ],
+            "offsetUV": [
+              0.003605342293598379,
+              -0.0031620611510178886
+            ],
+            "radii": [
+              0.04751386514274153,
+              0.041919026572455644
+            ],
+            "medianResidual": 0.001767120057781092,
+            "p90Residual": 0.005553433092692648,
+            "angularBins": 39,
+            "pointCount": 1824,
+            "station": -0.016
+          },
+          {
+            "center": [
+              -0.3591717581471946,
+              0.041230465185780635,
+              -0.27958334400938495
+            ],
+            "offsetUV": [
+              0.0003288315697384233,
+              -0.0029471946995193858
+            ],
+            "radii": [
+              0.04899271415433153,
+              0.05084678654441071
+            ],
+            "medianResidual": 0.0007942308861917256,
+            "p90Residual": 0.002975428528750134,
+            "angularBins": 48,
+            "pointCount": 2750,
+            "station": 0
+          },
+          {
+            "center": [
+              -0.366996478101768,
+              0.036632905788092335,
+              -0.293116043929946
+            ],
+            "offsetUV": [
+              0.0028872437474551805,
+              -0.0012289720563108846
+            ],
+            "radii": [
+              0.04173298574314566,
+              0.04722902964685296
+            ],
+            "medianResidual": 0.0018641193146526837,
+            "p90Residual": 0.005282770552045181,
+            "angularBins": 44,
+            "pointCount": 616,
+            "station": 0.016
+          }
+        ],
+        "candidateCenter": [
+          -0.3569979376407201,
+          0.041230465185780635,
+          -0.2809680812724662
+        ],
+        "candidateShift": 0.004096963406757326,
+        "neighborSectionSpread": 0.002577400411681311,
+        "medianSectionResidual": 0.001767120057781092,
+        "appliedShift": 0.0,
+        "appliedAxisDegrees": 0.0,
+        "appliedAxisLineDegrees": 0.0
+      },
+      "plot": "raw/fusion-work/joint-analysis/right_arm_swivel.png",
+      "gaussianPlot": null
+    },
+    {
+      "id": "right_hip",
+      "pivotBefore": [
+        -0.128,
+        0.064,
+        -0.73
+      ],
+      "pivotAfter": [
+        -0.128,
+        0.064,
+        -0.73
+      ],
+      "axisBefore": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "axisAfter": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "status": "retained",
+      "confidence": "low",
+      "method": "Retained accepted position: shoulder pad / shorts / body shell is not the hidden ball-joint surface. A bulk silhouette fit would give false precision.",
+      "metrics": {
+        "analysisPointCount": 18121,
+        "capturePointCounts": {
+          "front": 8577,
+          "back": 9544
+        },
+        "sections": [
+          {
+            "center": [
+              -0.10315487990393515,
+              0.042703180230831306,
+              -0.7218648869863629
+            ],
+            "offsetUV": [
+              0.018991438436019956,
+              0.02281095909302917
+            ],
+            "radii": [
+              0.13364621786288855,
+              0.11296733377441273
+            ],
+            "medianResidual": 0.003289254774650091,
+            "p90Residual": 0.008832837809112062,
+            "angularBins": 32,
+            "pointCount": 1566,
+            "station": -0.016
+          },
+          {
+            "center": [
+              -0.11258588738032388,
+              0.04742370087835124,
+              -0.7356422597818528
+            ],
+            "offsetUV": [
+              0.01634738996251658,
+              0.016642310455034733
+            ],
+            "radii": [
+              0.12447682150958088,
+              0.10940142019859478
+            ],
+            "medianResidual": 0.0063660952922378064,
+            "p90Residual": 0.011058834371311796,
+            "angularBins": 37,
+            "pointCount": 1691,
+            "station": 0
+          },
+          {
+            "center": [
+              -0.1179085046566406,
+              0.04866513778796454,
+              -0.7510162640133907
+            ],
+            "offsetUV": [
+              0.018100102455436015,
+              0.013966600213023206
+            ],
+            "radii": [
+              0.10127265276157649,
+              0.12263042634836206
+            ],
+            "medianResidual": 0.006728889964349223,
+            "p90Residual": 0.017736447387321417,
+            "angularBins": 42,
+            "pointCount": 1369,
+            "station": 0.016
+          }
+        ],
+        "candidateCenter": [
+          -0.11110271447722149,
+          0.04742370087835124,
+          -0.7362751059887044
+        ],
+        "candidateShift": 0.02448813806270594,
+        "neighborSectionSpread": 0.006249417858408487,
+        "medianSectionResidual": 0.0063660952922378064,
+        "appliedShift": 0.0,
+        "appliedAxisDegrees": 0.0,
+        "appliedAxisLineDegrees": 0.0
+      },
+      "plot": "raw/fusion-work/joint-analysis/right_hip.png",
+      "gaussianPlot": null
+    },
+    {
+      "id": "right_knee",
+      "pivotBefore": [
+        -0.324,
+        0.023,
+        -1.145
+      ],
+      "pivotAfter": [
+        -0.32212531566619873,
+        0.017697383416816592,
+        -1.142888605594635
+      ],
+      "axisBefore": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "axisAfter": [
+        -0.919143375957109,
+        0.10206633268299092,
+        0.38047065348961356
+      ],
+      "status": "refined",
+      "confidence": "medium-high",
+      "method": "Located the two visible metal hinge caps as compact low-chroma components in 3D; set the pivot midway between cap centers and the axis through them. Four color-threshold perturbations verify stability. Checked against front/back/side/oblique Gaussian projections. Cap surface centers remain scan estimates, not a calibrated shaft measurement. Oriented the axis toward -X so positive knee flexion bends toward the back. Limits remain editable.",
+      "metrics": {
+        "analysisPointCount": 12887,
+        "capturePointCounts": {
+          "front": 6564,
+          "back": 6323
+        },
+        "sections": [
+          {
+            "center": [
+              -0.320423564457677,
+              0.027939258933270573,
+              -1.1294640741313746
+            ],
+            "offsetUV": [
+              -0.0018024283742449473,
+              -0.004393565129758261
+            ],
+            "radii": [
+              0.05536111800767173,
+              0.05272567670382664
+            ],
+            "medianResidual": 0.0018218184619483593,
+            "p90Residual": 0.005968685115070583,
+            "angularBins": 47,
+            "pointCount": 1444,
+            "station": -0.016
+          },
+          {
+            "center": [
+              -0.32543397314277056,
+              0.021446405163959906,
+              -1.1444369592853991
+            ],
+            "offsetUV": [
+              -0.001539628619177543,
+              0.0015545077838548796
+            ],
+            "radii": [
+              0.0554994637757552,
+              0.047943704541540705
+            ],
+            "medianResidual": 0.002551339785367539,
+            "p90Residual": 0.005188508589817974,
+            "angularBins": 46,
+            "pointCount": 1973,
+            "station": 0
+          },
+          {
+            "center": [
+              -0.33175816490343923,
+              0.014716821511823344,
+              -1.1589371464741307
+            ],
+            "offsetUV": [
+              -0.002673039254157989,
+              0.007739449691228249
+            ],
+            "radii": [
+              0.04690833565833176,
+              0.05161282930026832
+            ],
+            "medianResidual": 0.0015739385132832171,
+            "p90Residual": 0.007019489894138901,
+            "angularBins": 40,
+            "pointCount": 846,
+            "station": 0.016
+          }
+        ],
+        "candidateCenter": [
+          -0.32574965574425047,
+          0.021446405163959906,
+          -1.1444369592853991
+        ],
+        "candidateShift": 0.002406650573776211,
+        "neighborSectionSpread": 0.006245607709546435,
+        "medianSectionResidual": 0.0018218184619483593,
+        "centerlineSections": [
+          {
+            "center": [
+              -0.3404918335103869,
+              0.010253375145356626,
+              -1.175852142443579
+            ],
+            "offsetUV": [
+              -0.005274029678868533,
+              0.011554060845634916
+            ],
+            "radii": [
+              0.04396872440820412,
+              0.05024818590105984
+            ],
+            "medianResidual": 0.002109471624194471,
+            "p90Residual": 0.006768209561447479,
+            "angularBins": 48,
+            "pointCount": 1402,
+            "station": 0.035
+          },
+          {
+            "center": [
+              -0.34993065720669947,
+              0.0037490184121457167,
+              -1.1988109170677101
+            ],
+            "offsetUV": [
+              -0.006526871205121637,
+              0.017205058070433515
+            ],
+            "radii": [
+              0.041245866739719216,
+              0.045600529601070916
+            ],
+            "medianResidual": 0.0027685878650981167,
+            "p90Residual": 0.00819050367191937,
+            "angularBins": 42,
+            "pointCount": 741,
+            "station": 0.06
+          },
+          {
+            "center": [
+              -0.35741603795919175,
+              0.00506736460080911,
+              -1.2227442009938303
+            ],
+            "offsetUV": [
+              -0.005613225661833278,
+              0.01502875547372055
+            ],
+            "radii": [
+              0.04096569187717782,
+              0.043165173541404776
+            ],
+            "medianResidual": 0.00344093423848209,
+            "p90Residual": 0.011281161704246532,
+            "angularBins": 39,
+            "pointCount": 636,
+            "station": 0.085
+          },
+          {
+            "center": [
+              -0.3693753748217747,
+              -0.0003819566753793073,
+              -1.2448509774511707
+            ],
+            "offsetUV": [
+              -0.009526439139293772,
+              0.019624097264979833
+            ],
+            "radii": [
+              0.03926487252053132,
+              0.04402498999616513
+            ],
+            "medianResidual": 0.0036465761197785962,
+            "p90Residual": 0.010285840659431915,
+            "angularBins": 37,
+            "pointCount": 545,
+            "station": 0.11
+          }
+        ],
+        "centerlineDirection": [
+          -0.3746730496525636,
+          -0.12174266236568322,
+          -0.919129386987579
+        ],
+        "centerlineRms": 0.0019461371936988843,
+        "candidateAxis": [
+          0.9260173840295876,
+          0.0,
+          -0.3774808663694086
+        ],
+        "candidateAxisChangeDegrees": 22.177728758133494,
+        "hardwareCaps": {
+          "centers": [
+            [
+              -0.3761652708053589,
+              0.02369825355708599,
+              -1.1205192804336548
+            ],
+            [
+              -0.2680853605270386,
+              0.011696513276547194,
+              -1.1652579307556152
+            ]
+          ],
+          "pointCounts": [
+            211,
+            184
+          ],
+          "extents": [
+            [
+              0.014557451009750366,
+              0.01273861899971962,
+              0.014821290969848633
+            ],
+            [
+              0.012415826320648193,
+              0.015836971811950207,
+              0.01356971263885498
+            ]
+          ],
+          "capSeparation": 0.1175876507468447,
+          "candidatePairCount": 1,
+          "colorSensitivityFits": 4,
+          "centerSensitivity": 0.00027445157958231307,
+          "axisSensitivityDegrees": 0.29701423044794145,
+          "midpoint": [
+            -0.32212531566619873,
+            0.017697383416816592,
+            -1.142888605594635
+          ],
+          "axisTowardPositiveX": [
+            0.919143375957109,
+            -0.10206633268299092,
+            -0.38047065348961356
+          ]
+        },
+        "positiveFlexionConvention": "Positive knee angle moves the lower leg posteriorly (viewer -Y); this is an interaction convention, not a measured mechanical stop.",
+        "appliedShift": 0.006007509493513787,
+        "appliedAxisDegrees": 156.80116890345195,
+        "appliedAxisLineDegrees": 23.198831096548048
+      },
+      "plot": "raw/fusion-work/joint-analysis/right_knee.png",
+      "gaussianPlot": "raw/fusion-work/joint-analysis/right_knee-gaussians.png"
+    },
+    {
+      "id": "right_ankle",
+      "pivotBefore": [
+        -0.46,
+        0.009,
+        -1.53
+      ],
+      "pivotAfter": [
+        -0.4856305420398712,
+        0.010408953530713916,
+        -1.5257173776626587
+      ],
+      "axisBefore": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "axisAfter": [
+        0.9184818129589698,
+        -0.15493270462295963,
+        -0.3638502663209394
+      ],
+      "status": "refined",
+      "confidence": "medium-high",
+      "method": "Located the two visible metal hinge caps as compact low-chroma components in 3D; set the pivot midway between cap centers and the axis through them. Four color-threshold perturbations verify stability. Checked against front/back/side/oblique Gaussian projections. Cap surface centers remain scan estimates, not a calibrated shaft measurement.",
+      "metrics": {
+        "analysisPointCount": 8724,
+        "capturePointCounts": {
+          "front": 2352,
+          "back": 6372
+        },
+        "sections": [
+          {
+            "center": [
+              -0.4753588400515339,
+              0.009288974240180718,
+              -1.5118508731264209
+            ],
+            "offsetUV": [
+              -0.020526892654498245,
+              0.00012230316459086016
+            ],
+            "radii": [
+              0.02464611004972321,
+              0.03648874263850348
+            ],
+            "medianResidual": 0.0013987822242594516,
+            "p90Residual": 0.006363612942008706,
+            "angularBins": 43,
+            "pointCount": 1124,
+            "station": -0.012
+          },
+          {
+            "center": [
+              -0.4816742309377291,
+              0.008675321550640496,
+              -1.5223318418030594
+            ],
+            "offsetUV": [
+              -0.022990711449330858,
+              0.00032486924201275764
+            ],
+            "radii": [
+              0.0337747110060611,
+              0.02984702960300212
+            ],
+            "medianResidual": 0.0025001392918918863,
+            "p90Residual": 0.007398259809879247,
+            "angularBins": 47,
+            "pointCount": 1995,
+            "station": 0
+          },
+          {
+            "center": [
+              -0.48570714854135666,
+              0.009772596918857854,
+              -1.5336813023218738
+            ],
+            "offsetUV": [
+              -0.02301311241588097,
+              -0.0011844981407581993
+            ],
+            "radii": [
+              0.03259150832922155,
+              0.028391068694215205
+            ],
+            "medianResidual": 0.0030592189933945557,
+            "p90Residual": 0.007209357767724249,
+            "angularBins": 44,
+            "pointCount": 1917,
+            "station": 0.012
+          }
+        ],
+        "candidateCenter": [
+          -0.4816742309377291,
+          0.008877768662908502,
+          -1.522373148946888
+        ],
+        "candidateShift": 0.022977294971953017,
+        "neighborSectionSpread": 0.0024502694222765537,
+        "medianSectionResidual": 0.0025001392918918863,
+        "centerlineSections": [],
+        "hardwareCaps": {
+          "centers": [
+            [
+              -0.45237624645233154,
+              0.004799503367394209,
+              -1.5388908386230469
+            ],
+            [
+              -0.5188848376274109,
+              0.016018403694033623,
+              -1.5125439167022705
+            ]
+          ],
+          "pointCounts": [
+            299,
+            105
+          ],
+          "extents": [
+            [
+              0.017044425010681152,
+              0.015645213425159454,
+              0.01628732681274414
+            ],
+            [
+              0.01044851541519165,
+              0.01153572928160429,
+              0.013074398040771484
+            ]
+          ],
+          "capSeparation": 0.07241144052794696,
+          "candidatePairCount": 1,
+          "colorSensitivityFits": 4,
+          "centerSensitivity": 0.0005248262972284945,
+          "axisSensitivityDegrees": 0.3455739472455044,
+          "midpoint": [
+            -0.4856305420398712,
+            0.010408953530713916,
+            -1.5257173776626587
+          ],
+          "axisTowardPositiveX": [
+            0.9184818129589698,
+            -0.15493270462295963,
+            -0.3638502663209394
+          ]
+        },
+        "appliedShift": 0.026024040604671884,
+        "appliedAxisDegrees": 23.294867105787212,
+        "appliedAxisLineDegrees": 23.294867105787212
+      },
+      "plot": "raw/fusion-work/joint-analysis/right_ankle.png",
+      "gaussianPlot": "raw/fusion-work/joint-analysis/right_ankle-gaussians.png"
+    }
+  ],
+  "summary": {
+    "jointCount": 12,
+    "refinedCount": 5,
+    "maximumPivotChange": 0.026024040604671884,
+    "maximumAxisChangeDegrees": 158.01786468617283,
+    "maximumAxisLineChangeDegrees": 23.294867105787212,
+    "preservedRigidWrist": true,
+    "analysisGaussianCount": 691840,
+    "appliedThresholds": {
+      "maxNeighborSpreadForShiftOver002": 0.003,
+      "maxNeighborSectionSpread": 0.009,
+      "maxMedianEllipseResidual": 0.006,
+      "maxCenterlineRms": 0.005,
+      "maxHingeAxisChangeDegrees": 30,
+      "maxHardwareCenterSensitivity": 0.004,
+      "maxHardwareAxisSensitivityDegrees": 4,
+      "maxHardwareMidpointShift": 0.04,
+      "maxShellPivotShift": 0.025
+    }
+  },
+  "annotations": {
+    "schema": "mannequin-joint-annotations",
+    "version": 1,
+    "scene": {
+      "revision": "feature-guided-v11-finger-side-coverage",
+      "sourceHashes": {
+        "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+        "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+      },
+      "coordinateFrame": "fused-viewer-x-y-z",
+      "units": "scan units"
+    },
+    "joints": [
+      {
+        "id": "neck",
+        "label": "Neck",
+        "type": "ball",
+        "parentPart": "torso",
+        "childParts": [
+          "neck",
+          "head"
+        ],
+        "pivot": [
+          0.00509961428650268,
+          0.06098224708266526,
+          -0.045
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "limits": [
+          [
+            -45,
+            45
+          ],
+          [
+            -45,
+            45
+          ],
+          [
+            -60,
+            60
+          ]
+        ],
+        "stiffness": 25,
+        "damping": 7,
+        "notes": "Starter estimate. Check the joint center from the front and side before marking reviewed.",
+        "reviewed": false
+      },
+      {
+        "id": "waist",
+        "label": "Waist / pelvis",
+        "type": "fixed",
+        "parentPart": "torso",
+        "childParts": [
+          "pelvis"
+        ],
+        "pivot": [
+          0.0,
+          0.078,
+          -0.575
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "limits": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "stiffness": 25,
+        "damping": 7,
+        "notes": "Fixed starter connection. Change its type only if this manikin has a movable waist.",
+        "reviewed": false
+      },
+      {
+        "id": "left_shoulder",
+        "label": "Left shoulder",
+        "type": "ball",
+        "parentPart": "torso",
+        "childParts": [
+          "left_upper_arm"
+        ],
+        "pivot": [
+          0.23,
+          0.02,
+          -0.16
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "limits": [
+          [
+            -90,
+            90
+          ],
+          [
+            -90,
+            90
+          ],
+          [
+            -90,
+            90
+          ]
+        ],
+        "stiffness": 25,
+        "damping": 7,
+        "notes": "Starter estimate. Check the joint center from the front and side before marking reviewed.",
+        "reviewed": false
+      },
+      {
+        "id": "left_arm_swivel",
+        "label": "Left arm swivel",
+        "type": "swivel",
+        "parentPart": "left_upper_arm",
+        "childParts": [
+          "left_forearm",
+          "left_hand"
+        ],
+        "pivot": [
+          0.3722547562366865,
+          -0.008709922093973962,
+          -0.27039340269981293
+        ],
+        "axis": [
+          0.6339159206348934,
+          -0.13906095342803715,
+          -0.7607973822229548
+        ],
+        "limits": [
+          [
+            -90,
+            90
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "stiffness": 25,
+        "damping": 7,
+        "notes": "Measured axial collar from the fusion review. Forearm, wrist pad and hand form one rigid body; there is no wrist joint. Confirm the axis and travel limits.",
+        "reviewed": false
+      },
+      {
+        "id": "left_hip",
+        "label": "Left hip",
+        "type": "ball",
+        "parentPart": "pelvis",
+        "childParts": [
+          "left_thigh"
+        ],
+        "pivot": [
+          0.128,
+          0.06,
+          -0.73
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "limits": [
+          [
+            -60,
+            60
+          ],
+          [
+            -45,
+            45
+          ],
+          [
+            -45,
+            45
+          ]
+        ],
+        "stiffness": 25,
+        "damping": 7,
+        "notes": "Starter estimate. Check the joint center from the front and side before marking reviewed.",
+        "reviewed": false
+      },
+      {
+        "id": "left_knee",
+        "label": "Left knee",
+        "type": "hinge",
+        "parentPart": "left_thigh",
+        "childParts": [
+          "left_shin"
+        ],
+        "pivot": [
+          0.3103969693183899,
+          0.01676641113590449,
+          -1.1497683823108673
+        ],
+        "axis": [
+          -0.9273006109298916,
+          0.19632677670795426,
+          -0.31869950379081996
+        ],
+        "limits": [
+          [
+            -5,
+            120
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "stiffness": 25,
+        "damping": 7,
+        "notes": "Starter estimate. Check the joint center from the front and side before marking reviewed.",
+        "reviewed": false
+      },
+      {
+        "id": "left_ankle",
+        "label": "Left ankle",
+        "type": "hinge",
+        "parentPart": "left_shin",
+        "childParts": [
+          "left_foot"
+        ],
+        "pivot": [
+          0.45564060658216476,
+          0.021015675272792578,
+          -1.5379415154457092
+        ],
+        "axis": [
+          0.9506584464739496,
+          -0.09944104982730105,
+          0.29387071265606035
+        ],
+        "limits": [
+          [
+            -35,
+            35
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "stiffness": 25,
+        "damping": 7,
+        "notes": "Starter estimate. Check the joint center from the front and side before marking reviewed.",
+        "reviewed": false
+      },
+      {
+        "id": "right_shoulder",
+        "label": "Right shoulder",
+        "type": "ball",
+        "parentPart": "torso",
+        "childParts": [
+          "right_upper_arm"
+        ],
+        "pivot": [
+          -0.23,
+          0.056,
+          -0.16
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "limits": [
+          [
+            -90,
+            90
+          ],
+          [
+            -90,
+            90
+          ],
+          [
+            -90,
+            90
+          ]
+        ],
+        "stiffness": 25,
+        "damping": 7,
+        "notes": "Starter estimate. Check the joint center from the front and side before marking reviewed.",
+        "reviewed": false
+      },
+      {
+        "id": "right_arm_swivel",
+        "label": "Right arm swivel",
+        "type": "swivel",
+        "parentPart": "right_upper_arm",
+        "childParts": [
+          "right_forearm",
+          "right_hand"
+        ],
+        "pivot": [
+          -0.3590852533890853,
+          0.03833235509794086,
+          -0.27896079951802905
+        ],
+        "axis": [
+          -0.6249087788154958,
+          -0.1817470761592546,
+          -0.7592476660924866
+        ],
+        "limits": [
+          [
+            -90,
+            90
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "stiffness": 25,
+        "damping": 7,
+        "notes": "Measured axial collar from the fusion review. Forearm, wrist pad and hand form one rigid body; there is no wrist joint. Confirm the axis and travel limits.",
+        "reviewed": false
+      },
+      {
+        "id": "right_hip",
+        "label": "Right hip",
+        "type": "ball",
+        "parentPart": "pelvis",
+        "childParts": [
+          "right_thigh"
+        ],
+        "pivot": [
+          -0.128,
+          0.064,
+          -0.73
+        ],
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "limits": [
+          [
+            -60,
+            60
+          ],
+          [
+            -45,
+            45
+          ],
+          [
+            -45,
+            45
+          ]
+        ],
+        "stiffness": 25,
+        "damping": 7,
+        "notes": "Starter estimate. Check the joint center from the front and side before marking reviewed.",
+        "reviewed": false
+      },
+      {
+        "id": "right_knee",
+        "label": "Right knee",
+        "type": "hinge",
+        "parentPart": "right_thigh",
+        "childParts": [
+          "right_shin"
+        ],
+        "pivot": [
+          -0.32212531566619873,
+          0.017697383416816592,
+          -1.142888605594635
+        ],
+        "axis": [
+          -0.919143375957109,
+          0.10206633268299092,
+          0.38047065348961356
+        ],
+        "limits": [
+          [
+            -5,
+            120
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "stiffness": 25,
+        "damping": 7,
+        "notes": "Starter estimate. Check the joint center from the front and side before marking reviewed.",
+        "reviewed": false
+      },
+      {
+        "id": "right_ankle",
+        "label": "Right ankle",
+        "type": "hinge",
+        "parentPart": "right_shin",
+        "childParts": [
+          "right_foot"
+        ],
+        "pivot": [
+          -0.4856305420398712,
+          0.010408953530713916,
+          -1.5257173776626587
+        ],
+        "axis": [
+          0.9184818129589698,
+          -0.15493270462295963,
+          -0.3638502663209394
+        ],
+        "limits": [
+          [
+            -35,
+            35
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "stiffness": 25,
+        "damping": 7,
+        "notes": "Starter estimate. Check the joint center from the front and side before marking reviewed.",
+        "reviewed": false
+      }
+    ],
+    "updatedAt": "2026-09-20T20:13:27.275Z"
+  },
+  "sourceArtifactHashes": {
+    "viewers/mannequin-fusion/fusion.json": "912edf03be41de3f6f1fecf50d5cef9a28c31efc41f65f831fb2ab044493f4c1",
+    "viewers/mannequin-fusion/front.bin": "e50c256a70cca00734ad50d6d2da0130b1f32fa3e4c956b440837d1d995aed7f",
+    "viewers/mannequin-fusion/front-labels.bin": "e4aea061c219e57f751320c76e4db49e3eefcfb64b36f8176ae2e6cc8b61fb62",
+    "viewers/mannequin-fusion/back.bin": "39e1e05019b317a0c21aa3cc8b15c6a1c8b3c8b4023fab23dce3df94a0e5dd50",
+    "viewers/mannequin-fusion/back-labels.bin": "5dcc58804879bb83734e4078c77eb09947dd4a6c2cc9564ece6f619b917366ed"
+  }
+}

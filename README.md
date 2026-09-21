@@ -160,6 +160,101 @@ bug, since it does exist in Safari 26.
 
 ## Viewing locally
 
+### Articulate the complete fused manikin
+
+Open the [fused articulation page](http://127.0.0.1:8766/viewers/mannequin-articulation/)
+to pose all 2,698,682 fused Gaussians using the saved joint map. It includes ball
+shoulders and hips, measured axial arm swivels, knee/ankle hinges, adjustable
+spring response, pose export/import and multiple inspection views. Both captures
+move together, and each forearm, wrist pad and hand remains one rigid group.
+The derived geometry audit uses opposing metal hinge caps for knee/ankle axes
+and leaves hidden shoulder/hip centers at the accepted annotations. The original
+joint map and scan files are preserved. See the
+[articulation guide](viewers/mannequin-articulation/README.md).
+
+### Local manikin articulation lab
+
+`viewers/mannequin-rig/` adds editable ball and hinge joints, angular springs,
+joint-placement controls and body-part segmentation to the static manikin scan.
+The raw PLY remains unchanged. Start `python3 tools/serve.py 8766` from this
+directory and open [the local lab](http://localhost:8766/viewers/mannequin-rig/).
+See the [tuning guide](viewers/mannequin-rig/README.md) for joint stiffness,
+pivot/axis placement, segmentation painting, rig export/import and scan quality.
+
+### Local front/back manikin fusion
+
+Open the [joint annotation tool](http://127.0.0.1:8766/viewers/mannequin-joints/)
+to mark centers, rotation axes, movement limits and stiffness on the current
+fused scan. Start in Front, check depth from a side view, then mark each joint
+checked. **Save for articulation** writes
+`raw/mannequin-fused/joint-annotations.json` locally; the preceding save is kept
+as `joint-annotations.previous.json`. The 12 starter joints are editable and
+unreviewed, and both forearm/hand pairs stay rigid. See the
+[annotation guide](viewers/mannequin-joints/README.md). This page records the
+joint map consumed by the fused articulation page; the annotation page itself
+does not deform the scan.
+
+`viewers/mannequin-fusion/` combines the two manikin captures using matched
+shoulder pads, torso ports, molded ears, and knee/ankle hardware at one shared
+scale. Version 11 (`feature-guided-v11-finger-side-coverage`) restores a narrow
+strip of original-source Gaussians along the finger sides and corrects local
+color outliers. It keeps the version 10 alignment: the anatomical right forearm,
+wrist pad and hand are one rigid body, with no wrist joint. No finger positions,
+Gaussian shapes or arm poses change in this refinement.
+
+Version 7's restored left fingertips and version 5's joint shoulder-pad/collar
+fit and continuous grey cable remain unchanged, along with earlier clothing,
+leg and foot cleanup. Adjustable
+posterior-hair fullness changes appearance and can be disabled with
+`hairFullness.amount: 0`. `colorRepairStrength: 0` disables both sole and
+finger-side color repairs; remove only their specific `colorOverrides` entries
+to disable either separately. These corrections do not recover missing scan detail.
+
+Open [Fusion Review](http://127.0.0.1:8766/viewers/mannequin-fusion/) using the same
+local server and inspect the [finger-side comparison](http://127.0.0.1:8766/raw/mannequin-fused/finger-side-review/).
+Select a hand, choose **Frame selection**, then **Feet**, and orbit toward the
+palm and back. Earlier [left fingertip renders](http://127.0.0.1:8766/raw/mannequin-fused/left-hand-review/),
+[both-hand underside renders](http://127.0.0.1:8766/raw/mannequin-fused/hand-review/),
+[grey-cable arm renders](http://127.0.0.1:8766/raw/mannequin-fused/cable-review/)
+and [feature-alignment renders](http://127.0.0.1:8766/raw/mannequin-fused/render-review/)
+remain available. Regenerate matching before/after views of the finger sides,
+wrist pad and hand underside:
+
+```sh
+.venv-fusion/bin/python -B tools/fusion/make_review.py --title "Finger sides: original scan coverage restored" \
+  --before raw/fusion-work/refinement-v11/baseline --after raw/mannequin-fused \
+  --out raw/mannequin-fused/finger-side-review --size 800 \
+  --regions right-finger-sides,right-wrist-pad,right-hand-under
+```
+
+The original PLYs remain unchanged; the full export is
+`raw/mannequin-fused/mannequin_fused.ply`. The right pad spans hand and forearm
+labels; their earlier transforms differed by about 20.96°. The active recipe's
+`rigidParts: {"right_hand": "right_forearm"}` enforces the exact same transform
+for every right-hand and forearm Gaussian. Tune
+`adjustments.right_forearm.twistDegrees` to rotate the complete assembly about
+the existing collar axis. Independent hand rotation, translation and deformation
+are rejected. The original pad's continuity supplies a constraint even though
+the front scan has no reliable corresponding dorsal pad rim.
+
+The `surfaceRestorations` rules restore reviewed source IDs for the left fingertips
+and right finger sides
+before attenuation and exempt those exact IDs from cleanup, never rescuing
+quality-filter rejects. `leftHandDigitAlignment.amount: 0.0033` controls its
+separate lengthwise shift; `0` disables only that shift. The retained left-hand shift
+updates its Gaussian covariance. The right-side restoration preserves original
+geometry and applies a separately switchable local color repair. Source softness and
+some seams remain visible from grazing angles.
+
+See the [fusion guide](viewers/mannequin-fusion/README.md) for regenerating the
+export and tuning wrist continuity, segmentation, feature transforms, source
+quality, cleanup masks, fingertip restoration and hair fullness. Editing landmarks alone does not replace a reviewed
+feature transform. The fusion viewer reviews a static scan; the separate
+fused articulation page moves it. Different cloth folds and incomplete source
+surfaces can still leave seams.
+
+### Scene viewers
+
 The viewers load scene data with `fetch`, so they must be served over HTTP —
 opening `index.html` via `file://` will not work:
 

@@ -1,0 +1,532 @@
+{
+  "version": 1,
+  "sourceHashes": {
+    "front": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+    "back": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+  },
+  "method": "Manually identified molded ear canal, then photometric rigid registration of pinna across anisotropic Gaussian source renders",
+  "baselineRenderTransform": {
+    "scale": 0.9061961360368564,
+    "rotation": [
+      [
+        -0.9994169185607571,
+        0.010224555858525382,
+        0.03257731345610457
+      ],
+      [
+        -0.010512029415780241,
+        -0.9999072003804462,
+        -0.008665325435379654
+      ],
+      [
+        0.0324856911898634,
+        -0.009002726522290942,
+        0.9994316538828866
+      ]
+    ],
+    "translation": [
+      0.01272988205469758,
+      -0.007479440119759692,
+      0.36021257910330695
+    ]
+  },
+  "frontEarCenter": [
+    -0.08083317,
+    -0.0351,
+    -0.12765
+  ],
+  "backNativeEarCenter": [
+    0.10307096319348906,
+    0.034859490698329595,
+    -0.5061611477093988
+  ],
+  "earPhotometricRegistration": {
+    "feature": "Right ear canal and molded pinna; actual anisotropic source renders",
+    "frontCenterPixels": [
+      490,
+      515
+    ],
+    "backCenterPixels": [
+      493,
+      582
+    ],
+    "projectionCenter": [
+      0,
+      -0.04,
+      -0.135
+    ],
+    "span": 0.49,
+    "resolution": 1000,
+    "pixelMask": "ellipse radius43x38 centered canal, x>-25, originalcrop454:548x480:558",
+    "pitchDegrees": 28.883189604580352,
+    "backPixelOffset": [
+      -1.0807456238239883,
+      -1.3971710881680777
+    ],
+    "meanCappedPhotometricResidual": 0.03717111027235935,
+    "initialResidual": 0.055809072157075555,
+    "sweep": [
+      [
+        0,
+        0.055809072157075555
+      ],
+      [
+        2,
+        0.054019902148118075
+      ],
+      [
+        4,
+        0.05247795896401581
+      ],
+      [
+        6,
+        0.05100010438447934
+      ],
+      [
+        8,
+        0.04967994224467875
+      ],
+      [
+        10,
+        0.04840502310831474
+      ],
+      [
+        12,
+        0.04725792375233532
+      ],
+      [
+        14,
+        0.046178866078167395
+      ],
+      [
+        16,
+        0.04503384243041603
+      ],
+      [
+        18,
+        0.04393302091337661
+      ],
+      [
+        20,
+        0.042926406997004854
+      ],
+      [
+        22,
+        0.04201920703349135
+      ],
+      [
+        24,
+        0.04112689471908469
+      ],
+      [
+        26,
+        0.0404037193372524
+      ],
+      [
+        28,
+        0.040088733554784095
+      ],
+      [
+        30,
+        0.04040850799716768
+      ],
+      [
+        32,
+        0.041238044923023486
+      ],
+      [
+        34,
+        0.04252229904113661
+      ],
+      [
+        36,
+        0.044034889633484134
+      ],
+      [
+        38,
+        0.04555762940942018
+      ],
+      [
+        40,
+        0.047100042032962974
+      ]
+    ],
+    "fitAtScale928": {
+      "pitchDegrees": 28.89138904730111,
+      "backPixelOffset": [
+        -1.0134009084431177,
+        -1.3035524527766293
+      ],
+      "residual": 0.03588302019834299,
+      "renderRelativeScale": 1.0240608661812445
+    }
+  },
+  "finalPitchCorrectionDegrees": 28.88799966097222,
+  "finalScale": 0.928,
+  "sourceToFrontRaw": {
+    "scale": 0.928,
+    "rotation": [
+      [
+        -0.999416918560757,
+        0.01022455585852538,
+        0.03257731345610456
+      ],
+      [
+        -0.024897777972503362,
+        -0.8711352686401165,
+        -0.4904115051498535
+      ],
+      [
+        0.023365006881088734,
+        -0.49093665802098024,
+        0.8708818945555351
+      ]
+    ],
+    "translation": [
+      0.029732287523297485,
+      -0.23489253554612474,
+      0.295065254196632
+    ]
+  },
+  "cervicalSegmentation": {
+    "front": {
+      "referenceTransform": {
+        "scale": 1,
+        "rotation": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "skullPlane": {
+        "point": [
+          0.0,
+          -0.06,
+          -0.072
+        ],
+        "normal": [
+          -0.03,
+          -0.068,
+          1.0
+        ]
+      },
+      "cuffPlane": {
+        "point": [
+          0.0,
+          -0.06,
+          0.012
+        ],
+        "normal": [
+          -0.015,
+          -0.03,
+          1.0
+        ]
+      },
+      "cuffRadialCenter": [
+        0.004,
+        -0.062
+      ],
+      "cuffRadialRadii": [
+        0.102,
+        0.09
+      ],
+      "nativeSkullPlane": {
+        "point": [
+          0.0,
+          -0.06,
+          -0.072
+        ],
+        "normal": [
+          -0.03,
+          -0.068,
+          1.0
+        ]
+      },
+      "nativeCuffPlane": {
+        "point": [
+          0.0,
+          -0.06,
+          0.012
+        ],
+        "normal": [
+          -0.015,
+          -0.03,
+          1.0
+        ]
+      },
+      "reason": "Skull shell seam and complete upper cervical cuff reassigned as whole surfaces; cuff lower seam source-specific because sleeve bends around the lower neck joint."
+    },
+    "back": {
+      "referenceTransform": {
+        "scale": 0.928,
+        "rotation": [
+          [
+            -0.999416918560757,
+            0.01022455585852538,
+            0.03257731345610456
+          ],
+          [
+            -0.024897777972503362,
+            -0.8711352686401165,
+            -0.4904115051498535
+          ],
+          [
+            0.023365006881088734,
+            -0.49093665802098024,
+            0.8708818945555351
+          ]
+        ],
+        "translation": [
+          0.029732287523297485,
+          -0.23489253554612474,
+          0.295065254196632
+        ]
+      },
+      "skullPlane": {
+        "point": [
+          0.0,
+          -0.06,
+          -0.072
+        ],
+        "normal": [
+          -0.03,
+          -0.068,
+          1.0
+        ]
+      },
+      "cuffPlane": {
+        "point": [
+          0.0,
+          -0.06,
+          0.012
+        ],
+        "normal": [
+          -0.015,
+          -0.03,
+          1.0
+        ]
+      },
+      "cuffRadialCenter": [
+        0.004,
+        -0.062
+      ],
+      "cuffRadialRadii": [
+        0.102,
+        0.09
+      ],
+      "nativeSkullPlane": {
+        "point": [
+          0.01808624296240081,
+          0.029683980388155066,
+          -0.43794007936135204
+        ],
+        "normal": [
+          0.055040563340041676,
+          -0.43200619642920807,
+          0.903252557502042
+        ]
+      },
+      "nativeCuffPlane": {
+        "point": [
+          0.020201178930085568,
+          -0.014754251587881946,
+          -0.35911025269899755
+        ],
+        "normal": [
+          0.03910319399867519,
+          -0.46495596829965463,
+          0.8851055800081892
+        ]
+      },
+      "reason": "Posterior Gaussian closeup resolves the brown cuff edge at reference Z -0.010..0.011 and metallic torso bracket beginning near 0.012. Preserve that rigid-body boundary; the bracket must remain torso."
+    }
+  },
+  "finalPhotometricRegistration": {
+    "pitchDegrees": 28.88799966097222,
+    "backPixelOffset": [
+      -1.0137310496480982,
+      -1.302355799831794
+    ],
+    "residual": 0.03588302236287512,
+    "baselineResidual": 0.05505334330492926,
+    "renderRelativeScale": 1.0240608661812445,
+    "sweep": [
+      [
+        0,
+        0.05505334330492926
+      ],
+      [
+        2,
+        0.05334649852059018
+      ],
+      [
+        4,
+        0.051719963869627544
+      ],
+      [
+        6,
+        0.05019052515513498
+      ],
+      [
+        8,
+        0.04878688906173192
+      ],
+      [
+        10,
+        0.04747691670163045
+      ],
+      [
+        12,
+        0.04625976343878422
+      ],
+      [
+        14,
+        0.04515796500133746
+      ],
+      [
+        16,
+        0.044012056304644775
+      ],
+      [
+        18,
+        0.042874747860354154
+      ],
+      [
+        20,
+        0.04186689675718733
+      ],
+      [
+        22,
+        0.041010314371008806
+      ],
+      [
+        24,
+        0.0402205616853169
+      ],
+      [
+        26,
+        0.03966042959175938
+      ],
+      [
+        28,
+        0.03959226423292292
+      ],
+      [
+        30,
+        0.04008477923534189
+      ],
+      [
+        32,
+        0.04109439889940901
+      ],
+      [
+        34,
+        0.04247145318370505
+      ],
+      [
+        36,
+        0.04412223466410533
+      ],
+      [
+        38,
+        0.04573646647109685
+      ],
+      [
+        40,
+        0.04729660056916228
+      ]
+    ],
+    "optimizerConverged": true,
+    "feature": "Molded right ear canal and surrounding pinna; projected hair region excluded"
+  },
+  "ghostCleanup": {
+    "front": {
+      "min": [
+        -0.12,
+        -0.02,
+        0.01
+      ],
+      "max": [
+        0.12,
+        0.5,
+        0.08
+      ],
+      "reason": "Posterior contact-side front cervical torso ghosts overlay the real back bracket. Confirmed by 15 anisotropic Gaussian renders: bounded box removes artifacts while preserving frontal and side neck surfaces.",
+      "candidateRejectedTorsoGaussians": 1263,
+      "comparisonNoDonorRescueRejected": 1368,
+      "evidence": "raw/fusion-work/head-refinement/cervical-cleanup-comparison.png"
+    },
+    "back": {
+      "min": [
+        -0.015,
+        0.06,
+        -0.445
+      ],
+      "max": [
+        0.1,
+        0.2,
+        -0.41
+      ],
+      "reason": "Verified in 10 anisotropic Gaussian renders: original back anterior contact edge near the neck creates floating torso flecks and dark strokes on the anterior sleeve. Bounded removal clears artifacts, preserves real front neck, both side silhouettes, posterior cuff and metallic torso bracket. Back primary observed surface has native Y<0 and is unaffected.",
+      "identifiedFloatingGaussians": 142,
+      "nativeIdentifiedBounds": {
+        "min": [
+          -0.00315181,
+          0.1144355,
+          -0.4350231
+        ],
+        "max": [
+          0.08416263,
+          0.1697346,
+          -0.42147508
+        ]
+      },
+      "candidateRejectedGaussians": 365,
+      "candidateRejectedParts": {
+        "torso": 365
+      },
+      "evidence": "raw/fusion-work/head-refinement/cervical-contact-final.png",
+      "thresholdSweep": [
+        {
+          "minimumNativeY": 0.105,
+          "rejected": 187,
+          "result": "Floating strip partly remains"
+        },
+        {
+          "minimumNativeY": 0.075,
+          "rejected": 347,
+          "result": "Small front sleeve mark remains"
+        },
+        {
+          "minimumNativeY": 0.06,
+          "rejected": 384,
+          "result": "Broad diagnostic cleared frontal sleeve; final tighter X/Z retains unrelated head samples."
+        }
+      ],
+      "tightBoundsReason": "Root narrowed X/Z to the identified native torso fleck bounds with margin. At minY 0.06, tight bounds remove365 torso Gaussians while preserving19 unrelated head Gaussians from the broad diagnostic trial."
+    }
+  },
+  "reviewNotes": [
+    "Matching molded ear canal and pinna constrains the missing skull pitch; a hair-only nearest-surface fit slid along the smooth hair and was rejected.",
+    "Entire upper cervical cuff is segmented at visible skull and cuff seams and follows the skull rigidly.",
+    "Back cuff lower seam at reference Z 0.012 preserves the metallic bracket on the torso. An earlier 0.040 trial incorrectly reassigned the bracket and was rejected.",
+    "Both captured hair silhouettes were inspected from front, back, both sides and oblique cameras using full anisotropic Gaussian covariance and opacity. Remaining flat areas of the wig also occur in the original posterior capture; no invented volume was added."
+  ]
+}

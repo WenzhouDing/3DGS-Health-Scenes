@@ -1,0 +1,1109 @@
+{
+  "version": 1,
+  "description": "Starter rig estimated from the scan. Coordinates: x = source x, y = -source y (above mattress), z = -source z (toward head). Units are uncalibrated source scan units. Segment volumes and pivots require visual refinement; Side labels approximate mannequin anatomy: left is source +X, right is source -X; confirm against your own convention. Right arm collar updated from the front scan ring fit: axial swivel only. Its +/-90 degree limits are editable starter limits, not measured mechanical stops. Grey-cable arm (anatomical left) uses its own measured collar with axial swivel only; +/-90 degree starter limits remain editable.",
+  "joints": [
+    {
+      "id": "torso",
+      "label": "Torso (fixed base)",
+      "parent": null,
+      "pivot": [
+        0,
+        0.075,
+        -0.58
+      ],
+      "type": "fixed",
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "frame": [
+        0,
+        0,
+        0
+      ],
+      "angles": [
+        0,
+        0,
+        0
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "limits": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "stiffness": 28,
+      "damping": 8,
+      "inertia": 1
+    },
+    {
+      "id": "neck",
+      "label": "Neck / head",
+      "parent": "torso",
+      "pivot": [
+        0.005,
+        0.075,
+        -0.07
+      ],
+      "type": "ball",
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "frame": [
+        0,
+        0,
+        0
+      ],
+      "angles": [
+        0,
+        0,
+        0
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "limits": [
+        [
+          -40,
+          50
+        ],
+        [
+          -70,
+          70
+        ],
+        [
+          -40,
+          40
+        ]
+      ],
+      "stiffness": 18,
+      "damping": 5,
+      "inertia": 0.5
+    },
+    {
+      "id": "right_shoulder",
+      "label": "Right shoulder (ball)",
+      "parent": "torso",
+      "pivot": [
+        -0.23,
+        0.06,
+        -0.165
+      ],
+      "type": "ball",
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "frame": [
+        0,
+        0,
+        0
+      ],
+      "angles": [
+        0,
+        0,
+        0
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "limits": [
+        [
+          -140,
+          140
+        ],
+        [
+          -110,
+          110
+        ],
+        [
+          -110,
+          110
+        ]
+      ],
+      "stiffness": 24,
+      "damping": 7,
+      "inertia": 1
+    },
+    {
+      "id": "right_elbow",
+      "label": "Right arm swivel (axial)",
+      "parent": "right_shoulder",
+      "pivot": [
+        -0.3590852533890853,
+        0.03833235509794086,
+        -0.27896079951802905
+      ],
+      "type": "hinge",
+      "axis": [
+        -0.6249087788154958,
+        -0.1817470761592546,
+        -0.7592476660924866
+      ],
+      "frame": [
+        0,
+        0,
+        0
+      ],
+      "angles": [
+        0,
+        0,
+        0
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "limits": [
+        [
+          -90,
+          90
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "stiffness": 28,
+      "damping": 7,
+      "inertia": 0.65,
+      "motion": "axial"
+    },
+    {
+      "id": "right_wrist",
+      "label": "Right wrist (hinge)",
+      "parent": "right_elbow",
+      "pivot": [
+        -0.685,
+        -0.012,
+        -0.58
+      ],
+      "type": "hinge",
+      "axis": [
+        0.6899047997060077,
+        0.0,
+        -0.7239001086770284
+      ],
+      "frame": [
+        0,
+        0,
+        0
+      ],
+      "angles": [
+        0,
+        0,
+        0
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "limits": [
+        [
+          -65,
+          65
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "stiffness": 16,
+      "damping": 4,
+      "inertia": 0.2
+    },
+    {
+      "id": "right_hip",
+      "label": "Right hip (ball)",
+      "parent": "torso",
+      "pivot": [
+        -0.128,
+        0.08,
+        -0.73
+      ],
+      "type": "ball",
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "frame": [
+        0,
+        0,
+        0
+      ],
+      "angles": [
+        0,
+        0,
+        0
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "limits": [
+        [
+          -110,
+          110
+        ],
+        [
+          -55,
+          55
+        ],
+        [
+          -60,
+          60
+        ]
+      ],
+      "stiffness": 35,
+      "damping": 11,
+      "inertia": 1.5
+    },
+    {
+      "id": "right_knee",
+      "label": "Right knee (hinge)",
+      "parent": "right_hip",
+      "pivot": [
+        -0.307,
+        0.024,
+        -1.12
+      ],
+      "type": "hinge",
+      "axis": [
+        0.9450217357498862,
+        0.0,
+        -0.32700752125948446
+      ],
+      "frame": [
+        0,
+        0,
+        0
+      ],
+      "angles": [
+        0,
+        0,
+        0
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "limits": [
+        [
+          -5,
+          140
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "stiffness": 30,
+      "damping": 8,
+      "inertia": 0.9
+    },
+    {
+      "id": "right_ankle",
+      "label": "Right ankle (hinge)",
+      "parent": "right_knee",
+      "pivot": [
+        -0.455,
+        -0.013,
+        -1.53
+      ],
+      "type": "hinge",
+      "axis": [
+        0.9450217357498862,
+        0.0,
+        -0.32700752125948446
+      ],
+      "frame": [
+        0,
+        0,
+        0
+      ],
+      "angles": [
+        0,
+        0,
+        0
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "limits": [
+        [
+          -40,
+          45
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "stiffness": 20,
+      "damping": 5,
+      "inertia": 0.3
+    },
+    {
+      "id": "left_shoulder",
+      "label": "Left shoulder (ball)",
+      "parent": "torso",
+      "pivot": [
+        0.23,
+        0.018,
+        -0.165
+      ],
+      "type": "ball",
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "frame": [
+        0,
+        0,
+        0
+      ],
+      "angles": [
+        0,
+        0,
+        0
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "limits": [
+        [
+          -140,
+          140
+        ],
+        [
+          -110,
+          110
+        ],
+        [
+          -110,
+          110
+        ]
+      ],
+      "stiffness": 24,
+      "damping": 7,
+      "inertia": 1
+    },
+    {
+      "id": "left_elbow",
+      "label": "Grey-cable arm swivel (left)",
+      "parent": "left_shoulder",
+      "pivot": [
+        0.3722547562366865,
+        -0.008709922093973962,
+        -0.27039340269981293
+      ],
+      "type": "hinge",
+      "axis": [
+        0.6339159206348934,
+        -0.13906095342803715,
+        -0.7607973822229548
+      ],
+      "frame": [
+        0,
+        0,
+        0
+      ],
+      "angles": [
+        0,
+        0,
+        0
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "limits": [
+        [
+          -90,
+          90
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "stiffness": 28,
+      "damping": 7,
+      "inertia": 0.65,
+      "motion": "axial"
+    },
+    {
+      "id": "left_wrist",
+      "label": "Left wrist (hinge)",
+      "parent": "left_elbow",
+      "pivot": [
+        0.685,
+        -0.055,
+        -0.58
+      ],
+      "type": "hinge",
+      "axis": [
+        0.6899047997060077,
+        0.0,
+        0.7239001086770284
+      ],
+      "frame": [
+        0,
+        0,
+        0
+      ],
+      "angles": [
+        0,
+        0,
+        0
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "limits": [
+        [
+          -65,
+          65
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "stiffness": 16,
+      "damping": 4,
+      "inertia": 0.2
+    },
+    {
+      "id": "left_hip",
+      "label": "Left hip (ball)",
+      "parent": "torso",
+      "pivot": [
+        0.128,
+        0.08,
+        -0.73
+      ],
+      "type": "ball",
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "frame": [
+        0,
+        0,
+        0
+      ],
+      "angles": [
+        0,
+        0,
+        0
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "limits": [
+        [
+          -110,
+          110
+        ],
+        [
+          -55,
+          55
+        ],
+        [
+          -60,
+          60
+        ]
+      ],
+      "stiffness": 35,
+      "damping": 11,
+      "inertia": 1.5
+    },
+    {
+      "id": "left_knee",
+      "label": "Left knee (hinge)",
+      "parent": "left_hip",
+      "pivot": [
+        0.307,
+        0.024,
+        -1.12
+      ],
+      "type": "hinge",
+      "axis": [
+        0.9450217357498862,
+        0.0,
+        0.32700752125948446
+      ],
+      "frame": [
+        0,
+        0,
+        0
+      ],
+      "angles": [
+        0,
+        0,
+        0
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "limits": [
+        [
+          -5,
+          140
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "stiffness": 30,
+      "damping": 8,
+      "inertia": 0.9
+    },
+    {
+      "id": "left_ankle",
+      "label": "Left ankle (hinge)",
+      "parent": "left_knee",
+      "pivot": [
+        0.455,
+        -0.013,
+        -1.53
+      ],
+      "type": "hinge",
+      "axis": [
+        0.9450217357498862,
+        0.0,
+        0.32700752125948446
+      ],
+      "frame": [
+        0,
+        0,
+        0
+      ],
+      "angles": [
+        0,
+        0,
+        0
+      ],
+      "target": [
+        0,
+        0,
+        0
+      ],
+      "limits": [
+        [
+          -40,
+          45
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "stiffness": 20,
+      "damping": 5,
+      "inertia": 0.3
+    }
+  ],
+  "segments": [
+    {
+      "id": "environment",
+      "label": "Mattress / unassigned",
+      "joint": null,
+      "color": [
+        0.42,
+        0.47,
+        0.52
+      ],
+      "shapes": []
+    },
+    {
+      "id": "torso",
+      "label": "Chest / abdomen",
+      "joint": "torso",
+      "color": [
+        0.27,
+        0.75,
+        0.86
+      ],
+      "shapes": [
+        {
+          "type": "box",
+          "min": [
+            -0.2,
+            0.006,
+            -0.605
+          ],
+          "max": [
+            0.205,
+            0.235,
+            -0.065
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pelvis",
+      "label": "Pelvis / shorts center",
+      "joint": "torso",
+      "color": [
+        0.29,
+        0.55,
+        0.88
+      ],
+      "shapes": [
+        {
+          "type": "box",
+          "min": [
+            -0.205,
+            0.005,
+            -0.91
+          ],
+          "max": [
+            0.205,
+            0.225,
+            -0.565
+          ]
+        }
+      ]
+    },
+    {
+      "id": "head",
+      "label": "Head and neck",
+      "joint": "neck",
+      "color": [
+        0.92,
+        0.72,
+        0.24
+      ],
+      "shapes": [
+        {
+          "type": "capsule",
+          "a": [
+            0.008,
+            0.1,
+            0.025
+          ],
+          "b": [
+            0.005,
+            0.075,
+            0.245
+          ],
+          "radius": 0.116
+        }
+      ]
+    },
+    {
+      "id": "right_upper_arm",
+      "label": "Right upper arm",
+      "joint": "right_shoulder",
+      "color": [
+        0.9,
+        0.35,
+        0.43
+      ],
+      "shapes": [
+        {
+          "type": "capsule",
+          "a": [
+            -0.23,
+            0.06,
+            -0.165
+          ],
+          "b": [
+            -0.3590852533890853,
+            0.03833235509794086,
+            -0.27896079951802905
+          ],
+          "radius": 0.068
+        }
+      ]
+    },
+    {
+      "id": "right_forearm",
+      "label": "Right forearm",
+      "joint": "right_elbow",
+      "color": [
+        1.0,
+        0.44999999999999996,
+        0.53
+      ],
+      "shapes": [
+        {
+          "type": "capsule",
+          "a": [
+            -0.3590852533890853,
+            0.03833235509794086,
+            -0.27896079951802905
+          ],
+          "b": [
+            -0.685,
+            -0.012,
+            -0.58
+          ],
+          "radius": 0.059
+        }
+      ]
+    },
+    {
+      "id": "right_hand",
+      "label": "Right hand",
+      "joint": "right_wrist",
+      "color": [
+        1,
+        0.57,
+        0.65
+      ],
+      "shapes": [
+        {
+          "type": "capsule",
+          "a": [
+            -0.685,
+            -0.012,
+            -0.58
+          ],
+          "b": [
+            -0.804,
+            -0.065,
+            -0.704
+          ],
+          "radius": 0.064
+        }
+      ]
+    },
+    {
+      "id": "right_thigh",
+      "label": "Right thigh",
+      "joint": "right_hip",
+      "color": [
+        0.738,
+        0.287,
+        0.56
+      ],
+      "shapes": [
+        {
+          "type": "capsule",
+          "a": [
+            -0.128,
+            0.08,
+            -0.73
+          ],
+          "b": [
+            -0.244,
+            0.075,
+            -0.97
+          ],
+          "radius": 0.119
+        },
+        {
+          "type": "capsule",
+          "a": [
+            -0.244,
+            0.075,
+            -0.97
+          ],
+          "b": [
+            -0.307,
+            0.024,
+            -1.12
+          ],
+          "radius": 0.081
+        }
+      ]
+    },
+    {
+      "id": "right_shin",
+      "label": "Right lower leg",
+      "joint": "right_knee",
+      "color": [
+        0.648,
+        0.44999999999999996,
+        0.43
+      ],
+      "shapes": [
+        {
+          "type": "capsule",
+          "a": [
+            -0.307,
+            0.033,
+            -1.12
+          ],
+          "b": [
+            -0.455,
+            0.005,
+            -1.53
+          ],
+          "radius": 0.064
+        }
+      ]
+    },
+    {
+      "id": "right_foot",
+      "label": "Right foot",
+      "joint": "right_ankle",
+      "color": [
+        1,
+        0.294,
+        0.59
+      ],
+      "shapes": [
+        {
+          "type": "capsule",
+          "a": [
+            -0.455,
+            -0.013,
+            -1.53
+          ],
+          "b": [
+            -0.505,
+            0.12,
+            -1.65
+          ],
+          "radius": 0.073
+        }
+      ]
+    },
+    {
+      "id": "left_upper_arm",
+      "label": "Left upper arm",
+      "joint": "left_shoulder",
+      "color": [
+        0.36,
+        0.76,
+        0.5
+      ],
+      "shapes": [
+        {
+          "type": "capsule",
+          "a": [
+            0.23,
+            0.018,
+            -0.165
+          ],
+          "b": [
+            0.3722547562366865,
+            -0.008709922093973962,
+            -0.27039340269981293
+          ],
+          "radius": 0.068
+        }
+      ]
+    },
+    {
+      "id": "left_forearm",
+      "label": "Left forearm",
+      "joint": "left_elbow",
+      "color": [
+        0.45999999999999996,
+        0.86,
+        0.6
+      ],
+      "shapes": [
+        {
+          "type": "capsule",
+          "a": [
+            0.3722547562366865,
+            -0.008709922093973962,
+            -0.27039340269981293
+          ],
+          "b": [
+            0.685,
+            -0.055,
+            -0.58
+          ],
+          "radius": 0.059
+        }
+      ]
+    },
+    {
+      "id": "left_hand",
+      "label": "Left hand",
+      "joint": "left_wrist",
+      "color": [
+        0.58,
+        0.98,
+        0.72
+      ],
+      "shapes": [
+        {
+          "type": "capsule",
+          "a": [
+            0.685,
+            -0.055,
+            -0.58
+          ],
+          "b": [
+            0.802,
+            -0.105,
+            -0.677
+          ],
+          "radius": 0.069
+        }
+      ]
+    },
+    {
+      "id": "left_thigh",
+      "label": "Left thigh",
+      "joint": "left_hip",
+      "color": [
+        0.29519999999999996,
+        0.6232,
+        0.63
+      ],
+      "shapes": [
+        {
+          "type": "capsule",
+          "a": [
+            0.128,
+            0.08,
+            -0.73
+          ],
+          "b": [
+            0.244,
+            0.075,
+            -0.97
+          ],
+          "radius": 0.119
+        },
+        {
+          "type": "capsule",
+          "a": [
+            0.244,
+            0.075,
+            -0.97
+          ],
+          "b": [
+            0.307,
+            0.024,
+            -1.12
+          ],
+          "radius": 0.081
+        }
+      ]
+    },
+    {
+      "id": "left_shin",
+      "label": "Left lower leg",
+      "joint": "left_knee",
+      "color": [
+        0.2592,
+        0.86,
+        0.5
+      ],
+      "shapes": [
+        {
+          "type": "capsule",
+          "a": [
+            0.307,
+            0.033,
+            -1.12
+          ],
+          "b": [
+            0.455,
+            0.005,
+            -1.53
+          ],
+          "radius": 0.064
+        }
+      ]
+    },
+    {
+      "id": "left_foot",
+      "label": "Left foot",
+      "joint": "left_ankle",
+      "color": [
+        0.52,
+        0.6384,
+        0.66
+      ],
+      "shapes": [
+        {
+          "type": "capsule",
+          "a": [
+            0.455,
+            -0.013,
+            -1.53
+          ],
+          "b": [
+            0.505,
+            0.12,
+            -1.65
+          ],
+          "radius": 0.073
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Training Manikin · 3DGS Health Scenes</title>
+  <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg?v=2">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../../"><img src="../../assets/favicon.svg" alt=""><span>3DGS Health Scenes</span></a>
+  <span class="slash" aria-hidden="true">/</span><h1>Manikin</h1>
+  <button id="pro-toggle" aria-expanded="false" aria-controls="pro-panel">Pro <span class="toggle-indicator" aria-hidden="true"></span></button>
+</header>
+<main>
+  <section id="viewport" aria-label="Interactive training manikin">
+    <canvas id="canvas" aria-label="Orbitable articulated fused manikin"></canvas>
+    <svg id="overlay" aria-label="Interactive joints and rotation axes"></svg>
+    <div class="scene-label"><span class="status-dot" aria-hidden="true"></span><span id="mode-label">Fused scan</span></div>
+    <div class="view-badge pro-only"><span id="view-name">Perspective</span><span id="motion-state">Scan pose</span></div>
+    <div class="viewport-bottom"><span id="interaction-help" class="view-help">Drag to orbit · Scroll to zoom</span><span id="pose-note"></span></div>
+    <div id="loading"><div class="loader"></div><strong id="load-title">Loading the manikin</strong><p id="load-detail">Preparing the fused scan and joint map.</p></div>
+  </section>
+  <aside aria-label="Manikin controls">
+    <section class="panel scan-panel" aria-labelledby="scan-heading">
+      <h2 id="scan-heading">Explore the scan</h2>
+      <div class="display-controls" role="group" aria-label="Scan display">
+        <button data-display="both" class="active" aria-pressed="true" disabled>Fused</button>
+        <button data-display="segments" aria-pressed="false" disabled>Segmentation</button>
+        <button data-display="front" aria-pressed="false" disabled>Front scan</button>
+        <button data-display="back" aria-pressed="false" disabled>Back scan</button>
+      </div>
+      <div id="segment-legend" aria-label="Body segment colors" hidden></div>
+    </section>
+    <section class="panel pose-panel" aria-labelledby="pose-heading">
+      <h2 id="pose-heading">Try a pose</h2>
+      <div class="preset-controls" role="group" aria-label="Preset poses">
+        <button data-preset="scan" class="active" aria-pressed="true" disabled>Scan pose</button>
+        <button data-preset="lying" aria-pressed="false" disabled>Lie flat</button>
+        <button data-preset="sitting" aria-pressed="false" disabled>Upper body up</button>
+      </div>
+    </section>
+    <section class="panel rotation-panel" aria-labelledby="rotation-heading">
+      <div class="section-head"><h2 id="rotation-heading">Joint rotation</h2><span id="joint-type" class="type-chip"></span></div>
+      <label for="joint-select" class="sr-only">Active joint</label>
+      <div class="joint-nav"><button id="previous" aria-label="Previous joint" disabled>‹</button><select id="joint-select" disabled></select><button id="next" aria-label="Next joint" disabled>›</button></div>
+      <fieldset id="controls" disabled aria-label="Joint rotation controls">
+        <div id="angles"></div>
+        <p id="fixed-help" class="hint" hidden>This connection stays rigid and follows its parent.</p>
+      </fieldset>
+      <div class="pose-actions"><button id="demo" class="primary" aria-pressed="false" disabled>Play joint demo</button><button id="reset" disabled>Reset</button></div>
+      <p class="hint rotate-hint">Choose a joint, then move a slider.</p>
+    </section>
+    <section id="pro-panel" aria-label="Advanced controls" hidden>
+      <section class="panel">
+        <div class="section-head"><h2>View &amp; inspect</h2><span id="joint-count" class="tiny"></span></div>
+        <nav class="views" aria-label="Camera views">
+          <button data-view="perspective" class="active" aria-pressed="true" disabled>Orbit</button><button data-view="front" aria-pressed="false" disabled>Front</button><button data-view="back" aria-pressed="false" disabled>Back</button><button data-view="left" aria-pressed="false" disabled>Left</button><button data-view="right" aria-pressed="false" disabled>Right</button><button data-view="top" aria-pressed="false" disabled>Above</button><button data-view="bottom" aria-pressed="false" disabled>Below</button><button id="fit-all" disabled>Full body</button>
+        </nav>
+        <div class="row"><button id="focus" disabled>Focus joint</button><label class="check"><input id="isolate" type="checkbox" disabled> Isolate branch</label></div>
+        <div class="row"><label class="check"><input id="markers" type="checkbox" disabled> All joints</label><label class="check"><input id="axis-visible" type="checkbox" disabled> Rotation axes</label></div>
+        <div class="capture-row"><label for="capture">Capture</label><select id="capture" disabled><option value="both">Both captures</option><option value="front">Front capture</option><option value="back">Back capture</option></select></div>
+        <p id="type-help" class="hint"></p>
+        <p id="scene-info" class="hint small">Loading the full fused scan…</p>
+      </section>
+      <section class="panel">
+        <h2>Motion response</h2>
+        <label class="check spring-check"><input id="spring" type="checkbox" checked disabled> Spring motion</label>
+        <div class="pair"><label>Stiffness<input id="stiffness" type="number" min="0" max="100000" step="1" disabled></label><label>Damping<input id="damping" type="number" min="0" max="100000" step="0.5" disabled></label></div>
+        <div class="row"><button id="target-rest" disabled>Reset this joint</button><button id="nudge" disabled>Nudge joint</button></div>
+        <p class="hint small">Stiffness pulls toward the target; damping settles the motion. These are response settings, not measured forces.</p>
+      </section>
+      <section class="panel">
+        <details><summary>Joint center &amp; geometry check</summary><p id="fit-note" class="hint"></p><dl id="geometry"></dl><a id="projection-link" class="projection-link" target="_blank" rel="noopener" hidden>View projection check ↗</a><button id="export-map" disabled>Export current joint map</button><p class="hint small">Import the exported map in the joint editor to refine these centers. Save your changes, then reload this page.</p></details>
+        <div class="file-actions"><button id="import" disabled>Import pose</button><button id="export" disabled>Export pose</button></div>
+        <input id="import-file" type="file" accept=".json,application/json" hidden>
+        <a class="button-link" href="../mannequin-joints/">Edit joint map ↗</a>
+      </section>
+      <section class="panel save-note"><strong id="map-status">Reading your joint map…</strong><p id="draft-status">Poses are kept in this browser. Export a pose for a separate copy.</p><p>Each forearm, wrist pad and hand moves as one rigid piece.</p><a href="README.md">How to pose &amp; fine-tune ↗</a><a href="../mannequin-fusion/">Inspect the original fusion ↗</a></section>
+    </section>
+  </aside>
+</main>
+<footer id="status" class="pro-only" role="status">Loading…</footer><script type="module" src="app.mjs"></script>
+</body>
+</html>

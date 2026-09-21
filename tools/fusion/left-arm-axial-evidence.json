@@ -1,0 +1,438 @@
+{
+  "version": 1,
+  "anatomicalSide": "left",
+  "visualIdentification": "screen-right arm in user screenshot, with black circular socket and long gray cable; not yellow-tube arm",
+  "sourceHashes": {
+    "front": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+    "back": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+  },
+  "globalScale": 0.928,
+  "frame": "original source PLY XYZ to front source raw XYZ; source units uncalibrated",
+  "baseline": "raw/fusion-work/refinement-v5/baseline",
+  "baselineHashes": {
+    "feature-transforms.json": "4327bc0a9e8ef592acd8e16896b339071b6a1135bb9fbb3958acc6ef8e837a57",
+    "front-landmarks.json": "882bd2828b25d2dce48b0e97d328dc02c71c51f88803bc7f438ddbb97efe534c",
+    "back-landmarks.json": "a77339b89385db2451db6e0a17c5fbfb3ec2372386f8fce2a572037e41719620",
+    "fusion-config.json": "703cf80f090021495ee1e82f05e26058e079ea1fe36c8732ea937b5310848ad2"
+  },
+  "method": "one rigid parent fit to curved shoulder pad + distant measured collar center + soft collar plane normal; zero child twist with no bend or translation; previous clean absolute hand fit retained as a reviewed wrist rest pose",
+  "mechanicalConstraint": {
+    "parentPart": "left_upper_arm",
+    "childPart": "left_forearm",
+    "pivotFrontRaw": [
+      0.3722547562366865,
+      0.008709922093973962,
+      0.27039340269981293
+    ],
+    "axisFrontRaw": [
+      0.6339159206348934,
+      0.13906095342803715,
+      0.7607973822229548
+    ],
+    "pivotPrepared": [
+      0.3722547562366865,
+      -0.008709922093973962,
+      -0.27039340269981293
+    ],
+    "axisPrepared": [
+      0.6339159206348934,
+      -0.13906095342803715,
+      -0.7607973822229548
+    ],
+    "twistDegrees": 0.0,
+    "independentTranslation": [
+      0,
+      0,
+      0
+    ],
+    "independentSwingDegrees": 0,
+    "formula": "Rc=Q Rp; tc=Q(tp-pivot)+pivot; Q=axisAngle(axis,twistDegrees)"
+  },
+  "nativeCollars": {
+    "front": {
+      "pivot": [
+        0.3722547562366865,
+        0.008709922093973962,
+        0.27039340269981293
+      ],
+      "axis": [
+        0.6339159206348934,
+        0.13906095342803715,
+        0.7607973822229548
+      ],
+      "localPlane": [
+        0.0008552663764719774,
+        -0.09737419118914156,
+        -0.004959011677637111
+      ],
+      "radialCenter": [
+        0.008424882471357963,
+        0.009494351825170309
+      ],
+      "radialRadii": [
+        0.05248171700124878,
+        0.051950171300488
+      ],
+      "inlierCount": 350,
+      "occupiedAngularBins": 23,
+      "planeMedianResidual": 0.0006924050142911964
+    },
+    "back": {
+      "pivot": [
+        -0.4108869620473415,
+        0.020252585788967697,
+        -0.13842931713185627
+      ],
+      "axis": [
+        -0.7787412649097246,
+        0.20093827047516102,
+        0.5942944167542319
+      ],
+      "localPlane": [
+        -0.06003004263939668,
+        -0.015650869167148623,
+        -0.0031470628075750888
+      ],
+      "radialCenter": [
+        0.0006879914569920613,
+        -0.01080257699429632
+      ],
+      "radialRadii": [
+        0.057072954675814795,
+        0.0531404763012765
+      ],
+      "inlierCount": 360,
+      "occupiedAngularBins": 21,
+      "planeMedianResidual": 0.0007238567142546111
+    }
+  },
+  "transforms": {
+    "left_upper_arm": {
+      "scale": 0.928,
+      "rotation": [
+        [
+          -0.9715075649064279,
+          0.18912811837198187,
+          -0.14284119213537236
+        ],
+        [
+          -0.21999085060300427,
+          -0.9438303002206553,
+          0.246553016684757
+        ],
+        [
+          -0.08818773713248097,
+          0.27095187621875017,
+          0.9585447322858711
+        ]
+      ],
+      "translation": [
+        -0.01976248544559571,
+        -0.025682523580196272,
+        0.35675786832630196
+      ]
+    },
+    "left_forearm": {
+      "scale": 0.928,
+      "rotation": [
+        [
+          -0.9715075649064279,
+          0.18912811837198187,
+          -0.14284119213537236
+        ],
+        [
+          -0.21999085060300427,
+          -0.9438303002206553,
+          0.246553016684757
+        ],
+        [
+          -0.08818773713248097,
+          0.27095187621875017,
+          0.9585447322858711
+        ]
+      ],
+      "translation": [
+        -0.01976248544559571,
+        -0.025682523580196272,
+        0.35675786832630196
+      ]
+    },
+    "left_hand": {
+      "scale": 0.928,
+      "rotation": [
+        [
+          -0.9760632529961153,
+          0.15330248066858695,
+          -0.15426884186866732
+        ],
+        [
+          -0.18766822810169784,
+          -0.9521607116414647,
+          0.24118585233713027
+        ],
+        [
+          -0.10991434079232525,
+          0.26436400781361397,
+          0.9581390864905328
+        ]
+      ],
+      "translation": [
+        -0.01875926850049399,
+        0.0005242663322122167,
+        0.3375125018859629
+      ]
+    }
+  },
+  "parentMetrics": {
+    "padRimMedian": 0.0016872700865122174,
+    "padRimP90": 0.0029485376649356046,
+    "padCenterResidual": 0.00213363449101873,
+    "collarCenterResidual": 0.001974823501091119,
+    "collarNormalResidualDegrees": 5.868876775604806,
+    "rotationChangeDegrees": 2.7987929598859185
+  },
+  "parentBaselineMetrics": {
+    "padRimMedian": 0.0008217121239756194,
+    "padRimP90": 0.0019129397707830032,
+    "padCenterResidual": 0.0006491201053271657,
+    "collarCenterResidual": 0.009015827204044436,
+    "collarNormalResidualDegrees": 7.127128284523781,
+    "rotationChangeDegrees": 0.0
+  },
+  "validation": {
+    "childParentRotationMaxError": 0.0,
+    "childParentTranslationMaxError": 0.0,
+    "handBaselineAbsoluteRotationMaxError": 0.0,
+    "handBaselineAbsoluteTranslationMaxError": 0.0
+  },
+  "handRestPose": {
+    "sourceToFrontRaw": {
+      "scale": 0.928,
+      "rotation": [
+        [
+          -0.9760632529961153,
+          0.15330248066858695,
+          -0.15426884186866732
+        ],
+        [
+          -0.18766822810169784,
+          -0.9521607116414647,
+          0.24118585233713027
+        ],
+        [
+          -0.10991434079232525,
+          0.26436400781361397,
+          0.9581390864905328
+        ]
+      ],
+      "translation": [
+        -0.01875926850049399,
+        0.0005242663322122167,
+        0.3375125018859629
+      ]
+    },
+    "carriedByPart": "left_forearm",
+    "referenceForearmSourceToFrontRaw": {
+      "scale": 0.928,
+      "rotation": [
+        [
+          -0.9715075649064279,
+          0.18912811837198187,
+          -0.14284119213537236
+        ],
+        [
+          -0.21999085060300427,
+          -0.9438303002206553,
+          0.246553016684757
+        ],
+        [
+          -0.08818773713248097,
+          0.27095187621875017,
+          0.9585447322858711
+        ]
+      ],
+      "translation": [
+        -0.01976248544559571,
+        -0.025682523580196272,
+        0.35675786832630196
+      ]
+    },
+    "relativeRotation": [
+      [
+        0.9992312242370373,
+        0.0372184615479579,
+        0.01231854819992535
+      ],
+      [
+        -0.037255543241114734,
+        0.9993018639592903,
+        0.0027944919567550134
+      ],
+      [
+        -0.01220594148601943,
+        -0.003251277824198429,
+        0.9999202189099644
+      ]
+    ],
+    "relativeTranslation": [
+      -0.0050426815391547185,
+      -0.029759594003229414,
+      -0.01212948221617908
+    ],
+    "policy": "Restore the v4 clean hand absolute registration as the wrist rest pose, then carry this newly reviewed rest pose through future changes to the accepted forearm transform. This does not preserve the old forearm-relative hand transform.",
+    "reason": "Six hand and six cuff views show renewed doubled/purple finger edges under the carried trial; retaining the old absolute hand cleans these edges without opening the wrist or separating the cuff."
+  },
+  "rejectedCarriedHandTrial": {
+    "sourceToFrontRaw": {
+      "scale": 0.928,
+      "rotation": [
+        [
+          -0.9857246200566473,
+          0.08834142806818668,
+          -0.14332747643438687
+        ],
+        [
+          -0.13508591664987302,
+          -0.9230854914782095,
+          0.3600902255620026
+        ],
+        [
+          -0.1004926292672249,
+          0.3743113243134702,
+          0.9218417781559136
+        ]
+      ],
+      "translation": [
+        -0.03140857520719319,
+        0.02041748776570016,
+        0.3287790838563137
+      ]
+    },
+    "validation": {
+      "handRelativeRotationMaxError": 1.9984014443252818e-15,
+      "handRelativeTranslationMaxError": 2.949029909160572e-17
+    },
+    "meaning": "These near-zero errors describe the rejected trial, not the final hand rest pose.",
+    "reason": "Carrying the previous hand through the arm correction displaced the wrist landmark by approximately0.01416 source units and reintroduced hand overlap ghosts."
+  },
+  "previousRelativeTransform": {
+    "rotationDegrees": 7.5220143466067375,
+    "axisFrontRaw": [
+      0.6368449296457496,
+      -0.006072908070557414,
+      0.770967998928663
+    ],
+    "angleToMeasuredCollarAxisDegrees": 8.3450141870496,
+    "offsetAtOldLandmark": [
+      0.009354453580247502,
+      0.022861008888978365,
+      0.004175438468473791
+    ],
+    "offsetAtOldLandmarkNorm": 0.025051263752772314,
+    "offsetAtMeasuredCollar": [
+      0.008661665491378479,
+      0.021466701306889758,
+      0.004736721272102951
+    ],
+    "offsetAtMeasuredCollarNorm": 0.023627954682819072
+  },
+  "jointParentObjective": {
+    "residualTerms": [
+      "curved pad outline nearest-surface XYZ / (sqrt(N)*0.0015)",
+      "collar center XYZ /0.002",
+      "collar unit-normal XYZ difference /0.03 *0.5"
+    ],
+    "normalWeight": 0.5,
+    "loss": "linear least-squares on normalized feature regions",
+    "selection": "normal-weight-0.5 visually accepted across six collar and six full-arm cameras",
+    "limits": "The native scans are not perfectly rigidly congruent. Native plane equality is not a hard constraint; prioritizing it further harms both pad contour and collar-center fit."
+  },
+  "segmentationRule": {
+    "parts": [
+      "left_upper_arm",
+      "left_forearm"
+    ],
+    "maximumAbsStation": 0.11,
+    "maximumRadius": 0.11,
+    "proximalPart": "left_upper_arm",
+    "distalPart": "left_forearm",
+    "landmark": "left_elbow",
+    "order": "apply after baseline clean_scan; update landmarks for coverage after relabeling; use only existing neighboring part labels",
+    "nativePlanes": {
+      "front": {
+        "pivot": [
+          0.3722547562366865,
+          0.008709922093973962,
+          0.27039340269981293
+        ],
+        "axis": [
+          0.6339159206348934,
+          0.13906095342803715,
+          0.7607973822229548
+        ],
+        "localPlane": [
+          0.0008552663764719774,
+          -0.09737419118914156,
+          -0.004959011677637111
+        ],
+        "radialCenter": [
+          0.008424882471357963,
+          0.009494351825170309
+        ],
+        "radialRadii": [
+          0.05248171700124878,
+          0.051950171300488
+        ],
+        "inlierCount": 350,
+        "occupiedAngularBins": 23,
+        "planeMedianResidual": 0.0006924050142911964
+      },
+      "back": {
+        "pivot": [
+          -0.4108869620473415,
+          0.020252585788967697,
+          -0.13842931713185627
+        ],
+        "axis": [
+          -0.7787412649097246,
+          0.20093827047516102,
+          0.5942944167542319
+        ],
+        "localPlane": [
+          -0.06003004263939668,
+          -0.015650869167148623,
+          -0.0031470628075750888
+        ],
+        "radialCenter": [
+          0.0006879914569920613,
+          -0.01080257699429632
+        ],
+        "radialRadii": [
+          0.057072954675814795,
+          0.0531404763012765
+        ],
+        "inlierCount": 360,
+        "occupiedAngularBins": 21,
+        "planeMedianResidual": 0.0007238567142546111
+      }
+    }
+  },
+  "cablePolicy": "A connected gray cable crossing the collar belongs to the parent/socket, not the skin capsules. This zero-twist fit keeps every native cable point under one transform already; use the separate reviewed source-ID ownership selection before allowing twist tuning.",
+  "interpretation": [
+    "V4 corrected the anatomical right/yellow-tube arm; the screenshot identifies the anatomical left/gray-cable arm.",
+    "The old left child included roughly 0.025 units of free relative translation, creating a false step through the cable and cuff.",
+    "Native collar centers and planes are measured from350/360 ring samples over23/21 angular sectors; median plane errors are about0.0007.",
+    "Fitting pad plus collar corrects parent ambiguity before deriving the child, rather than inventing a child swing.",
+    "The two scans are not perfectly congruent: forcing exact collar-normal equality worsens pad and center residuals. The plane normal is therefore a soft parent feature. Remaining normal mismatch is reported, not hidden by an independent bend.",
+    "Zero twist is selected because source cable continuity and multi-angle shell/cuff appearance agree. No matching front-side gray cable is available to recover an independent inter-capture cable angle.",
+    "The unchanged-parent zero-twist variant restored cable continuity but produced wrist ghosts. The balanced parent improves the cuff, but final detailed hand review still finds a carried-hand regression. Restoring the prior absolute hand registration retains the earlier cleanup while the revised cuff remains continuous."
+  ],
+  "reproduceCommand": ".venv-fusion/bin/python -B tools/fusion/audit_arm_v5.py --measure --audit --parents --render --hand-rest --evidence",
+  "reviewImages": [
+    "raw/fusion-work/refinement-v5/arm-audit/left-collar-fit.png",
+    "raw/fusion-work/refinement-v5/arm-audit/zero-twist-collar-candidates.png",
+    "raw/fusion-work/refinement-v5/arm-audit/zero-twist-fullarm-candidates.png",
+    "raw/fusion-work/refinement-v5/arm-audit/hand-absolute-comparison.png",
+    "raw/fusion-work/refinement-v5/arm-audit/wrist-absolute-comparison.png"
+  ]
+}

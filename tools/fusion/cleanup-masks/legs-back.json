@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "purpose": "Remove verified foot ghosts, toe wisps and sparse shin remnants without changing poses.",
+  "sourceCapture": "back",
+  "sourceFile": "raw/mannequin_back_119999.ply",
+  "sourceSha256": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e",
+  "sourceHashes": {
+    "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+    "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+  },
+  "baseline": "raw/fusion-work/cleanup-v3/baseline",
+  "maskFile": "tools/fusion/cleanup-masks/legs-back.npy",
+  "maskDtype": "uint32",
+  "maskMeaning": "sorted unique ORIGINAL back PLY vertex indices; hash guarded",
+  "applyStage": "after coverage confidence weighting and opacity attenuation, before final export; do not trigger donor rescue again",
+  "rejectedFusedCount": 5160,
+  "uniqueSourceIndices": 5160,
+  "rejectedByPart": {
+    "left_shin": 1877,
+    "left_foot": 2053,
+    "right_shin": 384,
+    "right_foot": 846
+  },
+  "exactRecipe": "tools/fusion/cleanup-masks/legs-recipe.json",
+  "ruleCounts": {
+    "left_back_foot_outside_front_envelope": 2053,
+    "left_back_shin_duplicated_heel": 1802,
+    "right_back_toe_white_wisps": 607,
+    "right_back_posterior_ankle_spur": 562,
+    "left_front_posterior_shin_bright_streaks": 0,
+    "left_shin_sparse_centers_outside_hardware": 77,
+    "right_shin_sparse_centers_outside_hardware": 61
+  },
+  "review": "Five variant families inspected from six actual Gaussian cameras, then final six-view foot and shin plus three underside/heel cameras.",
+  "limitations": "Left posterior sole remains softer/discolored because the back capture is intrinsically distorted. A small right posterior ankle remnant is preserved to avoid hollowing valid material.",
+  "proof": [
+    "raw/fusion-work/cleanup-v3/legs/left-foot-final.png",
+    "raw/fusion-work/cleanup-v3/legs/right-foot-final.png",
+    "raw/fusion-work/cleanup-v3/legs/left-shin-final.png",
+    "raw/fusion-work/cleanup-v3/legs/right-shin-final.png",
+    "raw/fusion-work/cleanup-v3/legs/left-sole-final.png",
+    "raw/fusion-work/cleanup-v3/legs/right-sole-final.png"
+  ],
+  "reproduce": ".venv-fusion/bin/python -B tools/fusion/cleanup_legs.py --mode final"
+}

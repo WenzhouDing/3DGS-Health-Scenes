@@ -1,0 +1,4154 @@
+{
+  "version": 1,
+  "parts": [
+    {
+      "id": "torso",
+      "label": "Chest / abdomen",
+      "color": [
+        0.2,
+        0.76,
+        0.82
+      ]
+    },
+    {
+      "id": "pelvis",
+      "label": "Pelvis",
+      "color": [
+        0.44,
+        0.47,
+        0.86
+      ]
+    },
+    {
+      "id": "head",
+      "label": "Skull / face",
+      "color": [
+        0.98,
+        0.72,
+        0.28
+      ]
+    },
+    {
+      "id": "neck",
+      "label": "Neck",
+      "color": [
+        0.84,
+        0.36,
+        0.5
+      ]
+    },
+    {
+      "id": "left_upper_arm",
+      "label": "Left upper arm",
+      "color": [
+        0.94,
+        0.51,
+        0.48
+      ]
+    },
+    {
+      "id": "left_forearm",
+      "label": "Left forearm",
+      "color": [
+        0.94,
+        0.7,
+        0.61
+      ]
+    },
+    {
+      "id": "left_hand",
+      "label": "Left hand",
+      "color": [
+        0.44,
+        0.71,
+        0.41
+      ]
+    },
+    {
+      "id": "left_thigh",
+      "label": "Left thigh",
+      "color": [
+        0.29,
+        0.77,
+        0.59
+      ]
+    },
+    {
+      "id": "left_shin",
+      "label": "Left lower leg",
+      "color": [
+        0.45,
+        0.85,
+        0.77
+      ]
+    },
+    {
+      "id": "left_foot",
+      "label": "Left foot",
+      "color": [
+        0.48,
+        0.63,
+        0.94
+      ]
+    },
+    {
+      "id": "right_upper_arm",
+      "label": "Right upper arm",
+      "color": [
+        0.61,
+        0.5,
+        0.88
+      ]
+    },
+    {
+      "id": "right_forearm",
+      "label": "Right forearm",
+      "color": [
+        0.79,
+        0.57,
+        0.89
+      ]
+    },
+    {
+      "id": "right_hand",
+      "label": "Right hand",
+      "color": [
+        0.81,
+        0.67,
+        0.3
+      ]
+    },
+    {
+      "id": "right_thigh",
+      "label": "Right thigh",
+      "color": [
+        0.84,
+        0.82,
+        0.4
+      ]
+    },
+    {
+      "id": "right_shin",
+      "label": "Right lower leg",
+      "color": [
+        0.83,
+        0.9,
+        0.61
+      ]
+    },
+    {
+      "id": "right_foot",
+      "label": "Right foot",
+      "color": [
+        0.72,
+        0.87,
+        0.95
+      ]
+    }
+  ],
+  "captures": [
+    {
+      "id": "front",
+      "label": "Front contribution",
+      "url": "front.bin",
+      "count": 1100010,
+      "labelsUrl": "front-labels.bin"
+    },
+    {
+      "id": "back",
+      "label": "Back contribution",
+      "url": "back.bin",
+      "count": 1598672,
+      "labelsUrl": "back-labels.bin"
+    }
+  ],
+  "bounds": {
+    "min": [
+      -0.843398928642273,
+      -0.13607878983020782,
+      -1.7112699747085571
+    ],
+    "max": [
+      0.8569183349609375,
+      0.23027637600898743,
+      0.33270692825317383
+    ]
+  },
+  "report": {
+    "sources": [
+      {
+        "file": "raw/mannequin_front_119999.ply",
+        "sha256": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+        "count": 1853538
+      },
+      {
+        "file": "raw/mannequin_back_119999.ply",
+        "sha256": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e",
+        "count": 2445497
+      }
+    ],
+    "filter": {
+      "front": {
+        "input": 1853538,
+        "invalidOrOpacityOrScale": 514962,
+        "outsideAnatomy": 618,
+        "explicitExclusions": 5657,
+        "partQualityRejected": 0,
+        "isolated": 277,
+        "sparseContactOnly": 2125,
+        "retained": 1335556
+      },
+      "back": {
+        "input": 2445497,
+        "invalidOrOpacityOrScale": 604801,
+        "outsideAnatomy": 16176,
+        "explicitExclusions": 37068,
+        "partQualityRejected": 6463,
+        "isolated": 681,
+        "sparseContactOnly": 2379,
+        "retained": 1814997
+      }
+    },
+    "registration": {
+      "scale": 0.928,
+      "boneScaleRatios": {
+        "left_shoulder to right_shoulder": 0.9901564800267595,
+        "neck to waist": 0.9386652772629244,
+        "left_elbow to left_wrist": 0.9741216009848407,
+        "right_elbow to right_wrist": 0.9417553824325535,
+        "left_knee to left_ankle": 0.9132509803007773,
+        "right_knee to right_ankle": 0.9192246486979913
+      },
+      "scalePolicy": "one global isotropic scale; all part refinements rigid"
+    },
+    "parts": [
+      {
+        "method": "paired physical torso side-panel port centers with reduced uncertain recess-depth weight",
+        "accepted": true,
+        "reason": "accepted after multi-angle Gaussian render review",
+        "featureEvidence": {
+          "method": "paired physical torso side-panel port centers with reduced uncertain recess-depth weight",
+          "sourceHashes": {
+            "front": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+            "back": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+          },
+          "scale": 0.928,
+          "features": [
+            {
+              "name": "left_aux",
+              "fitWeightsXYZ": [
+                0.05,
+                1,
+                1
+              ],
+              "front": {
+                "nativeCenter": [
+                  0.15895742177963257,
+                  -0.004515770822763443,
+                  0.38317418098449707
+                ],
+                "initialAlignedCenter": [
+                  0.15895742177963257,
+                  -0.004515770822763443,
+                  0.38317418098449707
+                ],
+                "support": 45,
+                "robustSpread": [
+                  0.007602077722549442,
+                  0.0035398211912252018,
+                  0.003865998983383179
+                ]
+              },
+              "back": {
+                "nativeCenter": [
+                  -0.15215221828679046,
+                  -0.017752089729323812,
+                  0.0011166772984514972
+                ],
+                "initialAlignedCenter": [
+                  0.1325957477092743,
+                  -0.018361980095505714,
+                  0.40433523058891296
+                ],
+                "support": 75,
+                "robustSpread": [
+                  0.020607055723667146,
+                  0.0047029960900545125,
+                  0.004447948932647706
+                ]
+              }
+            },
+            {
+              "name": "left_cable",
+              "fitWeightsXYZ": [
+                0.3,
+                1,
+                1
+              ],
+              "front": {
+                "nativeCenter": [
+                  0.14596408605575562,
+                  0.012083287350833416,
+                  0.43211251497268677
+                ],
+                "initialAlignedCenter": [
+                  0.14596408605575562,
+                  0.012083287350833416,
+                  0.43211251497268677
+                ],
+                "support": 42,
+                "robustSpread": [
+                  0.009950956702232361,
+                  0.007575232349336149,
+                  0.006783795356750491
+                ]
+              },
+              "back": {
+                "nativeCenter": [
+                  -0.16589484298691742,
+                  -0.0347256136954566,
+                  0.05961019559955335
+                ],
+                "initialAlignedCenter": [
+                  0.14419853687286377,
+                  -0.002605552552267909,
+                  0.4588732421398163
+                ],
+                "support": 87,
+                "robustSpread": [
+                  0.01169857382774353,
+                  0.0036230233963578935,
+                  0.006137257814407347
+                ]
+              }
+            },
+            {
+              "name": "left_port",
+              "fitWeightsXYZ": [
+                0.3,
+                1,
+                1
+              ],
+              "front": {
+                "nativeCenter": [
+                  0.1197209507226944,
+                  0.021937934681773186,
+                  0.3693450093269348
+                ],
+                "initialAlignedCenter": [
+                  0.1197209507226944,
+                  0.021937934681773186,
+                  0.3693450093269348
+                ],
+                "support": 61,
+                "robustSpread": [
+                  0.004061996936798096,
+                  0.005276450887322426,
+                  0.006063222885131836
+                ]
+              },
+              "back": {
+                "nativeCenter": [
+                  -0.135715398605761,
+                  -0.05206561214197736,
+                  -0.007739926054530631
+                ],
+                "initialAlignedCenter": [
+                  0.11696864664554596,
+                  0.013261708430945873,
+                  0.3959730863571167
+                ],
+                "support": 324,
+                "robustSpread": [
+                  0.001918818056583405,
+                  0.005353881046175958,
+                  0.0055953204631805425
+                ]
+              }
+            },
+            {
+              "name": "left_metal",
+              "fitWeightsXYZ": [
+                0.3,
+                1,
+                1
+              ],
+              "front": {
+                "nativeCenter": [
+                  0.11584906280040741,
+                  0.020933670923113823,
+                  0.3342243731021881
+                ],
+                "initialAlignedCenter": [
+                  0.11584906280040741,
+                  0.020933670923113823,
+                  0.3342243731021881
+                ],
+                "support": 26,
+                "robustSpread": [
+                  0.00610235333442688,
+                  0.005390344187617302,
+                  0.00494384765625
+                ]
+              },
+              "back": {
+                "nativeCenter": [
+                  -0.12871421159244859,
+                  -0.054111220818820964,
+                  -0.044683653933935245
+                ],
+                "initialAlignedCenter": [
+                  0.11100682616233826,
+                  0.015180276706814766,
+                  0.3615933060646057
+                ],
+                "support": 134,
+                "robustSpread": [
+                  0.006867147982120514,
+                  0.008989261742681266,
+                  0.005401468276977539
+                ]
+              }
+            },
+            {
+              "name": "right_aux",
+              "fitWeightsXYZ": [
+                0.3,
+                1,
+                1
+              ],
+              "front": {
+                "nativeCenter": [
+                  -0.15483689308166504,
+                  -0.042511582374572754,
+                  0.3857152462005615
+                ],
+                "initialAlignedCenter": [
+                  -0.15483689308166504,
+                  -0.042511582374572754,
+                  0.3857152462005615
+                ],
+                "support": 26,
+                "robustSpread": [
+                  0.010748252272605896,
+                  0.003732766956090927,
+                  0.004293650388717651
+                ]
+              },
+              "back": {
+                "nativeCenter": [
+                  0.15259573284972291,
+                  0.0020900325281950224,
+                  0.02077337298541282
+                ],
+                "initialAlignedCenter": [
+                  -0.15013885498046875,
+                  -0.041379302740097046,
+                  0.4178423583507538
+                ],
+                "support": 90,
+                "robustSpread": [
+                  0.01012167036533356,
+                  0.004131392389535904,
+                  0.004613643884658814
+                ]
+              }
+            },
+            {
+              "name": "right_fan",
+              "fitWeightsXYZ": [
+                0.3,
+                1,
+                1
+              ],
+              "front": {
+                "nativeCenter": [
+                  -0.12697508931159973,
+                  -0.007786562666296959,
+                  0.3394257426261902
+                ],
+                "initialAlignedCenter": [
+                  -0.12697508931159973,
+                  -0.007786562666296959,
+                  0.3394257426261902
+                ],
+                "support": 23,
+                "robustSpread": [
+                  0.003425242006778718,
+                  0.00471988981589675,
+                  0.004776114225387574
+                ]
+              },
+              "back": {
+                "nativeCenter": [
+                  0.13022763808816637,
+                  -0.031235762021543993,
+                  -0.024605686959922966
+                ],
+                "initialAlignedCenter": [
+                  -0.1291920691728592,
+                  -0.00997063610702753,
+                  0.3761836886405945
+                ],
+                "support": 145,
+                "robustSpread": [
+                  0.004322752356529237,
+                  0.005937153287231922,
+                  0.006001174449920654
+                ]
+              }
+            }
+          ],
+          "baselineYZResiduals": [
+            0.025288486146567257,
+            0.03052701322128461,
+            0.028005917022672997,
+            0.027967124208782213,
+            0.03214705884341022,
+            0.0368227751804826
+          ],
+          "finalYZResiduals": [
+            0.004128081731218005,
+            0.002073733966961862,
+            0.0006946123310164834,
+            0.0007526367737395196,
+            0.0030113825113316194,
+            0.0036705903828200557
+          ],
+          "residualXYZ": [
+            [
+              -0.02426397659964774,
+              -0.003191390320407654,
+              -0.0026184129930979516
+            ],
+            [
+              -0.0025755746281156677,
+              0.0005230980228426059,
+              0.002006674120087648
+            ],
+            [
+              -0.0013115996522445883,
+              0.0006542052071813291,
+              -0.00023345628562321252
+            ],
+            [
+              -0.001961713603565729,
+              0.0007104704939711222,
+              0.0002483823471615132
+            ],
+            [
+              0.007389706161776033,
+              0.0026510742609701238,
+              -0.0014283661618701426
+            ],
+            [
+              0.0012174599112442785,
+              -0.00322198796573777,
+              0.0017584161359280315
+            ]
+          ],
+          "medianYZResidual": 0.002542558239146741,
+          "correctionDegrees": [
+            -4.497373597096178,
+            -2.336496693069385,
+            2.080929291169577
+          ],
+          "pivot": [
+            0.0,
+            0.02,
+            0.35
+          ],
+          "translationAtPivot": [
+            0.0033907642662272305,
+            0.001527626356726451,
+            -0.03197841702188484
+          ],
+          "limitations": [
+            "The left exterior dark recess is inconsistently reconstructed in depth; its X coordinate receives weight 0.05.",
+            "Feature-seed coordinates identify physical hardware in both actual Gaussian source renders; they are not opposite-shell surface correspondences."
+          ],
+          "reproduce": ".venv-fusion/bin/python -B tools/fusion/refine_features.py --torso",
+          "initialTransform": {
+            "scale": 0.928,
+            "rotation": [
+              [
+                -0.9997347986390729,
+                0.0161109645349232,
+                -0.016455066449162743
+              ],
+              [
+                -0.01605313945292347,
+                -0.9998645136841185,
+                -0.0036401907816416995
+              ],
+              [
+                -0.016511483997415335,
+                -0.0033750699216763998,
+                0.9998579798147467
+              ]
+            ],
+            "translation": [
+              -0.008281602105215424,
+              -0.037096574408893086,
+              0.40091212425585765
+            ]
+          },
+          "sourcePaths": {
+            "front": "raw/mannequin_front_119999.ply",
+            "back": "raw/mannequin_back_119999.ply"
+          },
+          "selectors": [
+            {
+              "name": "left_aux",
+              "sideSign": 1,
+              "frontSeedYZ": [
+                -0.006,
+                0.382
+              ],
+              "backSeedYZ": [
+                -0.016,
+                0.405
+              ],
+              "radius": 0.007,
+              "colorKind": "dark",
+              "fitWeightsXYZ": [
+                0.05,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "left_cable",
+              "sideSign": 1,
+              "frontSeedYZ": [
+                0.012,
+                0.429
+              ],
+              "backSeedYZ": [
+                0.001,
+                0.453
+              ],
+              "radius": 0.01,
+              "colorKind": "dark",
+              "fitWeightsXYZ": [
+                0.3,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "left_port",
+              "sideSign": 1,
+              "frontSeedYZ": [
+                0.02,
+                0.369
+              ],
+              "backSeedYZ": [
+                0.013,
+                0.397
+              ],
+              "radius": 0.009,
+              "colorKind": "dark",
+              "fitWeightsXYZ": [
+                0.3,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "left_metal",
+              "sideSign": 1,
+              "frontSeedYZ": [
+                0.018,
+                0.334
+              ],
+              "backSeedYZ": [
+                0.011,
+                0.362
+              ],
+              "radius": 0.009,
+              "colorKind": "bright",
+              "fitWeightsXYZ": [
+                0.3,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "right_aux",
+              "sideSign": -1,
+              "frontSeedYZ": [
+                -0.043,
+                0.384
+              ],
+              "backSeedYZ": [
+                -0.041,
+                0.418
+              ],
+              "radius": 0.007,
+              "colorKind": "dark",
+              "fitWeightsXYZ": [
+                0.3,
+                1,
+                1
+              ]
+            },
+            {
+              "name": "right_fan",
+              "sideSign": -1,
+              "frontSeedYZ": [
+                -0.01,
+                0.339
+              ],
+              "backSeedYZ": [
+                -0.01,
+                0.374
+              ],
+              "radius": 0.008,
+              "colorKind": "dark",
+              "fitWeightsXYZ": [
+                0.3,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "cleanupRemoved": {
+          "front": 0,
+          "back": 0
+        },
+        "colorRepairAdjusted": {
+          "front": 0,
+          "back": 0
+        },
+        "id": "torso",
+        "label": "Chest / abdomen",
+        "frontBefore": 272404,
+        "backBefore": 467133,
+        "frontRetained": 229548,
+        "backRetained": 428967,
+        "sourceToFrontRaw": {
+          "scale": 0.928,
+          "rotation": [
+            [
+              -0.9969974366513659,
+              0.049233783897554936,
+              -0.0597674312124425
+            ],
+            [
+              -0.053535794469806754,
+              -0.9959195526464658,
+              0.0726509694838984
+            ],
+            [
+              -0.05594667122440603,
+              0.07563252725906146,
+              0.9955650108352117
+            ]
+          ],
+          "translation": [
+            -0.005206849724343396,
+            -0.031748273279376335,
+            0.37287053639143297
+          ]
+        },
+        "endpointResiduals": [
+          0.04478555617437056,
+          0.023173051808762602
+        ]
+      },
+      {
+        "method": "bounded overlap point-to-plane ICP + landmark prior",
+        "accepted": true,
+        "reason": "overlap improved within bounded prior",
+        "initialPairs": 121,
+        "initialMedianDistance": 0.005050719776234112,
+        "finalMedianDistance": 0.004313560287955887,
+        "finalP90Distance": 0.009515756754879125,
+        "finalPairs": 104,
+        "rotationCorrectionDegrees": 0.9053698301157915,
+        "translationCorrection": 0.003400398909758651,
+        "normalizedSingularValues": [
+          1.0,
+          0.6654228567112194,
+          0.5461124436088933,
+          0.5036006880820232,
+          0.3260141172648907,
+          0.2676394242283784
+        ],
+        "cleanupRemoved": {
+          "front": 0,
+          "back": 9748
+        },
+        "colorRepairAdjusted": {
+          "front": 0,
+          "back": 0
+        },
+        "id": "pelvis",
+        "label": "Pelvis",
+        "frontBefore": 105247,
+        "backBefore": 288682,
+        "frontRetained": 96212,
+        "backRetained": 262897,
+        "sourceToFrontRaw": {
+          "scale": 0.928,
+          "rotation": [
+            [
+              -0.9981851221284711,
+              -0.051246577539263094,
+              -0.031626733183838136
+            ],
+            [
+              0.04624751806614762,
+              -0.9887218846284084,
+              0.142443679851262
+            ],
+            [
+              -0.03856979432263976,
+              0.14072250405446796,
+              0.989297502179476
+            ]
+          ],
+          "translation": [
+            -0.006596239350334314,
+            -0.06318032941797146,
+            0.3524220440859565
+          ]
+        },
+        "endpointResiduals": [
+          0.03256565901459197,
+          0.010832583540423362
+        ]
+      },
+      {
+        "method": "Molded ear canal + pinna feature guided rigid fit",
+        "accepted": true,
+        "reason": "Reviewed through actual anisotropic Gaussian renders from both sides, front, rear and oblique; sleeve is segmented at visible seam planes",
+        "featureEvidence": {
+          "method": "Molded ear canal + pinna feature guided rigid fit",
+          "reason": "Reviewed through actual anisotropic Gaussian renders from both sides, front, rear and oblique; sleeve is segmented at visible seam planes",
+          "fitEvidence": {
+            "feature": "Molded right ear canal and surrounding pinna",
+            "pitchDegrees": 28.88799966097222,
+            "photometricResidualBefore": 0.05505334330492926,
+            "photometricResidualAfter": 0.03588302236287512,
+            "sourceFeature": [
+              0.10307096319348906,
+              0.034859490698329595,
+              -0.5061611477093988
+            ],
+            "frontFeature": [
+              -0.08083317,
+              -0.0351,
+              -0.12765
+            ],
+            "commonScale": 0.928,
+            "cervicalSegmentation": "tools/fusion/head-feature-evidence.json"
+          }
+        },
+        "hairAppearanceCorrection": {
+          "front": {
+            "method": "smooth posterior hair dome; covariance J Sigma J^T",
+            "appearanceCorrection": true,
+            "affected": 118818,
+            "amount": 0.014,
+            "parameters": {
+              "amount": 0.014,
+              "centerX": 0.006,
+              "centerZ": -0.225,
+              "radiusX": 0.15,
+              "radiusZ": 0.215,
+              "depthFade": [
+                -0.012,
+                0.035
+              ],
+              "napeFadeZ": [
+                -0.095,
+                -0.13
+              ],
+              "crownLiftRatio": 0.5,
+              "crownFadeSpan": 0.11,
+              "jacobianStep": 1e-05
+            },
+            "maxMeanDisplacement": 0.011713465371633942,
+            "rigidFeaturesUnchanged": true,
+            "protectedFeatureMaxDisplacement": 0.0,
+            "minJacobianDeterminant": 0.9670584327456221,
+            "maxJacobianStretch": 1.3292579360599082,
+            "minJacobianStretch": 0.9144316352277119,
+            "covarianceSingularValuesClipped": 0
+          },
+          "back": {
+            "method": "smooth posterior hair dome; covariance J Sigma J^T",
+            "appearanceCorrection": true,
+            "affected": 294291,
+            "amount": 0.014,
+            "parameters": {
+              "amount": 0.014,
+              "centerX": 0.006,
+              "centerZ": -0.225,
+              "radiusX": 0.15,
+              "radiusZ": 0.215,
+              "depthFade": [
+                -0.012,
+                0.035
+              ],
+              "napeFadeZ": [
+                -0.095,
+                -0.13
+              ],
+              "crownLiftRatio": 0.5,
+              "crownFadeSpan": 0.11,
+              "jacobianStep": 1e-05
+            },
+            "maxMeanDisplacement": 0.013999990490962302,
+            "rigidFeaturesUnchanged": true,
+            "protectedFeatureMaxDisplacement": 0.0,
+            "minJacobianDeterminant": 0.9615563593841636,
+            "maxJacobianStretch": 1.2980820729773783,
+            "minJacobianStretch": 0.8567924137119102,
+            "covarianceSingularValuesClipped": 0
+          }
+        },
+        "cleanupRemoved": {
+          "front": 0,
+          "back": 0
+        },
+        "colorRepairAdjusted": {
+          "front": 0,
+          "back": 0
+        },
+        "id": "head",
+        "label": "Skull / face",
+        "frontBefore": 401610,
+        "backBefore": 395871,
+        "frontRetained": 301944,
+        "backRetained": 372942,
+        "sourceToFrontRaw": {
+          "scale": 0.928,
+          "rotation": [
+            [
+              -0.999416918560757,
+              0.01022455585852538,
+              0.03257731345610456
+            ],
+            [
+              -0.024897777972503362,
+              -0.8711352686401165,
+              -0.4904115051498535
+            ],
+            [
+              0.023365006881088734,
+              -0.49093665802098024,
+              0.8708818945555351
+            ]
+          ],
+          "translation": [
+            0.029732287523297485,
+            -0.23489253554612474,
+            0.295065254196632
+          ]
+        },
+        "endpointResiduals": [
+          0.04871238172441912,
+          0.10623650070292887
+        ]
+      },
+      {
+        "method": "Complete upper cervical cuff follows skull",
+        "accepted": true,
+        "reason": "Reviewed through actual anisotropic Gaussian renders from both sides, front, rear and oblique; sleeve is segmented at visible seam planes",
+        "featureEvidence": {
+          "method": "Complete upper cervical cuff follows skull",
+          "reason": "Reviewed through actual anisotropic Gaussian renders from both sides, front, rear and oblique; sleeve is segmented at visible seam planes",
+          "fitEvidence": {
+            "feature": "Molded right ear canal and surrounding pinna",
+            "pitchDegrees": 28.88799966097222,
+            "photometricResidualBefore": 0.05505334330492926,
+            "photometricResidualAfter": 0.03588302236287512,
+            "sourceFeature": [
+              0.10307096319348906,
+              0.034859490698329595,
+              -0.5061611477093988
+            ],
+            "frontFeature": [
+              -0.08083317,
+              -0.0351,
+              -0.12765
+            ],
+            "commonScale": 0.928,
+            "cervicalSegmentation": "tools/fusion/head-feature-evidence.json"
+          }
+        },
+        "cleanupRemoved": {
+          "front": 0,
+          "back": 0
+        },
+        "colorRepairAdjusted": {
+          "front": 0,
+          "back": 0
+        },
+        "id": "neck",
+        "label": "Neck",
+        "frontBefore": 25330,
+        "backBefore": 51977,
+        "frontRetained": 19167,
+        "backRetained": 47618,
+        "sourceToFrontRaw": {
+          "scale": 0.928,
+          "rotation": [
+            [
+              -0.999416918560757,
+              0.01022455585852538,
+              0.03257731345610456
+            ],
+            [
+              -0.024897777972503362,
+              -0.8711352686401165,
+              -0.4904115051498535
+            ],
+            [
+              0.023365006881088734,
+              -0.49093665802098024,
+              0.8708818945555351
+            ]
+          ],
+          "translation": [
+            0.029732287523297485,
+            -0.23489253554612474,
+            0.295065254196632
+          ]
+        },
+        "endpointResiduals": [
+          0.08347535439431433,
+          0.04871238172441912
+        ]
+      },
+      {
+        "method": "Joint shoulder-pad and measured collar fit",
+        "accepted": true,
+        "reason": "Balance both rigid features and preserve continuous grey-cable arm geometry",
+        "featureEvidence": {
+          "method": "Joint shoulder-pad and measured collar fit",
+          "reason": "Balance both rigid features and preserve continuous grey-cable arm geometry",
+          "metrics": {
+            "padRimMedian": 0.0016872700865122174,
+            "padRimP90": 0.0029485376649356046,
+            "padCenterResidual": 0.00213363449101873,
+            "collarCenterResidual": 0.001974823501091119,
+            "collarNormalResidualDegrees": 5.868876775604806,
+            "rotationChangeDegrees": 2.7987929598859185
+          },
+          "evidence": "tools/fusion/left-arm-axial-evidence.json"
+        },
+        "cleanupRemoved": {
+          "front": 0,
+          "back": 0
+        },
+        "colorRepairAdjusted": {
+          "front": 0,
+          "back": 0
+        },
+        "id": "left_upper_arm",
+        "label": "Left upper arm",
+        "frontBefore": 25505,
+        "backBefore": 76109,
+        "frontRetained": 21459,
+        "backRetained": 72235,
+        "sourceToFrontRaw": {
+          "scale": 0.928,
+          "rotation": [
+            [
+              -0.9715075649064279,
+              0.18912811837198187,
+              -0.14284119213537236
+            ],
+            [
+              -0.21999085060300427,
+              -0.9438303002206553,
+              0.246553016684757
+            ],
+            [
+              -0.08818773713248097,
+              0.27095187621875017,
+              0.9585447322858711
+            ]
+          ],
+          "translation": [
+            -0.019762485445595723,
+            -0.025682523580196272,
+            0.35675786832630196
+          ]
+        },
+        "endpointResiduals": [
+          0.028839593665120497,
+          0.0019748235010911093
+        ]
+      },
+      {
+        "method": "Grey-cable collar with axial rotation only",
+        "accepted": true,
+        "reason": "Zero relative twist preserves observed cable and collar continuity; no independent swing or translation",
+        "featureEvidence": {
+          "mechanicalConstraint": {
+            "parentPart": "left_upper_arm",
+            "childPart": "left_forearm",
+            "pivotFrontRaw": [
+              0.3722547562366865,
+              0.008709922093973962,
+              0.27039340269981293
+            ],
+            "axisFrontRaw": [
+              0.6339159206348934,
+              0.13906095342803715,
+              0.7607973822229548
+            ],
+            "twistDegrees": 0.0,
+            "independentSwingDegrees": 0.0,
+            "independentTranslation": [
+              0,
+              0,
+              0
+            ]
+          },
+          "method": "Grey-cable collar with axial rotation only",
+          "reason": "Zero relative twist preserves observed cable and collar continuity; no independent swing or translation",
+          "evidence": "tools/fusion/left-arm-axial-evidence.json"
+        },
+        "mechanicalConstraint": {
+          "parentPart": "left_upper_arm",
+          "childPart": "left_forearm",
+          "pivotFrontRaw": [
+            0.3722547562366865,
+            0.008709922093973962,
+            0.27039340269981293
+          ],
+          "axisFrontRaw": [
+            0.6339159206348934,
+            0.13906095342803715,
+            0.7607973822229548
+          ],
+          "twistDegrees": 0.0,
+          "independentSwingDegrees": 0.0,
+          "independentTranslation": [
+            0,
+            0,
+            0
+          ]
+        },
+        "cleanupRemoved": {
+          "front": 0,
+          "back": 0
+        },
+        "colorRepairAdjusted": {
+          "front": 0,
+          "back": 0
+        },
+        "id": "left_forearm",
+        "label": "Left forearm",
+        "frontBefore": 95495,
+        "backBefore": 59364,
+        "frontRetained": 93306,
+        "backRetained": 56684,
+        "sourceToFrontRaw": {
+          "scale": 0.928,
+          "rotation": [
+            [
+              -0.9715075649064279,
+              0.18912811837198187,
+              -0.14284119213537236
+            ],
+            [
+              -0.21999085060300427,
+              -0.9438303002206553,
+              0.246553016684757
+            ],
+            [
+              -0.08818773713248097,
+              0.27095187621875017,
+              0.9585447322858711
+            ]
+          ],
+          "translation": [
+            -0.019762485445595668,
+            -0.025682523580196272,
+            0.35675786832630196
+          ]
+        },
+        "endpointResiduals": [
+          0.001974823501091119,
+          0.024478965734914645
+        ]
+      },
+      {
+        "method": "Preserved clean hand alignment with reviewed wrist rest pose",
+        "accepted": true,
+        "reason": "Close-up hand and cuff review rejected carrying the old relative pose; preserve the prior absolute hand alignment and follow the corrected forearm for later adjustments",
+        "featureEvidence": {
+          "carriedByPart": "left_forearm",
+          "method": "Preserved clean hand alignment with reviewed wrist rest pose",
+          "reason": "Close-up hand and cuff review rejected carrying the old relative pose; preserve the prior absolute hand alignment and follow the corrected forearm for later adjustments",
+          "evidence": "tools/fusion/left-arm-axial-evidence.json"
+        },
+        "carriedByPart": "left_forearm",
+        "digitAlignment": {
+          "method": "lengthwise back-finger correction with smooth knuckle/thenar transition",
+          "frame": "aligned front raw",
+          "sourceCapture": "back",
+          "parameters": {
+            "amount": 0.0033,
+            "origin": [
+              0.704,
+              0.065,
+              0.584
+            ],
+            "longitudinalAxis": [
+              0.6800060384804327,
+              0.0,
+              0.7332065109027254
+            ],
+            "lateralAxis": [
+              0.7332065109027254,
+              0.0,
+              -0.6800060384804327
+            ],
+            "longitudinalFade": [
+              0.08,
+              0.125
+            ],
+            "thumbFade": [
+              0.043,
+              0.055
+            ]
+          },
+          "affected": 16410,
+          "covariancesTransported": 5872,
+          "maximumDisplacement": 0.0033,
+          "minJacobianDeterminant": 1.0,
+          "maxJacobianStretch": 1.127813522716025,
+          "minJacobianStretch": 0.9788147449733007,
+          "maximumDepthDisplacement": 0.0,
+          "colorsAndOriginalOpacityUnchanged": true
+        },
+        "cleanupRemoved": {
+          "front": 12207,
+          "back": 8460
+        },
+        "colorRepairAdjusted": {
+          "front": 0,
+          "back": 0
+        },
+        "id": "left_hand",
+        "label": "Left hand",
+        "frontBefore": 33725,
+        "backBefore": 26929,
+        "frontRetained": 20394,
+        "backRetained": 14300,
+        "sourceToFrontRaw": {
+          "scale": 0.928,
+          "rotation": [
+            [
+              -0.9760632529961133,
+              0.1533024806685865,
+              -0.15426884186866704
+            ],
+            [
+              -0.18766822810169795,
+              -0.9521607116414643,
+              0.2411858523371303
+            ],
+            [
+              -0.10991434079232532,
+              0.2643640078136141,
+              0.9581390864905337
+            ]
+          ],
+          "translation": [
+            -0.01875926850049392,
+            0.0005242663322121976,
+            0.3375125018859629
+          ]
+        },
+        "endpointResiduals": [
+          0.028458375535748228,
+          0.0083368789423081
+        ]
+      },
+      {
+        "method": "knee screw-pair axis and center; initial unobservable knee-axis twist retained",
+        "accepted": true,
+        "reason": "accepted after multi-angle Gaussian render review",
+        "featureEvidence": {
+          "method": "knee screw-pair axis and center; initial unobservable knee-axis twist retained",
+          "before": [
+            {
+              "pairs": 3024,
+              "median": 0.014517857303922374,
+              "mean": 0.01527957878731368,
+              "coverage": 0.5540491022352511,
+              "p90": 0.02715468583948003,
+              "cost": 0.015229386650741406,
+              "color": 0.11724931001663208
+            },
+            {
+              "pairs": 2617,
+              "median": 0.015432117802608822,
+              "mean": 0.016260449288749205,
+              "coverage": 0.5728984238178634,
+              "p90": 0.02961947973055678,
+              "cost": 0.01535767066673789,
+              "color": 0.12298916280269623
+            }
+          ],
+          "after": [
+            {
+              "pairs": 3205,
+              "median": 0.010896517837534796,
+              "mean": 0.013249487895009097,
+              "coverage": 0.5872114327592525,
+              "p90": 0.02706741454433589,
+              "cost": 0.014079969914564177,
+              "color": 0.12082213163375854
+            },
+            {
+              "pairs": 2576,
+              "median": 0.01130200497895022,
+              "mean": 0.013569768190400837,
+              "coverage": 0.563922942206655,
+              "p90": 0.02743957903068979,
+              "cost": 0.014302653634633854,
+              "color": 0.1361505091190338
+            }
+          ],
+          "hardware": {
+            "front": [
+              [
+                0.3673,
+                -0.00608,
+                1.12993
+              ],
+              [
+                0.25566,
+                -0.02722,
+                1.16861
+              ]
+            ],
+            "back": [
+              [
+                -0.38231,
+                0.07271,
+                0.81691
+              ],
+              [
+                -0.26339,
+                0.09415,
+                0.84852
+              ]
+            ],
+            "features": [
+              "knee_outer",
+              "knee_inner"
+            ],
+            "beforeResiduals": [
+              0.04655253410370033,
+              0.045680219549199964
+            ],
+            "afterResiduals": [
+              0.002058478938202389,
+              0.0020584789382023837
+            ]
+          }
+        },
+        "cleanupRemoved": {
+          "front": 0,
+          "back": 11121
+        },
+        "colorRepairAdjusted": {
+          "front": 0,
+          "back": 0
+        },
+        "id": "left_thigh",
+        "label": "Left thigh",
+        "frontBefore": 81818,
+        "backBefore": 92694,
+        "frontRetained": 63765,
+        "backRetained": 73825,
+        "sourceToFrontRaw": {
+          "scale": 0.928,
+          "rotation": [
+            [
+              -0.9976862268723293,
+              0.05369078680849852,
+              0.04170721905305345
+            ],
+            [
+              -0.04686649439021505,
+              -0.9875455646054675,
+              0.150190843701074
+            ],
+            [
+              0.04925164375761446,
+              0.14788866501511488,
+              0.9877769071744996
+            ]
+          ],
+          "translation": [
+            -0.023818136975517157,
+            -0.0702940512150468,
+            0.3892620301954085
+          ]
+        },
+        "endpointResiduals": [
+          0.05784484374642653,
+          0.02622835230137436
+        ]
+      },
+      {
+        "method": "rigid fit of paired lateral/medial knee and ankle screw centers",
+        "accepted": true,
+        "reason": "accepted after multi-angle Gaussian render review",
+        "featureEvidence": {
+          "method": "rigid fit of paired lateral/medial knee and ankle screw centers",
+          "before": [
+            {
+              "pairs": 2392,
+              "median": 0.009428832298295546,
+              "mean": 0.010724439580257927,
+              "coverage": 0.9541284403669725,
+              "p90": 0.019655055950540765,
+              "cost": 0.010505326922804058,
+              "color": 0.08713717013597488
+            },
+            {
+              "pairs": 1576,
+              "median": 0.008741066753322656,
+              "mean": 0.010767617488739827,
+              "coverage": 0.9662783568362967,
+              "p90": 0.02157690042486759,
+              "cost": 0.010140415766648304,
+              "color": 0.06210915371775627
+            }
+          ],
+          "after": [
+            {
+              "pairs": 2324,
+              "median": 0.009032380242951735,
+              "mean": 0.010373958151741964,
+              "coverage": 0.9270043877143996,
+              "p90": 0.01883175816633277,
+              "cost": 0.010378263991364864,
+              "color": 0.08458402752876282
+            },
+            {
+              "pairs": 1604,
+              "median": 0.008763001845979008,
+              "mean": 0.010184962324791614,
+              "coverage": 0.9834457388105456,
+              "p90": 0.018808009934043468,
+              "cost": 0.00996606755688177,
+              "color": 0.06347507238388062
+            }
+          ],
+          "hardware": {
+            "front": [
+              [
+                0.3673,
+                -0.00608,
+                1.12993
+              ],
+              [
+                0.25566,
+                -0.02722,
+                1.16861
+              ],
+              [
+                0.4911,
+                -0.01618,
+                1.5272
+              ],
+              [
+                0.42122,
+                -0.02473,
+                1.54908
+              ]
+            ],
+            "back": [
+              [
+                -0.38231,
+                0.07271,
+                0.81691
+              ],
+              [
+                -0.26339,
+                0.09415,
+                0.84852
+              ],
+              [
+                -0.44766,
+                0.02528,
+                1.25752
+              ],
+              [
+                -0.39183,
+                0.00082,
+                1.26616
+              ]
+            ],
+            "features": [
+              "knee_outer",
+              "knee_inner",
+              "ankle_outer",
+              "ankle_inner"
+            ],
+            "beforeResiduals": [
+              0.022594388324179558,
+              0.02116288608721528,
+              0.038724925584530584,
+              0.03634717806314951
+            ],
+            "afterResiduals": [
+              0.007314137324080743,
+              0.00794239803216656,
+              0.01599195943951002,
+              0.015360371275192025
+            ]
+          }
+        },
+        "cleanupRemoved": {
+          "front": 141,
+          "back": 1877
+        },
+        "colorRepairAdjusted": {
+          "front": 0,
+          "back": 0
+        },
+        "id": "left_shin",
+        "label": "Left lower leg",
+        "frontBefore": 25964,
+        "backBefore": 31748,
+        "frontRetained": 24471,
+        "backRetained": 14261,
+        "sourceToFrontRaw": {
+          "scale": 0.928,
+          "rotation": [
+            [
+              -0.9877569249659897,
+              0.054350737708562816,
+              0.14622672290750252
+            ],
+            [
+              -0.08177139577630135,
+              -0.9786410020845807,
+              -0.1886139652085247
+            ],
+            [
+              0.13285215848652213,
+              -0.19826191351195557,
+              0.9711037625486014
+            ]
+          ],
+          "translation": [
+            -0.10107254028150714,
+            0.1803914802532291,
+            0.45456658534042305
+          ]
+        },
+        "endpointResiduals": [
+          0.024907721981716004,
+          0.03224034014214538
+        ]
+      },
+      {
+        "method": "multistart color and normal overlap; globally rescaled around source foot midpoint; hardware fit rejected due duplicated source features",
+        "accepted": true,
+        "reason": "accepted after multi-angle Gaussian render review",
+        "featureEvidence": {
+          "before": [
+            {
+              "pairs": 756,
+              "median": 0.013882544335735245,
+              "mean": 0.014351196908016143,
+              "coverage": 0.7722165474974464,
+              "p90": 0.025146137823949113,
+              "cost": 0.013904730639286659,
+              "color": 0.07089018821716309
+            },
+            {
+              "pairs": 636,
+              "median": 0.01424060657296609,
+              "mean": 0.015737286397161435,
+              "coverage": 0.7066666666666667,
+              "p90": 0.028872084589725837,
+              "cost": 0.014403523804729106,
+              "color": 0.05719290301203728
+            }
+          ],
+          "after": [
+            {
+              "pairs": 863,
+              "median": 0.010855989304961339,
+              "mean": 0.011875108084397509,
+              "coverage": 0.8306063522617901,
+              "p90": 0.02029620066106813,
+              "cost": 0.012297624498048347,
+              "color": 0.06574737280607224
+            },
+            {
+              "pairs": 778,
+              "median": 0.010700188252373052,
+              "mean": 0.01236322029604972,
+              "coverage": 0.8644444444444445,
+              "p90": 0.02254591147757065,
+              "cost": 0.012010379170669723,
+              "color": 0.05342467874288559
+            }
+          ],
+          "startTwistDegrees": -25,
+          "adjustment": {
+            "rotationDegrees": [
+              5.848380449168165,
+              10.799081281322893,
+              -10.295808842665794
+            ],
+            "translation": [
+              0.003800715649793968,
+              0.005451363734229815,
+              0.0202748663187584
+            ]
+          },
+          "method": "multistart color and normal overlap; globally rescaled around source foot midpoint; hardware fit rejected due duplicated source features",
+          "metricsNote": "After metrics recomputed at chosen .928 scale; source back foot contains nonrigid reconstruction ghosts, so coverage/quality policy is part of acceptance."
+        },
+        "cleanupRemoved": {
+          "front": 0,
+          "back": 2053
+        },
+        "colorRepairAdjusted": {
+          "front": 1705,
+          "back": 1078
+        },
+        "id": "left_foot",
+        "label": "Left foot",
+        "frontBefore": 34379,
+        "backBefore": 11275,
+        "frontRetained": 33169,
+        "backRetained": 2497,
+        "sourceToFrontRaw": {
+          "scale": 0.928,
+          "rotation": [
+            [
+              -0.9561341741922792,
+              -0.0860120611653426,
+              0.2800167249928794
+            ],
+            [
+              0.0634497658957381,
+              -0.9940369616330572,
+              -0.08868284002610989
+            ],
+            [
+              0.28597476837900326,
+              -0.06702569836570105,
+              0.9558901545727757
+            ]
+          ],
+          "translation": [
+            -0.25709073466147603,
+            0.14330090802391254,
+            0.5257520562504328
+          ]
+        },
+        "endpointResiduals": [
+          0.039261028545051584,
+          0.02724424296827231
+        ]
+      },
+      {
+        "method": "Shoulder-pad-centered rigid rotation jointly fitted to curved finger shafts and shoulder/collar features",
+        "accepted": true,
+        "reason": "Close the distal finger-shell gap through the shoulder ball rotation and existing arm swivel; no wrist joint",
+        "featureEvidence": {
+          "method": "Shoulder-pad-centered rigid rotation jointly fitted to curved finger shafts and shoulder/collar features",
+          "reason": "Close the distal finger-shell gap through the shoulder ball rotation and existing arm swivel; no wrist joint",
+          "metrics": {
+            "padCenterError": 0.000779424423713961,
+            "padRimMedian": 0.0010436949654628771,
+            "padRimP90": 0.0016004787260358094,
+            "parentCollar": {
+              "centerError": 0.003611602396627258,
+              "normalAngleDegrees": 3.929088644532684
+            },
+            "childCollar": {
+              "centerError": 0.0036116023966273007,
+              "normalAngleDegrees": 3.9290886445324977
+            }
+          },
+          "previousShoulderPadFit": {
+            "sourceToFrontRaw": {
+              "scale": 0.928,
+              "rotation": [
+                [
+                  -0.9977706195192642,
+                  -0.028414227291539806,
+                  -0.060385615104662664
+                ],
+                [
+                  -0.011808748405367681,
+                  -0.8153863607491271,
+                  0.5787967140243584
+                ],
+                [
+                  -0.06568366832967296,
+                  0.5782194344638728,
+                  0.8132330178509958
+                ]
+              ],
+              "translation": [
+                -0.004124740859451526,
+                0.06751477375249416,
+                0.331032932724309
+              ]
+            },
+            "metrics": {
+              "centerError": 0.0007794244237140693,
+              "medianRimResidual": 0.0007147867427977459,
+              "p90RimResidual": 0.001602043823402505,
+              "centerDisplacement": [
+                -0.0005790236325238785,
+                3.4863359661727045e-05,
+                0.0005205944788546635
+              ]
+            },
+            "correctionFromSeedDegrees": [
+              -0.6045778751969064,
+              -0.2683001749286924,
+              -0.5463683384879331
+            ],
+            "comparison": {
+              "baseline": {
+                "centerError": 0.07722439888195125,
+                "medianRimResidual": 0.045290913726851706,
+                "p90RimResidual": 0.07640135991888439,
+                "centerDisplacement": [
+                  -0.031429006038580676,
+                  0.046200792757333894,
+                  0.05330395961558068
+                ]
+              },
+              "seed": {
+                "centerError": 0.0009276487653850139,
+                "medianRimResidual": 0.0009303517734747283,
+                "p90RimResidual": 0.0017284813294782162,
+                "centerDisplacement": [
+                  -0.000722729631968122,
+                  0.00019168925370192935,
+                  0.0005490440246562756
+                ]
+              }
+            },
+            "independentScaleFit": {
+              "sourceToFrontRaw": {
+                "scale": 0.9210979753894031,
+                "rotation": [
+                  [
+                    -0.997836086091579,
+                    -0.028528176353614716,
+                    -0.05923924752540389
+                  ],
+                  [
+                    -0.01109175682440202,
+                    -0.8150207649203527,
+                    0.5793255783056653
+                  ],
+                  [
+                    -0.0648083190955247,
+                    0.578729034957278,
+                    0.8129407025567312
+                  ]
+                ],
+                "translation": [
+                  -0.005882632305214519,
+                  0.06637722433262684,
+                  0.32922048053811814
+                ]
+              },
+              "metrics": {
+                "centerError": 0.0007980838946345573,
+                "medianRimResidual": 0.0006020960820155769,
+                "p90RimResidual": 0.0012807452642435377,
+                "centerDisplacement": [
+                  -0.0006161421813289381,
+                  2.747974837800926e-05,
+                  0.0005065092088909762
+                ]
+              },
+              "correctionFromSeedDegrees": [
+                -0.03409382282200596,
+                0.049860284063458486,
+                -0.04341400972832197
+              ]
+            },
+            "method": "Matched shoulder-pad curved rim with complete-pad segmentation"
+          },
+          "evidence": "tools/fusion/right-arm-gap-evidence.json"
+        },
+        "cleanupRemoved": {
+          "front": 0,
+          "back": 0
+        },
+        "colorRepairAdjusted": {
+          "front": 0,
+          "back": 0
+        },
+        "id": "right_upper_arm",
+        "label": "Right upper arm",
+        "frontBefore": 30716,
+        "backBefore": 80867,
+        "frontRetained": 27487,
+        "backRetained": 73052,
+        "sourceToFrontRaw": {
+          "scale": 0.928,
+          "rotation": [
+            [
+              -0.9972982856448583,
+              0.003809948794573437,
+              -0.0733594829589833
+            ],
+            [
+              -0.04533681210163743,
+              -0.8176889428641385,
+              0.5738722559822789
+            ],
+            [
+              -0.0577988141598721,
+              0.5756477021650588,
+              0.815652511841778
+            ]
+          ],
+          "translation": [
+            -0.0074286910356710645,
+            0.07587447637720178,
+            0.32937509940234366
+          ]
+        },
+        "endpointResiduals": [
+          0.0645481450959172,
+          0.0036116023966272694
+        ]
+      },
+      {
+        "method": "Measured axial swivel and shoulder rotation with one rigid forearm, pad and hand",
+        "accepted": true,
+        "reason": "Keep forearm, wrist pad and hand rigid while matching complementary curved finger shells through the shoulder and measured axial swivel",
+        "featureEvidence": {
+          "mechanicalConstraint": {
+            "parentPart": "right_upper_arm",
+            "childPart": "right_forearm",
+            "pivotFrontRaw": [
+              -0.3590852533890853,
+              -0.03833235509794086,
+              0.27896079951802905
+            ],
+            "axisFrontRaw": [
+              -0.6249087788154958,
+              0.1817470761592546,
+              0.7592476660924866
+            ],
+            "twistDegrees": 0.7506419517381815,
+            "formula": "Rc=Q Rp; tc=Q(tp-pivot)+pivot; Q=axisAngle(axis,twist)",
+            "independentTranslation": [
+              0,
+              0,
+              0
+            ],
+            "independentSwingDegrees": 0
+          },
+          "method": "Measured axial swivel and shoulder rotation with one rigid forearm, pad and hand",
+          "reason": "Keep forearm, wrist pad and hand rigid while matching complementary curved finger shells through the shoulder and measured axial swivel",
+          "evidence": "tools/fusion/right-arm-gap-evidence.json"
+        },
+        "mechanicalConstraint": {
+          "parentPart": "right_upper_arm",
+          "childPart": "right_forearm",
+          "pivotFrontRaw": [
+            -0.3590852533890853,
+            -0.03833235509794086,
+            0.27896079951802905
+          ],
+          "axisFrontRaw": [
+            -0.6249087788154958,
+            0.1817470761592546,
+            0.7592476660924866
+          ],
+          "twistDegrees": 0.7506419517381815,
+          "formula": "Rc=Q Rp; tc=Q(tp-pivot)+pivot; Q=axisAngle(axis,twist)",
+          "independentTranslation": [
+            0,
+            0,
+            0
+          ],
+          "independentSwingDegrees": 0
+        },
+        "cleanupRemoved": {
+          "front": 0,
+          "back": 0
+        },
+        "colorRepairAdjusted": {
+          "front": 0,
+          "back": 0
+        },
+        "id": "right_forearm",
+        "label": "Right forearm",
+        "frontBefore": 37701,
+        "backBefore": 44643,
+        "frontRetained": 36052,
+        "backRetained": 38259,
+        "sourceToFrontRaw": {
+          "scale": 0.928,
+          "rotation": [
+            [
+              -0.9969299926393891,
+              0.013298264124270731,
+              -0.07716052065213642
+            ],
+            [
+              -0.05571707891090926,
+              -0.8128636960018562,
+              0.5797829066468235
+            ],
+            [
+              -0.055010879775396405,
+              0.5823021276738434,
+              0.8111091389035469
+            ]
+          ],
+          "translation": [
+            -0.00846619949823113,
+            0.07977274066848615,
+            0.3275880062784765
+          ]
+        },
+        "endpointResiduals": [
+          0.003611602396627305,
+          0.0115854078069599
+        ]
+      },
+      {
+        "method": "rigid shared parent transform",
+        "accepted": true,
+        "reason": "No independent joint or pose for this part",
+        "rigidWithPart": "right_forearm",
+        "cleanupRemoved": {
+          "front": 9367,
+          "back": 10535
+        },
+        "colorRepairAdjusted": {
+          "front": 1054,
+          "back": 929
+        },
+        "id": "right_hand",
+        "label": "Right hand",
+        "frontBefore": 25411,
+        "backBefore": 30970,
+        "frontRetained": 15999,
+        "backRetained": 20008,
+        "sourceToFrontRaw": {
+          "scale": 0.928,
+          "rotation": [
+            [
+              -0.9969299926393891,
+              0.013298264124270731,
+              -0.07716052065213642
+            ],
+            [
+              -0.05571707891090926,
+              -0.8128636960018562,
+              0.5797829066468235
+            ],
+            [
+              -0.055010879775396405,
+              0.5823021276738434,
+              0.8111091389035469
+            ]
+          ],
+          "translation": [
+            -0.00846619949823113,
+            0.07977274066848615,
+            0.3275880062784765
+          ]
+        },
+        "endpointResiduals": [
+          0.0115854078069599,
+          0.0220404953377376
+        ]
+      },
+      {
+        "method": "knee screw-pair axis and center; initial unobservable knee-axis twist retained",
+        "accepted": true,
+        "reason": "accepted after multi-angle Gaussian render review",
+        "featureEvidence": {
+          "method": "knee screw-pair axis and center; initial unobservable knee-axis twist retained",
+          "before": [
+            {
+              "pairs": 2824,
+              "median": 0.010963594051644737,
+              "mean": 0.01265124756516567,
+              "coverage": 0.7118729518527854,
+              "p90": 0.024200853632050764,
+              "cost": 0.013190564665754051,
+              "color": 0.106365866959095
+            },
+            {
+              "pairs": 3318,
+              "median": 0.01247669416311472,
+              "mean": 0.014082137280771612,
+              "coverage": 0.7393048128342246,
+              "p90": 0.026526045900250657,
+              "cost": 0.013623732784907618,
+              "color": 0.10037480294704437
+            }
+          ],
+          "after": [
+            {
+              "pairs": 2888,
+              "median": 0.008799194732575686,
+              "mean": 0.010554550240904906,
+              "coverage": 0.7280060499117721,
+              "p90": 0.020467560419087354,
+              "cost": 0.011954659030036724,
+              "color": 0.10391121357679367
+            },
+            {
+              "pairs": 3343,
+              "median": 0.009789091825043105,
+              "mean": 0.011628737041820738,
+              "coverage": 0.7448752228163993,
+              "p90": 0.022599896933386213,
+              "cost": 0.012376894780209428,
+              "color": 0.10561716556549072
+            }
+          ],
+          "hardware": {
+            "front": [
+              [
+                -0.3781,
+                -0.02475,
+                1.12056
+              ],
+              [
+                -0.26734,
+                -0.01137,
+                1.16593
+              ]
+            ],
+            "back": [
+              [
+                0.2975,
+                0.09634,
+                0.84261
+              ],
+              [
+                0.17174,
+                0.11224,
+                0.86904
+              ]
+            ],
+            "features": [
+              "knee_outer",
+              "knee_inner"
+            ],
+            "beforeResiduals": [
+              0.03183157908551701,
+              0.032870964551915884
+            ],
+            "afterResiduals": [
+              0.00013679220022410517,
+              0.00013679220022428382
+            ]
+          }
+        },
+        "cleanupRemoved": {
+          "front": 0,
+          "back": 4223
+        },
+        "colorRepairAdjusted": {
+          "front": 0,
+          "back": 0
+        },
+        "id": "right_thigh",
+        "label": "Right thigh",
+        "frontBefore": 86924,
+        "backBefore": 82222,
+        "frontRetained": 74417,
+        "backRetained": 55778,
+        "sourceToFrontRaw": {
+          "scale": 0.928,
+          "rotation": [
+            [
+              -0.9697175329695934,
+              0.14554605281348906,
+              -0.19612305515104345
+            ],
+            [
+              -0.18856376501533434,
+              -0.9565265403780518,
+              0.22248749195322765
+            ],
+            [
+              -0.1552147311778361,
+              0.2527317234990668,
+              0.9550052686569762
+            ]
+          ],
+          "translation": [
+            0.030089957086381486,
+            -0.061131611403246196,
+            0.3941093019958146
+          ]
+        },
+        "endpointResiduals": [
+          0.04904776836584844,
+          0.0076875514010260925
+        ]
+      },
+      {
+        "method": "rigid fit of paired lateral/medial knee and ankle screw centers",
+        "accepted": true,
+        "reason": "accepted after multi-angle Gaussian render review",
+        "featureEvidence": {
+          "method": "rigid fit of paired lateral/medial knee and ankle screw centers",
+          "before": [
+            {
+              "pairs": 2357,
+              "median": 0.013665511502601226,
+              "mean": 0.01521547541435709,
+              "coverage": 0.9239513916111329,
+              "p90": 0.028090840764053396,
+              "cost": 0.01324119893059789,
+              "color": 0.06686587631702423
+            },
+            {
+              "pairs": 1351,
+              "median": 0.012762711832665486,
+              "mean": 0.014194480060454933,
+              "coverage": 0.9030748663101604,
+              "p90": 0.02685305180778861,
+              "cost": 0.012806843884892578,
+              "color": 0.06851223111152649
+            }
+          ],
+          "after": [
+            {
+              "pairs": 2411,
+              "median": 0.011601216413321663,
+              "mean": 0.012200607873900093,
+              "coverage": 0.9451195609564876,
+              "p90": 0.019813876401131456,
+              "cost": 0.012014049055666937,
+              "color": 0.06802187114953995
+            },
+            {
+              "pairs": 1429,
+              "median": 0.010013972261482108,
+              "mean": 0.010871460372123744,
+              "coverage": 0.9552139037433155,
+              "p90": 0.018836860253464694,
+              "cost": 0.010757839212523617,
+              "color": 0.06684329360723495
+            }
+          ],
+          "hardware": {
+            "front": [
+              [
+                -0.3781,
+                -0.02475,
+                1.12056
+              ],
+              [
+                -0.26734,
+                -0.01137,
+                1.16593
+              ],
+              [
+                -0.51993,
+                -0.01722,
+                1.51169
+              ],
+              [
+                -0.45099,
+                -0.00519,
+                1.53905
+              ]
+            ],
+            "back": [
+              [
+                0.2975,
+                0.09634,
+                0.84261
+              ],
+              [
+                0.17174,
+                0.11224,
+                0.86904
+              ],
+              [
+                0.3536,
+                0.04248,
+                1.28466
+              ],
+              [
+                0.2767,
+                0.05238,
+                1.29719
+              ]
+            ],
+            "features": [
+              "knee_outer",
+              "knee_inner",
+              "ankle_outer",
+              "ankle_inner"
+            ],
+            "beforeResiduals": [
+              0.014028413292837853,
+              0.013993520983666921,
+              0.023298573135441106,
+              0.03358904055765454
+            ],
+            "afterResiduals": [
+              0.0009100315207604511,
+              0.0020370618918184404,
+              0.001787267953282001,
+              0.0020586802273120926
+            ]
+          }
+        },
+        "cleanupRemoved": {
+          "front": 49,
+          "back": 1211
+        },
+        "colorRepairAdjusted": {
+          "front": 0,
+          "back": 0
+        },
+        "id": "right_shin",
+        "label": "Right lower leg",
+        "frontBefore": 21595,
+        "backBefore": 37037,
+        "frontRetained": 16657,
+        "backRetained": 29383,
+        "sourceToFrontRaw": {
+          "scale": 0.928,
+          "rotation": [
+            [
+              -0.9439065055332085,
+              0.2691591979552229,
+              -0.19129515144976242
+            ],
+            [
+              -0.2623988882130808,
+              -0.9630720827551552,
+              -0.06032401579956346
+            ],
+            [
+              -0.20046778363773443,
+              -0.006744595892125449,
+              0.9796770785057831
+            ]
+          ],
+          "translation": [
+            0.008293485757313424,
+            0.18019038813601096,
+            0.4100717905806791
+          ]
+        },
+        "endpointResiduals": [
+          0.007219801607488205,
+          0.031253030341536044
+        ]
+      },
+      {
+        "method": "screw-pair fixed hinge axis + bounded same-normal color overlap rotation",
+        "accepted": true,
+        "reason": "accepted after multi-angle Gaussian render review",
+        "featureEvidence": {
+          "method": "screw-pair fixed hinge axis + bounded same-normal color overlap rotation",
+          "before": [
+            {
+              "pairs": 883,
+              "median": 0.016199374986238035,
+              "mean": 0.017198444395216915,
+              "coverage": 0.7612068965517241,
+              "p90": 0.02867745489352726,
+              "cost": 0.015116727745234565,
+              "color": 0.05728541314601898
+            },
+            {
+              "pairs": 677,
+              "median": 0.015593123191597157,
+              "mean": 0.0163947759673048,
+              "coverage": 0.6611328125,
+              "p90": 0.028106976366121268,
+              "cost": 0.015162721182626841,
+              "color": 0.05137930437922478
+            }
+          ],
+          "after": [
+            {
+              "pairs": 1106,
+              "median": 0.008101338055581608,
+              "mean": 0.009479578090179476,
+              "coverage": 0.9534482758620689,
+              "p90": 0.01704118507654742,
+              "cost": 0.009471526287883374,
+              "color": 0.056619785726070404
+            },
+            {
+              "pairs": 864,
+              "median": 0.007232888489929091,
+              "mean": 0.007890098658551455,
+              "coverage": 0.84375,
+              "p90": 0.013473965130376239,
+              "cost": 0.009386493559800285,
+              "color": 0.05547048896551132
+            }
+          ],
+          "hardware": {
+            "front": [
+              [
+                -0.51993,
+                -0.01722,
+                1.51169
+              ],
+              [
+                -0.45099,
+                -0.00519,
+                1.53905
+              ]
+            ],
+            "back": [
+              [
+                0.3536,
+                0.04248,
+                1.28466
+              ],
+              [
+                0.2767,
+                0.05238,
+                1.29719
+              ]
+            ],
+            "features": [
+              "ankle_outer",
+              "ankle_inner"
+            ],
+            "beforeResiduals": [
+              0.028291701477892475,
+              0.034872360587794964
+            ],
+            "afterResiduals": [
+              0.0011271579177165145,
+              0.001127157917716003
+            ]
+          }
+        },
+        "cleanupRemoved": {
+          "front": 0,
+          "back": 953
+        },
+        "colorRepairAdjusted": {
+          "front": 712,
+          "back": 3231
+        },
+        "id": "right_foot",
+        "label": "Right foot",
+        "frontBefore": 31732,
+        "backBefore": 37476,
+        "frontRetained": 25963,
+        "backRetained": 35966,
+        "sourceToFrontRaw": {
+          "scale": 0.928,
+          "rotation": [
+            [
+              -0.9171593462236706,
+              0.3629345886195515,
+              -0.1646123264464919
+            ],
+            [
+              -0.32027566324773016,
+              -0.9170727793065612,
+              -0.23748898287323952
+            ],
+            [
+              -0.23715445002317823,
+              -0.16509391823594277,
+              0.957340986793999
+            ]
+          ],
+          "translation": [
+            -0.036000880309729255,
+            0.40733423103710087,
+            0.4551207925312346
+          ]
+        },
+        "endpointResiduals": [
+          0.03257792726428275,
+          0.03585580385043891
+        ]
+      }
+    ],
+    "fusedCount": 2698682,
+    "frontCount": 1100010,
+    "backCount": 1598672,
+    "frame": "[x,-y,-z] of original front scan; no metric calibration",
+    "parameters": {
+      "front": "raw/mannequin_front_119999.ply",
+      "back": "raw/mannequin_back_119999.ply",
+      "frontLandmarks": "tools/fusion/front-landmarks.json",
+      "backLandmarks": "tools/fusion/back-landmarks.json",
+      "output": "raw/mannequin-fused",
+      "review": "viewers/mannequin-fusion",
+      "previewMaxPerSource": 2000000,
+      "filter": {
+        "minOpacity": 0.025,
+        "minScale": 1.5e-05,
+        "maxScale": 0.04,
+        "anatomyRadiusMultiplier": 1.8,
+        "densityVoxel": 0.0025,
+        "isolatedSpacing": 0.026,
+        "contactDepth": 0.005,
+        "contactSpacing": 0.012,
+        "partOverrides": {
+          "back": {
+            "left_foot": {
+              "maxScale": 0.008620689655172414
+            }
+          }
+        }
+      },
+      "alignment": {
+        "scale": 0.928,
+        "voxel": 0.004,
+        "maxDistance": 0.02,
+        "maxAnteriorNormal": 0.78,
+        "minPairs": 60,
+        "iterations": 15,
+        "maxRotationDegrees": 6,
+        "maxTranslation": 0.022
+      },
+      "fusion": {
+        "feather": 0.009,
+        "minWeight": 0.035,
+        "donorColumnRadius": 0.02,
+        "partOverrides": {
+          "head": {
+            "preserveUniqueBack": false
+          },
+          "neck": {
+            "preserveUniqueBack": false
+          },
+          "left_foot": {
+            "depthBias": 0.04
+          },
+          "left_shin": {
+            "depthBias": 0.03
+          },
+          "left_hand": {
+            "depthBias": 0.008,
+            "feather": 0.004,
+            "preserveUniqueFront": false,
+            "preserveUniqueBack": false
+          }
+        }
+      },
+      "partRadii": {},
+      "adjustments": {},
+      "exclusions": {
+        "back": [
+          {
+            "min": [
+              -0.47,
+              -0.3,
+              -0.025
+            ],
+            "max": [
+              -0.255,
+              0.3,
+              0.2
+            ],
+            "reason": "Visually verified dangling cable outside torso; arm lies outside this box."
+          },
+          {
+            "min": [
+              -0.015,
+              0.06,
+              -0.445
+            ],
+            "max": [
+              0.1,
+              0.2,
+              -0.41
+            ],
+            "reason": "Inspected small anterior cervical contact remnant in back capture; became a floating brown fleck after pose alignment."
+          }
+        ],
+        "front": [
+          {
+            "min": [
+              -0.12,
+              -0.02,
+              0.01
+            ],
+            "max": [
+              0.12,
+              0.5,
+              0.08
+            ],
+            "reason": "Inspected sparse posterior neck contact sheet in front capture; caused silver ghost over clean back torso label."
+          }
+        ]
+      },
+      "featureTransforms": "tools/fusion/feature-transforms.json",
+      "cervicalSegmentation": "tools/fusion/head-feature-evidence.json",
+      "segmentationOverrides": {
+        "front": [
+          {
+            "id": "left-shoulder-pad",
+            "part": "left_upper_arm",
+            "type": "orientedEllipseSlab",
+            "center": [
+              0.28082375264922893,
+              -0.006021772859953858,
+              0.1215281739221422
+            ],
+            "axes": [
+              [
+                -0.7798078625320578,
+                -0.12369671421488776,
+                -0.6136764786315538
+              ],
+              [
+                -0.23755105671810892,
+                0.9654350062429973,
+                0.10726017048603767
+              ],
+              [
+                0.5791970243235831,
+                0.22942182026351465,
+                -0.78223809380628
+              ]
+            ],
+            "radii": [
+              0.06469078955504308,
+              0.04472319892461155
+            ],
+            "halfDepth": 0.015,
+            "patchPoints": 2588,
+            "reassignedPoints": 506,
+            "coveredRimFraction": 1.0
+          },
+          {
+            "id": "right-shoulder-pad",
+            "part": "right_upper_arm",
+            "type": "orientedEllipseSlab",
+            "center": [
+              -0.2722626213547983,
+              -0.0731111409805676,
+              0.13110258410448405
+            ],
+            "axes": [
+              [
+                -0.7669323343202002,
+                0.13219322291213143,
+                0.6279647652458471
+              ],
+              [
+                0.00925462324373456,
+                0.9807294903405768,
+                -0.1951512713894771
+              ],
+              [
+                -0.6416612396917747,
+                -0.14385624279959597,
+                -0.7533765558369858
+              ]
+            ],
+            "radii": [
+              0.063104066131518,
+              0.041407443634087535
+            ],
+            "halfDepth": 0.015,
+            "patchPoints": 5455,
+            "reassignedPoints": 1414,
+            "coveredRimFraction": 0.9978540772532188
+          }
+        ],
+        "back": [
+          {
+            "id": "left-shoulder-pad",
+            "part": "left_upper_arm",
+            "type": "orientedEllipseSlab",
+            "center": [
+              -0.295813967873225,
+              -0.028493055847741013,
+              -0.285676067313211
+            ],
+            "axes": [
+              [
+                -0.8406501242724752,
+                0.1691633007348411,
+                0.5144814343056169
+              ],
+              [
+                0.02799232618676071,
+                -0.9351247815335384,
+                0.35321108792973355
+              ],
+              [
+                0.5408546923484397,
+                0.31132847708866207,
+                0.7813774895134419
+              ]
+            ],
+            "radii": [
+              0.07191378827702943,
+              0.044705340844400566
+            ],
+            "halfDepth": 0.015,
+            "patchPoints": 6552,
+            "reassignedPoints": 2,
+            "coveredRimFraction": 1.0
+          },
+          {
+            "id": "right-shoulder-pad",
+            "part": "right_upper_arm",
+            "type": "orientedEllipseSlab",
+            "center": [
+              0.3048232763075172,
+              0.007509497476558912,
+              -0.24494999909521284
+            ],
+            "axes": [
+              [
+                0.7230248992575244,
+                0.2858863870940679,
+                0.6288910626872888
+              ],
+              [
+                -0.0005817634944765081,
+                -0.9100995555982851,
+                0.41438926198809795
+              ],
+              [
+                -0.6908217256317893,
+                0.2999796202646182,
+                0.6578583212371886
+              ]
+            ],
+            "radii": [
+              0.06749295561069416,
+              0.04436111301003592
+            ],
+            "halfDepth": 0.015,
+            "patchPoints": 5115,
+            "reassignedPoints": 0,
+            "coveredRimFraction": 0.9935158501440923
+          }
+        ]
+      },
+      "revision": "feature-guided-v11-finger-side-coverage",
+      "hairFullness": {
+        "amount": 0.014,
+        "centerX": 0.006,
+        "centerZ": -0.225,
+        "radiusX": 0.15,
+        "radiusZ": 0.215,
+        "depthFade": [
+          -0.012,
+          0.035
+        ],
+        "napeFadeZ": [
+          -0.095,
+          -0.13
+        ],
+        "crownLiftRatio": 0.5,
+        "crownFadeSpan": 0.11,
+        "jacobianStep": 1e-05
+      },
+      "cleanupMasks": [
+        "tools/fusion/cleanup-masks/pants-back.json",
+        "tools/fusion/cleanup-masks/legs-front.json",
+        "tools/fusion/cleanup-masks/legs-back.json",
+        "tools/fusion/cleanup-masks/hand-front.json",
+        "tools/fusion/cleanup-masks/hand-back.json",
+        "tools/fusion/cleanup-masks/hand-v4-front.json",
+        "tools/fusion/cleanup-masks/hand-v4-back.json",
+        "tools/fusion/cleanup-masks/feet-v4-back.json",
+        "tools/fusion/cleanup-masks/hand-v6-right-front.json",
+        "tools/fusion/cleanup-masks/hand-v6-right-back.json",
+        "tools/fusion/cleanup-masks/hand-v6-left-front.json",
+        "tools/fusion/cleanup-masks/hand-v6-left-back.json"
+      ],
+      "colorOverrides": [
+        "tools/fusion/cleanup-masks/feet-v4-color-front.json",
+        "tools/fusion/cleanup-masks/feet-v4-color-back.json",
+        "tools/fusion/cleanup-masks/right-hand-front-side-color-v11.json",
+        "tools/fusion/cleanup-masks/right-hand-back-side-color-v11.json"
+      ],
+      "colorRepairStrength": 1.0,
+      "jointBoundaries": {
+        "front": [
+          {
+            "landmark": "right_elbow",
+            "proximalPart": "right_upper_arm",
+            "distalPart": "right_forearm",
+            "pivot": [
+              -0.3590852533890853,
+              -0.03833235509794086,
+              0.27896079951802905
+            ],
+            "axis": [
+              -0.6249087788154958,
+              0.1817470761592546,
+              0.7592476660924866
+            ],
+            "maximumAbsStation": 0.11,
+            "maximumRadius": 0.11
+          },
+          {
+            "landmark": "left_elbow",
+            "proximalPart": "left_upper_arm",
+            "distalPart": "left_forearm",
+            "pivot": [
+              0.3722547562366865,
+              0.008709922093973962,
+              0.27039340269981293
+            ],
+            "axis": [
+              0.6339159206348934,
+              0.13906095342803715,
+              0.7607973822229548
+            ],
+            "maximumAbsStation": 0.11,
+            "maximumRadius": 0.11
+          }
+        ],
+        "back": [
+          {
+            "landmark": "right_elbow",
+            "proximalPart": "right_upper_arm",
+            "distalPart": "right_forearm",
+            "pivot": [
+              0.3869903624693549,
+              0.07179026012496578,
+              -0.08718074506009052
+            ],
+            "axis": [
+              0.5816871206946954,
+              0.34526505020450465,
+              0.7364999244570203
+            ],
+            "maximumAbsStation": 0.11,
+            "maximumRadius": 0.11
+          },
+          {
+            "landmark": "left_elbow",
+            "proximalPart": "left_upper_arm",
+            "distalPart": "left_forearm",
+            "pivot": [
+              -0.4108869620473415,
+              0.020252585788967697,
+              -0.13842931713185627
+            ],
+            "axis": [
+              -0.7787412649097246,
+              0.20093827047516102,
+              0.5942944167542319
+            ],
+            "maximumAbsStation": 0.11,
+            "maximumRadius": 0.11
+          }
+        ]
+      },
+      "sourcePartAssignments": [
+        {
+          "selection": "tools/fusion/part-masks/back-left-gray-cable.json",
+          "part": "left_upper_arm",
+          "allowedParts": [
+            "left_upper_arm",
+            "left_forearm"
+          ],
+          "requireRetained": true
+        }
+      ],
+      "surfaceRestorations": [
+        {
+          "selection": "tools/fusion/surface-restorations/left-hand-back-v6.json",
+          "part": "left_hand",
+          "minimumWeight": 1.0
+        },
+        {
+          "selection": "tools/fusion/surface-restorations/left-hand-front-caps-v7.json",
+          "part": "left_hand",
+          "minimumWeight": 1.0
+        },
+        {
+          "selection": "tools/fusion/surface-restorations/left-hand-back-caps-v7.json",
+          "part": "left_hand",
+          "minimumWeight": 1.0
+        },
+        {
+          "selection": "tools/fusion/surface-restorations/right-hand-front-sides-v11.json",
+          "part": "right_hand",
+          "minimumWeight": 1.0
+        },
+        {
+          "selection": "tools/fusion/surface-restorations/right-hand-back-sides-v11.json",
+          "part": "right_hand",
+          "minimumWeight": 1.0
+        }
+      ],
+      "leftHandDigitAlignment": {
+        "amount": 0.0033,
+        "origin": [
+          0.704,
+          0.065,
+          0.584
+        ],
+        "longitudinalAxis": [
+          0.68,
+          0,
+          0.7332
+        ],
+        "lateralAxis": [
+          0.7332,
+          0,
+          -0.68
+        ],
+        "longitudinalFade": [
+          0.08,
+          0.125
+        ],
+        "thumbFade": [
+          0.043,
+          0.055
+        ]
+      },
+      "rigidParts": {
+        "right_hand": "right_forearm"
+      }
+    },
+    "cleanupEvidence": [
+      {
+        "document": "tools/fusion/cleanup-masks/pants-back.json",
+        "version": 1,
+        "purpose": "remove scanned bed-contact remnants and floating white fragments around lower shorts",
+        "sourceCapture": "back",
+        "sourceFile": "raw/mannequin_back_119999.ply",
+        "sourceSha256": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e",
+        "sourceHashes": {
+          "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+          "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+        },
+        "baseline": "raw/fusion-work/cleanup-v3/baseline",
+        "maskFile": "tools/fusion/cleanup-masks/pants-back.npy",
+        "maskDtype": "uint32",
+        "maskMeaning": "sorted unique ORIGINAL back PLY vertex indices; hash guarded",
+        "applyStage": "after coverage confidence weighting and opacity attenuation, before final export; do not trigger donor rescue again",
+        "rejectedFusedCount": 25092,
+        "uniqueSourceIndices": 25092,
+        "ruleCounts": {
+          "backLowerShortContact": 24704,
+          "neutralBrightCrotch": 2320,
+          "bothRules": 1932
+        },
+        "rejectedByPart": {
+          "pelvis": 9748,
+          "left_thigh": 11121,
+          "right_thigh": 4223
+        },
+        "rules": [
+          {
+            "id": "back-lower-short-contact",
+            "source": "back",
+            "parts": [
+              "pelvis",
+              "left_thigh",
+              "right_thigh"
+            ],
+            "frontRawZ": {
+              "gt": 0.88,
+              "lt": 1.13
+            },
+            "nativeBackY": {
+              "gt": 0.1
+            }
+          },
+          {
+            "id": "neutral-bright-crotch-remnants",
+            "source": "back",
+            "parts": [
+              "pelvis",
+              "left_thigh",
+              "right_thigh"
+            ],
+            "frontRawAbsX": {
+              "lt": 0.225
+            },
+            "frontRawZ": {
+              "gt": 1.045,
+              "lt": 1.215
+            },
+            "dcLuminance": {
+              "gt": 0.22
+            },
+            "dcMaxMinusMin": {
+              "lt": 0.35
+            }
+          }
+        ],
+        "colorFormula": "RGB=clip(0.5+0.28209479177387814*f_dc,0,1); luminance=0.2126R+0.7152G+0.0722B",
+        "review": "Six actual anisotropic Gaussian views: front, back, both sides, front/rear oblique; plus source-isolated crotch closeups. Preserves front fabric/logo, rear cloth folds, and knee screw heads outside the central X bound.",
+        "limitations": "Different shorts folds remain because captures have different cloth shapes. This removes artifact contributions without inventing or warping cloth.",
+        "proof": "raw/fusion-work/cleanup-v3/pants/candidate-c.png",
+        "reproduce": ".venv-fusion/bin/python -B tools/fusion/cleanup_pants.py"
+      },
+      {
+        "document": "tools/fusion/cleanup-masks/legs-front.json",
+        "version": 1,
+        "purpose": "Remove verified foot ghosts, toe wisps and sparse shin remnants without changing poses.",
+        "sourceCapture": "front",
+        "sourceFile": "raw/mannequin_front_119999.ply",
+        "sourceSha256": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+        "sourceHashes": {
+          "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+          "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+        },
+        "baseline": "raw/fusion-work/cleanup-v3/baseline",
+        "maskFile": "tools/fusion/cleanup-masks/legs-front.npy",
+        "maskDtype": "uint32",
+        "maskMeaning": "sorted unique ORIGINAL front PLY vertex indices; hash guarded",
+        "applyStage": "after coverage confidence weighting and opacity attenuation, before final export; do not trigger donor rescue again",
+        "rejectedFusedCount": 190,
+        "uniqueSourceIndices": 190,
+        "rejectedByPart": {
+          "left_shin": 141,
+          "right_shin": 49
+        },
+        "exactRecipe": "tools/fusion/cleanup-masks/legs-recipe.json",
+        "ruleCounts": {
+          "left_back_foot_outside_front_envelope": 0,
+          "left_back_shin_duplicated_heel": 0,
+          "right_back_toe_white_wisps": 0,
+          "right_back_posterior_ankle_spur": 0,
+          "left_front_posterior_shin_bright_streaks": 11,
+          "left_shin_sparse_centers_outside_hardware": 130,
+          "right_shin_sparse_centers_outside_hardware": 49
+        },
+        "review": "Five variant families inspected from six actual Gaussian cameras, then final six-view foot and shin plus three underside/heel cameras.",
+        "limitations": "Left posterior sole remains softer/discolored because the back capture is intrinsically distorted. A small right posterior ankle remnant is preserved to avoid hollowing valid material.",
+        "proof": [
+          "raw/fusion-work/cleanup-v3/legs/left-foot-final.png",
+          "raw/fusion-work/cleanup-v3/legs/right-foot-final.png",
+          "raw/fusion-work/cleanup-v3/legs/left-shin-final.png",
+          "raw/fusion-work/cleanup-v3/legs/right-shin-final.png",
+          "raw/fusion-work/cleanup-v3/legs/left-sole-final.png",
+          "raw/fusion-work/cleanup-v3/legs/right-sole-final.png"
+        ],
+        "reproduce": ".venv-fusion/bin/python -B tools/fusion/cleanup_legs.py --mode final"
+      },
+      {
+        "document": "tools/fusion/cleanup-masks/legs-back.json",
+        "version": 1,
+        "purpose": "Remove verified foot ghosts, toe wisps and sparse shin remnants without changing poses.",
+        "sourceCapture": "back",
+        "sourceFile": "raw/mannequin_back_119999.ply",
+        "sourceSha256": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e",
+        "sourceHashes": {
+          "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+          "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+        },
+        "baseline": "raw/fusion-work/cleanup-v3/baseline",
+        "maskFile": "tools/fusion/cleanup-masks/legs-back.npy",
+        "maskDtype": "uint32",
+        "maskMeaning": "sorted unique ORIGINAL back PLY vertex indices; hash guarded",
+        "applyStage": "after coverage confidence weighting and opacity attenuation, before final export; do not trigger donor rescue again",
+        "rejectedFusedCount": 5160,
+        "uniqueSourceIndices": 5160,
+        "rejectedByPart": {
+          "left_shin": 1877,
+          "left_foot": 2053,
+          "right_shin": 384,
+          "right_foot": 846
+        },
+        "exactRecipe": "tools/fusion/cleanup-masks/legs-recipe.json",
+        "ruleCounts": {
+          "left_back_foot_outside_front_envelope": 2053,
+          "left_back_shin_duplicated_heel": 1802,
+          "right_back_toe_white_wisps": 607,
+          "right_back_posterior_ankle_spur": 562,
+          "left_front_posterior_shin_bright_streaks": 0,
+          "left_shin_sparse_centers_outside_hardware": 77,
+          "right_shin_sparse_centers_outside_hardware": 61
+        },
+        "review": "Five variant families inspected from six actual Gaussian cameras, then final six-view foot and shin plus three underside/heel cameras.",
+        "limitations": "Left posterior sole remains softer/discolored because the back capture is intrinsically distorted. A small right posterior ankle remnant is preserved to avoid hollowing valid material.",
+        "proof": [
+          "raw/fusion-work/cleanup-v3/legs/left-foot-final.png",
+          "raw/fusion-work/cleanup-v3/legs/right-foot-final.png",
+          "raw/fusion-work/cleanup-v3/legs/left-shin-final.png",
+          "raw/fusion-work/cleanup-v3/legs/right-shin-final.png",
+          "raw/fusion-work/cleanup-v3/legs/left-sole-final.png",
+          "raw/fusion-work/cleanup-v3/legs/right-sole-final.png"
+        ],
+        "reproduce": ".venv-fusion/bin/python -B tools/fusion/cleanup_legs.py --mode final"
+      },
+      {
+        "document": "tools/fusion/cleanup-masks/hand-front.json",
+        "version": 1,
+        "purpose": "remove opposite-side hand leakage while preserving the observed palm and back",
+        "sourceCapture": "front",
+        "sourceFile": "raw/mannequin_front_119999.ply",
+        "sourceSha256": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+        "sourceHashes": {
+          "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+          "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+        },
+        "baseline": "raw/fusion-work/cleanup-v3/baseline",
+        "maskFile": "tools/fusion/cleanup-masks/hand-front.npy",
+        "uniqueSourceIndices": 6792,
+        "maskMeaning": "sorted original source PLY vertex rows",
+        "applyStage": "after coverage confidence weighting and opacity attenuation",
+        "part": "left_hand",
+        "fusionOverride": {
+          "depthBias": 0.008,
+          "feather": 0.004,
+          "preserveUniqueFront": false,
+          "preserveUniqueBack": false
+        },
+        "observedSurface": {
+          "nativeAxis": "low Y",
+          "projectedAxes": [
+            "X",
+            "Z"
+          ],
+          "neighbors": 32,
+          "radius": 0.007,
+          "quantile": 0.2,
+          "coreMinOpacityLogit": 0,
+          "coreMaxScale": 0.012,
+          "depthTolerance": 0.015
+        },
+        "oppositeShell": {
+          "frame": "aligned front raw",
+          "neighbors": 24,
+          "radius": 0.005,
+          "frontQuantile": 0.8,
+          "backQuantile": 0.2,
+          "margin": 0.003,
+          "unsupportedColumns": "preserve"
+        },
+        "rejectedTrials": "Global .005/.008 scale caps opened holes; aggressive feather/bias exposed finger interiors.",
+        "proof": "raw/fusion-work/cleanup-v3/hand/accepted.png",
+        "reproduce": ".venv-fusion/bin/python -B tools/fusion/cleanup_hand.py"
+      },
+      {
+        "document": "tools/fusion/cleanup-masks/hand-back.json",
+        "version": 1,
+        "purpose": "remove opposite-side hand leakage while preserving the observed palm and back",
+        "sourceCapture": "back",
+        "sourceFile": "raw/mannequin_back_119999.ply",
+        "sourceSha256": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e",
+        "sourceHashes": {
+          "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+          "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+        },
+        "baseline": "raw/fusion-work/cleanup-v3/baseline",
+        "maskFile": "tools/fusion/cleanup-masks/hand-back.npy",
+        "uniqueSourceIndices": 4955,
+        "maskMeaning": "sorted original source PLY vertex rows",
+        "applyStage": "after coverage confidence weighting and opacity attenuation",
+        "part": "left_hand",
+        "fusionOverride": {
+          "depthBias": 0.008,
+          "feather": 0.004,
+          "preserveUniqueFront": false,
+          "preserveUniqueBack": false
+        },
+        "observedSurface": {
+          "nativeAxis": "low Y",
+          "projectedAxes": [
+            "X",
+            "Z"
+          ],
+          "neighbors": 32,
+          "radius": 0.007,
+          "quantile": 0.2,
+          "coreMinOpacityLogit": 0,
+          "coreMaxScale": 0.012,
+          "depthTolerance": 0.015
+        },
+        "oppositeShell": {
+          "frame": "aligned front raw",
+          "neighbors": 24,
+          "radius": 0.005,
+          "frontQuantile": 0.8,
+          "backQuantile": 0.2,
+          "margin": 0.003,
+          "unsupportedColumns": "preserve"
+        },
+        "rejectedTrials": "Global .005/.008 scale caps opened holes; aggressive feather/bias exposed finger interiors.",
+        "proof": "raw/fusion-work/cleanup-v3/hand/accepted.png",
+        "reproduce": ".venv-fusion/bin/python -B tools/fusion/cleanup_hand.py"
+      },
+      {
+        "document": "tools/fusion/cleanup-masks/hand-v4-front.json",
+        "version": 1,
+        "purpose": "remove residual dark hand and finger layers visible mainly from the unobserved side of each capture",
+        "sourceCapture": "front",
+        "sourceFile": "raw/mannequin_front_119999.ply",
+        "sourceSha256": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+        "sourceHashes": {
+          "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+          "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+        },
+        "baseline": "raw/fusion-work/refinement-v4/baseline",
+        "maskFile": "tools/fusion/cleanup-masks/hand-v4-front.npy",
+        "uniqueSourceIndices": 6908,
+        "maskMeaning": "sorted original source PLY vertex rows",
+        "applyStage": "after coverage confidence weighting and opacity attenuation",
+        "part": "left_hand",
+        "algorithm": {
+          "method": "integrated front-to-back alpha contribution from actual anisotropic Gaussian rasterization",
+          "nativeObservedCamera": [
+            0,
+            -1,
+            0
+          ],
+          "nativeUnobservedCamera": [
+            0,
+            1,
+            0
+          ],
+          "cameraCenter": "mean original native positions of baseline hand contribution",
+          "imageSize": 850,
+          "span": 0.3,
+          "projectionVariancePixels": 0.3,
+          "sigmaCutoff": 3,
+          "minPixelOpacity": 0.00392156862745098,
+          "opacity": "original source sigmoid opacity",
+          "primaryCriterion": "unobserved visible alpha flux > 2 * observed flux and DC luminance < 0.38",
+          "fingerCriterion": "unobserved visible alpha flux > observed flux and DC luminance < 0.40",
+          "fingerRegion": {
+            "frame": "aligned front raw",
+            "originXZ": [
+              0.704,
+              0.584
+            ],
+            "axisXZ": [
+              0.68,
+              0.7332
+            ],
+            "minimumDot": 0.1
+          },
+          "luminanceWeights": [
+            0.2126,
+            0.7152,
+            0.0722
+          ],
+          "scope": "baseline left_hand labels only; no forearm rows"
+        },
+        "rejectedTrials": "Tighter native depth shells barely affected dark finger layers; global visibility ratio 0.12 and distal dominance 0.3 caused skin pitting. No color replacement or geometry changes were used.",
+        "proof": "raw/fusion-work/refinement-v4/hand/recommended-before-after.png",
+        "detailProof": "raw/fusion-work/refinement-v4/hand/recommended-fingers.png",
+        "reproduce": ".venv-fusion/bin/python -B tools/fusion/refine_hand_v4.py --mode final"
+      },
+      {
+        "document": "tools/fusion/cleanup-masks/hand-v4-back.json",
+        "version": 1,
+        "purpose": "remove residual dark hand and finger layers visible mainly from the unobserved side of each capture",
+        "sourceCapture": "back",
+        "sourceFile": "raw/mannequin_back_119999.ply",
+        "sourceSha256": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e",
+        "sourceHashes": {
+          "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+          "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+        },
+        "baseline": "raw/fusion-work/refinement-v4/baseline",
+        "maskFile": "tools/fusion/cleanup-masks/hand-v4-back.npy",
+        "uniqueSourceIndices": 5834,
+        "maskMeaning": "sorted original source PLY vertex rows",
+        "applyStage": "after coverage confidence weighting and opacity attenuation",
+        "part": "left_hand",
+        "algorithm": {
+          "method": "integrated front-to-back alpha contribution from actual anisotropic Gaussian rasterization",
+          "nativeObservedCamera": [
+            0,
+            -1,
+            0
+          ],
+          "nativeUnobservedCamera": [
+            0,
+            1,
+            0
+          ],
+          "cameraCenter": "mean original native positions of baseline hand contribution",
+          "imageSize": 850,
+          "span": 0.3,
+          "projectionVariancePixels": 0.3,
+          "sigmaCutoff": 3,
+          "minPixelOpacity": 0.00392156862745098,
+          "opacity": "original source sigmoid opacity",
+          "primaryCriterion": "unobserved visible alpha flux > 2 * observed flux and DC luminance < 0.38",
+          "fingerCriterion": "unobserved visible alpha flux > observed flux and DC luminance < 0.40",
+          "fingerRegion": {
+            "frame": "aligned front raw",
+            "originXZ": [
+              0.704,
+              0.584
+            ],
+            "axisXZ": [
+              0.68,
+              0.7332
+            ],
+            "minimumDot": 0.1
+          },
+          "luminanceWeights": [
+            0.2126,
+            0.7152,
+            0.0722
+          ],
+          "scope": "baseline left_hand labels only; no forearm rows"
+        },
+        "rejectedTrials": "Tighter native depth shells barely affected dark finger layers; global visibility ratio 0.12 and distal dominance 0.3 caused skin pitting. No color replacement or geometry changes were used.",
+        "proof": "raw/fusion-work/refinement-v4/hand/recommended-before-after.png",
+        "detailProof": "raw/fusion-work/refinement-v4/hand/recommended-fingers.png",
+        "reproduce": ".venv-fusion/bin/python -B tools/fusion/refine_hand_v4.py --mode final"
+      },
+      {
+        "document": "tools/fusion/cleanup-masks/feet-v4-back.json",
+        "version": 1,
+        "sourceCapture": "back",
+        "sourceFile": "raw/mannequin_back_119999.ply",
+        "sourceSha256": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e",
+        "sourceHashes": {
+          "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+          "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+        },
+        "baseline": "raw/fusion-work/refinement-v4/baseline",
+        "reproduce": ".venv-fusion/bin/python -B tools/fusion/refine_feet_v4.py --mode final",
+        "purpose": "Remove residual intrusive posterior right ankle splats beyond the previous V3 cut.",
+        "maskFile": "tools/fusion/cleanup-masks/feet-v4-back.npy",
+        "uniqueSourceIndices": 934,
+        "maskDtype": "uint32",
+        "rejectedFusedCount": 934,
+        "applyStage": "after fusion attenuation, before export; never recalculate donor coverage",
+        "rule": {
+          "parts": [
+            "right_shin",
+            "right_foot"
+          ],
+          "source": "back",
+          "frontRawYGreaterThan": 0.03,
+          "frontRawZBetween": [
+            1.495,
+            1.55
+          ],
+          "protectedScrewRadius": 0.025,
+          "additionalExposedGreenSplats": {
+            "frontRawYGreaterThan": 0.005,
+            "frontRawZBetween": [
+              1.48,
+              1.56
+            ],
+            "greenMinusRedGreaterThan": 0.02
+          }
+        },
+        "proof": "raw/fusion-work/refinement-v4/feet/right-final.png"
+      },
+      {
+        "document": "tools/fusion/cleanup-masks/hand-v6-right-front.json",
+        "version": 1,
+        "purpose": "remove unobserved interior hand splats that create duplicate fingers from underneath",
+        "sourceCapture": "front",
+        "sourceFile": "raw/mannequin_front_119999.ply",
+        "sourceSha256": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+        "sourceHashes": {
+          "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+          "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+        },
+        "baseline": "raw/fusion-work/refinement-v6/baseline",
+        "maskFile": "tools/fusion/cleanup-masks/hand-v6-right-front.npy",
+        "uniqueSourceIndices": 9753,
+        "maskMeaning": "sorted original source PLY vertex rows",
+        "applyStage": "after coverage confidence weighting and opacity attenuation",
+        "part": "right_hand",
+        "algorithm": {
+          "method": "integrated visible alpha contribution from actual anisotropic Gaussian rasterization",
+          "sourceRowsEvaluated": 25411,
+          "population": "ALL native hand rows after pre-fusion filtering, not exported baseline subset",
+          "observedCameraNative": [
+            0,
+            -1,
+            0
+          ],
+          "oppositeCameraNative": [
+            0,
+            1,
+            0
+          ],
+          "cameraCenter": "mean native positions of full pre-fusion hand",
+          "imageSize": 850,
+          "span": 0.3,
+          "minPixelOpacity": 0.00392156862745098,
+          "projectionVariancePixels": 0.3,
+          "sigmaCutoff": 3,
+          "criterion": "remove when opposite-camera visible alpha flux exceeds observed-camera flux",
+          "oppositeToObservedMaximum": 1.0,
+          "colorThreshold": null,
+          "sourceOpacity": "original sigmoid opacity"
+        },
+        "geometryChanged": false,
+        "colorChanged": false,
+        "proof": "raw/fusion-work/refinement-v6/right-hand/recommended-eight-angles.png",
+        "reproduce": ".venv-fusion/bin/python -B tools/fusion/refine_right_hand_v6.py --export",
+        "rejectedTrials": [
+          "Unconstrained hand ICP can align complementary surfaces incorrectly; the cleaned fit drifted about .05 units.",
+          "A wrist-fixed -1.815 degree planar silhouette correction modestly improved three tip projections but added little in the requested underside view; existing accepted wrist pose is retained.",
+          "Palm-normal fits vary 14.6 to 34.9 degrees with patch location because palm and dorsum have different curvature. Bounded wrist-fixed plus/minus 3-degree trials moved the layered appearance without a consistent improvement across eight views, and are rejected.",
+          "More aggressive source-dominance thresholds or minimum observed visibility removed extra surface opacity without a material additional underside improvement."
+        ]
+      },
+      {
+        "document": "tools/fusion/cleanup-masks/hand-v6-right-back.json",
+        "version": 1,
+        "purpose": "remove unobserved interior hand splats that create duplicate fingers from underneath",
+        "sourceCapture": "back",
+        "sourceFile": "raw/mannequin_back_119999.ply",
+        "sourceSha256": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e",
+        "sourceHashes": {
+          "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+          "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+        },
+        "baseline": "raw/fusion-work/refinement-v6/baseline",
+        "maskFile": "tools/fusion/cleanup-masks/hand-v6-right-back.npy",
+        "uniqueSourceIndices": 11498,
+        "maskMeaning": "sorted original source PLY vertex rows",
+        "applyStage": "after coverage confidence weighting and opacity attenuation",
+        "part": "right_hand",
+        "algorithm": {
+          "method": "integrated visible alpha contribution from actual anisotropic Gaussian rasterization",
+          "sourceRowsEvaluated": 30970,
+          "population": "ALL native hand rows after pre-fusion filtering, not exported baseline subset",
+          "observedCameraNative": [
+            0,
+            -1,
+            0
+          ],
+          "oppositeCameraNative": [
+            0,
+            1,
+            0
+          ],
+          "cameraCenter": "mean native positions of full pre-fusion hand",
+          "imageSize": 850,
+          "span": 0.3,
+          "minPixelOpacity": 0.00392156862745098,
+          "projectionVariancePixels": 0.3,
+          "sigmaCutoff": 3,
+          "criterion": "remove when opposite-camera visible alpha flux exceeds observed-camera flux",
+          "oppositeToObservedMaximum": 1.0,
+          "colorThreshold": null,
+          "sourceOpacity": "original sigmoid opacity"
+        },
+        "geometryChanged": false,
+        "colorChanged": false,
+        "proof": "raw/fusion-work/refinement-v6/right-hand/recommended-eight-angles.png",
+        "reproduce": ".venv-fusion/bin/python -B tools/fusion/refine_right_hand_v6.py --export",
+        "rejectedTrials": [
+          "Unconstrained hand ICP can align complementary surfaces incorrectly; the cleaned fit drifted about .05 units.",
+          "A wrist-fixed -1.815 degree planar silhouette correction modestly improved three tip projections but added little in the requested underside view; existing accepted wrist pose is retained.",
+          "Palm-normal fits vary 14.6 to 34.9 degrees with patch location because palm and dorsum have different curvature. Bounded wrist-fixed plus/minus 3-degree trials moved the layered appearance without a consistent improvement across eight views, and are rejected.",
+          "More aggressive source-dominance thresholds or minimum observed visibility removed extra surface opacity without a material additional underside improvement."
+        ]
+      },
+      {
+        "document": "tools/fusion/cleanup-masks/hand-v6-left-front.json",
+        "version": 1,
+        "purpose": "Remove original hand layers seen more strongly from the unobserved source side; all colors",
+        "sourceCapture": "front",
+        "sourceFile": "raw/mannequin_front_119999.ply",
+        "sourceSha256": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+        "sourceHashes": {
+          "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+          "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+        },
+        "baseline": "raw/fusion-work/refinement-v6/baseline",
+        "maskFile": "tools/fusion/cleanup-masks/hand-v6-left-front.npy",
+        "uniqueSourceIndices": 12333,
+        "part": "left_hand",
+        "algorithm": {
+          "method": "front-to-back visible alpha flux from full quality-clean native hand Gaussians",
+          "nativeObservedCamera": [
+            0,
+            -1,
+            0
+          ],
+          "nativeOppositeCamera": [
+            0,
+            1,
+            0
+          ],
+          "cameraCenter": "mean full quality-clean native hand positions",
+          "visibilitySize": 900,
+          "visibilitySpan": 0.3,
+          "projectionVariancePixels": 0.3,
+          "sigmaCutoff": 3,
+          "minimumPixelOpacity": 0.00392156862745098,
+          "opacity": "original source sigmoid opacity",
+          "cleanupCriterion": "opposite visible alpha flux > observed visible alpha flux",
+          "colorRestriction": null
+        },
+        "reproduce": ".venv-fusion/bin/python -B tools/fusion/refine_left_hand_v6.py --export",
+        "proof": "raw/fusion-work/refinement-v6/left-hand/accepted-before-after.png",
+        "maskMeaning": "sorted original source PLY vertex rows"
+      },
+      {
+        "document": "tools/fusion/cleanup-masks/hand-v6-left-back.json",
+        "version": 1,
+        "purpose": "Remove original hand layers seen more strongly from the unobserved source side; all colors",
+        "sourceCapture": "back",
+        "sourceFile": "raw/mannequin_back_119999.ply",
+        "sourceSha256": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e",
+        "sourceHashes": {
+          "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+          "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+        },
+        "baseline": "raw/fusion-work/refinement-v6/baseline",
+        "maskFile": "tools/fusion/cleanup-masks/hand-v6-left-back.npy",
+        "uniqueSourceIndices": 11860,
+        "part": "left_hand",
+        "algorithm": {
+          "method": "front-to-back visible alpha flux from full quality-clean native hand Gaussians",
+          "nativeObservedCamera": [
+            0,
+            -1,
+            0
+          ],
+          "nativeOppositeCamera": [
+            0,
+            1,
+            0
+          ],
+          "cameraCenter": "mean full quality-clean native hand positions",
+          "visibilitySize": 900,
+          "visibilitySpan": 0.3,
+          "projectionVariancePixels": 0.3,
+          "sigmaCutoff": 3,
+          "minimumPixelOpacity": 0.00392156862745098,
+          "opacity": "original source sigmoid opacity",
+          "cleanupCriterion": "opposite visible alpha flux > observed visible alpha flux",
+          "colorRestriction": null
+        },
+        "reproduce": ".venv-fusion/bin/python -B tools/fusion/refine_left_hand_v6.py --export",
+        "proof": "raw/fusion-work/refinement-v6/left-hand/accepted-before-after.png",
+        "maskMeaning": "sorted original source PLY vertex rows"
+      }
+    ],
+    "colorRepairEvidence": [
+      {
+        "document": "tools/fusion/cleanup-masks/feet-v4-color-front.json",
+        "version": 1,
+        "sourceCapture": "front",
+        "sourceFile": "raw/mannequin_front_119999.ply",
+        "sourceSha256": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+        "sourceHashes": {
+          "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+          "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+        },
+        "baseline": "raw/fusion-work/refinement-v4/baseline",
+        "reproduce": ".venv-fusion/bin/python -B tools/fusion/refine_feet_v4.py --mode final",
+        "purpose": "Localized appearance correction of dark/purple/gray sole contamination; this is repaired color, not recovered scan detail.",
+        "overrideFile": "tools/fusion/cleanup-masks/feet-v4-color-front.npz",
+        "uniqueSourceIndices": 2417,
+        "changedFields": [
+          "f_dc_0",
+          "f_dc_1",
+          "f_dc_2"
+        ],
+        "recipe": {
+          "thresholdRGBEuclidean": 0.12,
+          "neighborBlend": 0.8,
+          "neighborCount": 12,
+          "referenceVoxel": 0.008,
+          "referenceHealthyRGB": {
+            "redMinusGreenGreaterThan": 0.025,
+            "greenMinusBlueGreaterThan": 0.025,
+            "luminanceBetween": [
+              0.18,
+              0.58
+            ]
+          },
+          "parts": [
+            "left_foot",
+            "right_foot"
+          ],
+          "frontRawZBetween": [
+            1.555,
+            1.665
+          ],
+          "posteriorDepthGreaterThan": 0,
+          "protectedAnkleScrewRadius": 0.025,
+          "nearestHealthyReferenceMaxDistance": 0.025,
+          "target": "channel median of 12 nearest healthy reference samples; blend 80% target +20% original RGB"
+        },
+        "geometry": "All centers, rotations, scales, opacities and labels are unchanged.",
+        "proof": [
+          "raw/fusion-work/refinement-v4/feet/left-final.png",
+          "raw/fusion-work/refinement-v4/feet/right-final.png"
+        ],
+        "limits": "No new fine geometry or source texture is invented. Existing toe creases and hardware are outside this posterior sole repair."
+      },
+      {
+        "document": "tools/fusion/cleanup-masks/feet-v4-color-back.json",
+        "version": 1,
+        "sourceCapture": "back",
+        "sourceFile": "raw/mannequin_back_119999.ply",
+        "sourceSha256": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e",
+        "sourceHashes": {
+          "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+          "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+        },
+        "baseline": "raw/fusion-work/refinement-v4/baseline",
+        "reproduce": ".venv-fusion/bin/python -B tools/fusion/refine_feet_v4.py --mode final",
+        "purpose": "Localized appearance correction of dark/purple/gray sole contamination; this is repaired color, not recovered scan detail.",
+        "overrideFile": "tools/fusion/cleanup-masks/feet-v4-color-back.npz",
+        "uniqueSourceIndices": 4309,
+        "changedFields": [
+          "f_dc_0",
+          "f_dc_1",
+          "f_dc_2"
+        ],
+        "recipe": {
+          "thresholdRGBEuclidean": 0.12,
+          "neighborBlend": 0.8,
+          "neighborCount": 12,
+          "referenceVoxel": 0.008,
+          "referenceHealthyRGB": {
+            "redMinusGreenGreaterThan": 0.025,
+            "greenMinusBlueGreaterThan": 0.025,
+            "luminanceBetween": [
+              0.18,
+              0.58
+            ]
+          },
+          "parts": [
+            "left_foot",
+            "right_foot"
+          ],
+          "frontRawZBetween": [
+            1.555,
+            1.665
+          ],
+          "posteriorDepthGreaterThan": 0,
+          "protectedAnkleScrewRadius": 0.025,
+          "nearestHealthyReferenceMaxDistance": 0.025,
+          "target": "channel median of 12 nearest healthy reference samples; blend 80% target +20% original RGB"
+        },
+        "geometry": "All centers, rotations, scales, opacities and labels are unchanged.",
+        "proof": [
+          "raw/fusion-work/refinement-v4/feet/left-final.png",
+          "raw/fusion-work/refinement-v4/feet/right-final.png"
+        ],
+        "limits": "No new fine geometry or source texture is invented. Existing toe creases and hardware are outside this posterior sole repair."
+      },
+      {
+        "document": "tools/fusion/cleanup-masks/right-hand-front-side-color-v11.json",
+        "version": 1,
+        "purpose": "Reviewed localized finger-side color correction paired with native source-coverage restoration",
+        "sourceCapture": "front",
+        "sourceFile": "raw/mannequin_front_119999.ply",
+        "sourceSha256": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+        "sourceHashes": {
+          "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+          "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+        },
+        "uniqueSourceIndices": 1054,
+        "overrideFile": "tools/fusion/cleanup-masks/right-hand-front-side-color-v11.npz",
+        "method": "Same-source, same-finger trusted observed neighbors within .005 raw units (expand to .008 only if fewer than8); at most36 nearest, robust median and MAD; replace only >.035RGB and >2.5MAD outliers. No geometry, covariance or opacity changes. Two traced back-source index discoloration rows additionally use up to24 plausible same-finger opposite-capture neighbors within .012 scan units, RGB change capped at .25 per channel.",
+        "selectedRowsExcludedFromDonors": true,
+        "actuallyChangedColors": 348,
+        "unchangedInsufficientDonors": 290,
+        "maximumNeighborDistance": 0.007999936118721962,
+        "minimumDonorCount": 0,
+        "evidence": "tools/fusion/right-finger-seam-evidence.json",
+        "reproduce": ".venv-fusion/bin/python -B tools/fusion/audit_hand_coverage_v11.py --broad-sector\n.venv-fusion/bin/python -B tools/fusion/audit_hand_coverage_v11.py --stabilize-all broad-sidewall\n.venv-fusion/bin/python -B tools/fusion/audit_hand_coverage_v11.py --fix-green-patch",
+        "targetedGreenPatchRows": 0,
+        "greenPatchEvidence": "tools/fusion/right-finger-seam-evidence.json",
+        "status": "accepted after isolated and full-hand multi-angle review"
+      },
+      {
+        "document": "tools/fusion/cleanup-masks/right-hand-back-side-color-v11.json",
+        "version": 1,
+        "purpose": "Reviewed localized finger-side color correction paired with native source-coverage restoration",
+        "sourceCapture": "back",
+        "sourceFile": "raw/mannequin_back_119999.ply",
+        "sourceSha256": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e",
+        "sourceHashes": {
+          "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+          "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+        },
+        "uniqueSourceIndices": 929,
+        "overrideFile": "tools/fusion/cleanup-masks/right-hand-back-side-color-v11.npz",
+        "method": "Same-source, same-finger trusted observed neighbors within .005 raw units (expand to .008 only if fewer than8); at most36 nearest, robust median and MAD; replace only >.035RGB and >2.5MAD outliers. No geometry, covariance or opacity changes. Two traced back-source index discoloration rows additionally use up to24 plausible same-finger opposite-capture neighbors within .012 scan units, RGB change capped at .25 per channel.",
+        "selectedRowsExcludedFromDonors": true,
+        "actuallyChangedColors": 464,
+        "unchangedInsufficientDonors": 122,
+        "maximumNeighborDistance": 0.007999919354915619,
+        "minimumDonorCount": 0,
+        "evidence": "tools/fusion/right-finger-seam-evidence.json",
+        "reproduce": ".venv-fusion/bin/python -B tools/fusion/audit_hand_coverage_v11.py --broad-sector\n.venv-fusion/bin/python -B tools/fusion/audit_hand_coverage_v11.py --stabilize-all broad-sidewall\n.venv-fusion/bin/python -B tools/fusion/audit_hand_coverage_v11.py --fix-green-patch",
+        "targetedGreenPatchRows": 2,
+        "greenPatchEvidence": "tools/fusion/right-finger-seam-evidence.json",
+        "status": "accepted after isolated and full-hand multi-angle review"
+      }
+    ],
+    "sourcePartAssignmentEvidence": [
+      {
+        "document": "tools/fusion/part-masks/back-left-gray-cable.json",
+        "version": 1,
+        "purpose": "source part ownership: keep the continuous gray cable attached to its upper-arm socket",
+        "sourceCapture": "back",
+        "sourceFile": "raw/mannequin_back_119999.ply",
+        "sourceSha256": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e",
+        "sourceHashes": {
+          "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+          "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+        },
+        "baseline": "raw/fusion-work/refinement-v5/baseline",
+        "maskFile": "tools/fusion/part-masks/back-left-gray-cable.npy",
+        "uniqueSourceIndices": 18084,
+        "maskMeaning": "sorted original source PLY vertex rows belonging to the visible gray cable",
+        "applyStage": "after joint boundaries, assign existing retained cable rows to left_upper_arm",
+        "part": "left_upper_arm",
+        "allowedParts": [
+          "left_upper_arm",
+          "left_forearm"
+        ],
+        "anatomicalSide": "left; appears on screen-right in the user screenshot",
+        "algorithm": {
+          "frame": "back original native XYZ",
+          "method": "union of narrow capsules around reviewed native cable centerline",
+          "path": [
+            [
+              -0.325226665,
+              -0.056645535,
+              -0.177797079
+            ],
+            [
+              -0.335654855,
+              -0.066558499,
+              -0.156659901
+            ],
+            [
+              -0.352352649,
+              -0.06300899,
+              -0.137839079
+            ],
+            [
+              -0.377889365,
+              -0.047244374,
+              -0.11311321
+            ],
+            [
+              -0.396680921,
+              -0.035138723,
+              -0.096713796
+            ],
+            [
+              -0.419605762,
+              -0.018297317,
+              -0.077197969
+            ],
+            [
+              -0.436803728,
+              0.000826395,
+              -0.059817389
+            ],
+            [
+              -0.447356045,
+              0.022476419,
+              -0.044226285
+            ],
+            [
+              -0.453683197,
+              0.051098667,
+              -0.024798727
+            ],
+            [
+              -0.449847728,
+              0.081102382,
+              -0.009476733
+            ],
+            [
+              -0.438820004,
+              0.101033665,
+              0.006951213
+            ],
+            [
+              -0.432499498,
+              0.110606745,
+              0.016455023
+            ],
+            [
+              -0.427,
+              0.118,
+              0.022
+            ]
+          ],
+          "radius": 0.008,
+          "maxSourceScale": 0.04,
+          "minSourceOpacityLogit": -4.6,
+          "colorSelection": "none; neutral color was used only to measure path, not discard cable texture"
+        },
+        "observations": [
+          "The back original capture contains one smooth unbroken cable crossing the rigid arm collar.",
+          "The socket lies on the upper arm; splitting this flexible cable between upper and lower arm rigid transforms creates an artificial kink.",
+          "The front capture does not provide a reliable matching posterior cable or socket. No paired feature or cable-derived twist is claimed.",
+          "Posterior, lateral, and oblique renders of cable-only and cable-removed data show selection follows the cable without removing a skin strip.",
+          "The connector at the free tip is included. The surrounding rubber grommet remains naturally upper-arm-owned."
+        ],
+        "socketExitNative": [
+          -0.325226665,
+          -0.056645535,
+          -0.177797079
+        ],
+        "recommendation": "Apply the upper-arm transform to every selected retained cable row, regardless of which side of the collar it crosses. Treat future flexible cable animation separately from skin axial articulation.",
+        "proof": "raw/fusion-work/refinement-v5/cable/back-cable-final-review.png",
+        "reproduce": ".venv-fusion/bin/python -B tools/fusion/refine_cable_v5.py --extract-only"
+      }
+    ],
+    "sourcePartAssignmentCounts": [
+      {
+        "selection": "tools/fusion/part-masks/back-left-gray-cable.json",
+        "part": "left_upper_arm",
+        "source": "front",
+        "selectedAfterCleaning": 0,
+        "exported": 0,
+        "allSelectedRetained": true
+      },
+      {
+        "selection": "tools/fusion/part-masks/back-left-gray-cable.json",
+        "part": "left_upper_arm",
+        "source": "back",
+        "selectedAfterCleaning": 11543,
+        "exported": 11543,
+        "allSelectedRetained": true
+      }
+    ],
+    "surfaceRestorationEvidence": [
+      {
+        "document": "tools/fusion/surface-restorations/left-hand-back-v6.json",
+        "version": 1,
+        "purpose": "Restore observed back fingertip skin truncated by the straight hand coverage plane",
+        "sourceCapture": "back",
+        "sourceFile": "raw/mannequin_back_119999.ply",
+        "sourceSha256": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e",
+        "sourceHashes": {
+          "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+          "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+        },
+        "baseline": "raw/fusion-work/refinement-v6/baseline",
+        "maskFile": "tools/fusion/surface-restorations/left-hand-back-v6.npy",
+        "uniqueSourceIndices": 3964,
+        "part": "left_hand",
+        "maskMeaning": "sorted original source PLY vertex rows",
+        "algorithm": {
+          "method": "front-to-back visible alpha flux from full quality-clean native hand Gaussians",
+          "nativeObservedCamera": [
+            0,
+            -1,
+            0
+          ],
+          "nativeOppositeCamera": [
+            0,
+            1,
+            0
+          ],
+          "cameraCenter": "mean full quality-clean native hand positions",
+          "visibilitySize": 900,
+          "visibilitySpan": 0.3,
+          "projectionVariancePixels": 0.3,
+          "sigmaCutoff": 3,
+          "minimumPixelOpacity": 0.00392156862745098,
+          "opacity": "original source sigmoid opacity",
+          "cleanupCriterion": "opposite visible alpha flux > observed visible alpha flux",
+          "colorRestriction": null,
+          "frame": "existing aligned front raw",
+          "origin": [
+            0.704,
+            0.065,
+            0.584
+          ],
+          "longitudinalAxis": [
+            0.68,
+            0.0,
+            0.7332
+          ],
+          "lateralAxis": [
+            0.7332,
+            0.0,
+            -0.68
+          ],
+          "minimumLongitudinal": 0.105,
+          "maximumLateral": 0.015,
+          "minimumObservedVisibilityRatio": 0.05,
+          "minimumObservedVisibleAlphaFlux": 0.05,
+          "observedFluxMustExceedOppositeFlux": true
+        },
+        "reproduce": ".venv-fusion/bin/python -B tools/fusion/refine_left_hand_v6.py --export",
+        "proof": "raw/fusion-work/refinement-v6/left-hand/accepted-before-after.png"
+      },
+      {
+        "document": "tools/fusion/surface-restorations/left-hand-front-caps-v7.json",
+        "version": 1,
+        "purpose": "Restore observed left finger curved surfaces removed by straight source coverage plane; added rows disjoint from existing restorations",
+        "sourceCapture": "front",
+        "sourceFile": "raw/mannequin_front_119999.ply",
+        "sourceSha256": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+        "sourceHashes": {
+          "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+          "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+        },
+        "maskFile": "tools/fusion/surface-restorations/left-hand-front-caps-v7.npy",
+        "uniqueSourceIndices": 8038,
+        "part": "left_hand",
+        "maskMeaning": "sorted original source PLY vertex rows; surface restoration, not deletion",
+        "algorithm": {
+          "method": "native observed-surface visible alpha flux from full quality-clean original hand Gaussians",
+          "nativeObservedCamera": [
+            0,
+            -1,
+            0
+          ],
+          "nativeOppositeCamera": [
+            0,
+            1,
+            0
+          ],
+          "visibilitySize": 900,
+          "visibilitySpan": 0.3,
+          "cameraCenter": "mean full quality-clean native hand positions",
+          "projectionVariancePixels": 0.3,
+          "sigmaCutoff": 3,
+          "minimumPixelOpacity": 0.00392156862745098,
+          "opacity": "original source sigmoid opacity",
+          "frame": "frozen v7 aligned front raw",
+          "origin": [
+            0.704,
+            0.065,
+            0.584
+          ],
+          "longitudinalAxis": [
+            0.6800060384804327,
+            0.0,
+            0.7332065109027254
+          ],
+          "minimumLongitudinal": 0.105,
+          "minimumObservedVisibilityRatio": 0.05,
+          "minimumObservedVisibleAlphaFlux": 0.05,
+          "observedFluxMustExceedOppositeFlux": true,
+          "lateralRestriction": null,
+          "excludeAllExistingRestorationRows": true
+        },
+        "baseline": "raw/fusion-work/refinement-v7/baseline",
+        "reproduce": ".venv-fusion/bin/python -B tools/fusion/refine_left_caps_v7.py --raw-verify",
+        "sourceCache": "raw/fusion-work/refinement-v6/left-hand/stage-data.npz",
+        "sourceVisibilityCache": "raw/fusion-work/refinement-v6/left-hand/native-front-visibility.npz"
+      },
+      {
+        "document": "tools/fusion/surface-restorations/left-hand-back-caps-v7.json",
+        "version": 1,
+        "purpose": "Restore observed left finger curved surfaces removed by straight source coverage plane; added rows disjoint from existing restorations",
+        "sourceCapture": "back",
+        "sourceFile": "raw/mannequin_back_119999.ply",
+        "sourceSha256": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e",
+        "sourceHashes": {
+          "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+          "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+        },
+        "maskFile": "tools/fusion/surface-restorations/left-hand-back-caps-v7.npy",
+        "uniqueSourceIndices": 1643,
+        "part": "left_hand",
+        "maskMeaning": "sorted original source PLY vertex rows; surface restoration, not deletion",
+        "algorithm": {
+          "method": "native observed-surface visible alpha flux from full quality-clean original hand Gaussians",
+          "nativeObservedCamera": [
+            0,
+            -1,
+            0
+          ],
+          "nativeOppositeCamera": [
+            0,
+            1,
+            0
+          ],
+          "visibilitySize": 900,
+          "visibilitySpan": 0.3,
+          "cameraCenter": "mean full quality-clean native hand positions",
+          "projectionVariancePixels": 0.3,
+          "sigmaCutoff": 3,
+          "minimumPixelOpacity": 0.00392156862745098,
+          "opacity": "original source sigmoid opacity",
+          "frame": "frozen v7 aligned front raw",
+          "origin": [
+            0.704,
+            0.065,
+            0.584
+          ],
+          "longitudinalAxis": [
+            0.6800060384804327,
+            0.0,
+            0.7332065109027254
+          ],
+          "minimumLongitudinal": 0.105,
+          "minimumObservedVisibilityRatio": 0.05,
+          "minimumObservedVisibleAlphaFlux": 0.05,
+          "observedFluxMustExceedOppositeFlux": true,
+          "lateralRestriction": null,
+          "excludeAllExistingRestorationRows": true
+        },
+        "baseline": "raw/fusion-work/refinement-v7/baseline",
+        "reproduce": ".venv-fusion/bin/python -B tools/fusion/refine_left_caps_v7.py --raw-verify",
+        "sourceCache": "raw/fusion-work/refinement-v6/left-hand/stage-data.npz",
+        "sourceVisibilityCache": "raw/fusion-work/refinement-v6/left-hand/native-back-visibility.npz"
+      },
+      {
+        "document": "tools/fusion/surface-restorations/right-hand-front-sides-v11.json",
+        "version": 1,
+        "purpose": "Restore a reviewed narrow band of lower-confidence original-source finger-side coverage at the fixed V10 rigid pose",
+        "sourceCapture": "front",
+        "sourceFile": "raw/mannequin_front_119999.ply",
+        "sourceSha256": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+        "sourceHashes": {
+          "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+          "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+        },
+        "maskFile": "tools/fusion/surface-restorations/right-hand-front-sides-v11.npy",
+        "uniqueSourceIndices": 1054,
+        "part": "right_hand",
+        "maskMeaning": "sorted original-source PLY rows; restore native opacity and exempt only these IDs from post-coverage cleanup",
+        "algorithm": {
+          "sectionEvidence": "raw/fusion-work/refinement-v10/gap-audit/resliced-shaft-center-audit.json",
+          "angleAroundPositiveV": [
+            -60,
+            60
+          ],
+          "stationRange": [
+            0.12,
+            0.165
+          ],
+          "radialTolerance": 0.0035,
+          "normalRadialAlignmentMinimum": 0.35,
+          "nativeVisibilityRequired": false,
+          "meansCovarianceColorUnchanged": true,
+          "longitudinalAxis": [
+            -0.626,
+            0,
+            0.7798
+          ],
+          "origin": [
+            -0.697,
+            0.03,
+            0.597
+          ],
+          "fingerBandsV": {
+            "index": [
+              -0.06,
+              -0.0235
+            ],
+            "middle": [
+              -0.0235,
+              0.0055
+            ],
+            "ring": [
+              0.0055,
+              0.0325
+            ]
+          },
+          "maximumSigma": 0.01,
+          "minimumNativeAlpha": 0.025,
+          "thinSigmaLessThanMiddleRatio": 0.8,
+          "maximumDistanceToObservedAnchor": 0.006
+        },
+        "countsAgainstV10": {
+          "selectedPerFinger": {
+            "index": 409,
+            "middle": 302,
+            "ring": 343
+          },
+          "selected": 1054,
+          "missingFromBaseline": 341
+        },
+        "baseline": "raw/fusion-work/refinement-v11/baseline",
+        "evidence": "tools/fusion/right-finger-seam-evidence.json",
+        "reproduce": ".venv-fusion/bin/python -B tools/fusion/audit_hand_coverage_v11.py --broad-sector",
+        "limitations": "Original source geometry; selected by shell and connectivity rather than independently verified observed visibility. No synthetic means, covariance extension, or pose change."
+      },
+      {
+        "document": "tools/fusion/surface-restorations/right-hand-back-sides-v11.json",
+        "version": 1,
+        "purpose": "Restore a reviewed narrow band of lower-confidence original-source finger-side coverage at the fixed V10 rigid pose",
+        "sourceCapture": "back",
+        "sourceFile": "raw/mannequin_back_119999.ply",
+        "sourceSha256": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e",
+        "sourceHashes": {
+          "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+          "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+        },
+        "maskFile": "tools/fusion/surface-restorations/right-hand-back-sides-v11.npy",
+        "uniqueSourceIndices": 929,
+        "part": "right_hand",
+        "maskMeaning": "sorted original-source PLY rows; restore native opacity and exempt only these IDs from post-coverage cleanup",
+        "algorithm": {
+          "sectionEvidence": "raw/fusion-work/refinement-v10/gap-audit/resliced-shaft-center-audit.json",
+          "angleAroundPositiveV": [
+            -60,
+            60
+          ],
+          "stationRange": [
+            0.12,
+            0.165
+          ],
+          "radialTolerance": 0.0035,
+          "normalRadialAlignmentMinimum": 0.35,
+          "nativeVisibilityRequired": false,
+          "meansCovarianceColorUnchanged": true,
+          "longitudinalAxis": [
+            -0.626,
+            0,
+            0.7798
+          ],
+          "origin": [
+            -0.697,
+            0.03,
+            0.597
+          ],
+          "fingerBandsV": {
+            "index": [
+              -0.06,
+              -0.0235
+            ],
+            "middle": [
+              -0.0235,
+              0.0055
+            ],
+            "ring": [
+              0.0055,
+              0.0325
+            ]
+          },
+          "maximumSigma": 0.01,
+          "minimumNativeAlpha": 0.025,
+          "thinSigmaLessThanMiddleRatio": 0.8,
+          "maximumDistanceToObservedAnchor": 0.006
+        },
+        "countsAgainstV10": {
+          "selectedPerFinger": {
+            "index": 327,
+            "middle": 277,
+            "ring": 325
+          },
+          "selected": 929,
+          "missingFromBaseline": 536
+        },
+        "baseline": "raw/fusion-work/refinement-v11/baseline",
+        "evidence": "tools/fusion/right-finger-seam-evidence.json",
+        "reproduce": ".venv-fusion/bin/python -B tools/fusion/audit_hand_coverage_v11.py --broad-sector",
+        "limitations": "Original source geometry; selected by shell and connectivity rather than independently verified observed visibility. No synthetic means, covariance extension, or pose change."
+      }
+    ],
+    "surfaceRestorationCounts": [
+      {
+        "selection": "tools/fusion/surface-restorations/left-hand-back-v6.json",
+        "source": "front",
+        "part": "left_hand",
+        "selectedAfterCleaning": 0,
+        "exported": 0,
+        "allSelectedRetained": true
+      },
+      {
+        "selection": "tools/fusion/surface-restorations/left-hand-back-v6.json",
+        "source": "back",
+        "part": "left_hand",
+        "selectedAfterCleaning": 3964,
+        "exported": 3964,
+        "allSelectedRetained": true
+      },
+      {
+        "selection": "tools/fusion/surface-restorations/left-hand-front-caps-v7.json",
+        "source": "front",
+        "part": "left_hand",
+        "selectedAfterCleaning": 8038,
+        "exported": 8038,
+        "allSelectedRetained": true
+      },
+      {
+        "selection": "tools/fusion/surface-restorations/left-hand-front-caps-v7.json",
+        "source": "back",
+        "part": "left_hand",
+        "selectedAfterCleaning": 0,
+        "exported": 0,
+        "allSelectedRetained": true
+      },
+      {
+        "selection": "tools/fusion/surface-restorations/left-hand-back-caps-v7.json",
+        "source": "front",
+        "part": "left_hand",
+        "selectedAfterCleaning": 0,
+        "exported": 0,
+        "allSelectedRetained": true
+      },
+      {
+        "selection": "tools/fusion/surface-restorations/left-hand-back-caps-v7.json",
+        "source": "back",
+        "part": "left_hand",
+        "selectedAfterCleaning": 1643,
+        "exported": 1643,
+        "allSelectedRetained": true
+      },
+      {
+        "selection": "tools/fusion/surface-restorations/right-hand-front-sides-v11.json",
+        "source": "front",
+        "part": "right_hand",
+        "selectedAfterCleaning": 1054,
+        "exported": 1054,
+        "allSelectedRetained": true
+      },
+      {
+        "selection": "tools/fusion/surface-restorations/right-hand-front-sides-v11.json",
+        "source": "back",
+        "part": "right_hand",
+        "selectedAfterCleaning": 0,
+        "exported": 0,
+        "allSelectedRetained": true
+      },
+      {
+        "selection": "tools/fusion/surface-restorations/right-hand-back-sides-v11.json",
+        "source": "front",
+        "part": "right_hand",
+        "selectedAfterCleaning": 0,
+        "exported": 0,
+        "allSelectedRetained": true
+      },
+      {
+        "selection": "tools/fusion/surface-restorations/right-hand-back-sides-v11.json",
+        "source": "back",
+        "part": "right_hand",
+        "selectedAfterCleaning": 929,
+        "exported": 929,
+        "allSelectedRetained": true
+      }
+    ]
+  }
+}

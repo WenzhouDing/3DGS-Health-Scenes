@@ -1,0 +1,899 @@
+{
+  "name": "center-fit",
+  "status": "accepted, exported and independently verified",
+  "baseline": "raw/fusion-work/refinement-v10/baseline",
+  "shoulderRotationVectorDegrees": [
+    0.18734146848417488,
+    0.4582056140214113,
+    1.9371644626926579
+  ],
+  "shoulderRotationDegrees": 1.9994137555928437,
+  "shoulderPivotFrontRaw": [
+    -0.2722626213547983,
+    -0.0731111409805676,
+    0.13110258410448405
+  ],
+  "right_upper_arm": {
+    "scale": 0.928,
+    "rotation": [
+      [
+        -0.9972982856448583,
+        0.003809948794573437,
+        -0.0733594829589833
+      ],
+      [
+        -0.04533681210163743,
+        -0.8176889428641385,
+        0.5738722559822789
+      ],
+      [
+        -0.0577988141598721,
+        0.5756477021650588,
+        0.815652511841778
+      ]
+    ],
+    "translation": [
+      -0.0074286910356710645,
+      0.07587447637720178,
+      0.32937509940234366
+    ]
+  },
+  "right_forearm": {
+    "scale": 0.928,
+    "rotation": [
+      [
+        -0.9969299926393891,
+        0.013298264124270731,
+        -0.07716052065213642
+      ],
+      [
+        -0.05571707891090926,
+        -0.8128636960018562,
+        0.5797829066468235
+      ],
+      [
+        -0.055010879775396405,
+        0.5823021276738434,
+        0.8111091389035469
+      ]
+    ],
+    "translation": [
+      -0.008466199498231075,
+      0.07977274066848615,
+      0.3275880062784765
+    ]
+  },
+  "right_hand": {
+    "scale": 0.928,
+    "rotation": [
+      [
+        -0.9969299926393891,
+        0.013298264124270731,
+        -0.07716052065213642
+      ],
+      [
+        -0.05571707891090926,
+        -0.8128636960018562,
+        0.5797829066468235
+      ],
+      [
+        -0.055010879775396405,
+        0.5823021276738434,
+        0.8111091389035469
+      ]
+    ],
+    "translation": [
+      -0.008466199498231075,
+      0.07977274066848615,
+      0.3275880062784765
+    ]
+  },
+  "mechanicalConstraint": {
+    "parentPart": "right_upper_arm",
+    "childPart": "right_forearm",
+    "pivotFrontRaw": [
+      -0.3590852533890853,
+      -0.03833235509794086,
+      0.27896079951802905
+    ],
+    "axisFrontRaw": [
+      -0.6249087788154958,
+      0.1817470761592546,
+      0.7592476660924866
+    ],
+    "twistDegrees": 0.7506419517381815,
+    "formula": "Rc=Q Rp; tc=Q(tp-pivot)+pivot; Q=axisAngle(axis,twist)",
+    "independentTranslation": [
+      0,
+      0,
+      0
+    ],
+    "independentSwingDegrees": 0
+  },
+  "safeguards": {
+    "padCenterError": 0.000779424423713961,
+    "padRimMedian": 0.0010436949654628771,
+    "padRimP90": 0.0016004787260358094,
+    "parentCollar": {
+      "centerError": 0.003611602396627258,
+      "normalAngleDegrees": 3.929088644532684
+    },
+    "childCollar": {
+      "centerError": 0.0036116023966273007,
+      "normalAngleDegrees": 3.9290886445324977
+    }
+  },
+  "notes": "No wrist deformation or independent child translation/swing. Parent rotates around the measured shoulder-pad center. Existing axis and pivot remain fixed. Fresh native coverage and unchanged cleanup masks for all three parts.",
+  "sourceHashes": {
+    "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+    "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+  },
+  "shoulderNegativeDirectionAmountDegrees": 1.9499432635397782,
+  "additionalShoulderYawRawYDegrees": 0.3374302131930316,
+  "totalTwistDegrees": 0.7506419517381809,
+  "shaftCenterMetrics": {
+    "index": {
+      "deltaLateral": -0.0004646868931348219,
+      "deltaDepth": 0.00048524579011742855,
+      "medianSeparation": 0.0011293232396045842,
+      "sections": [
+        [
+          -0.000983951619108303,
+          -0.0005542654515348598
+        ],
+        [
+          -0.0004646868931348219,
+          0.0016724196547644177
+        ],
+        [
+          0.00028628279690624814,
+          0.00048524579011742855
+        ]
+      ]
+    },
+    "middle": {
+      "deltaLateral": 0.00026628708365430964,
+      "deltaDepth": -0.0015676474156724254,
+      "medianSeparation": 0.0015901028994331002,
+      "sections": [
+        [
+          0.00026628708365430964,
+          -0.0015676474156724254
+        ],
+        [
+          -0.0001250110175068514,
+          -0.00019898215941153985
+        ],
+        [
+          0.0003702865690926663,
+          -0.003625819811988236
+        ]
+      ]
+    },
+    "ring": {
+      "deltaLateral": 0.0005558791891183724,
+      "deltaDepth": 0.0006090316489655301,
+      "medianSeparation": 0.0008928885925190605,
+      "sections": [
+        [
+          0.0006340460079771286,
+          -0.00010903436743734882
+        ],
+        [
+          0.0005558791891183724,
+          0.0027454992866160176
+        ],
+        [
+          -0.0006529398817724311,
+          0.0006090316489655301
+        ]
+      ]
+    }
+  },
+  "fitMethod": "Three-parameter rigid chain: rotation along measured shoulder correction direction, shoulder raw+Y yaw, axial elbow twist. Targets are independently inferred shaft-center trajectories from observed curved arcs at U .135/.145/.155, not opposing surfaces.",
+  "featureEvidence": "raw/fusion-work/refinement-v10/gap-audit/shaft-center-audit.json",
+  "objectiveScales": {
+    "shaftCenters": 0.002,
+    "shoulderRim": 0.002,
+    "collarCenter": 0.004,
+    "shoulderRotationRegularizationRadians": 0.07
+  },
+  "fitLimitations": "Inferred centers assume a locally circular shaft section. Radius-bound, short-span or high-residual fits are rejected. Little-finger caps may not satisfy the shaft model. Do not treat arc-to-arc depth as a zero target.",
+  "reproduce": ".venv-fusion/bin/python -B tools/fusion/refine_rigid_arm_v10.py --fit-centers",
+  "revision": "feature-guided-v10-rigid-hand-gap",
+  "nativeResliceAudit": {
+    "method": "Independently re-slice the moved source, rather than moving old fits.\n\n    Original lateral bands identify each source finger. The narrow cutting\n    plane is recomputed in the fixed front frame after each rigid transform.\n    This exposes station/obliquity errors in the center-trajectory diagnostic.\n    ",
+    "candidates": {
+      "baseline": {
+        "sections": [
+          {
+            "finger": "index",
+            "station": 0.135,
+            "deltaV": -0.00186033961539947,
+            "deltaDepth": -0.00821314748217888,
+            "centerSeparation": 0.008421202707965527,
+            "inferredCombinedDepthOverMatchedDiameter": 0.5902969377105403,
+            "fits": {
+              "front": {
+                "centerVY": [
+                  -0.037128584483539964,
+                  0.028489589566944175
+                ],
+                "radius": 0.009326888497330137,
+                "medianResidual": 0.0010325034375783526,
+                "supportCount": 120,
+                "supportIndicesKey": "baseline_index_front_0.135",
+                "accepted": true
+              },
+              "back": {
+                "centerVY": [
+                  -0.038988924098939434,
+                  0.020276442084765294
+                ],
+                "radius": 0.010719697037771873,
+                "medianResidual": 0.0010372506484801012,
+                "supportCount": 125,
+                "supportIndicesKey": "baseline_index_back_0.135",
+                "accepted": true
+              }
+            }
+          },
+          {
+            "finger": "index",
+            "station": 0.145,
+            "deltaV": -0.0013415783816014132,
+            "deltaDepth": -0.005507473711611376,
+            "centerSeparation": 0.005668518257716972,
+            "inferredCombinedDepthOverMatchedDiameter": 0.6882784580251826,
+            "fits": {
+              "front": {
+                "centerVY": [
+                  -0.03771479885720746,
+                  0.027130135029541386
+                ],
+                "radius": 0.008485744920927319,
+                "medianResidual": 0.0011170173961714165,
+                "supportCount": 95,
+                "supportIndicesKey": "baseline_index_front_0.145",
+                "accepted": true
+              },
+              "back": {
+                "centerVY": [
+                  -0.03905637723880887,
+                  0.02162266131793001
+                ],
+                "radius": 0.009182182924932952,
+                "medianResidual": 0.0008286730902770873,
+                "supportCount": 110,
+                "supportIndicesKey": "baseline_index_back_0.145",
+                "accepted": true
+              }
+            }
+          },
+          {
+            "finger": "index",
+            "station": 0.155,
+            "deltaV": -2.0019114456371057e-05,
+            "deltaDepth": -0.0062120304897747836,
+            "centerSeparation": 0.006212062746852703,
+            "inferredCombinedDepthOverMatchedDiameter": 0.6353859150571439,
+            "fits": {
+              "front": {
+                "centerVY": [
+                  -0.03774235357175486,
+                  0.027232517222667747
+                ],
+                "radius": 0.007523875872711821,
+                "medianResidual": 0.0010656246379808238,
+                "supportCount": 120,
+                "supportIndicesKey": "baseline_index_front_0.155",
+                "accepted": true
+              },
+              "back": {
+                "centerVY": [
+                  -0.03776237268621123,
+                  0.021020486732892963
+                ],
+                "radius": 0.009513399280134676,
+                "medianResidual": 0.0007109415047898051,
+                "supportCount": 112,
+                "supportIndicesKey": "baseline_index_back_0.155",
+                "accepted": true
+              }
+            }
+          },
+          {
+            "finger": "middle",
+            "station": 0.135,
+            "deltaV": -0.004419361975559354,
+            "deltaDepth": -0.00218715581700004,
+            "centerSeparation": 0.004930964493773706,
+            "inferredCombinedDepthOverMatchedDiameter": 0.8914998001310535,
+            "fits": {
+              "front": {
+                "centerVY": [
+                  -0.009913771605710844,
+                  0.040722987283861894
+                ],
+                "radius": 0.010350870827173054,
+                "medianResidual": 0.0009374291157388699,
+                "supportCount": 114,
+                "supportIndicesKey": "baseline_middle_front_0.135",
+                "accepted": true
+              },
+              "back": {
+                "centerVY": [
+                  -0.014333133581270198,
+                  0.038535831466861854
+                ],
+                "radius": 0.00980721016845484,
+                "medianResidual": 0.0007776957871289143,
+                "supportCount": 131,
+                "supportIndicesKey": "baseline_middle_back_0.135",
+                "accepted": true
+              }
+            }
+          },
+          {
+            "finger": "middle",
+            "station": 0.145,
+            "deltaV": -0.004020422531733953,
+            "deltaDepth": -0.000327083717694264,
+            "centerSeparation": 0.004033705627838347,
+            "inferredCombinedDepthOverMatchedDiameter": 0.9830525935982284,
+            "fits": {
+              "front": {
+                "centerVY": [
+                  -0.008691304473704987,
+                  0.03775458592279995
+                ],
+                "radius": 0.00956120166857286,
+                "medianResidual": 0.0006718234083193074,
+                "supportCount": 137,
+                "supportIndicesKey": "baseline_middle_front_0.145",
+                "accepted": true
+              },
+              "back": {
+                "centerVY": [
+                  -0.01271172700543894,
+                  0.037427502205105684
+                ],
+                "radius": 0.00973872599823949,
+                "medianResidual": 0.0011239035606053441,
+                "supportCount": 115,
+                "supportIndicesKey": "baseline_middle_back_0.145",
+                "accepted": true
+              }
+            }
+          },
+          {
+            "finger": "middle",
+            "station": 0.155,
+            "deltaV": -0.002001723038615741,
+            "deltaDepth": -0.002944645611596991,
+            "centerSeparation": 0.003560594458966431,
+            "inferredCombinedDepthOverMatchedDiameter": 0.8574468488436215,
+            "fits": {
+              "front": {
+                "centerVY": [
+                  -0.0074424766712831245,
+                  0.03663505945954567
+                ],
+                "radius": 0.009973227334271636,
+                "medianResidual": 0.0007762562292340201,
+                "supportCount": 182,
+                "supportIndicesKey": "baseline_middle_front_0.155",
+                "accepted": true
+              },
+              "back": {
+                "centerVY": [
+                  -0.009444199709898866,
+                  0.03369041384794868
+                ],
+                "radius": 0.010683247725804479,
+                "medianResidual": 0.000822425535818995,
+                "supportCount": 100,
+                "supportIndicesKey": "baseline_middle_back_0.155",
+                "accepted": true
+              }
+            }
+          },
+          {
+            "finger": "ring",
+            "station": 0.135,
+            "deltaV": -0.003029984168210601,
+            "deltaDepth": 0.006810402252968899,
+            "centerSeparation": 0.007454017903577288,
+            "inferredCombinedDepthOverMatchedDiameter": 1.3749485072667942,
+            "fits": {
+              "front": {
+                "centerVY": [
+                  0.018345889035470894,
+                  0.031232991247055645
+                ],
+                "radius": 0.008053931993577254,
+                "medianResidual": 0.0007789350083404071,
+                "supportCount": 160,
+                "supportIndicesKey": "baseline_ring_front_0.135",
+                "accepted": true
+              },
+              "back": {
+                "centerVY": [
+                  0.015315904867260293,
+                  0.038043393500024544
+                ],
+                "radius": 0.010109634792202655,
+                "medianResidual": 0.001340538374683396,
+                "supportCount": 123,
+                "supportIndicesKey": "baseline_ring_back_0.135",
+                "accepted": true
+              }
+            }
+          },
+          {
+            "finger": "ring",
+            "station": 0.145,
+            "deltaV": -0.0027650759549936853,
+            "deltaDepth": 0.009999997788026783,
+            "centerSeparation": 0.0103752397946951,
+            "inferredCombinedDepthOverMatchedDiameter": 1.6780694017678903,
+            "fits": {
+              "front": {
+                "centerVY": [
+                  0.018343352465476512,
+                  0.02879825907271402
+                ],
+                "radius": 0.00728019755531387,
+                "medianResidual": 0.0008800953107040215,
+                "supportCount": 164,
+                "supportIndicesKey": "baseline_ring_front_0.145",
+                "accepted": true
+              },
+              "back": {
+                "centerVY": [
+                  0.015578276510482826,
+                  0.0387982568607408
+                ],
+                "radius": 0.007467552102692198,
+                "medianResidual": 0.0011934163523433907,
+                "supportCount": 142,
+                "supportIndicesKey": "baseline_ring_back_0.145",
+                "accepted": true
+              }
+            }
+          },
+          {
+            "finger": "ring",
+            "station": 0.155,
+            "deltaV": -0.0022231457928410595,
+            "deltaDepth": 0.007418688564242722,
+            "centerSeparation": 0.00774463151024325,
+            "inferredCombinedDepthOverMatchedDiameter": 1.4130120408439673,
+            "fits": {
+              "front": {
+                "centerVY": [
+                  0.019158200375559913,
+                  0.026110856897919116
+                ],
+                "radius": 0.008332237695925952,
+                "medianResidual": 0.0014045049688037126,
+                "supportCount": 239,
+                "supportIndicesKey": "baseline_ring_front_0.155",
+                "accepted": true
+              },
+              "back": {
+                "centerVY": [
+                  0.016935054582718854,
+                  0.03352954546216184
+                ],
+                "radius": 0.009630164923336775,
+                "medianResidual": 0.00093335284388304,
+                "supportCount": 137,
+                "supportIndicesKey": "baseline_ring_back_0.155",
+                "accepted": true
+              }
+            }
+          }
+        ],
+        "medianCenterSeparation": 0.006212062746852703,
+        "perFinger": {
+          "index": {
+            "deltaV": -0.0013415783816014132,
+            "deltaDepth": -0.0062120304897747836,
+            "centerSeparation": 0.006212062746852703,
+            "inferredCombinedDepthOverMatchedDiameter": 0.6353859150571439
+          },
+          "middle": {
+            "deltaV": -0.004020422531733953,
+            "deltaDepth": -0.00218715581700004,
+            "centerSeparation": 0.004033705627838347,
+            "inferredCombinedDepthOverMatchedDiameter": 0.8914998001310535
+          },
+          "ring": {
+            "deltaV": -0.0027650759549936853,
+            "deltaDepth": 0.007418688564242722,
+            "centerSeparation": 0.00774463151024325,
+            "inferredCombinedDepthOverMatchedDiameter": 1.4130120408439673
+          }
+        }
+      },
+      "center-fit": {
+        "sections": [
+          {
+            "finger": "index",
+            "station": 0.135,
+            "deltaV": -0.0010650614139700934,
+            "deltaDepth": -0.000627082005532062,
+            "centerSeparation": 0.0012359561712253747,
+            "inferredCombinedDepthOverMatchedDiameter": 0.9684784332449649,
+            "fits": {
+              "front": {
+                "centerVY": [
+                  -0.037128584483539964,
+                  0.028489589566944175
+                ],
+                "radius": 0.009326888497330137,
+                "medianResidual": 0.0010325034375783526,
+                "supportCount": 120,
+                "supportIndicesKey": "center-fit_index_front_0.135",
+                "accepted": true
+              },
+              "back": {
+                "centerVY": [
+                  -0.03819364589751006,
+                  0.027862507561412113
+                ],
+                "radius": 0.010566856328405563,
+                "medianResidual": 0.0009698581166454143,
+                "supportCount": 120,
+                "supportIndicesKey": "center-fit_index_back_0.135",
+                "accepted": true
+              }
+            }
+          },
+          {
+            "finger": "index",
+            "station": 0.145,
+            "deltaV": -0.0007078890156352602,
+            "deltaDepth": 0.0023623049587542418,
+            "centerSeparation": 0.0024660883148443684,
+            "inferredCombinedDepthOverMatchedDiameter": 1.1361271901215606,
+            "fits": {
+              "front": {
+                "centerVY": [
+                  -0.03771479885720746,
+                  0.027130135029541386
+                ],
+                "radius": 0.008485744920927319,
+                "medianResidual": 0.0011170173961714165,
+                "supportCount": 95,
+                "supportIndicesKey": "center-fit_index_front_0.145",
+                "accepted": true
+              },
+              "back": {
+                "centerVY": [
+                  -0.03842268787284272,
+                  0.029492439988295628
+                ],
+                "radius": 0.008867914966158576,
+                "medianResidual": 0.0007241312954350387,
+                "supportCount": 118,
+                "supportIndicesKey": "center-fit_index_back_0.145",
+                "accepted": true
+              }
+            }
+          },
+          {
+            "finger": "index",
+            "station": 0.155,
+            "deltaV": 0.00013361460998379676,
+            "deltaDepth": 0.0005343604402563082,
+            "centerSeparation": 0.0005508120769482435,
+            "inferredCombinedDepthOverMatchedDiameter": 1.0315171742609137,
+            "fits": {
+              "front": {
+                "centerVY": [
+                  -0.03774235357175486,
+                  0.027232517222667747
+                ],
+                "radius": 0.007523875872711821,
+                "medianResidual": 0.0010656246379808238,
+                "supportCount": 120,
+                "supportIndicesKey": "center-fit_index_front_0.155",
+                "accepted": true
+              },
+              "back": {
+                "centerVY": [
+                  -0.03760873896177106,
+                  0.027766877662924055
+                ],
+                "radius": 0.009430703742599696,
+                "medianResidual": 0.0006166780848261902,
+                "supportCount": 111,
+                "supportIndicesKey": "center-fit_index_back_0.155",
+                "accepted": true
+              }
+            }
+          },
+          {
+            "finger": "middle",
+            "station": 0.135,
+            "deltaV": 0.00015733982474476667,
+            "deltaDepth": -0.0012102006817757346,
+            "centerSeparation": 0.0012203858040067358,
+            "inferredCombinedDepthOverMatchedDiameter": 0.9394047922710078,
+            "fits": {
+              "front": {
+                "centerVY": [
+                  -0.009913771605710844,
+                  0.040722987283861894
+                ],
+                "radius": 0.010350870827173054,
+                "medianResidual": 0.0009374291157388699,
+                "supportCount": 114,
+                "supportIndicesKey": "center-fit_middle_front_0.135",
+                "accepted": true
+              },
+              "back": {
+                "centerVY": [
+                  -0.009756431780966078,
+                  0.03951278660208616
+                ],
+                "radius": 0.009621016837413775,
+                "medianResidual": 0.0007110138607824921,
+                "supportCount": 132,
+                "supportIndicesKey": "center-fit_middle_back_0.135",
+                "accepted": true
+              }
+            }
+          },
+          {
+            "finger": "middle",
+            "station": 0.145,
+            "deltaV": -5.7072676602917816e-05,
+            "deltaDepth": -0.00012024998094799927,
+            "centerSeparation": 0.0001331065300149299,
+            "inferredCombinedDepthOverMatchedDiameter": 0.9937780747046366,
+            "fits": {
+              "front": {
+                "centerVY": [
+                  -0.008691304473704987,
+                  0.03775458592279995
+                ],
+                "radius": 0.00956120166857286,
+                "medianResidual": 0.0006718234083193074,
+                "supportCount": 137,
+                "supportIndicesKey": "center-fit_middle_front_0.145",
+                "accepted": true
+              },
+              "back": {
+                "centerVY": [
+                  -0.008748377150307905,
+                  0.03763433594185195
+                ],
+                "radius": 0.009765610409612959,
+                "medianResidual": 0.0010993118787789111,
+                "supportCount": 118,
+                "supportIndicesKey": "center-fit_middle_back_0.145",
+                "accepted": true
+              }
+            }
+          },
+          {
+            "finger": "middle",
+            "station": 0.155,
+            "deltaV": 0.0001531133230430904,
+            "deltaDepth": -0.003278497046864434,
+            "centerSeparation": 0.003282070470905845,
+            "inferredCombinedDepthOverMatchedDiameter": 0.8380627599009435,
+            "fits": {
+              "front": {
+                "centerVY": [
+                  -0.0074424766712831245,
+                  0.03663505945954567
+                ],
+                "radius": 0.009973227334271636,
+                "medianResidual": 0.0007762562292340201,
+                "supportCount": 182,
+                "supportIndicesKey": "center-fit_middle_front_0.155",
+                "accepted": true
+              },
+              "back": {
+                "centerVY": [
+                  -0.007289363348240034,
+                  0.033356562412681236
+                ],
+                "radius": 0.010272251993763021,
+                "medianResidual": 0.0007918310119848296,
+                "supportCount": 99,
+                "supportIndicesKey": "center-fit_middle_back_0.155",
+                "accepted": true
+              }
+            }
+          },
+          {
+            "finger": "ring",
+            "station": 0.135,
+            "deltaV": 0.0009911490675860168,
+            "deltaDepth": -0.0004768410231067305,
+            "centerSeparation": 0.0010998881013512712,
+            "inferredCombinedDepthOverMatchedDiameter": 0.9749437046283299,
+            "fits": {
+              "front": {
+                "centerVY": [
+                  0.018345889035470894,
+                  0.031232991247055645
+                ],
+                "radius": 0.008053931993577254,
+                "medianResidual": 0.0007789350083404071,
+                "supportCount": 160,
+                "supportIndicesKey": "center-fit_ring_front_0.135",
+                "accepted": true
+              },
+              "back": {
+                "centerVY": [
+                  0.01933703810305691,
+                  0.030756150223948914
+                ],
+                "radius": 0.010976855121339635,
+                "medianResidual": 0.0014005842497415797,
+                "supportCount": 128,
+                "supportIndicesKey": "center-fit_ring_back_0.135",
+                "accepted": true
+              }
+            }
+          },
+          {
+            "finger": "ring",
+            "station": 0.145,
+            "deltaV": 3.751560207097132e-05,
+            "deltaDepth": 0.004238351327420401,
+            "centerSeparation": 0.0042385173581153375,
+            "inferredCombinedDepthOverMatchedDiameter": 1.2993844766427955,
+            "fits": {
+              "front": {
+                "centerVY": [
+                  0.018343352465476512,
+                  0.02879825907271402
+                ],
+                "radius": 0.00728019755531387,
+                "medianResidual": 0.0008800953107040215,
+                "supportCount": 164,
+                "supportIndicesKey": "center-fit_ring_front_0.145",
+                "accepted": true
+              },
+              "back": {
+                "centerVY": [
+                  0.018380868067547483,
+                  0.03303661040013442
+                ],
+                "radius": 0.006876686512116597,
+                "medianResidual": 0.0012845910747931143,
+                "supportCount": 136,
+                "supportIndicesKey": "center-fit_ring_back_0.145",
+                "accepted": true
+              }
+            }
+          },
+          {
+            "finger": "ring",
+            "station": 0.155,
+            "deltaV": -0.0006591052017238287,
+            "deltaDepth": 0.0004287653635633472,
+            "centerSeparation": 0.0007862947309571763,
+            "inferredCombinedDepthOverMatchedDiameter": 1.0239744444183225,
+            "fits": {
+              "front": {
+                "centerVY": [
+                  0.019158200375559913,
+                  0.026110856897919116
+                ],
+                "radius": 0.008332237695925952,
+                "medianResidual": 0.0014045049688037126,
+                "supportCount": 239,
+                "supportIndicesKey": "center-fit_ring_front_0.155",
+                "accepted": true
+              },
+              "back": {
+                "centerVY": [
+                  0.018499095173836085,
+                  0.026539622261482463
+                ],
+                "radius": 0.00955202923772869,
+                "medianResidual": 0.000943182407375601,
+                "supportCount": 140,
+                "supportIndicesKey": "center-fit_ring_back_0.155",
+                "accepted": true
+              }
+            }
+          }
+        ],
+        "medianCenterSeparation": 0.0012203858040067358,
+        "perFinger": {
+          "index": {
+            "deltaV": -0.0007078890156352602,
+            "deltaDepth": 0.0005343604402563082,
+            "centerSeparation": 0.0012359561712253747,
+            "inferredCombinedDepthOverMatchedDiameter": 1.0315171742609137
+          },
+          "middle": {
+            "deltaV": 0.0001531133230430904,
+            "deltaDepth": -0.0012102006817757346,
+            "centerSeparation": 0.0012203858040067358,
+            "inferredCombinedDepthOverMatchedDiameter": 0.9394047922710078
+          },
+          "ring": {
+            "deltaV": 3.751560207097132e-05,
+            "deltaDepth": 0.0004287653635633472,
+            "centerSeparation": 0.0010998881013512712,
+            "inferredCombinedDepthOverMatchedDiameter": 1.0239744444183225
+          }
+        }
+      }
+    }
+  },
+  "visualReview": {
+    "accepted": true,
+    "finding": "Long separated finger-shell slit closes in outer and below views; rounded thickness and continuous wrist pad retained. Native texture defects remain.",
+    "images": [
+      "raw/fusion-work/refinement-v10/independent-review/center-fit-comparison.png",
+      "raw/fusion-work/refinement-v10/independent-review/center-fit-comparison-sources.png",
+      "raw/fusion-work/refinement-v10/independent-review/center-fit-fingers-detail.png"
+    ]
+  },
+  "preserved": {
+    "rigidParts": {
+      "right_hand": "right_forearm"
+    },
+    "otherRegions": 13,
+    "cleanupMasksUnchanged": true,
+    "surfaceRestorationsUnchanged": true,
+    "colorOverridesUnchanged": true,
+    "sourceShapesUnchanged": true
+  },
+  "rejectedApproaches": [
+    "Restoring all filtered hand surfaces or bypassing coverage: original slit remains and ghost edges return.",
+    "Positive shoulder correction or increased axial twist: visual projection can improve while physical finger centers separate.",
+    "No-yaw or conservative-yaw correction: residual lateral/depth mismatch remains."
+  ],
+  "exportVerification": {
+    "gaussianCount": 2697805,
+    "allRightArmGaussiansChecked": 209980,
+    "unchangedRegions": 13,
+    "padBoundary": {
+      "retainedCrossBoundaryPairs": 277,
+      "maximumDistanceError": 6.146728992462158e-08,
+      "meaning": "Original pad distances across the hand/forearm labels are preserved at the shared scale."
+    },
+    "testsPassed": 34
+  },
+  "review": "raw/mannequin-fused/hand-gap-review/",
+  "independentFinalExportReview": {
+    "status": "pass",
+    "acceptedCandidate": "raw/fusion-work/refinement-v10/registration/center-fit.npz",
+    "actualExport": "raw/mannequin-fused/mannequin_fused.ply",
+    "revision": "feature-guided-v10-rigid-hand-gap",
+    "rowsChecked": 209980,
+    "countsByPart": {
+      "10": 100539,
+      "11": 74311,
+      "12": 35130
+    },
+    "labelsAndCaptureCountsIdentical": true,
+    "comparisonOrder": "Stable grouped by part and capture; preserves original source row order within groups.",
+    "maxMeanAbsoluteError": 0.0,
+    "maxLogScaleAbsoluteError": 0.0,
+    "maxOpacityLogitAbsoluteError": 0.0,
+    "maxColorDCAbsoluteError": 0.0,
+    "maxCovarianceRelativeFrobeniusError": 1.3635319668098243e-07,
+    "covarianceRelativeFrobeniusP99": 8.0507142954387e-08,
+    "assertionTolerances": {
+      "meanAbsolute": 2e-07,
+      "opacityLogitAbsolute": 3e-06,
+      "colorDCAbsolute": 1e-07,
+      "logScaleAbsolute": 1e-06,
+      "covarianceRelativeFrobenius": 2e-06
+    },
+    "noActiveDataModified": true
+  }
+}

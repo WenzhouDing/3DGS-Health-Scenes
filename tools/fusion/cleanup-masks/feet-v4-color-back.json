@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "sourceCapture": "back",
+  "sourceFile": "raw/mannequin_back_119999.ply",
+  "sourceSha256": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e",
+  "sourceHashes": {
+    "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+    "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+  },
+  "baseline": "raw/fusion-work/refinement-v4/baseline",
+  "reproduce": ".venv-fusion/bin/python -B tools/fusion/refine_feet_v4.py --mode final",
+  "purpose": "Localized appearance correction of dark/purple/gray sole contamination; this is repaired color, not recovered scan detail.",
+  "overrideFile": "tools/fusion/cleanup-masks/feet-v4-color-back.npz",
+  "uniqueSourceIndices": 4309,
+  "changedFields": [
+    "f_dc_0",
+    "f_dc_1",
+    "f_dc_2"
+  ],
+  "recipe": {
+    "thresholdRGBEuclidean": 0.12,
+    "neighborBlend": 0.8,
+    "neighborCount": 12,
+    "referenceVoxel": 0.008,
+    "referenceHealthyRGB": {
+      "redMinusGreenGreaterThan": 0.025,
+      "greenMinusBlueGreaterThan": 0.025,
+      "luminanceBetween": [
+        0.18,
+        0.58
+      ]
+    },
+    "parts": [
+      "left_foot",
+      "right_foot"
+    ],
+    "frontRawZBetween": [
+      1.555,
+      1.665
+    ],
+    "posteriorDepthGreaterThan": 0,
+    "protectedAnkleScrewRadius": 0.025,
+    "nearestHealthyReferenceMaxDistance": 0.025,
+    "target": "channel median of 12 nearest healthy reference samples; blend 80% target +20% original RGB"
+  },
+  "geometry": "All centers, rotations, scales, opacities and labels are unchanged.",
+  "proof": [
+    "raw/fusion-work/refinement-v4/feet/left-final.png",
+    "raw/fusion-work/refinement-v4/feet/right-final.png"
+  ],
+  "limits": "No new fine geometry or source texture is invented. Existing toe creases and hardware are outside this posterior sole repair."
+}

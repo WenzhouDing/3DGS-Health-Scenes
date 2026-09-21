@@ -1,0 +1,173 @@
+{
+  "version": 1,
+  "purpose": "Evidence-only continuous native dorsal RIGHT wrist pad; original rows crossing forearm/hand segmentation; not an opacity/deletion mask",
+  "sourceCapture": "back",
+  "sourceFile": "raw/mannequin_back_119999.ply",
+  "sourceSha256": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e",
+  "sourceHashes": {
+    "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+    "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+  },
+  "maskFile": "tools/fusion/part-masks/back-right-wrist-pad.npy",
+  "uniqueSourceIndices": 12222,
+  "part": "right_wrist_pad",
+  "maskMeaning": "sorted original source PLY vertex rows",
+  "baseline": "raw/fusion-work/refinement-v8/baseline",
+  "algorithm": {
+    "frame": "back source mapped with frozen right_forearm sourceToFrontRaw",
+    "referenceTransform": {
+      "scale": 0.928,
+      "rotation": [
+        [
+          -0.9932089700690164,
+          0.059985071643469993,
+          -0.09968817860895919
+        ],
+        [
+          -0.10979896131626074,
+          -0.7666123307402974,
+          0.6326529241620565
+        ],
+        [
+          -0.03847245596935763,
+          0.6393022176849213,
+          0.767992542017713
+        ]
+      ],
+      "translation": [
+        -0.014850758047367574,
+        0.10387032734000459,
+        0.31350202882619366
+      ]
+    },
+    "origin": [
+      -0.697,
+      0.03,
+      0.597
+    ],
+    "axesLongitudinalLateralDepth": [
+      [
+        -0.6260112557835694,
+        0.0,
+        0.7798140211821525
+      ],
+      [
+        0.7798140211821525,
+        0.0,
+        0.6260112557835694
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ]
+    ],
+    "polygonLocalUV": [
+      [
+        -0.123,
+        0.011
+      ],
+      [
+        -0.122,
+        0.02
+      ],
+      [
+        -0.115,
+        0.028
+      ],
+      [
+        -0.106,
+        0.034
+      ],
+      [
+        -0.088,
+        0.03
+      ],
+      [
+        -0.058,
+        0.026
+      ],
+      [
+        -0.02,
+        0.023
+      ],
+      [
+        0.02,
+        0.023
+      ],
+      [
+        0.041,
+        0.023
+      ],
+      [
+        0.05,
+        0.017
+      ],
+      [
+        0.056,
+        0.008
+      ],
+      [
+        0.058,
+        -0.008
+      ],
+      [
+        0.054,
+        -0.029
+      ],
+      [
+        0.05,
+        -0.038
+      ],
+      [
+        0.041,
+        -0.04
+      ],
+      [
+        0.021,
+        -0.03
+      ],
+      [
+        -0.016,
+        -0.021
+      ],
+      [
+        -0.05,
+        -0.019
+      ],
+      [
+        -0.084,
+        -0.015
+      ],
+      [
+        -0.104,
+        -0.011
+      ],
+      [
+        -0.115,
+        -0.004
+      ]
+    ],
+    "polygonExpansion": 0.002,
+    "depthLower": "0.004 + clamp((U+0.12)/0.18,0,1)*0.016",
+    "depthUpper": 0.075,
+    "selectionSource": "Full original quality-clean right forearm+hand; hashguarded original rows"
+  },
+  "currentPartCounts": {
+    "right_forearm": 8420,
+    "right_hand": 3802
+  },
+  "continuity": {
+    "crossPartCloseNeighbourPairs": 279,
+    "maximumNativePairDistance": 0.005,
+    "nativePairDistanceMedian": 0.0030944414902478456,
+    "nativePairDistanceP90": 0.004495043307542801,
+    "oldIndependentPartPairDistanceMedian": 0.01401731837540865,
+    "oldIndependentPartPairDistanceP90": 0.015892796218395233,
+    "oldPadHandRowsRelativeDisplacementMedian": 0.014500491321086884,
+    "oldPadHandRowsRelativeDisplacementMaximum": 0.018523171544075012
+  },
+  "reproduce": ".venv-fusion/bin/python -B tools/fusion/inspect_pad_v8.py --native --views --mask",
+  "frontPadEvidence": "Front original contains contact-side sparse phantom surfaces here; no reliable matching dorsal perimeter. Only back mask is exported.",
+  "proof": "raw/fusion-work/refinement-v8/pad-inspection/pad-mask-proof.png"
+}

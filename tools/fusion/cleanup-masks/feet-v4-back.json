@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "sourceCapture": "back",
+  "sourceFile": "raw/mannequin_back_119999.ply",
+  "sourceSha256": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e",
+  "sourceHashes": {
+    "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+    "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+  },
+  "baseline": "raw/fusion-work/refinement-v4/baseline",
+  "reproduce": ".venv-fusion/bin/python -B tools/fusion/refine_feet_v4.py --mode final",
+  "purpose": "Remove residual intrusive posterior right ankle splats beyond the previous V3 cut.",
+  "maskFile": "tools/fusion/cleanup-masks/feet-v4-back.npy",
+  "uniqueSourceIndices": 934,
+  "maskDtype": "uint32",
+  "rejectedFusedCount": 934,
+  "applyStage": "after fusion attenuation, before export; never recalculate donor coverage",
+  "rule": {
+    "parts": [
+      "right_shin",
+      "right_foot"
+    ],
+    "source": "back",
+    "frontRawYGreaterThan": 0.03,
+    "frontRawZBetween": [
+      1.495,
+      1.55
+    ],
+    "protectedScrewRadius": 0.025,
+    "additionalExposedGreenSplats": {
+      "frontRawYGreaterThan": 0.005,
+      "frontRawZBetween": [
+        1.48,
+        1.56
+      ],
+      "greenMinusRedGreaterThan": 0.02
+    }
+  },
+  "proof": "raw/fusion-work/refinement-v4/feet/right-final.png"
+}

@@ -12,3 +12,16 @@ node_modules/
 __pycache__/
 *.pyc
 *.npz
+
+# Local articulated mannequin editing copy (regenerate with prepare_mannequin.py)
+/viewers/mannequin-rig/scan.bin
+
+# Local fusion environment and intermediate review data
+.venv-fusion/
+.venv-mannequin/
+/viewers/mannequin-fusion/*.bin
+# The published interactive viewers need these four prepared scan exports.
+!/viewers/mannequin-fusion/front.bin
+!/viewers/mannequin-fusion/back.bin
+!/viewers/mannequin-fusion/front-labels.bin
+!/viewers/mannequin-fusion/back-labels.bin

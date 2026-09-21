@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "source": "raw/mannequin_119999.ply",
+  "sourceSha256": "ed2c83d89974e996b2ece286b9b27a0c3730b3661758159e419a9ed7519d719c",
+  "sourceCount": 3406096,
+  "sourceFields": [
+    "x",
+    "y",
+    "z",
+    "rot_0",
+    "rot_1",
+    "rot_2",
+    "rot_3",
+    "scale_0",
+    "scale_1",
+    "scale_2",
+    "opacity",
+    "f_dc_0",
+    "f_dc_1",
+    "f_dc_2"
+  ],
+  "finiteCount": 3406096,
+  "filteredCount": 2323827,
+  "count": 900000,
+  "file": "scan.bin",
+  "format": "interleaved-float32-little-endian",
+  "stride": 14,
+  "strideBytes": 56,
+  "fields": [
+    "x",
+    "y",
+    "z",
+    "rot_0",
+    "rot_1",
+    "rot_2",
+    "rot_3",
+    "scale_0",
+    "scale_1",
+    "scale_2",
+    "opacity",
+    "f_dc_0",
+    "f_dc_1",
+    "f_dc_2"
+  ],
+  "quaternionOrder": "wxyz",
+  "scaleEncoding": "natural-log",
+  "opacityEncoding": "logit",
+  "colorEncoding": "degree-zero-spherical-harmonics",
+  "transform": {
+    "position": "[x, -y, -z]",
+    "rotationQuaternionWxyz": [
+      0,
+      1,
+      0,
+      0
+    ],
+    "description": "180-degree rotation around X; Y above mattress, Z toward head; source units retained"
+  },
+  "bounds": {
+    "min": [
+      -0.8413627743721008,
+      -0.3256595730781555,
+      -2.013209342956543
+    ],
+    "max": [
+      0.8571249842643738,
+      0.23012681305408478,
+      0.4413488209247589
+    ]
+  },
+  "filter": {
+    "enabled": true,
+    "minOpacity": 0.03,
+    "maxScale": 0.1,
+    "sourceBounds": [
+      -1.1,
+      -0.55,
+      -0.6,
+      1.1,
+      0.65,
+      2.25
+    ],
+    "finiteRecordsRequired": true
+  },
+  "sampling": {
+    "method": "evenly-spaced-source-indices-after-filtering",
+    "maxSplats": 900000
+  },
+  "degenerateQuaternionsReplaced": 0
+}

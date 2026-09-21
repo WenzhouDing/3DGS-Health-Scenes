@@ -1,0 +1,487 @@
+{
+  "method": "measured axial collar, one rotational degree of freedom; zero fitted swing and zero fitted translation",
+  "mechanicalConstraint": {
+    "parentPart": "right_upper_arm",
+    "childPart": "right_forearm",
+    "pivotFrontRaw": [
+      -0.3590852533890853,
+      -0.03833235509794086,
+      0.27896079951802905
+    ],
+    "axisFrontRaw": [
+      -0.6249087788154958,
+      0.1817470761592546,
+      0.7592476660924866
+    ],
+    "twistDegrees": 7.1124383367010475,
+    "formula": "Rc=Q Rp; tc=Q(tp-pivot)+pivot; Q=axisAngle(axis,twist)",
+    "independentTranslation": [
+      0,
+      0,
+      0
+    ],
+    "independentSwingDegrees": 0,
+    "pivotPrepared": [
+      -0.3590852533890853,
+      0.03833235509794086,
+      -0.27896079951802905
+    ],
+    "axisPrepared": [
+      -0.6249087788154958,
+      -0.1817470761592546,
+      -0.7592476660924866
+    ]
+  },
+  "collarMeasurements": {
+    "front": {
+      "pivot": [
+        -0.3590852533890853,
+        -0.03833235509794086,
+        0.27896079951802905
+      ],
+      "axis": [
+        -0.6249087788154958,
+        0.1817470761592546,
+        0.7592476660924866
+      ],
+      "localPlane": [
+        -0.024046683749819314,
+        0.09512765118399488,
+        0.021496455874823895
+      ],
+      "radialCenter": [
+        0.00622745135298766,
+        -0.014205270875329704
+      ],
+      "radialRadii": [
+        0.05302021831143959,
+        0.05135479219873033
+      ],
+      "inlierCount": 260,
+      "planeMedianResidual": 0.0007181487904978148,
+      "occupiedAngularBins": 24
+    },
+    "back": {
+      "pivot": [
+        0.3869903624693549,
+        0.07179026012496578,
+        -0.08718074506009052
+      ],
+      "axis": [
+        0.5816871206946954,
+        0.34526505020450465,
+        0.7364999244570203
+      ],
+      "localPlane": [
+        -0.055051793936623954,
+        -0.07284101806463673,
+        0.02409088034280278
+      ],
+      "radialCenter": [
+        8.365651822656042e-05,
+        0.01741630914403173
+      ],
+      "radialRadii": [
+        0.055153930917739305,
+        0.05541788074471201
+      ],
+      "inlierCount": 370,
+      "planeMedianResidual": 0.000715608199745121,
+      "occupiedAngularBins": 23
+    }
+  },
+  "sourceToFrontRaw": {
+    "scale": 0.928,
+    "rotation": [
+      [
+        -0.9932089700690164,
+        0.059985071643469993,
+        -0.09968817860895919
+      ],
+      [
+        -0.10979896131626074,
+        -0.7666123307402974,
+        0.6326529241620565
+      ],
+      [
+        -0.03847245596935763,
+        0.6393022176849213,
+        0.767992542017713
+      ]
+    ],
+    "translation": [
+      -0.014850758047367574,
+      0.10387032734000459,
+      0.31350202882619366
+    ]
+  },
+  "handSourceToFrontRaw": {
+    "scale": 0.928,
+    "rotation": [
+      [
+        -0.9140303594044848,
+        0.3495599987973497,
+        -0.20580648514492128
+      ],
+      [
+        -0.3841941374743931,
+        -0.5831965894455142,
+        0.7157350087772922
+      ],
+      [
+        0.1301666885851243,
+        0.7332731723579696,
+        0.6673582904878494
+      ]
+    ],
+    "translation": [
+      -0.0988256355467338,
+      0.231767009130554,
+      0.2033533558742022
+    ]
+  },
+  "handConstraint": "preserve baseline hand-to-forearm relative transform exactly",
+  "parentSourceToFrontRaw": {
+    "scale": 0.928,
+    "rotation": [
+      [
+        -0.9977706195192642,
+        -0.028414227291539806,
+        -0.060385615104662664
+      ],
+      [
+        -0.011808748405367681,
+        -0.8153863607491271,
+        0.5787967140243584
+      ],
+      [
+        -0.06568366832967296,
+        0.5782194344638728,
+        0.8132330178509958
+      ]
+    ],
+    "translation": [
+      -0.004124740859451526,
+      0.06751477375249416,
+      0.331032932724309
+    ]
+  },
+  "baselineForearm": {
+    "scale": 0.928,
+    "rotation": [
+      [
+        -0.9555778691428666,
+        -0.29471458634121617,
+        0.0037747320574281038
+      ],
+      [
+        0.28340935781580334,
+        -0.915254560103011,
+        0.2863358624292092
+      ],
+      [
+        -0.08093251452175158,
+        0.274686007667611,
+        0.9581218739204402
+      ]
+    ],
+    "translation": [
+      0.0024855113773056027,
+      -0.050720614626145265,
+      0.3718421454610729
+    ]
+  },
+  "baselineHand": {
+    "scale": 0.928,
+    "rotation": [
+      [
+        -0.998384694597159,
+        0.022033044024352223,
+        -0.05236932847725729
+      ],
+      [
+        -0.04261105711514107,
+        -0.9000627819101347,
+        0.43367186492983356
+      ],
+      [
+        -0.03758057218388386,
+        0.43520286487017823,
+        0.899547756932961
+      ]
+    ],
+    "translation": [
+      -0.01669292753995433,
+      0.13028080722068772,
+      0.32272245300200914
+    ]
+  },
+  "fitCost": 0.02513661381760374,
+  "metrics": {
+    "right_forearm": [
+      {
+        "pairs": 1888,
+        "median": 0.007561416488300762,
+        "mean": 0.008904209668727781,
+        "coverage": 0.9677088672475653,
+        "p90": 0.01660275797709598,
+        "cost": 0.008841127501304903,
+        "color": 0.08694031834602356
+      },
+      {
+        "pairs": 1600,
+        "median": 0.007145112277086196,
+        "mean": 0.008270046372425862,
+        "coverage": 0.9894867037724181,
+        "p90": 0.015368293220396801,
+        "cost": 0.008183785974008097,
+        "color": 0.08512186259031296
+      }
+    ],
+    "right_hand": [
+      {
+        "pairs": 570,
+        "median": 0.010480453031867662,
+        "mean": 0.011409984773122056,
+        "coverage": 0.946843853820598,
+        "p90": 0.01843658122272007,
+        "cost": 0.011208067768532266,
+        "color": 0.07426663488149643
+      },
+      {
+        "pairs": 335,
+        "median": 0.011773884576329842,
+        "mean": 0.01262544579000517,
+        "coverage": 0.938375350140056,
+        "p90": 0.022376404286530854,
+        "cost": 0.011968218923726995,
+        "color": 0.08663085848093033
+      }
+    ]
+  },
+  "baselineMetricsAtCorrectedCollar": {
+    "right_forearm": [
+      {
+        "pairs": 1802,
+        "median": 0.0068457253016827885,
+        "mean": 0.008148028306480024,
+        "coverage": 0.9672571121846484,
+        "p90": 0.015224750057449195,
+        "cost": 0.008148829443203562,
+        "color": 0.07868580520153046
+      },
+      {
+        "pairs": 1568,
+        "median": 0.0073053233250231974,
+        "mean": 0.00871906260079397,
+        "coverage": 0.9696969696969697,
+        "p90": 0.01715540553266074,
+        "cost": 0.008559308857660368,
+        "color": 0.07962383329868317
+      }
+    ],
+    "right_hand": [
+      {
+        "pairs": 467,
+        "median": 0.00841714257317077,
+        "mean": 0.009378335425486864,
+        "coverage": 0.9265873015873016,
+        "p90": 0.01591258601895123,
+        "cost": 0.009710984766444497,
+        "color": 0.07342317700386047
+      },
+      {
+        "pairs": 337,
+        "median": 0.009461526613612131,
+        "mean": 0.010302228612028425,
+        "coverage": 0.9439775910364145,
+        "p90": 0.01725541468970992,
+        "cost": 0.010429380253092445,
+        "color": 0.07631120085716248
+      }
+    ]
+  },
+  "angleSweep": {
+    "degrees": [
+      -50.0,
+      -47.5,
+      -45.0,
+      -42.5,
+      -40.0,
+      -37.5,
+      -35.0,
+      -32.5,
+      -30.0,
+      -27.5,
+      -25.0,
+      -22.5,
+      -20.0,
+      -17.5,
+      -15.0,
+      -12.5,
+      -10.0,
+      -7.5,
+      -5.0,
+      -2.5,
+      0.0,
+      2.5,
+      5.0,
+      7.5,
+      10.0,
+      12.5,
+      15.0,
+      17.5,
+      20.0
+    ],
+    "cost": [
+      0.036098823154655374,
+      0.0358169976876028,
+      0.035442762662333295,
+      0.03491164154095846,
+      0.034445725336893926,
+      0.03404985977788626,
+      0.03364257293300901,
+      0.03328854355713216,
+      0.03299343328627516,
+      0.03246767213876747,
+      0.03231220730657643,
+      0.03198835182938417,
+      0.03171779414174487,
+      0.031536717010081004,
+      0.0312000117055881,
+      0.03075479151647044,
+      0.03009120940334198,
+      0.029089325436190715,
+      0.02803736450312311,
+      0.026923771606046754,
+      0.026027542406276354,
+      0.025660664320052727,
+      0.02534335634914362,
+      0.025190089010293168,
+      0.025229604826304215,
+      0.025308620009671837,
+      0.025734965749448203,
+      0.026203100907405956,
+      0.026759105648190784
+    ]
+  },
+  "segmentationRule": {
+    "parts": [
+      "right_upper_arm",
+      "right_forearm"
+    ],
+    "maximumAbsStation": 0.11,
+    "maximumRadius": 0.11,
+    "proximalPart": "right_upper_arm",
+    "distalPart": "right_forearm",
+    "planes": {
+      "front": {
+        "pivot": [
+          -0.3590852533890853,
+          -0.03833235509794086,
+          0.27896079951802905
+        ],
+        "axis": [
+          -0.6249087788154958,
+          0.1817470761592546,
+          0.7592476660924866
+        ],
+        "localPlane": [
+          -0.024046683749819314,
+          0.09512765118399488,
+          0.021496455874823895
+        ],
+        "radialCenter": [
+          0.00622745135298766,
+          -0.014205270875329704
+        ],
+        "radialRadii": [
+          0.05302021831143959,
+          0.05135479219873033
+        ],
+        "inlierCount": 260,
+        "planeMedianResidual": 0.0007181487904978148,
+        "occupiedAngularBins": 24
+      },
+      "back": {
+        "pivot": [
+          0.3869903624693549,
+          0.07179026012496578,
+          -0.08718074506009052
+        ],
+        "axis": [
+          0.5816871206946954,
+          0.34526505020450465,
+          0.7364999244570203
+        ],
+        "localPlane": [
+          -0.055051793936623954,
+          -0.07284101806463673,
+          0.02409088034280278
+        ],
+        "radialCenter": [
+          8.365651822656042e-05,
+          0.01741630914403173
+        ],
+        "radialRadii": [
+          0.055153930917739305,
+          0.05541788074471201
+        ],
+        "inlierCount": 370,
+        "planeMedianResidual": 0.000715608199745121,
+        "occupiedAngularBins": 23
+      }
+    }
+  },
+  "validation": {
+    "rotationFormulaMaxError": 0.0,
+    "translationFormulaMaxError": 0.0,
+    "handRelativeRotationMaxError": 1.9984014443252818e-15,
+    "handRelativeTranslationMaxError": 4.163336342344337e-16,
+    "parentCollarCenterResidual": 0.0013477554596836299,
+    "baselineChildCollarCenterResidual": 0.007149420849951739,
+    "constrainedChildCollarCenterResidual": 0.0013477554596836767,
+    "parentCollarNormalDifferenceDegrees": 2.575383742284573
+  },
+  "version": 1,
+  "sourceHashes": {
+    "front": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+    "back": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+  },
+  "frame": "Source PLY native XYZ to front native XYZ. Distances use uncalibrated source units.",
+  "baseline": {
+    "directory": "raw/fusion-work/refinement-v4/baseline",
+    "files": {
+      "feature-transforms.json": "c9677168afaa93d0eaddee0b4046f30284133ddec1e38fbea3c402a25a0ffaad",
+      "front-landmarks.json": "882bd2828b25d2dce48b0e97d328dc02c71c51f88803bc7f438ddbb97efe534c",
+      "back-landmarks.json": "a77339b89385db2451db6e0a17c5fbfb3ec2372386f8fce2a572037e41719620",
+      "fusion-config.json": "523b2c2f4af9a0153ed794f226980d7d9c189e605d6032b52f2252bb0f462a39"
+    }
+  },
+  "observations": [
+    "The dark circumferential collar is about 0.0215 source units distal to the previous capsule boundary. RANSAC and robust plane fitting select the thin dark seam across 24 angular sectors in each native scan; angular support prevents fitting a single visible edge.",
+    "The shoulder pad fit is retained exactly. Its independent mapping puts the back native collar center 0.00135 source units from the measured front center; no fitted collar-center translation is introduced.",
+    "The child has exactly one fitted degree of freedom: rotation about the measured front collar normal, directed from shoulder toward wrist. No swing, bend or independent translation is allowed.",
+    "The right hand is carried through the forearm delta, preserving its baseline transform relative to the forearm. Original source wrist/hand geometry is not deformed.",
+    "The large front training-panel border is mostly absent from the back capture. The precise twist is therefore selected by normal-compatible overlap under the mechanical constraint, not claimed as an independently observed panel-to-panel angle.",
+    "The unconstrained baseline has slightly lower aggregate nearest-surface error, especially on the hand. The constrained fit is selected for the correct axial mechanism, substantially lower collar-center mismatch and smoother actual collar renders. Source contact-side corruption remains visible from the inner side.",
+    "Six-angle full-covariance Gaussian renders were inspected for collar continuity, unchanged pad placement, panel silhouette and wrist continuity. Source-separated front/outer/back renders distinguish original corruption from fusion errors."
+  ],
+  "reproduce": {
+    "command": ".venv-fusion/bin/python -B tools/fusion/refine_arm_v4.py --all",
+    "stages": [
+      "--measure: read original scans, unwrap circular seam, fit native ring plane and ellipse center",
+      "--fit: use frozen baseline settings and search a single axial angle; carry the hand relative transform",
+      "--render: actual anisotropic Gaussian comparison against frozen v3 baseline",
+      "--evidence: verify mechanical equations and export portable evidence"
+    ],
+    "tuning": "Adjust native seam selection in unwrap/measure_collar or the overlap search in axial_fits; re-run all. Do not independently edit the child transform matrix."
+  },
+  "reviewImages": [
+    "raw/fusion-work/refinement-v4/arm/collar-rim-fit.png",
+    "raw/fusion-work/refinement-v4/arm/collar-unwrapped.png",
+    "raw/fusion-work/refinement-v4/arm/axial-collar-comparison.png",
+    "raw/fusion-work/refinement-v4/arm/axial-arm-comparison.png",
+    "raw/fusion-work/refinement-v4/arm/axial-sources.png"
+  ]
+}

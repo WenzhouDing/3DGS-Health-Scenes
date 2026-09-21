@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "purpose": "remove scanned bed-contact remnants and floating white fragments around lower shorts",
+  "sourceCapture": "back",
+  "sourceFile": "raw/mannequin_back_119999.ply",
+  "sourceSha256": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e",
+  "sourceHashes": {
+    "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+    "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+  },
+  "baseline": "raw/fusion-work/cleanup-v3/baseline",
+  "maskFile": "tools/fusion/cleanup-masks/pants-back.npy",
+  "maskDtype": "uint32",
+  "maskMeaning": "sorted unique ORIGINAL back PLY vertex indices; hash guarded",
+  "applyStage": "after coverage confidence weighting and opacity attenuation, before final export; do not trigger donor rescue again",
+  "rejectedFusedCount": 25092,
+  "uniqueSourceIndices": 25092,
+  "ruleCounts": {
+    "backLowerShortContact": 24704,
+    "neutralBrightCrotch": 2320,
+    "bothRules": 1932
+  },
+  "rejectedByPart": {
+    "pelvis": 9748,
+    "left_thigh": 11121,
+    "right_thigh": 4223
+  },
+  "rules": [
+    {
+      "id": "back-lower-short-contact",
+      "source": "back",
+      "parts": [
+        "pelvis",
+        "left_thigh",
+        "right_thigh"
+      ],
+      "frontRawZ": {
+        "gt": 0.88,
+        "lt": 1.13
+      },
+      "nativeBackY": {
+        "gt": 0.1
+      }
+    },
+    {
+      "id": "neutral-bright-crotch-remnants",
+      "source": "back",
+      "parts": [
+        "pelvis",
+        "left_thigh",
+        "right_thigh"
+      ],
+      "frontRawAbsX": {
+        "lt": 0.225
+      },
+      "frontRawZ": {
+        "gt": 1.045,
+        "lt": 1.215
+      },
+      "dcLuminance": {
+        "gt": 0.22
+      },
+      "dcMaxMinusMin": {
+        "lt": 0.35
+      }
+    }
+  ],
+  "colorFormula": "RGB=clip(0.5+0.28209479177387814*f_dc,0,1); luminance=0.2126R+0.7152G+0.0722B",
+  "review": "Six actual anisotropic Gaussian views: front, back, both sides, front/rear oblique; plus source-isolated crotch closeups. Preserves front fabric/logo, rear cloth folds, and knee screw heads outside the central X bound.",
+  "limitations": "Different shorts folds remain because captures have different cloth shapes. This removes artifact contributions without inventing or warping cloth.",
+  "proof": "raw/fusion-work/cleanup-v3/pants/candidate-c.png",
+  "reproduce": ".venv-fusion/bin/python -B tools/fusion/cleanup_pants.py"
+}

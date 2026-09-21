@@ -1,0 +1,391 @@
+{
+  "frame": "raw",
+  "source": "raw/mannequin_front_119999.ply",
+  "landmarks": {
+    "neck": [
+      0.006,
+      -0.055,
+      0.045
+    ],
+    "head": [
+      0.009,
+      -0.052,
+      -0.18
+    ],
+    "waist": [
+      0.0,
+      -0.078,
+      0.575
+    ],
+    "chest": [
+      0.0,
+      -0.078,
+      0.275
+    ],
+    "pelvis": [
+      0.0,
+      -0.06,
+      0.75
+    ],
+    "left_shoulder": [
+      0.23,
+      -0.02,
+      0.16
+    ],
+    "left_elbow": [
+      0.3839064154997863,
+      0.0011946936093699852,
+      0.2685460886187963
+    ],
+    "left_wrist": [
+      0.704,
+      0.065,
+      0.584
+    ],
+    "left_hand_tip": [
+      0.818,
+      0.116,
+      0.707
+    ],
+    "left_hip": [
+      0.128,
+      -0.06,
+      0.73
+    ],
+    "left_knee": [
+      0.321,
+      -0.021,
+      1.145
+    ],
+    "left_ankle": [
+      0.456,
+      -0.01,
+      1.535
+    ],
+    "left_toe": [
+      0.525,
+      -0.112,
+      1.677
+    ],
+    "right_shoulder": [
+      -0.23,
+      -0.056,
+      0.16
+    ],
+    "right_elbow": [
+      -0.3558778211475503,
+      -0.047657546478842475,
+      0.255655440325286
+    ],
+    "right_wrist": [
+      -0.697,
+      0.03,
+      0.597
+    ],
+    "right_hand_tip": [
+      -0.802,
+      0.064,
+      0.727
+    ],
+    "right_hip": [
+      -0.128,
+      -0.064,
+      0.73
+    ],
+    "right_knee": [
+      -0.324,
+      -0.023,
+      1.145
+    ],
+    "right_ankle": [
+      -0.46,
+      -0.009,
+      1.53
+    ],
+    "right_toe": [
+      -0.519,
+      -0.113,
+      1.665
+    ],
+    "skull_base": [
+      0.005,
+      -0.055,
+      -0.065
+    ],
+    "crown": [
+      0.002,
+      -0.011,
+      -0.31
+    ]
+  },
+  "sideConvention": "Anatomical left is front raw +X; right is front raw -X. Back raw X must reverse under rotation diag(-1,-1,1).",
+  "method": "Manual estimates of mechanical joint centers from six projections, closeups, and sagittal point-color slices. Y is inferred from the full circular joint rims and limb thickness, not the median visible front-surface Y.",
+  "uncertainty": {
+    "jointCenters": 0.015,
+    "hipCenters": 0.035,
+    "neckHeadCenters": 0.025
+  },
+  "nativeAnteriorAxis": [
+    0,
+    -1,
+    0
+  ],
+  "segmentRadii": {
+    "head": 0.215,
+    "neck": 0.09,
+    "torso": 0.245,
+    "pelvis": 0.255,
+    "left_upper_arm": 0.083,
+    "right_upper_arm": 0.083,
+    "left_forearm": 0.07,
+    "right_forearm": 0.07,
+    "left_hand": 0.082,
+    "right_hand": 0.082,
+    "left_thigh": 0.175,
+    "right_thigh": 0.175,
+    "left_shin": 0.085,
+    "right_shin": 0.085,
+    "left_foot": 0.1,
+    "right_foot": 0.1
+  },
+  "contactLayerGuidance": {
+    "sideConfidenceCoordinate": "native raw Y minus endpoint-interpolated joint-center Y",
+    "primaryObservedSurface": "negative side of the local depth centerline",
+    "coreFrontKeepOffset": 0.0,
+    "sideSeamFeatherHalfWidth": 0.018,
+    "warning": "Do not cut on global Y=0. Hands shift to positive native Y (.064 right / .116 left), while toes point toward negative Y. Treat the values as confidence weights before hard filtering; full 3D volume assignment is essential."
+  },
+  "findings": [
+    "No mattress body remains in the supplied cleaned front scan. Thin residual floaters remain, notably near the posterior head and chest contact plane.",
+    "Front scan is an open anterior shell: posterior view sees front facial/chest colors through missing surfaces. Do not regard this as a true posterior texture.",
+    "Old elbow pivots were about .04-.06 source units too distal. Revised centers follow visible elbow rings.",
+    "Most shoulder, knee and ankle centers agree with previous rig within .01-.03 source units.",
+    "Front shoulder and forearm limb depths are asymmetrical in native Y; left wrist/hand are about .04-.06 farther toward positive Y than right.",
+    "Rigid split of shorts between pelvis and thighs is approximate; clothing differs from underlying leg geometry and should not dominate alignment."
+  ],
+  "segmentationStrategy": {
+    "partition": "Use complete 3D capsule distances to bone segments, combined with longitudinal joint planes. Assign overlap by anatomical branch and plane position; do not classify from only XZ silhouette.",
+    "parts": [
+      {
+        "id": "head",
+        "start": "neck",
+        "end": "head",
+        "radius": 0.215
+      },
+      {
+        "id": "torso",
+        "start": "neck",
+        "end": "waist",
+        "radius": 0.245
+      },
+      {
+        "id": "pelvis",
+        "start": "waist",
+        "end": "pelvis",
+        "radius": 0.255
+      },
+      {
+        "id": "left_upper_arm",
+        "start": "left_shoulder",
+        "end": "left_elbow",
+        "radius": 0.083
+      },
+      {
+        "id": "left_forearm",
+        "start": "left_elbow",
+        "end": "left_wrist",
+        "radius": 0.07
+      },
+      {
+        "id": "left_hand",
+        "start": "left_wrist",
+        "end": "left_hand_tip",
+        "radius": 0.082
+      },
+      {
+        "id": "left_thigh",
+        "start": "left_hip",
+        "end": "left_knee",
+        "radius": 0.175
+      },
+      {
+        "id": "left_shin",
+        "start": "left_knee",
+        "end": "left_ankle",
+        "radius": 0.085
+      },
+      {
+        "id": "left_foot",
+        "start": "left_ankle",
+        "end": "left_toe",
+        "radius": 0.1
+      },
+      {
+        "id": "right_upper_arm",
+        "start": "right_shoulder",
+        "end": "right_elbow",
+        "radius": 0.083
+      },
+      {
+        "id": "right_forearm",
+        "start": "right_elbow",
+        "end": "right_wrist",
+        "radius": 0.07
+      },
+      {
+        "id": "right_hand",
+        "start": "right_wrist",
+        "end": "right_hand_tip",
+        "radius": 0.082
+      },
+      {
+        "id": "right_thigh",
+        "start": "right_hip",
+        "end": "right_knee",
+        "radius": 0.175
+      },
+      {
+        "id": "right_shin",
+        "start": "right_knee",
+        "end": "right_ankle",
+        "radius": 0.085
+      },
+      {
+        "id": "right_foot",
+        "start": "right_ankle",
+        "end": "right_toe",
+        "radius": 0.1
+      }
+    ],
+    "planeSuggestions": [
+      {
+        "joint": "left_elbow",
+        "planePoint": [
+          0.3839064154997863,
+          0.0011946936093699852,
+          0.2685460886187963
+        ],
+        "normalFrom": "left_shoulder",
+        "normalToward": "left_wrist",
+        "seamAllowance": 0.012
+      },
+      {
+        "joint": "left_wrist",
+        "planePoint": [
+          0.704,
+          0.065,
+          0.584
+        ],
+        "normalFrom": "left_elbow",
+        "normalToward": "left_hand_tip",
+        "seamAllowance": 0.012
+      },
+      {
+        "joint": "left_knee",
+        "planePoint": [
+          0.321,
+          -0.021,
+          1.145
+        ],
+        "normalFrom": "left_hip",
+        "normalToward": "left_ankle",
+        "seamAllowance": 0.012
+      },
+      {
+        "joint": "left_ankle",
+        "planePoint": [
+          0.456,
+          -0.01,
+          1.535
+        ],
+        "normalFrom": "left_knee",
+        "normalToward": "left_toe",
+        "seamAllowance": 0.012
+      },
+      {
+        "joint": "right_elbow",
+        "planePoint": [
+          -0.3558778211475503,
+          -0.047657546478842475,
+          0.255655440325286
+        ],
+        "normalFrom": "right_shoulder",
+        "normalToward": "right_wrist",
+        "seamAllowance": 0.012
+      },
+      {
+        "joint": "right_wrist",
+        "planePoint": [
+          -0.697,
+          0.03,
+          0.597
+        ],
+        "normalFrom": "right_elbow",
+        "normalToward": "right_hand_tip",
+        "seamAllowance": 0.012
+      },
+      {
+        "joint": "right_knee",
+        "planePoint": [
+          -0.324,
+          -0.023,
+          1.145
+        ],
+        "normalFrom": "right_hip",
+        "normalToward": "right_ankle",
+        "seamAllowance": 0.012
+      },
+      {
+        "joint": "right_ankle",
+        "planePoint": [
+          -0.46,
+          -0.009,
+          1.53
+        ],
+        "normalFrom": "right_knee",
+        "normalToward": "right_toe",
+        "seamAllowance": 0.012
+      }
+    ],
+    "coverageAtOpacity03": {
+      "filteredCount": 1290046,
+      "outsideAllSuggestedSupportVolumes": 2285
+    },
+    "notes": "Capsules are generous outer support volumes. Neighbor-density/contact-side rejection should remove loose artifacts; do not shrink radii to match only the visible anterior shell.",
+    "additionalSupportBoxes": [
+      {
+        "id": "pelvis",
+        "min": [
+          -0.105,
+          -0.23,
+          0.57
+        ],
+        "max": [
+          0.105,
+          0.12,
+          1.14
+        ],
+        "reason": "The shorts crotch bridges between thigh capsules and extends well below hip centers."
+      }
+    ],
+    "headNeckPlane": {
+      "point": [
+        0.006,
+        -0.055,
+        0.045
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "headSide": "negative",
+      "seamAllowance": 0.018
+    }
+  },
+  "skullRefinement": "Skull base and crown matched in native side views; skull and neck are separate rigid regions. Back neck root revised to actual slanted lower ring.",
+  "featureRefinement": {
+    "method": "Elbow seam locations transferred from corresponding shoulder-pad rigid geometry, then checked in native Gaussian closeups",
+    "evidence": "tools/fusion/limb-feature-evidence.json"
+  }
+}

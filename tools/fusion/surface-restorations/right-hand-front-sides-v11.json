@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "purpose": "Restore a reviewed narrow band of lower-confidence original-source finger-side coverage at the fixed V10 rigid pose",
+  "sourceCapture": "front",
+  "sourceFile": "raw/mannequin_front_119999.ply",
+  "sourceSha256": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+  "sourceHashes": {
+    "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+    "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+  },
+  "maskFile": "tools/fusion/surface-restorations/right-hand-front-sides-v11.npy",
+  "uniqueSourceIndices": 1054,
+  "part": "right_hand",
+  "maskMeaning": "sorted original-source PLY rows; restore native opacity and exempt only these IDs from post-coverage cleanup",
+  "algorithm": {
+    "sectionEvidence": "raw/fusion-work/refinement-v10/gap-audit/resliced-shaft-center-audit.json",
+    "angleAroundPositiveV": [
+      -60,
+      60
+    ],
+    "stationRange": [
+      0.12,
+      0.165
+    ],
+    "radialTolerance": 0.0035,
+    "normalRadialAlignmentMinimum": 0.35,
+    "nativeVisibilityRequired": false,
+    "meansCovarianceColorUnchanged": true,
+    "longitudinalAxis": [
+      -0.626,
+      0,
+      0.7798
+    ],
+    "origin": [
+      -0.697,
+      0.03,
+      0.597
+    ],
+    "fingerBandsV": {
+      "index": [
+        -0.06,
+        -0.0235
+      ],
+      "middle": [
+        -0.0235,
+        0.0055
+      ],
+      "ring": [
+        0.0055,
+        0.0325
+      ]
+    },
+    "maximumSigma": 0.01,
+    "minimumNativeAlpha": 0.025,
+    "thinSigmaLessThanMiddleRatio": 0.8,
+    "maximumDistanceToObservedAnchor": 0.006
+  },
+  "countsAgainstV10": {
+    "selectedPerFinger": {
+      "index": 409,
+      "middle": 302,
+      "ring": 343
+    },
+    "selected": 1054,
+    "missingFromBaseline": 341
+  },
+  "baseline": "raw/fusion-work/refinement-v11/baseline",
+  "evidence": "tools/fusion/right-finger-seam-evidence.json",
+  "reproduce": ".venv-fusion/bin/python -B tools/fusion/audit_hand_coverage_v11.py --broad-sector",
+  "limitations": "Original source geometry; selected by shell and connectivity rather than independently verified observed visibility. No synthetic means, covariance extension, or pose change."
+}

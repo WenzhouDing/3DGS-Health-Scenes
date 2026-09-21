@@ -1,0 +1,181 @@
+{
+  "version": 1,
+  "source": "raw/mannequin_back_119999.ply",
+  "frame": "raw",
+  "landmarks": {
+    "head": [
+      -0.012,
+      0.05,
+      -0.605
+    ],
+    "neck": [
+      0,
+      0.045,
+      -0.365
+    ],
+    "chest": [
+      -0.025,
+      0.03,
+      -0.09
+    ],
+    "waist": [
+      -0.015,
+      0.045,
+      0.2
+    ],
+    "pelvis": [
+      -0.025,
+      0.045,
+      0.425
+    ],
+    "left_shoulder": [
+      -0.24,
+      -0.02,
+      -0.27
+    ],
+    "left_elbow": [
+      -0.42,
+      0.02,
+      -0.145
+    ],
+    "left_wrist": [
+      -0.79,
+      0.105,
+      0.13
+    ],
+    "left_hand_tip": [
+      -0.952,
+      0.125,
+      0.28
+    ],
+    "left_hip": [
+      -0.165,
+      0.045,
+      0.43
+    ],
+    "left_knee": [
+      -0.332,
+      0.08,
+      0.855
+    ],
+    "left_ankle": [
+      -0.418,
+      -0.008,
+      1.29
+    ],
+    "left_toe": [
+      -0.47,
+      0.135,
+      1.47
+    ],
+    "right_shoulder": [
+      0.225,
+      0.01,
+      -0.275
+    ],
+    "right_elbow": [
+      0.385,
+      0.065,
+      -0.115
+    ],
+    "right_wrist": [
+      0.715,
+      0.2,
+      0.265
+    ],
+    "right_hand_tip": [
+      0.845,
+      0.235,
+      0.403
+    ],
+    "right_hip": [
+      0.12,
+      0.065,
+      0.43
+    ],
+    "right_knee": [
+      0.23,
+      0.106,
+      0.86
+    ],
+    "right_ankle": [
+      0.31,
+      0.027,
+      1.29
+    ],
+    "right_toe": [
+      0.357,
+      0.135,
+      1.495
+    ],
+    "skull_base": [
+      -0.005,
+      0.055,
+      -0.47
+    ],
+    "crown": [
+      -0.011,
+      0.01,
+      -0.74
+    ]
+  },
+  "status": "reviewed against orthographic color/depth, four oblique views, transverse torso sections, and limb side projections; manually initialized centers remain approximate",
+  "units": "source scan units; not calibrated meters",
+  "axisConvention": {
+    "headDirection": "-Z",
+    "posteriorSurfaceDirection": "-Y",
+    "anatomicalLeftDirection": "-X",
+    "anatomicalRightDirection": "+X",
+    "properBackToFrontInitialRotation": [
+      -1,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  "handedness": "Left/right chosen to match FRONT anatomical left=raw +X; back raw -X maps to front raw +X by 180-degree Z rotation. Anatomical naming is provisional without capture metadata; no reflection is used.",
+  "method": "XZ mechanical joint seams and silhouettes inspected on low-Y posterior-facing view; Y centers inferred from both side walls and transverse sections, not from posterior surface medians. Hips are beneath shorts and inferred.",
+  "uncertainty": {
+    "head": 0.025,
+    "neck": 0.025,
+    "chest": 0.04,
+    "waist": 0.035,
+    "pelvis": 0.05,
+    "shoulders": 0.03,
+    "elbows": 0.025,
+    "wrists": 0.015,
+    "hips": 0.06,
+    "knees": 0.025,
+    "ankles": 0.02,
+    "toes": 0.02
+  },
+  "notes": [
+    "Left white wristband at x=-.71,z=.07 is proximal to wrist and is NOT the joint center; actual wrist is near x=-.79,z=.13. Right wrist is near x=.715,z=.265. Elbow centers use mechanical hinge regions and side profiles; not equal-length subdivision.",
+    "Both knees are near z=.855 and ankles z=1.29.",
+    "Dominant broad posterior torso surface has raw Y=-.10 to -.125; anterior-facing opening/side edge extends to Y=.18-.20. Do not register torso using visible shell median as center.",
+    "The low-Y back shell is high quality. Sparse high-Y anterior contact regions are open/fragmented and should receive lower confidence. No broad retained mattress plane is evident after opacity>.08 and maximum Gaussian scale<.03 filtering.",
+    "Cable loop leaves left torso toward x=-.45,z~-.02..+.12, and a yellow strip/tube protrudes near right elbow; isolate or exclude these for registration.",
+    "Right elbow yellow tube extends to raw Y=-.07; elbow bone center estimated Y=.065 after excluding tube. Do not include tube in cross-section extent or registration.",
+    "Back-to-front apparent bone length ratios differ with provisional landmarks; prioritize shin/forearm and head widths, review torso/hip uncertainty under shorts, and refine per-part alignment rather than forcing posterior-shell ICP globally."
+  ],
+  "confidenceRecommendations": {
+    "nativePreferredSurface": "posterior side: local signed Y relative to segment centerline < 0",
+    "overlap": "retain both lateral walls with a smooth confidence taper; accept ICP only in true side overlap where source/target normals face similarly",
+    "contactRemnants": "downweight anterior-facing high-local-Y samples and disconnected thin sheets; a global raw-Y cut would delete good elevated hands",
+    "knownAccessories": [
+      "looped cable along BACK left torso/arm",
+      "yellow dangling elbow tubes on BACK right"
+    ],
+    "initialQualityFilter": {
+      "minSigmoidOpacity": 0.08,
+      "maxExpScale": 0.03
+    },
+    "avoid": "do not remove low-Y broad torso shell: this is the desired dense back surface, not bedding"
+  },
+  "skullRefinement": "Skull base and crown matched in native side views; skull and neck are separate rigid regions. Back neck root revised to actual slanted lower ring."
+}

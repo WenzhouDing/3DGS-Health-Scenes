@@ -1,0 +1,463 @@
+{
+  "schema": "mannequin-joint-annotations",
+  "version": 1,
+  "scene": {
+    "revision": "feature-guided-v11-finger-side-coverage",
+    "sourceHashes": {
+      "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+      "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+    },
+    "coordinateFrame": "fused-viewer-x-y-z",
+    "units": "scan units"
+  },
+  "joints": [
+    {
+      "id": "neck",
+      "label": "Neck",
+      "type": "ball",
+      "parentPart": "torso",
+      "childParts": [
+        "neck",
+        "head"
+      ],
+      "pivot": [
+        0.006,
+        0.055,
+        -0.045
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "limits": [
+        [
+          -45,
+          45
+        ],
+        [
+          -45,
+          45
+        ],
+        [
+          -60,
+          60
+        ]
+      ],
+      "stiffness": 25,
+      "damping": 7,
+      "notes": "Starter estimate. Check the joint center from the front and side before marking reviewed.",
+      "reviewed": false
+    },
+    {
+      "id": "waist",
+      "label": "Waist / pelvis",
+      "type": "fixed",
+      "parentPart": "torso",
+      "childParts": [
+        "pelvis"
+      ],
+      "pivot": [
+        0,
+        0.078,
+        -0.575
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "limits": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "stiffness": 25,
+      "damping": 7,
+      "notes": "Fixed starter connection. Change its type only if this manikin has a movable waist.",
+      "reviewed": false
+    },
+    {
+      "id": "left_shoulder",
+      "label": "Left shoulder",
+      "type": "ball",
+      "parentPart": "torso",
+      "childParts": [
+        "left_upper_arm"
+      ],
+      "pivot": [
+        0.23,
+        0.02,
+        -0.16
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "limits": [
+        [
+          -90,
+          90
+        ],
+        [
+          -90,
+          90
+        ],
+        [
+          -90,
+          90
+        ]
+      ],
+      "stiffness": 25,
+      "damping": 7,
+      "notes": "Starter estimate. Check the joint center from the front and side before marking reviewed.",
+      "reviewed": false
+    },
+    {
+      "id": "left_arm_swivel",
+      "label": "Left arm swivel",
+      "type": "swivel",
+      "parentPart": "left_upper_arm",
+      "childParts": [
+        "left_forearm",
+        "left_hand"
+      ],
+      "pivot": [
+        0.3722547562366865,
+        -0.008709922093973962,
+        -0.27039340269981293
+      ],
+      "axis": [
+        0.6339159206348934,
+        -0.13906095342803715,
+        -0.7607973822229548
+      ],
+      "limits": [
+        [
+          -90,
+          90
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "stiffness": 25,
+      "damping": 7,
+      "notes": "Measured axial collar from the fusion review. Forearm, wrist pad and hand form one rigid body; there is no wrist joint. Confirm the axis and travel limits.",
+      "reviewed": false
+    },
+    {
+      "id": "left_hip",
+      "label": "Left hip",
+      "type": "ball",
+      "parentPart": "pelvis",
+      "childParts": [
+        "left_thigh"
+      ],
+      "pivot": [
+        0.128,
+        0.06,
+        -0.73
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "limits": [
+        [
+          -60,
+          60
+        ],
+        [
+          -45,
+          45
+        ],
+        [
+          -45,
+          45
+        ]
+      ],
+      "stiffness": 25,
+      "damping": 7,
+      "notes": "Starter estimate. Check the joint center from the front and side before marking reviewed.",
+      "reviewed": false
+    },
+    {
+      "id": "left_knee",
+      "label": "Left knee",
+      "type": "hinge",
+      "parentPart": "left_thigh",
+      "childParts": [
+        "left_shin"
+      ],
+      "pivot": [
+        0.321,
+        0.021,
+        -1.145
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "limits": [
+        [
+          -5,
+          120
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "stiffness": 25,
+      "damping": 7,
+      "notes": "Starter estimate. Check the joint center from the front and side before marking reviewed.",
+      "reviewed": false
+    },
+    {
+      "id": "left_ankle",
+      "label": "Left ankle",
+      "type": "hinge",
+      "parentPart": "left_shin",
+      "childParts": [
+        "left_foot"
+      ],
+      "pivot": [
+        0.456,
+        0.01,
+        -1.535
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "limits": [
+        [
+          -35,
+          35
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "stiffness": 25,
+      "damping": 7,
+      "notes": "Starter estimate. Check the joint center from the front and side before marking reviewed.",
+      "reviewed": false
+    },
+    {
+      "id": "right_shoulder",
+      "label": "Right shoulder",
+      "type": "ball",
+      "parentPart": "torso",
+      "childParts": [
+        "right_upper_arm"
+      ],
+      "pivot": [
+        -0.23,
+        0.056,
+        -0.16
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "limits": [
+        [
+          -90,
+          90
+        ],
+        [
+          -90,
+          90
+        ],
+        [
+          -90,
+          90
+        ]
+      ],
+      "stiffness": 25,
+      "damping": 7,
+      "notes": "Starter estimate. Check the joint center from the front and side before marking reviewed.",
+      "reviewed": false
+    },
+    {
+      "id": "right_arm_swivel",
+      "label": "Right arm swivel",
+      "type": "swivel",
+      "parentPart": "right_upper_arm",
+      "childParts": [
+        "right_forearm",
+        "right_hand"
+      ],
+      "pivot": [
+        -0.3590852533890853,
+        0.03833235509794086,
+        -0.27896079951802905
+      ],
+      "axis": [
+        -0.6249087788154958,
+        -0.1817470761592546,
+        -0.7592476660924866
+      ],
+      "limits": [
+        [
+          -90,
+          90
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "stiffness": 25,
+      "damping": 7,
+      "notes": "Measured axial collar from the fusion review. Forearm, wrist pad and hand form one rigid body; there is no wrist joint. Confirm the axis and travel limits.",
+      "reviewed": false
+    },
+    {
+      "id": "right_hip",
+      "label": "Right hip",
+      "type": "ball",
+      "parentPart": "pelvis",
+      "childParts": [
+        "right_thigh"
+      ],
+      "pivot": [
+        -0.128,
+        0.064,
+        -0.73
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "limits": [
+        [
+          -60,
+          60
+        ],
+        [
+          -45,
+          45
+        ],
+        [
+          -45,
+          45
+        ]
+      ],
+      "stiffness": 25,
+      "damping": 7,
+      "notes": "Starter estimate. Check the joint center from the front and side before marking reviewed.",
+      "reviewed": false
+    },
+    {
+      "id": "right_knee",
+      "label": "Right knee",
+      "type": "hinge",
+      "parentPart": "right_thigh",
+      "childParts": [
+        "right_shin"
+      ],
+      "pivot": [
+        -0.324,
+        0.023,
+        -1.145
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "limits": [
+        [
+          -5,
+          120
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "stiffness": 25,
+      "damping": 7,
+      "notes": "Starter estimate. Check the joint center from the front and side before marking reviewed.",
+      "reviewed": false
+    },
+    {
+      "id": "right_ankle",
+      "label": "Right ankle",
+      "type": "hinge",
+      "parentPart": "right_shin",
+      "childParts": [
+        "right_foot"
+      ],
+      "pivot": [
+        -0.46,
+        0.009,
+        -1.53
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "limits": [
+        [
+          -35,
+          35
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "stiffness": 25,
+      "damping": 7,
+      "notes": "Starter estimate. Check the joint center from the front and side before marking reviewed.",
+      "reviewed": false
+    }
+  ],
+  "updatedAt": "2026-09-20T20:13:27.275Z"
+}

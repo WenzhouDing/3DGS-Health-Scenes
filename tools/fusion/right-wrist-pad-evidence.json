@@ -1,0 +1,481 @@
+{
+  "version": 1,
+  "status": "Historical V8 experiment, superseded by V9: the wrist/knuckle deformation violated the rigid mannequin hand-forearm constraint",
+  "sourceHashes": {
+    "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+    "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+  },
+  "baseline": "raw/fusion-work/refinement-v8/baseline",
+  "picturedSide": "anatomical right",
+  "picturedFeature": "continuous dorsal rounded rectangular wrist pad with small yellow proximal opening",
+  "frontSourceEvidence": "No reliable observed dorsal pad rim/corners survive in front source; visible original front contactsheet is corrupt. No paired-front-pad correspondence was invented.",
+  "backSourceEvidence": "Original back source shows one uninterrupted pad across the current forearm/hand segmentation. All12,222 selected original pad rows belong to one physical surface.",
+  "padSelection": "raw/fusion-work/refinement-v8/pad-inspection/back-right-rigid-pad.json",
+  "padPartCounts": {
+    "right_forearm": 8420,
+    "right_hand": 3802
+  },
+  "continuity": {
+    "crossPartPairs": 279,
+    "nativeSameRigidMedian": 0.0030944414902478456,
+    "nativeSameRigidP90": 0.004495043307542801,
+    "oldIndependentMedian": 0.01401731837540865,
+    "oldIndependentP90": 0.015892796218395233,
+    "artificialHandPadShiftMedian": 0.014500491321086884,
+    "artificialHandPadShiftMaximum": 0.018523171544075012
+  },
+  "oldRelativeHandForearm": {
+    "rotation": [
+      [
+        0.949308007097501,
+        -0.2978214959759209,
+        0.10058162951175063
+      ],
+      [
+        0.2752516549957039,
+        0.9420816601812141,
+        0.19162116786081185
+      ],
+      [
+        -0.15182501138712096,
+        -0.1542222489943702,
+        0.9763015230103996
+      ]
+    ],
+    "translation": [
+      -0.08532542065956988,
+      0.07792674954658618,
+      -0.08895475335915315
+    ],
+    "rotationMagnitudeDegrees": 20.95756395886021,
+    "eulerXYZDegrees": [
+      -8.976599029132407,
+      8.732703474552707,
+      16.1695052024784
+    ]
+  },
+  "requiredPadSourceToFrontRaw": {
+    "rotation": [
+      [
+        -0.9932089700690164,
+        0.059985071643469993,
+        -0.09968817860895919
+      ],
+      [
+        -0.10979896131626074,
+        -0.7666123307402974,
+        0.6326529241620565
+      ],
+      [
+        -0.03847245596935763,
+        0.6393022176849213,
+        0.767992542017713
+      ]
+    ],
+    "translation": [
+      -0.014850758047367574,
+      0.10387032734000459,
+      0.31350202882619366
+    ],
+    "scale": 0.928
+  },
+  "oldAlignedHandToPadCorrection": {
+    "rotation": [
+      [
+        0.949308007097501,
+        0.2752516549957039,
+        -0.15182501138712096
+      ],
+      [
+        -0.2978214959759209,
+        0.9420816601812141,
+        -0.15422224899437023
+      ],
+      [
+        0.10058162951175062,
+        0.19162116786081185,
+        0.9763015230103996
+      ]
+    ],
+    "translation": [
+      0.046045081818266866,
+      -0.11254390813277013,
+      0.08049641627655507
+    ],
+    "scale": 1.0
+  },
+  "protectedMechanicalConstraint": {
+    "parentPart": "right_upper_arm",
+    "childPart": "right_forearm",
+    "pivotFrontRaw": [
+      -0.3590852533890853,
+      -0.03833235509794086,
+      0.27896079951802905
+    ],
+    "axisFrontRaw": [
+      -0.6249087788154958,
+      0.1817470761592546,
+      0.7592476660924866
+    ],
+    "twistDegrees": 7.1124383367010475,
+    "formula": "Rc=Q Rp; tc=Q(tp-pivot)+pivot; Q=axisAngle(axis,twist)",
+    "independentTranslation": [
+      0,
+      0,
+      0
+    ],
+    "independentSwingDegrees": 0
+  },
+  "mechanicalScope": "Retain shoulder and right_forearm transforms exactly, including the accepted axial elbow constraint. Only back-hand/pad assignment changes; all pad means must use the unchanged forearm transform.",
+  "wholeHandTrial": {
+    "sourceToFrontRaw": {
+      "rotation": [
+        [
+          -0.9932089700690164,
+          0.059985071643469993,
+          -0.09968817860895919
+        ],
+        [
+          -0.10979896131626074,
+          -0.7666123307402974,
+          0.6326529241620565
+        ],
+        [
+          -0.03847245596935763,
+          0.6393022176849213,
+          0.767992542017713
+        ]
+      ],
+      "translation": [
+        -0.014850758047367574,
+        0.10387032734000459,
+        0.31350202882619366
+      ],
+      "scale": 0.928
+    },
+    "status": "rejected as full-hand solution",
+    "reason": "Restores native pad continuity but moves distal source fingers in depth by up to.022, reintroducing separated tips despite improved XZ outline overlap."
+  },
+  "recommendedEndpointBlend": {
+    "proximalReference": "unchanged right_forearm transform",
+    "distalReference": "previous right_hand transform",
+    "frame": "forearm-aligned front raw",
+    "origin": [
+      -0.697,
+      0.03,
+      0.597
+    ],
+    "longitudinalAxis": [
+      -0.6260112557835694,
+      0.0,
+      0.7798140211821525
+    ],
+    "suggestedSmoothstepLongitudinal": [
+      0.065,
+      0.11
+    ],
+    "jacobian": "(1-w)I+wA+(xOld-xParent) outer gradient(w)",
+    "requiredInvariant": "Every selected pad row remains exactly at the unchanged forearm mapping; distal fingers return exactly to previous hand mapping; positive deformation determinant; full J Sigma J-transpose covariance."
+  },
+  "handContourGate": {
+    "method": "same XZ finger outline from full quality-clean native observed surfaces, excluding wrist; opposing palm/dorsal planes are not paired",
+    "metrics": {
+      "Back current hand transform": {
+        "symmetricOutlineMean": 0.004976470737191347,
+        "symmetricOutlineMedian": 0.004094615070574709,
+        "symmetricOutlineP90": 0.010416351943537355,
+        "frontPoints": 2330,
+        "backPoints": 2395
+      },
+      "Back shared forearm transform": {
+        "symmetricOutlineMean": 0.004233916750045022,
+        "symmetricOutlineMedian": 0.004498962638202753,
+        "symmetricOutlineP90": 0.006133076392707103,
+        "frontPoints": 2330,
+        "backPoints": 2306
+      }
+    },
+    "scope": "projected contour gate only; does not validate depth by itself",
+    "sourceHashes": {
+      "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+      "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+    }
+  },
+  "proof": [
+    "raw/fusion-work/refinement-v8/pad-registration/right-identity.png",
+    "raw/fusion-work/refinement-v8/pad-registration/native-full-pad-source.png",
+    "raw/fusion-work/refinement-v8/pad-registration/right-hand-contour-gate.png",
+    "raw/fusion-work/refinement-v8/pad-registration/right-hand-original-observed-poses.png",
+    "raw/fusion-work/refinement-v8/pad-registration/back-pad-continuity.png"
+  ],
+  "reproduce": ".venv-fusion/bin/python -B tools/fusion/inspect_pad_v8.py --native --mask && .venv-fusion/bin/python -B tools/fusion/audit_wrist_pad_v8.py --hand-contours --continuity",
+  "selectedCorrection": {
+    "parameters": {
+      "referenceForearm": {
+        "scale": 0.928,
+        "rotation": [
+          [
+            -0.9932089700690164,
+            0.059985071643469993,
+            -0.09968817860895919
+          ],
+          [
+            -0.10979896131626074,
+            -0.7666123307402974,
+            0.6326529241620565
+          ],
+          [
+            -0.03847245596935763,
+            0.6393022176849213,
+            0.767992542017713
+          ]
+        ],
+        "translation": [
+          -0.014850758047367574,
+          0.10387032734000459,
+          0.31350202882619366
+        ]
+      },
+      "referenceHand": {
+        "scale": 0.928,
+        "rotation": [
+          [
+            -0.9140303594044851,
+            0.34955999879735034,
+            -0.20580648514492164
+          ],
+          [
+            -0.38419413747439335,
+            -0.5831965894455157,
+            0.7157350087772933
+          ],
+          [
+            0.13016668858512448,
+            0.733273172357971,
+            0.6673582904878502
+          ]
+        ],
+        "translation": [
+          -0.09882563554673396,
+          0.2317670091305543,
+          0.203353355874202
+        ]
+      },
+      "origin": [
+        -0.697,
+        0.03,
+        0.597
+      ],
+      "longitudinalAxis": [
+        -0.626,
+        0,
+        0.7798
+      ],
+      "longitudinalFade": [
+        0.065,
+        0.125
+      ],
+      "sourceHashes": {
+        "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+        "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+      },
+      "protectedPadSelection": "tools/fusion/part-masks/back-right-wrist-pad.json"
+    },
+    "method": "original-back smooth knuckle blend between fixed pad/forearm and prior distal finger pose",
+    "proof": "raw/mannequin-fused/wrist-pad-review/",
+    "mathAudit": {
+      "version": 1,
+      "sourceHashes": {
+        "raw/mannequin_front_119999.ply": "2174266f7b87ecf5218d00e0ca3baee6b487f70b44fc452fba502916b0625256",
+        "raw/mannequin_back_119999.ply": "3997a79c1262921844888d70cce9e40c521286d66a7c3a2664c5743109ab9c2e"
+      },
+      "module": "tools/fusion/right_wrist_transition.py",
+      "results": {
+        "0.11": {
+          "sourceGeometry": {
+            "padSourceRows": 12222,
+            "padHandRows": 3802,
+            "padMaximumMeanDifference": 0.0,
+            "padCovarianceMaximumDifference": 0.0,
+            "padNativeSourceFieldsExactlyUnchanged": true,
+            "distalSourceRows": 11913,
+            "distalMaximumMeanDifferenceVsOldHand": 5.960464477539063e-08,
+            "distalCovarianceMaximumDifferenceVsOldHand": 1.2411000830326246e-11,
+            "originalColorOpacityExact": true
+          },
+          "jacobian": {
+            "samples": 120,
+            "thinSamples": 50,
+            "minimumThinAxisRatio": 3.651134505844311e-08,
+            "finiteDifferenceEpsilon": 1e-06,
+            "maximumElementError": 2.431906898081593e-10,
+            "maximumRelativeTransportedCovarianceError": 5.480651929533206e-07,
+            "minimumDeterminantFullHand": 0.8002597334617584
+          },
+          "futureParentAdjustment": {
+            "testedEulerXYZDegrees": [
+              7,
+              -4,
+              9
+            ],
+            "testedTranslation": [
+              0.02,
+              -0.015,
+              0.007
+            ],
+            "maximumMeanDifference": 5.960464477539063e-08,
+            "maximumCovarianceDifference": 6.45470821160777e-11,
+            "meaning": "Native support and endpoint references remain frozen; any subsequent parent rigid adjustment carries the entire field and both ends together."
+          },
+          "sourcePairContinuity": {
+            "pairs": 279,
+            "median": 0.0030944414902478456,
+            "p90": 0.004495043307542801
+          },
+          "actualTrialOutput": {
+            "retainedPadRows": 11772,
+            "maximumRetainedPadMeanDifference": 0.0,
+            "retainedCompleteCrossPartPairs": 277,
+            "pairMedian": 0.003090032609179616,
+            "pairP90": 0.0045044803991913795,
+            "note": "12,222 is the quality-clean evidence selection, not a claim all original pad rows survive fusion. Pair output metric includes only pairs whose two original IDs survive."
+          }
+        },
+        "0.125": {
+          "sourceGeometry": {
+            "padSourceRows": 12222,
+            "padHandRows": 3802,
+            "padMaximumMeanDifference": 0.0,
+            "padCovarianceMaximumDifference": 0.0,
+            "padNativeSourceFieldsExactlyUnchanged": true,
+            "distalSourceRows": 9532,
+            "distalMaximumMeanDifferenceVsOldHand": 5.960464477539063e-08,
+            "distalCovarianceMaximumDifferenceVsOldHand": 1.131943669384957e-11,
+            "originalColorOpacityExact": true
+          },
+          "jacobian": {
+            "samples": 120,
+            "thinSamples": 50,
+            "minimumThinAxisRatio": 3.651134505844311e-08,
+            "finiteDifferenceEpsilon": 1e-06,
+            "maximumElementError": 1.177538067054229e-10,
+            "maximumRelativeTransportedCovarianceError": 5.169926260734556e-07,
+            "minimumDeterminantFullHand": 0.83844871588475
+          },
+          "futureParentAdjustment": {
+            "testedEulerXYZDegrees": [
+              7,
+              -4,
+              9
+            ],
+            "testedTranslation": [
+              0.02,
+              -0.015,
+              0.007
+            ],
+            "maximumMeanDifference": 5.960464477539063e-08,
+            "maximumCovarianceDifference": 6.45470821160777e-11,
+            "meaning": "Native support and endpoint references remain frozen; any subsequent parent rigid adjustment carries the entire field and both ends together."
+          },
+          "sourcePairContinuity": {
+            "pairs": 279,
+            "median": 0.0030944414902478456,
+            "p90": 0.004495043307542801
+          },
+          "actualTrialOutput": {
+            "retainedPadRows": 11772,
+            "maximumRetainedPadMeanDifference": 0.0,
+            "retainedCompleteCrossPartPairs": 277,
+            "pairMedian": 0.003090032609179616,
+            "pairP90": 0.0045044803991913795,
+            "note": "12,222 is the quality-clean evidence selection, not a claim all original pad rows survive fusion. Pair output metric includes only pairs whose two original IDs survive."
+          }
+        }
+      },
+      "analyticalProof": "Let F(p)=sRf p+tf and H(p)=sRh p+th. Native delta=w[(Rf^T Rh-I)p+Rf^T(th-tf)/s]. Then F(p+delta)=(1-w)F(p)+wH(p). Its native Jacobian is I+w(A-I)+d outer gradient(w), where gradient(w)=smoothstepDerivative*sRf^T*u. Covariance transported by J Sigma J^T therefore matches the derivative of the same mean field.",
+      "limits": "Geometry equality at the distal endpoint is mathematical; stored float32 mean/quaternion/logscale reconstruction differs by tiny rounding. Full fused opacity and row-retention are separate coverage/filter operations.",
+      "reproduce": ".venv-fusion/bin/python -B tools/fusion/audit_wrist_pad_v8.py --transition-math",
+      "selectedMainPadBounds": {
+        "sourceRows": 12222,
+        "minimumStation": -0.12154793033077582,
+        "maximumStation": 0.05687386271240517,
+        "transitionStarts": 0.065,
+        "minimumGapToTransition": 0.008126137287594835,
+        "maximumWeight": 0.0,
+        "maximumNativeDelta": 0.0,
+        "maximumJacobianDifferenceFromIdentity": 0.0
+      },
+      "selectedMainParameters": {
+        "referenceForearm": {
+          "scale": 0.928,
+          "rotation": [
+            [
+              -0.9932089700690164,
+              0.059985071643469993,
+              -0.09968817860895919
+            ],
+            [
+              -0.10979896131626074,
+              -0.7666123307402974,
+              0.6326529241620565
+            ],
+            [
+              -0.03847245596935763,
+              0.6393022176849213,
+              0.767992542017713
+            ]
+          ],
+          "translation": [
+            -0.014850758047367574,
+            0.10387032734000459,
+            0.31350202882619366
+          ]
+        },
+        "referenceHand": {
+          "scale": 0.928,
+          "rotation": [
+            [
+              -0.9140303594044851,
+              0.34955999879735034,
+              -0.20580648514492164
+            ],
+            [
+              -0.38419413747439335,
+              -0.5831965894455157,
+              0.7157350087772933
+            ],
+            [
+              0.13016668858512448,
+              0.733273172357971,
+              0.6673582904878502
+            ]
+          ],
+          "translation": [
+            -0.09882563554673396,
+            0.2317670091305543,
+            0.203353355874202
+          ]
+        },
+        "origin": [
+          -0.697,
+          0.03,
+          0.597
+        ],
+        "longitudinalAxis": [
+          -0.626,
+          0,
+          0.7798
+        ],
+        "longitudinalFade": [
+          0.065,
+          0.125
+        ]
+      },
+      "optionalThumbExperiment": "Not included or audited; selected main parameters contain no thumb settings."
+    },
+    "rejectedThumbVariant": "Thumb-specific narrow fade nearly collapses local surfaces (minimum stretch0.0796) and was not adopted",
+    "residual": "Small visible seam in the thumb-index web remains; no extra source pruning or recoloring"
+  },
+  "outputVerification": "raw/mannequin-fused/right-wrist-verification.json",
+  "supersededBy": "tools/fusion/right-rigid-wrist-evidence.json"
+}
