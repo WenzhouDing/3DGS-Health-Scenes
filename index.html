@@ -147,18 +147,6 @@
   .flip-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   @media (prefers-reduced-motion: reduce) { .flip-inner { transition: none; } }
 
-  /* single wide card for a section with one viewer */
-  .card.wide { flex-direction: row; grid-column: 1 / -1; }
-  .card.wide a.thumb { flex: 0 0 42%; min-height: 190px; }
-  .card.wide a.thumb img { height: 100%; aspect-ratio: auto; }
-  .card.wide .body { justify-content: center; gap: 0.55rem; }
-  .card.wide p { flex: none; }
-  @media (max-width: 640px) {
-    .card.wide { flex-direction: column; }
-    .card.wide a.thumb { flex: none; min-height: 0; }
-    .card.wide a.thumb img { height: auto; aspect-ratio: 16/9; }
-  }
-
   footer {
     margin-top: 3.5rem;
     color: var(--muted);
@@ -193,7 +181,7 @@
 
           <div class="flip-face front">
             <div class="thumb-wrap">
-              <a class="thumb" href="viewers/ambulance/" aria-label="Open ambulance viewer, iPhone capture">
+              <a class="thumb" href="viewers/ambulance/?nomanikin" aria-label="Open ambulance viewer, iPhone capture">
                 <img src="assets/ambulance.jpg" alt="Ambulance patient compartment" loading="lazy">
               </a>
               <button type="button" class="flip-btn" aria-label="Flip to the Insta360 capture">Insta360 &#8634;</button>
@@ -201,7 +189,7 @@
             <div class="body">
               <div class="title-row"><h3>Ambulance &mdash; iPhone</h3><span class="size">5.5M splats · 61 MB</span></div>
               <p>A detailed iPhone scene with Insta360-guided ceiling and corner repairs, retaining captured materials, equipment and bedding.</p>
-              <a class="open" href="viewers/ambulance/" aria-label="Open Ambulance &mdash; iPhone">Open &rarr;</a>
+              <a class="open" href="viewers/ambulance/?nomanikin" aria-label="Open Ambulance &mdash; iPhone">Open &rarr;</a>
             </div>
           </div>
 
@@ -253,7 +241,7 @@
       <h2>Training Manikin</h2>
     </div>
     <div class="grid">
-      <div class="card wide">
+      <div class="card">
         <a class="thumb" href="viewers/mannequin/" aria-label="Open interactive training manikin">
           <img src="assets/mannequin-interactive.jpg?v=2" alt="Fused training manikin on a bed with its upper body raised" width="1280" height="720" loading="lazy">
         </a>
@@ -261,6 +249,16 @@
           <div class="title-row"><h3>Interactive Manikin</h3><span class="size">11 movable joints &middot; 2.7M splats</span></div>
           <p>Explore the fused scan, compare front and back captures, and see body segmentation. Try bed poses or rotate individual joints.</p>
           <a class="open" href="viewers/mannequin/" aria-label="Open interactive training manikin">Interact &rarr;</a>
+        </div>
+      </div>
+      <div class="card">
+        <a class="thumb" href="viewers/ambulance/" aria-label="Open ambulance with articulated manikin">
+          <img src="assets/ambulance-manikin.jpg" alt="Articulated training manikin on the ambulance stretcher" width="1280" height="720" loading="lazy">
+        </a>
+        <div class="body">
+          <div class="title-row"><h3>Ambulance + Manikin</h3><span class="size">Collision checks &middot; Gravity</span></div>
+          <p>Pose the manikin on the ambulance stretcher. Hold and release its arms, test gravity, and explore the cabin with collision checks.</p>
+          <a class="open" href="viewers/ambulance/" aria-label="Open ambulance with articulated manikin">Interact &rarr;</a>
         </div>
       </div>
     </div>
