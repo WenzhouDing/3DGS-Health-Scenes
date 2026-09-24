@@ -35,15 +35,23 @@ Two per-scene adjustments to expect:
   `fov`) after conversion. Candidate cameras can be tested without re-converting
   via the `?settings=<url>` viewer parameter. Note that re-running the converter
   with `-w` overwrites `settings.json` — re-apply the camera afterwards.
-- **Camera coordinates are relative to the scene centroid.** The viewer re-centers
-  the scene on the mean splat position at load (`calcFocalPoint`), so a camera at
-  `[0,0,0]` sits at the centroid, not at the PLY origin. For a PLY whose content is
-  far from the origin, convert `position`/`target` as `ply_coords - centroid`.
-- **Floater haze (optional, not used so far)** — 360°/fisheye captures can contain
-  a few very large, faint blobs that fog views from inside the scene. If a scene
-  needs it, a size cap removes them: `-V scale_0,lt,0.3 -V scale_1,lt,0.3
-  -V scale_2,lt,0.3` (decoded sizes in scene units; `--filter-floaters` does not
-  catch these). It is lossy — the published scenes ship the full splat set.
+- **Camera coordinates depend on the viewer version.** The current ambulance
+  viewer uses fixed world coordinates and does not recenter on the centroid.
+  Its raw PLY-to-world transform is documented in the
+  [ambulance cleanup guide](tools/ambulance/README.md). Older viewers can use
+  `calcFocalPoint` recentering; check the actual load path before translating a
+  camera by the centroid.
+- **Floater haze** — the current iPhone ambulance is the restored pass5 scene
+  plus a bounded pass7 exterior-ceiling cleanup. It retains the earlier bounded
+  transfers from the registered Insta360 capture. The user rejected
+  all later pass6 floor and lower cabinet-wall changes; their earlier numerical
+  and visual approvals are superseded. Further cleanup is limited to corner and
+  ceiling haze using surface-plane priors. The earlier uniform roof/hatch
+  reconstruction was also rejected for loss of realism. Large off-surface
+  Gaussians can provide real visible coverage in both scans, so a size or depth
+  cutoff alone opens holes. Compare complete rendered surfaces before accepting
+  a change; numerical validity is insufficient.
+  See the [cleanup and validation recipe](tools/ambulance/README.md).
 
 The in-browser rendering is done by
 [@playcanvas/supersplat-viewer](https://github.com/playcanvas/supersplat-viewer) (MIT).
@@ -159,6 +167,43 @@ Do not "simplify" that away: forcing WebGPU because `navigator.gpu` exists is ex
 bug, since it does exist in Safari 26.
 
 ## Viewing locally
+
+### Cleaned iPhone ambulance
+
+The [ambulance viewer](http://127.0.0.1:8766/viewers/ambulance/) uses the restored
+pass5 scene with a small pass7 ceiling cleanup: twelve verified distant artifacts
+are removed, and every retained splat remains unchanged before compression.
+**The user rejected all latest pass6 floor and lower
+cabinet-wall changes**, including `floor-v7`, `opposite-floor-v4`,
+`wall-native-v3` and `combined-v2`. This supersedes their earlier component,
+numerical and 24-view approvals. Those files remain historical experiments and
+must not be reinstalled. The earlier generated wall texture and `refined.ply`
+roof/hatch fills are also rejected. Original captures are unchanged.
+
+Open the [current ceiling comparison](http://127.0.0.1:8766/raw/ambulance-cleanup/pass7/review/)
+for the restored scene and the small ceiling cleanup. All 24 exported views were
+checked, including floor and lower-wall restoration. Surface-normal contraction
+trials did not visibly improve the remaining corner haze and were omitted. The
+[pass5 comparison](http://127.0.0.1:8766/raw/ambulance-cleanup/pass5/review/)
+preserves the earlier scene, original capture and registered reference. The
+[archived pass6 comparison](http://127.0.0.1:8766/raw/ambulance-cleanup/pass6/review/)
+is explicitly rejected and retained for diagnosis. Further cleanup is restricted
+to corner and ceiling haze guided by surface-plane priors.
+
+The [cleanup guide](tools/ambulance/README.md) documents the historical recipes,
+source attribution and validation. `viewers/ambulance/cleanup-report.json`
+identifies the installed revision and retains its original local-review metadata.
+Some objects retain haze. The viewer now uses separate measured cabin and
+stretcher collision surfaces; the legacy voxel collider is not used by this integration.
+
+### Ambulance with articulated manikin
+
+The ambulance viewer includes the complete fused manikin fitted to the stretcher,
+direct joint handles, undo/redo, and scene contact checks. Hold an arm handle to
+support it; release to let gravity lower it, or grab it again to catch it. A separate
+whole-body drop test checks vertical falls against the modeled cabin surfaces.
+The simplified contact model is not a calibrated physical simulation. See the
+[ambulance interaction guide](viewers/ambulance/README.md) for controls and limits.
 
 ### Articulate the complete fused manikin
 

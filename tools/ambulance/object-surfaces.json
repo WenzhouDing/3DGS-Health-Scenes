@@ -1,0 +1,505 @@
+{
+  "version": 6,
+  "coordinate_system": "Native PLY transformed with EulerXYZ(-78.243,0.463,-4.499) * diag(-1,-1,1)",
+  "description": "Manually bounded upholstery, mattress and seat interiors, measured from source projections. Gaussian extent normal to the locally observed material surface is compressed; saturated straps and original small details are protected.",
+  "patches": [
+    {
+      "id": "right-upper-pad",
+      "axis": 2,
+      "uv_axes": [
+        0,
+        1
+      ],
+      "uv_bounds": [
+        [
+          -0.77,
+          0.46
+        ],
+        [
+          0.48,
+          0.685
+        ]
+      ],
+      "depth_bounds": [
+        0.7,
+        0.96
+      ],
+      "front_sign": -1,
+      "material": "dark",
+      "model": "plane",
+      "support_distance": 0.1,
+      "normal_sigma": 0.0018,
+      "max_projection": 0.065,
+      "backing": true,
+      "smooth_color": true,
+      "material_floor": 0.245
+    },
+    {
+      "id": "right-lower-pad",
+      "axis": 2,
+      "uv_axes": [
+        0,
+        1
+      ],
+      "uv_bounds": [
+        [
+          -0.77,
+          -0.017
+        ],
+        [
+          0.48,
+          0.244
+        ]
+      ],
+      "depth_bounds": [
+        0.69,
+        0.935
+      ],
+      "front_sign": -1,
+      "material": "dark",
+      "model": "plane",
+      "support_distance": 0.09,
+      "normal_sigma": 0.0018,
+      "max_projection": 0.065,
+      "backing": true,
+      "smooth_color": true,
+      "material_floor": 0.21,
+      "protect_uv_strips": [
+        [
+          -0.64,
+          -0.4
+        ],
+        [
+          0.12,
+          0.35
+        ]
+      ]
+    },
+    {
+      "id": "right-bench-cushion",
+      "axis": 1,
+      "uv_axes": [
+        0,
+        2
+      ],
+      "uv_bounds": [
+        [
+          -0.91,
+          0.405
+        ],
+        [
+          0.7,
+          0.7
+        ]
+      ],
+      "depth_bounds": [
+        -0.335,
+        -0.22
+      ],
+      "front_sign": 1,
+      "material": "dark",
+      "model": "plane",
+      "support_distance": 0.15,
+      "normal_sigma": 0.0016,
+      "max_projection": 0.065,
+      "seed_depth_bounds": [
+        -0.325,
+        -0.285
+      ],
+      "exclude_boxes": [
+        [
+          [
+            0.18,
+            -0.275,
+            0.32
+          ],
+          [
+            0.75,
+            -0.2,
+            0.76
+          ]
+        ],
+        [
+          [
+            -1.0,
+            -0.275,
+            0.32
+          ],
+          [
+            -0.4,
+            -0.2,
+            0.76
+          ]
+        ]
+      ],
+      "backing": true,
+      "smooth_color": true,
+      "material_floor": 0.2
+    },
+    {
+      "id": "left-upper-pad",
+      "axis": 2,
+      "uv_axes": [
+        0,
+        1
+      ],
+      "uv_bounds": [
+        [
+          -0.26,
+          0.395
+        ],
+        [
+          0.22,
+          0.585
+        ]
+      ],
+      "depth_bounds": [
+        -1.46,
+        -1.16
+      ],
+      "front_sign": 1,
+      "material": "dark",
+      "model": "local",
+      "support_distance": 0.065,
+      "normal_sigma": 0.0018,
+      "max_projection": 0.045,
+      "geometry_mode": "haze_only",
+      "smooth_color": true
+    },
+    {
+      "id": "left-lower-pad",
+      "axis": 2,
+      "uv_axes": [
+        0,
+        1
+      ],
+      "uv_bounds": [
+        [
+          -0.26,
+          -0.04
+        ],
+        [
+          0.22,
+          0.19
+        ]
+      ],
+      "depth_bounds": [
+        -1.46,
+        -1.16
+      ],
+      "front_sign": 1,
+      "material": "dark",
+      "model": "local",
+      "support_distance": 0.055,
+      "normal_sigma": 0.0018,
+      "max_projection": 0.045,
+      "geometry_mode": "haze_only",
+      "smooth_color": true
+    },
+    {
+      "id": "blue-stretcher-mattress",
+      "axis": 1,
+      "uv_axes": [
+        0,
+        2
+      ],
+      "uv_bounds": [
+        [
+          -1.2,
+          -0.49
+        ],
+        [
+          0.6,
+          0.015
+        ]
+      ],
+      "depth_bounds": [
+        -0.365,
+        -0.11
+      ],
+      "front_sign": 1,
+      "material": "blue",
+      "model": "local",
+      "support_distance": 0.05,
+      "normal_sigma": 0.0018,
+      "max_projection": 0.045,
+      "geometry_mode": "haze_only"
+    },
+    {
+      "id": "front-seat-backrest",
+      "axis": 0,
+      "uv_axes": [
+        2,
+        1
+      ],
+      "uv_bounds": [
+        [
+          -0.755,
+          -0.215
+        ],
+        [
+          -0.36,
+          0.39
+        ]
+      ],
+      "depth_bounds": [
+        1.3,
+        1.64
+      ],
+      "front_sign": -1,
+      "material": "dark",
+      "model": "local",
+      "support_distance": 0.055,
+      "normal_sigma": 0.002,
+      "max_projection": 0.05,
+      "geometry_mode": "haze_only",
+      "smooth_color": true
+    },
+    {
+      "id": "black-equipment-bag-face",
+      "axis": 2,
+      "uv_axes": [
+        0,
+        1
+      ],
+      "uv_bounds": [
+        [
+          0.27,
+          -0.25
+        ],
+        [
+          0.59,
+          -0.09
+        ]
+      ],
+      "depth_bounds": [
+        0.25,
+        0.72
+      ],
+      "front_sign": -1,
+      "material": "dark",
+      "model": "local",
+      "support_distance": 0.035,
+      "normal_sigma": 0.002,
+      "max_projection": 0.035,
+      "geometry_mode": "haze_only",
+      "enabled": false,
+      "review_note": "Grazing GPU review: correction harmed true zipper detail; preserve captured bag geometry."
+    },
+    {
+      "id": "front-seat-cushion",
+      "axis": 1,
+      "uv_axes": [
+        0,
+        2
+      ],
+      "uv_bounds": [
+        [
+          1.09,
+          -0.755
+        ],
+        [
+          1.385,
+          -0.35
+        ]
+      ],
+      "depth_bounds": [
+        -0.39,
+        -0.255
+      ],
+      "seed_depth_bounds": [
+        -0.355,
+        -0.29
+      ],
+      "front_sign": 1,
+      "material": "dark",
+      "model": "local",
+      "support_distance": 0.055,
+      "normal_sigma": 0.002,
+      "max_projection": 0.06,
+      "geometry_mode": "haze_only",
+      "smooth_color": true
+    },
+    {
+      "id": "stretcher-black-restraints",
+      "axis": 1,
+      "uv_axes": [
+        0,
+        2
+      ],
+      "uv_bounds": [
+        [
+          -1.2,
+          -0.485
+        ],
+        [
+          0.52,
+          0.015
+        ]
+      ],
+      "depth_bounds": [
+        -0.3,
+        -0.14
+      ],
+      "front_sign": 1,
+      "material": "dark",
+      "model": "local",
+      "support_distance": 0.035,
+      "normal_sigma": 0.0018,
+      "max_projection": 0.045,
+      "geometry_mode": "haze_only"
+    },
+    {
+      "id": "front-seat-cushion-lip",
+      "axis": 0,
+      "uv_axes": [
+        2,
+        1
+      ],
+      "uv_bounds": [
+        [
+          -0.755,
+          -0.455
+        ],
+        [
+          -0.345,
+          -0.285
+        ]
+      ],
+      "depth_bounds": [
+        0.96,
+        1.19
+      ],
+      "front_sign": -1,
+      "material": "dark",
+      "model": "local",
+      "support_distance": 0.07,
+      "normal_sigma": 0.002,
+      "max_projection": 0.06,
+      "geometry_mode": "haze_only",
+      "smooth_color": true
+    },
+    {
+      "id": "rear-clock-padded-surround",
+      "axis": 0,
+      "uv_axes": [
+        2,
+        1
+      ],
+      "uv_bounds": [
+        [
+          -0.68,
+          0.805
+        ],
+        [
+          0.44,
+          0.965
+        ]
+      ],
+      "depth_bounds": [
+        -1.72,
+        -1.2
+      ],
+      "front_sign": 1,
+      "material": "dark",
+      "model": "local",
+      "geometry_mode": "color_only",
+      "support_distance": 0.09,
+      "material_floor": 0.21,
+      "exclude_boxes": [
+        [
+          [
+            -1.9,
+            0.77,
+            -0.26
+          ],
+          [
+            -1.0,
+            1.01,
+            -0.025
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "rear-right-corner-pad",
+      "axis": 2,
+      "uv_axes": [
+        0,
+        1
+      ],
+      "uv_bounds": [
+        [
+          -1.46,
+          0.43
+        ],
+        [
+          -1.01,
+          0.88
+        ]
+      ],
+      "depth_bounds": [
+        0.39,
+        0.88
+      ],
+      "front_sign": -1,
+      "material": "dark",
+      "model": "local",
+      "geometry_mode": "color_only",
+      "support_distance": 0.07,
+      "material_floor": 0.2
+    },
+    {
+      "id": "right-upper-trim-stripe",
+      "axis": 2,
+      "uv_axes": [
+        0,
+        1
+      ],
+      "uv_bounds": [
+        [
+          -0.89,
+          0.735
+        ],
+        [
+          0.64,
+          0.79
+        ]
+      ],
+      "depth_bounds": [
+        0.76,
+        0.96
+      ],
+      "front_sign": -1,
+      "material": "dark",
+      "model": "local",
+      "geometry_mode": "color_only",
+      "support_distance": 0.12,
+      "material_floor": 0.26
+    }
+  ],
+  "touchups": [
+    {
+      "id": "upper-pad-relocated-dark-speck",
+      "world_bounds": [
+        [
+          -0.155,
+          0.495,
+          0.785
+        ],
+        [
+          -0.105,
+          0.535,
+          0.87
+        ]
+      ],
+      "maximum_luma": 0.18,
+      "rgb": [
+        0.27,
+        0.267,
+        0.27
+      ],
+      "reason": "New dark puncture exposed by shell correction, verified absent in original full-Gaussian render; bounded unadorned pad interior."
+    }
+  ]
+}

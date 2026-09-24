@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>SuperSplat Viewer</title>
+        <title>Ambulance · Articulated manikin</title>
         <meta charset="UTF-8" />
         <meta
             name="viewport"
@@ -9,6 +9,7 @@
         />
         <base href="" />
         <link rel="stylesheet" href="./index.css" />
+        <link rel="stylesheet" href="./manikin.css" />
 
         <!--
             Single injection seam. `renderViewerHtml` replaces the contents of this block to
@@ -16,7 +17,7 @@
             viewer goes through that function rather than pattern-matching this document.
             Left as `null` for the standalone case.
         -->
-        <script type="application/json" id="sse-bootstrap">{"contentUrl":"index.sog"}</script>
+        <script type="application/json" id="sse-bootstrap">{"contentUrl":"index.sog","collisionUrl":"./scene-collision.glb"}</script>
 
         <script type="module">
             const createImage = (url) => {
@@ -58,7 +59,7 @@
                 contentFilename,
                 contents: fetch(contentUrl),
                 noui: url.searchParams.has('noui'),
-                noanim: url.searchParams.has('noanim'),
+                noanim: url.searchParams.has('noanim') || !url.searchParams.has('animate'),
                 nofx: url.searchParams.has('nofx'),
                 hpr: url.searchParams.has('hpr')
                     ? ['', '1', 'true', 'enable'].includes(url.searchParams.get('hpr'))
@@ -674,7 +675,7 @@
 
         <!-- Application Script -->
         <script type="module">
-            import { main } from './index.js';
+            import { main, sceneTools } from './index.js';
 
             const { config, settings } = window.sse;
             const { poster } = config;
@@ -694,6 +695,10 @@
                 const canvas = document.getElementById('application-canvas');
                 const settingsJson = await settings;
                 const viewer = await main(canvas, settingsJson, config);
+                if (!new URL(location.href).searchParams.has('nomanikin')) {
+                    const { initManikin } = await import('./manikin.mjs');
+                    await initManikin({viewer, pc: sceneTools});
+                }
             });
         </script>
     </body>

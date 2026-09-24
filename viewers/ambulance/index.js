@@ -86638,7 +86638,9 @@ class CameraManager {
             transitionTimer = 0;
         };
         this.snap = () => {
-            getController(state.cameraMode).onEnter(this.camera);
+            const controller = getController(state.cameraMode);
+            if ('fov' in controller) controller.fov = this.camera.fov;
+            controller.onEnter(this.camera);
             target.copy(this.camera);
             transitionTimer = 1;
             global.app.renderNextFrame = true;
@@ -90637,7 +90639,10 @@ class Viewer {
             const far = Math.max(dist + boundRadius, 1e-2);
             const near = Math.max(dist - boundRadius, far / (1024 * 16));
             cameraEntity.camera.farClip = far;
-            cameraEntity.camera.nearClip = Math.min(1.0, near);
+            // In this small interior, near-eye wall splats otherwise expand into
+            // a white veil. Keep a 0.08 near plane even when distant outliers
+            // make the automatically fitted plane only a few millimeters away.
+            cameraEntity.camera.nearClip = Math.min(1.0, Math.max(0.08, near));
         };
         // handle application update
         app.on('update', (deltaTime) => {
@@ -92615,5 +92620,7 @@ const main = async (canvas, settingsJson, config) => {
 };
 console.log(`SuperSplat Viewer v${version} | Engine v${version$1} (${revision})`);
 
-export { main };
+// Share the viewer's engine instance with the articulated scan overlay.
+const sceneTools = { Entity, GSplatData, GSplatResource, WORKBUFFER_UPDATE_AUTO, Vec3, Quat };
+export { main, sceneTools };
 //# sourceMappingURL=index.js.map

@@ -1,0 +1,18 @@
+[
+  {"id":"front-wall","region":"architecture","label":"Front bulkhead and seat surround","position":[0.2,0.28,0.16],"target":[1.7,0.13,-0.1],"fov":72},
+  {"id":"rear-wall","region":"architecture","label":"Rear doors and upper wall","position":[-0.55,0.25,-0.1],"target":[-1.58,0.15,-0.05],"fov":76},
+  {"id":"left-wall","region":"architecture","label":"Left cabinet wall frontal","position":[-0.38,0.26,0.2],"target":[-0.05,0.12,-1.04],"fov":72},
+  {"id":"left-grazing","region":"architecture","label":"Left cabinet edges grazing","position":[-1.27,0.22,-0.42],"target":[0.9,0.18,-1.04],"fov":58},
+  {"id":"right-wall","region":"architecture","label":"Right wall between pads","position":[-0.2,0.24,-0.23],"target":[-0.2,0.28,0.9],"fov":74},
+  {"id":"right-grazing","region":"architecture","label":"Right upholstery and wall grazing","position":[-1.05,0.16,0.36],"target":[0.74,0.15,0.85],"fov":65},
+  {"id":"ceiling-front","region":"architecture","label":"Ceiling grazing toward front","position":[-1.1,0.56,-0.13],"target":[1.1,0.97,-0.13],"fov":60},
+  {"id":"ceiling-rear","region":"architecture","label":"Ceiling grazing toward rear","position":[1.03,0.49,-0.07],"target":[-1.3,0.97,-0.15],"fov":60},
+  {"id":"bench-grazing","region":"upholstery","label":"Bench cushion grazing from rear","position":[-0.96,-0.12,0.22],"target":[0.51,-0.3,0.59],"fov":62},
+  {"id":"pads-close","region":"upholstery","label":"Right pads and seams close","position":[-0.2,0.23,0.05],"target":[-0.18,0.3,0.82],"fov":72},
+  {"id":"left-seats","region":"upholstery","label":"Left fold-down seat and backrests","position":[-0.15,0.23,0.05],"target":[0.25,-0.1,-0.95],"fov":67},
+  {"id":"front-seat","region":"upholstery","label":"Front attendant seat and harness","position":[0.39,0.21,0.13],"target":[1.38,-0.09,-0.2],"fov":66},
+  {"id":"mattress-top","region":"objects","label":"Mattress top and stretcher straps","position":[-0.5,0.31,0.17],"target":[-0.18,-0.35,-0.3],"fov":75},
+  {"id":"mattress-grazing","region":"objects","label":"Mattress and stretcher side grazing","position":[-1.13,-0.12,0.22],"target":[0.6,-0.29,-0.2],"fov":60},
+  {"id":"equipment-bag","region":"objects","label":"Monitor bag and bench junction","position":[-0.24,0.17,0.05],"target":[0.62,-0.17,0.68],"fov":62},
+  {"id":"cabinet-counter","region":"objects","label":"Cabinet worktop, controls and supplies","position":[0.53,0.26,0.04],"target":[0.7,0.03,-1.04],"fov":72}
+]

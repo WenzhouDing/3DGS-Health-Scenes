@@ -1,0 +1,99 @@
+{
+  "version": 2,
+  "coordinate_system": "Viewer world: EulerXYZ(-78.243,0.463,-4.499) * diag(-1,-1,1) * raw PLY position",
+  "source": "ambulance_exp11_boot_sharp.ply",
+  "description": "Manually bounded cushion and pad interiors measured from orthographic Gaussian renders; rounded outlines stay inside observed seams. Fits, colors, and gap coverage are measured again on input splats.",
+  "spacing": 0.008,
+  "patches": [
+    {
+      "id": "right-upper-pad",
+      "axis": 2,
+      "uv_axes": [
+        0,
+        1
+      ],
+      "uv_bounds": [
+        [
+          -0.775,
+          0.459
+        ],
+        [
+          0.488,
+          0.69
+        ]
+      ],
+      "depth_bounds": [
+        0.735,
+        0.96
+      ],
+      "backing_sign": 1,
+      "corner_radius": 0.028,
+      "max_support_distance": 0.25,
+      "backing_offset": 0.016,
+      "material_quantile": 0.7,
+      "opacity_base": 0.43,
+      "edge_feather": 0.035,
+      "material_floor": 0.2
+    },
+    {
+      "id": "right-lower-backrest",
+      "axis": 2,
+      "uv_axes": [
+        0,
+        1
+      ],
+      "uv_bounds": [
+        [
+          -0.777,
+          -0.021
+        ],
+        [
+          0.49,
+          0.25
+        ]
+      ],
+      "depth_bounds": [
+        0.715,
+        0.935
+      ],
+      "backing_sign": 1,
+      "corner_radius": 0.028,
+      "max_support_distance": 0.2,
+      "backing_offset": 0.016,
+      "material_quantile": 0.7,
+      "opacity_base": 0.43,
+      "edge_feather": 0.035,
+      "material_floor": 0.2
+    },
+    {
+      "id": "right-bench-cushion",
+      "axis": 1,
+      "uv_axes": [
+        0,
+        2
+      ],
+      "uv_bounds": [
+        [
+          -0.92,
+          0.4
+        ],
+        [
+          0.715,
+          0.708
+        ]
+      ],
+      "depth_bounds": [
+        -0.33,
+        -0.275
+      ],
+      "backing_sign": -1,
+      "corner_radius": 0.036,
+      "max_support_distance": 0.25,
+      "backing_offset": 0.021,
+      "material_quantile": 0.7,
+      "opacity_base": 0.4,
+      "edge_feather": 0.04,
+      "material_floor": 0.225
+    }
+  ]
+}

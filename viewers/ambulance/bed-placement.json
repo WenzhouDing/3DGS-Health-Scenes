@@ -1,0 +1,583 @@
+{
+  "schema": "ambulance-manikin-placement",
+  "version": 1,
+  "status": "Smaller fitted pose validated against modeled surface contacts; browser review pending",
+  "coordinateFrame": "ambulance viewer world +Y up, +X forward/headward, +Z toward right bench",
+  "units": "uncalibrated scene units",
+  "scene": {
+    "url": "./index.sog",
+    "sha256": "32e0ec80b3516a7db345d2e5a87455527ae3f8ff5776ccd28b63e1a78a9a17c4"
+  },
+  "manikin": {
+    "manifest": "../mannequin-fusion/fusion.json",
+    "revision": "feature-guided-v11-finger-side-coverage",
+    "posePreset": "lying",
+    "applyPresentation": false,
+    "nativeAxes": {
+      "headward": [
+        0,
+        0,
+        1
+      ],
+      "anterior": [
+        0,
+        1,
+        0
+      ]
+    },
+    "legSupport": "Both knees bend 10.5 degrees within rig limits. Scale0.75 refit keeps14 near-support contacts and zero blocking overlaps in the exact11513-sample check."
+  },
+  "placement": {
+    "position": [
+      0.3,
+      -0.196,
+      -0.3185
+    ],
+    "rotation": [
+      -0.017645216205477644,
+      0.7361917698652859,
+      0.01920868820413282,
+      0.6762701757619923
+    ],
+    "scale": 0.75
+  },
+  "jointOverrides": {
+    "neck": [
+      -20,
+      0,
+      0
+    ],
+    "left_shoulder": [
+      10,
+      52.187604035128224,
+      0
+    ],
+    "right_shoulder": [
+      7,
+      -47.337334726392506,
+      0
+    ],
+    "left_hip": [
+      5,
+      23.485819707075827,
+      0
+    ],
+    "right_hip": [
+      5,
+      -25.18121556448656,
+      0
+    ],
+    "left_knee": [
+      10.5,
+      0,
+      0
+    ],
+    "right_knee": [
+      10.5,
+      0,
+      0
+    ]
+  },
+  "bed": {
+    "headDirection": [
+      0.9950511922898874,
+      0.05214842326085541,
+      -0.08457935134464042
+    ],
+    "crossBedCoordinate": "w = worldZ + 0.085 * worldX",
+    "center": [
+      -0.29,
+      -0.3,
+      -0.24535
+    ],
+    "longitudinalBounds": [
+      -1.3,
+      0.7
+    ],
+    "transverseBounds": [
+      -0.54,
+      0.0
+    ],
+    "approximateLength": 2.0,
+    "approximateWidth": 0.54,
+    "footCorners": [
+      [
+        -1.15,
+        -0.283,
+        -0.3627
+      ],
+      [
+        -1.15,
+        -0.283,
+        -0.01582
+      ]
+    ],
+    "headCorners": [
+      [
+        0.64,
+        -0.195,
+        -0.48594
+      ],
+      [
+        0.64,
+        -0.195,
+        -0.12955
+      ]
+    ],
+    "centerlineSamples": [
+      [
+        -1.2,
+        -0.275
+      ],
+      [
+        -1.0,
+        -0.298
+      ],
+      [
+        -0.8,
+        -0.318
+      ],
+      [
+        -0.6,
+        -0.328
+      ],
+      [
+        -0.4,
+        -0.333
+      ],
+      [
+        -0.2,
+        -0.34
+      ],
+      [
+        0,
+        -0.333
+      ],
+      [
+        0.2,
+        -0.285
+      ],
+      [
+        0.4,
+        -0.24
+      ],
+      [
+        0.6,
+        -0.185
+      ]
+    ],
+    "surfaceInterpretation": "Concave blue vacuum mattress, low central cradle, raised side bolsters and head section; not a single flat support plane."
+  },
+  "collision": {
+    "surfaces": [
+      {
+        "id": "floor",
+        "label": "Measured cabin floor",
+        "normal": [
+          0.007037967251678395,
+          0.9998532819545951,
+          0.01561670841084882
+        ],
+        "offset": -0.7753342277851268,
+        "bounds": [
+          [
+            -1.7,
+            -0.88,
+            -1.2
+          ],
+          [
+            1.75,
+            -0.66,
+            1.0
+          ]
+        ],
+        "kind": "boundary",
+        "allowedPenetration": 0.005,
+        "contactDistance": 0.01
+      },
+      {
+        "id": "roof",
+        "label": "Measured central roof",
+        "normal": [
+          -0.007815712247447622,
+          -0.9997464658406535,
+          -0.021116786715509785
+        ],
+        "offset": -0.9812370438014896,
+        "bounds": [
+          [
+            -1.42,
+            0.88,
+            -0.74
+          ],
+          [
+            1.78,
+            1.07,
+            0.64
+          ]
+        ],
+        "kind": "boundary",
+        "allowedPenetration": 0.005,
+        "contactDistance": 0.01
+      },
+      {
+        "id": "cabinet-wall",
+        "label": "Cabinet-side inner boundary",
+        "normal": [
+          0.08205849467358625,
+          -0.029701340636850027,
+          0.9961848391821063
+        ],
+        "offset": -0.9166339907949512,
+        "bounds": [
+          [
+            -1.42,
+            -0.72,
+            -1.2
+          ],
+          [
+            1.4,
+            0.72,
+            -0.72
+          ]
+        ],
+        "kind": "boundary",
+        "allowedPenetration": 0.005,
+        "contactDistance": 0.01
+      },
+      {
+        "id": "opposite-wall",
+        "label": "Opposite cabin side",
+        "normal": [
+          -0.08461336631490332,
+          0.013639934546970262,
+          -0.9963204958377674
+        ],
+        "offset": -0.8646578822795353,
+        "bounds": [
+          [
+            -1.3,
+            -0.62,
+            0.65
+          ],
+          [
+            0.68,
+            0.75,
+            1.04
+          ]
+        ],
+        "kind": "boundary",
+        "allowedPenetration": 0.005,
+        "contactDistance": 0.01
+      },
+      {
+        "id": "rear-doors",
+        "label": "Closed rear doors",
+        "normal": [
+          0.9961006087068521,
+          -0.002195226585935404,
+          -0.0881972693118951
+        ],
+        "offset": -1.5649702118417543,
+        "bounds": [
+          [
+            -1.7,
+            -0.72,
+            -0.78
+          ],
+          [
+            -1.44,
+            0.9,
+            0.7
+          ]
+        ],
+        "kind": "boundary",
+        "allowedPenetration": 0.005,
+        "contactDistance": 0.01
+      },
+      {
+        "id": "front-upper-wall",
+        "label": "Upper front bulkhead, excluding cab opening",
+        "normal": [
+          -0.9951314400487834,
+          -0.03672494957583326,
+          0.09145870710373628
+        ],
+        "offset": -1.7981441417913095,
+        "bounds": [
+          [
+            1.6,
+            0.49,
+            -0.72
+          ],
+          [
+            1.91,
+            0.86,
+            -0.11
+          ]
+        ],
+        "kind": "boundary",
+        "allowedPenetration": 0.005,
+        "contactDistance": 0.01
+      }
+    ],
+    "boxes": [
+      {
+        "id": "mattress-center",
+        "label": "Mattress central cradle",
+        "center": [
+          -0.48,
+          -0.372,
+          -0.22920000000000001
+        ],
+        "halfExtents": [
+          0.7,
+          0.05,
+          0.16
+        ],
+        "rotation": [
+          0.0,
+          0.04238538595182563,
+          0.0,
+          0.9991013357301224
+        ],
+        "kind": "mattress",
+        "allowedPenetration": 0.008
+      },
+      {
+        "id": "mattress-head",
+        "label": "Raised mattress head support",
+        "center": [
+          0.4556677935743334,
+          -0.2778403108313999,
+          -0.30873176245381834
+        ],
+        "halfExtents": [
+          0.25,
+          0.05,
+          0.2
+        ],
+        "rotation": [
+          0.004564434113810229,
+          0.04213889988485584,
+          0.10759208905501336,
+          0.9932912067618906
+        ],
+        "kind": "mattress",
+        "allowedPenetration": 0.008
+      },
+      {
+        "id": "mattress-foot",
+        "label": "Rounded mattress foot support",
+        "center": [
+          -1.18,
+          -0.32299999999999995,
+          -0.16970000000000002
+        ],
+        "halfExtents": [
+          0.1,
+          0.04,
+          0.16
+        ],
+        "rotation": [
+          0.0,
+          0.04238538595182563,
+          0.0,
+          0.9991013357301224
+        ],
+        "kind": "mattress",
+        "allowedPenetration": 0.008
+      },
+      {
+        "id": "mattress-cabinet-bolster",
+        "label": "Cabinet-side mattress bolster",
+        "center": [
+          -0.42,
+          -0.315,
+          -0.4593
+        ],
+        "halfExtents": [
+          0.72,
+          0.05,
+          0.035
+        ],
+        "rotation": [
+          0.0,
+          0.04238538595182563,
+          0.0,
+          0.9991013357301224
+        ],
+        "kind": "mattress",
+        "allowedPenetration": 0.008
+      },
+      {
+        "id": "mattress-aisle-bolster",
+        "label": "Aisle-side mattress bolster",
+        "center": [
+          -0.42,
+          -0.308,
+          0.0006999999999999992
+        ],
+        "halfExtents": [
+          0.72,
+          0.05,
+          0.035
+        ],
+        "rotation": [
+          0.0,
+          0.04238538595182563,
+          0.0,
+          0.9991013357301224
+        ],
+        "kind": "mattress",
+        "allowedPenetration": 0.008
+      },
+      {
+        "id": "right-bench",
+        "label": "Right bench cushion and plinth",
+        "center": [
+          -0.13,
+          -0.54,
+          0.579
+        ],
+        "halfExtents": [
+          1.02,
+          0.235,
+          0.2
+        ],
+        "rotation": [
+          0.0,
+          0.04205244178086525,
+          0.0,
+          0.9991154048158135
+        ],
+        "kind": "solid"
+      },
+      {
+        "id": "front-seat-back",
+        "label": "Front attendant seat backrest",
+        "center": [
+          1.48,
+          0.105,
+          -0.57
+        ],
+        "halfExtents": [
+          0.175,
+          0.36,
+          0.245
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "kind": "solid"
+      },
+      {
+        "id": "front-seat-cushion",
+        "label": "Front attendant seat cushion",
+        "center": [
+          1.21,
+          -0.355,
+          -0.57
+        ],
+        "halfExtents": [
+          0.22,
+          0.1,
+          0.25
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "kind": "solid"
+      },
+      {
+        "id": "front-seat-pedestal",
+        "label": "Front attendant seat pedestal",
+        "center": [
+          1.27,
+          -0.585,
+          -0.57
+        ],
+        "halfExtents": [
+          0.14,
+          0.135,
+          0.17
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "kind": "solid"
+      }
+    ],
+    "tolerances": {
+      "penetration": 0.003,
+      "contact": 0.008
+    },
+    "limitations": [
+      "Finite, approximate measured support proxies; not a watertight mesh of the scan.",
+      "Loose straps, cables, rails, wheels and equipment are not exhaustively represented.",
+      "Mattress is soft and irregular; contact tolerance is visual scan tolerance, not calibrated material compression.",
+      "Front cab opening remains open; the front boundary covers only the measured solid upper panel. Bench and seat are conservative box approximations."
+    ]
+  },
+  "cameras": {
+    "bed": {
+      "position": [
+        -0.2,
+        0.55,
+        0.64
+      ],
+      "target": [
+        -0.32,
+        -0.16,
+        -0.24
+      ],
+      "fov": 90
+    },
+    "side": {
+      "position": [
+        -0.1,
+        0.16,
+        0.77
+      ],
+      "target": [
+        -0.18,
+        -0.16,
+        -0.27
+      ],
+      "fov": 63
+    },
+    "cabin": {
+      "position": [
+        -1.1,
+        0.25,
+        0.45
+      ],
+      "target": [
+        0.3,
+        -0.05,
+        0.1
+      ],
+      "fov": 55.412927352596554
+    }
+  },
+  "evidence": {
+    "blueFineAnchorCount": 49790,
+    "source": "raw/ambulance-cleanup/pass7/final-v1/iphone.ply",
+    "measurement": "raw/ambulance-manikin/bed-blue-measurement.npz",
+    "posedBounds": "raw/ambulance-manikin/lying-manikin-native-bounds.json",
+    "note": "Uniform scale fitted to observed mattress; not calibrated body height. Arms tucked, 3 degree torso incline, compensating shoulder/hip pitch, and 20 degree neck flexion follow the raised head and concave cradle. A 0.007 transverse shift resolves the final thigh/bolster overlap without raising the body or changing tolerance.",
+    "placementContactAudit": "raw/ambulance-manikin/contact-pitch3-z7-proposal.json",
+    "measuredSideWallFit": "raw/ambulance-manikin/opposite-wall-fit.json",
+    "measuredEndFits": "raw/ambulance-manikin/cabin-end-fits.json",
+    "scaleRefit": "raw/ambulance-manikin/scale075-final-fit.json"
+  }
+}

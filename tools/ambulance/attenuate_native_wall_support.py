@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+"""Diagnostic selective reduction of coarse captured native lower-wall film."""
+import json,shutil
+from pathlib import Path
+import numpy as np
+from scipy.spatial.transform import Rotation
+from cleanup import ROOT,read_ply,write_ply,columns,sha256_file
+from repair_surfaces import WORLD_FROM_RAW as W
+from regularize_native_wall import RECIPE,weights,smooth
+src=ROOT/'raw/ambulance-cleanup/pass6/native-clean-v2/native.ply';out=ROOT/'raw/ambulance-cleanup/pass6/native-clean-v3'
+if out.exists():raise ValueError('New experiment only')
+v,_,_=read_ply(src);p=np.einsum('ij,nj->ni',W,columns(v,['x','y','z']).astype(float));s=np.exp(columns(v,['scale_0','scale_1','scale_2']).astype(float));cf=np.asarray(RECIPE['plane']);n=np.array([-cf[0],-cf[1],1]);n/=np.linalg.norm(n);q=np.einsum('ij,njk->nik',W,Rotation.from_quat(columns(v,['rot_1','rot_2','rot_3','rot_0'])).as_matrix());b=q*s[:,None,:];C=np.einsum('nik,njk->nij',b,b);P=np.eye(3)-np.outer(n,n);t=np.einsum('ij,njk,lk->nil',P,C,P);ev=np.linalg.eigvalsh(t);sigma=np.sqrt(np.maximum(ev[:,2],0));g=np.maximum(ev[:,1]*ev[:,2],0)**.25;a=1/(1+np.exp(-np.clip(v['opacity'].astype(float),-40,40)));w=weights(p)*smooth((-.25-p[:,1])/.065)*smooth((sigma-.009)/.015)*smooth((g-.006)/.008);ids=np.flatnonzero((w>0)&(a>.01));m=1-.55*w[ids];result=v.copy();newalpha=np.clip(a[ids]*m,1e-8,1-1e-8);result['opacity'][ids]=np.log(newalpha/(1-newalpha));out.mkdir(parents=True);write_ply(out/'native.ply',result);np.savez_compressed(out/'changes.npz',reference_original_indices=ids,multipliers=m);shutil.copyfile(__file__,out/'generator.py');r={'status':'Unreviewed native lower-wall coarse-support opacity diagnostic','source':str(src),'source_sha256':sha256_file(src),'output_sha256':sha256_file(out/'native.ply'),'selected_rows':len(ids),'recipe':{'base_region':RECIPE,'lower_band_y_max':-.25,'lower_band_feather':.065,'tangent_major_sigma_ramp':[.009,.024],'tangent_geometric_sigma_ramp':[.006,.014],'minimum_opacity_multiplier':.45},'checks':{'all_nonopacity_fields_exact':all(np.array_equal(v[f],result[f]) for f in v.dtype.names if f!='opacity'),'all_source_material_colors_SH_exact':all(np.array_equal(v[f],result[f]) for f in v.dtype.names if f.startswith('f_')),'all_alpha_nonincreasing':bool(np.all(result['opacity']<=v['opacity']+1e-6))},'note':'A diagnostic of coarse actual captured support, not new material or a transfer. Full source remains present behind it.'};(out/'report.json').write_text(json.dumps(r,indent=2)+'\n');print(json.dumps(r,indent=2))

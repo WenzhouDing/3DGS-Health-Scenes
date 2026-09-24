@@ -1,0 +1,373 @@
+{
+  "version": 4,
+  "coordinate_system": "world = EulerXYZ(-78.243,0.463,-4.499) * diag(-1,-1,1) * raw",
+  "description": "Manually bounded architectural sheets, measured on full Gaussian review. Glass, contents, pads, stretcher and medical equipment are excluded; tangential support is retained.",
+  "regions": [
+    {
+      "id": "right-sloped-fascia",
+      "axis": 2,
+      "uv_axes": [
+        0,
+        1
+      ],
+      "uv_bounds": [
+        [
+          -0.92,
+          0.795
+        ],
+        [
+          0.65,
+          0.946
+        ]
+      ],
+      "depth_bounds": [
+        0.56,
+        0.94
+      ],
+      "max_slope": 2.8,
+      "snap_distance": 0.04
+    },
+    {
+      "id": "right-between-pads",
+      "axis": 2,
+      "uv_axes": [
+        0,
+        1
+      ],
+      "uv_bounds": [
+        [
+          -0.81,
+          0.275
+        ],
+        [
+          0.51,
+          0.428
+        ]
+      ],
+      "depth_bounds": [
+        0.8,
+        1.035
+      ]
+    },
+    {
+      "id": "right-under-backrest",
+      "axis": 2,
+      "uv_axes": [
+        0,
+        1
+      ],
+      "uv_bounds": [
+        [
+          -0.8,
+          -0.255
+        ],
+        [
+          0.49,
+          -0.065
+        ]
+      ],
+      "depth_bounds": [
+        0.79,
+        0.96
+      ]
+    },
+    {
+      "id": "left-cabinet-bottom-frame",
+      "axis": 2,
+      "uv_axes": [
+        0,
+        1
+      ],
+      "uv_bounds": [
+        [
+          -1.42,
+          0.126
+        ],
+        [
+          -0.37,
+          0.19
+        ]
+      ],
+      "depth_bounds": [
+        -1.0,
+        -0.74
+      ]
+    },
+    {
+      "id": "left-worktop",
+      "axis": 1,
+      "uv_axes": [
+        0,
+        2
+      ],
+      "uv_bounds": [
+        [
+          0.29,
+          -1.42
+        ],
+        [
+          1.145,
+          -0.705
+        ]
+      ],
+      "depth_bounds": [
+        0.014,
+        0.06
+      ],
+      "snap_distance": 0.02,
+      "min_luma": 0.4
+    },
+    {
+      "id": "rear-door-paint",
+      "axis": 0,
+      "uv_axes": [
+        2,
+        1
+      ],
+      "uv_bounds": [
+        [
+          -0.72,
+          -0.68
+        ],
+        [
+          0.66,
+          0.73
+        ]
+      ],
+      "depth_bounds": [
+        -1.65,
+        -1.49
+      ],
+      "snap_distance": 0.024
+    },
+    {
+      "id": "front-upper-paint",
+      "axis": 0,
+      "uv_axes": [
+        2,
+        1
+      ],
+      "uv_bounds": [
+        [
+          -0.72,
+          0.49
+        ],
+        [
+          0.35,
+          0.72
+        ]
+      ],
+      "depth_bounds": [
+        1.62,
+        1.79
+      ],
+      "snap_distance": 0.02
+    },
+    {
+      "id": "floor-aisle-right",
+      "axis": 1,
+      "uv_axes": [
+        0,
+        2
+      ],
+      "uv_bounds": [
+        [
+          -1.42,
+          0.16
+        ],
+        [
+          1.48,
+          0.52
+        ]
+      ],
+      "depth_bounds": [
+        -0.825,
+        -0.745
+      ],
+      "min_luma": 0.15,
+      "snap_distance": 0.026,
+      "normal_sigma": 0.0015
+    },
+    {
+      "id": "floor-aisle-left",
+      "axis": 1,
+      "uv_axes": [
+        0,
+        2
+      ],
+      "uv_bounds": [
+        [
+          -1.42,
+          -0.62
+        ],
+        [
+          1.48,
+          -0.37
+        ]
+      ],
+      "depth_bounds": [
+        -0.825,
+        -0.745
+      ],
+      "min_luma": 0.15,
+      "snap_distance": 0.026,
+      "normal_sigma": 0.0015
+    },
+    {
+      "id": "left-sloped-fascia",
+      "axis": 2,
+      "uv_axes": [
+        0,
+        1
+      ],
+      "uv_bounds": [
+        [
+          -1.48,
+          0.74
+        ],
+        [
+          1.46,
+          0.965
+        ]
+      ],
+      "depth_bounds": [
+        -1.2,
+        -0.66
+      ],
+      "max_slope": 2.8,
+      "snap_distance": 0.03,
+      "require_sloped_normal": true,
+      "fit_y_min": 0.805
+    }
+  ],
+  "roof_reconstruction": {
+    "plane_y_from_xz": [
+      -0.00491558,
+      -0.02736632,
+      0.99605196
+    ],
+    "plane_source": "Least squares through eight measured ceiling lamp disk centers, offset 22mm above the emitting faces; roof-edge and rail observations support this height.",
+    "uv_bounds": [
+      [
+        -1.5,
+        -0.735
+      ],
+      [
+        1.5,
+        0.685
+      ]
+    ],
+    "uv_definition": "u=x, v=z+0.085*x",
+    "spacing": 0.012,
+    "rgb": [
+      0.585,
+      0.58,
+      0.575
+    ],
+    "opacity": 0.92,
+    "rail_v_center": -0.195,
+    "rail_half_width": 0.035,
+    "lamp_centers_xz": [
+      [
+        -0.06336415,
+        -0.52541041
+      ],
+      [
+        0.42389672,
+        0.21748273
+      ],
+      [
+        -0.40494044,
+        0.2721857
+      ],
+      [
+        -0.47870295,
+        -0.53112927
+      ],
+      [
+        0.00703643,
+        0.22401984
+      ],
+      [
+        -0.88679032,
+        -0.5027936
+      ],
+      [
+        0.33624797,
+        -0.55915207
+      ],
+      [
+        -0.81798098,
+        0.30310694
+      ]
+    ],
+    "lamp_preserve_radius": 0.118
+  },
+  "metal_hatch_support": {
+    "uv_bounds": [
+      [
+        -0.758,
+        0.574
+      ],
+      [
+        -0.527,
+        0.765
+      ]
+    ],
+    "depth_x": 1.82,
+    "rgb": [
+      0.57,
+      0.56,
+      0.535
+    ],
+    "spacing": 0.006,
+    "opacity": 0.78,
+    "edge_feather": 0.02
+  },
+  "fascia_backing": [
+    {
+      "id": "right-fascia-backing",
+      "fit_region": "right-sloped-fascia",
+      "uv_bounds": [
+        [
+          -0.915,
+          0.795
+        ],
+        [
+          0.64,
+          0.965
+        ]
+      ],
+      "behind_sign": 1,
+      "rgb": [
+        0.825,
+        0.805,
+        0.765
+      ],
+      "spacing": 0.009,
+      "opacity": 0.78
+    },
+    {
+      "id": "left-fascia-backing",
+      "fit_region": "left-sloped-fascia",
+      "uv_bounds": [
+        [
+          -1.48,
+          0.735
+        ],
+        [
+          1.48,
+          0.987
+        ]
+      ],
+      "behind_sign": -1,
+      "rgb": [
+        0.825,
+        0.805,
+        0.765
+      ],
+      "spacing": 0.009,
+      "opacity": 0.78
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "status": "Installed locally after exact24-view review; pass6 floor/wall edits reverted",
+  "baseline": "/Users/wding/Desktop/3DGS-Health-Scenes/raw/ambulance-cleanup/pass5/combined-v1",
+  "baseline_hashes": {
+    "iphone": "752d3053f08a8afac7bc2e21d4443c1d44cc358e0c4bd9e2aa57173a7275ba74",
+    "reference": "be1c77e9b602a79a57527e3fe93631692849a69a12938747c961f20eac27656a"
+  },
+  "baseline_report_sha256": "27b6471f2b7def25c784982fd4279a2291eb170ac15439db75692b34f647239b",
+  "method": "Only exact ray-attributed iPhone artifacts beyond the measured cabin/roof; no new or retextured surfaces",
+  "selection": {
+    "indices": [
+      289869,
+      425835,
+      985809,
+      2494721,
+      2744643,
+      2812036,
+      3081925,
+      3106648,
+      3642343,
+      4137910,
+      4206941,
+      4558513
+    ],
+    "reason": "Exact off-cabin contributors to front roof puffs; original10 visually checked, next2 chosen from32-ray guarded subset",
+    "incremental_coverage_audit": {
+      "indices": [
+        3642343,
+        4206941
+      ],
+      "criterion": "Exhaustive15-row subset maximizing summed attributed visible mass subject to cumulative opacity loss<=.01 and retained alpha>=.95 across32 rays; visual review required",
+      "current_alpha_min": 0.9610248351857607,
+      "predicted_alpha_min": 0.9557283887769317,
+      "maximum_alpha_drop": 0.007193769499856617,
+      "removed_visible_mass_summed32rays": 0.9650920574310907,
+      "safe_subsets_count": 22
+    }
+  },
+  "selected_world_positions": [
+    [
+      4.496969474608314,
+      2.3207702602589477,
+      -1.159906944033084
+    ],
+    [
+      4.472589330862769,
+      2.360730093088419,
+      -1.2408671862937435
+    ],
+    [
+      4.493082367156288,
+      2.327269148564317,
+      -1.1774048575183718
+    ],
+    [
+      4.4715441109074225,
+      2.361406033225273,
+      -1.240356816524902
+    ],
+    [
+      4.52224958563173,
+      2.3567277339475106,
+      0.7925269827339989
+    ],
+    [
+      4.489480895264621,
+      2.3305349566148834,
+      -1.1750171911949647
+    ],
+    [
+      3.8727357611999573,
+      3.78183250267837,
+      -1.4704153392250694
+    ],
+    [
+      5.1013643797448625,
+      2.5812263827890374,
+      0.7712396864669676
+    ],
+    [
+      3.9077724299150147,
+      1.7411799139119,
+      -2.35724006500727
+    ],
+    [
+      4.492907474731217,
+      2.3273956262597917,
+      -1.1770177212863173
+    ],
+    [
+      16.132304091671738,
+      6.758570834346947,
+      9.460976956709331
+    ],
+    [
+      4.496343185267393,
+      2.3216043370550477,
+      -1.1630662000258032
+    ]
+  ],
+  "selected_count": 12,
+  "physically_removed": true,
+  "combined_count": 5525878,
+  "checks": {
+    "all_remaining_iphone_records_byte_exact": true,
+    "entire_reference_file_byte_exact": true,
+    "all_selected_far_outside_cabin": true,
+    "serialized_records_exact": true,
+    "no_added_records": true,
+    "no_geometry_color_or_material_edits": true
+  },
+  "output_hashes": {
+    "iphone": "843c75ad337be87df6e9dcb2841cc86e587af2986db77a2f96af42fec2343a06",
+    "reference": "be1c77e9b602a79a57527e3fe93631692849a69a12938747c961f20eac27656a"
+  },
+  "generator_sha256": "7159217efe8fbfe5722b107a9425d9fe8ff71130a96767674b97c0742f396478",
+  "selection_sha256": "abfd28e7d113d45778e211027554a98fd34b32a5be886ac565847954f938e16f",
+  "changes_sha256": "8ca17cf807f3ff775e55a76255617eed4fcd123ceb050a8bb4563952f5ae3c20",
+  "limitations": [
+    "This is a modest ceiling-only change: twelve exactly attributed distant source splats are removed. Broad corner and ceiling haze, cloudy front roof transition, lamp halos and other capture artifacts remain.",
+    "The floors and lower cabinet wall are restored to pass5, including their prior haze and texture. No pass6 copied floor tread or revised wall material is retained; this pass introduces no new material, copied texture, fills or covariance changes.",
+    "Broader distant-support deletion was rejected because it can expose gaps. Remaining support is not guaranteed to lie on the true physical surface.",
+    "All remaining uncompressed records are reported byte-exact to pass5 by the independent numerical audit; the new SOG export is lossy, so small quantization differences across the scene may remain.",
+    "The separate legacy collider has not been rebuilt. Visual Gaussian cleanup does not establish physical or collision accuracy."
+  ],
+  "remote_publish": false,
+  "accepted_from_report_sha256": "4510fc5ece1931b8abec6f8eb26f22b04ab22ac483bc75bc8728e00a50fa5897",
+  "browser_export": {
+    "file": "viewers/ambulance/index.sog",
+    "sha256": "32e0ec80b3516a7db345d2e5a87455527ae3f8ff5776ccd28b63e1a78a9a17c4",
+    "bytes": 63699825,
+    "gaussians": 5525878,
+    "SH_bands": 3
+  },
+  "visual_review": {
+    "camera_count": 24,
+    "candidate": "pass7-final-v1",
+    "baseline_sha256": "6e7aa0f7463a3e297531394aaba7054f0b7c7554099c18b168e0dcce5695da47",
+    "comparison": "raw/ambulance-cleanup/pass7/review/index.html",
+    "final_qa_sha256": "b4c08c6186f725b63d2a2ad160b0b9903f5d9155e5e421a74dd9a2bca12d3501",
+    "render_manifest_sha256": "b503d5b74d0fac13e26361dec221cbd93425707e68c157b9c9b2a0930279a2d9",
+    "comparison_manifest_sha256": "45433698a32045d453f33c7fd7396e160241e3d7796df80c024f4222ca95afca",
+    "floor_lower_wall_restoration_verified": true
+  },
+  "collision_status": {
+    "legacy_voxel_updated": false,
+    "scope": "Only12 exterior ceiling artifacts removed; no whole-scene collision certification"
+  }
+}

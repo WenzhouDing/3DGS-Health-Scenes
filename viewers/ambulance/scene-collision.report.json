@@ -1,0 +1,149 @@
+{
+  "vertices": 96,
+  "triangles": 120,
+  "bounds": [
+    [
+      -1.7,
+      -0.8033852499999999,
+      -1.2
+    ],
+    [
+      1.78,
+      1.0082173949120001,
+      1.0
+    ]
+  ],
+  "proxies": [
+    {
+      "id": "floor",
+      "type": "surface",
+      "vertex_start": 0,
+      "vertex_count": 4,
+      "triangle_start": 0,
+      "triangle_count": 2
+    },
+    {
+      "id": "roof",
+      "type": "surface",
+      "vertex_start": 4,
+      "vertex_count": 4,
+      "triangle_start": 2,
+      "triangle_count": 2
+    },
+    {
+      "id": "cabinet-wall",
+      "type": "surface",
+      "vertex_start": 8,
+      "vertex_count": 4,
+      "triangle_start": 4,
+      "triangle_count": 2
+    },
+    {
+      "id": "opposite-wall",
+      "type": "surface",
+      "vertex_start": 12,
+      "vertex_count": 4,
+      "triangle_start": 6,
+      "triangle_count": 2
+    },
+    {
+      "id": "rear-doors",
+      "type": "surface",
+      "vertex_start": 16,
+      "vertex_count": 4,
+      "triangle_start": 8,
+      "triangle_count": 2
+    },
+    {
+      "id": "front-upper-wall",
+      "type": "surface",
+      "vertex_start": 20,
+      "vertex_count": 4,
+      "triangle_start": 10,
+      "triangle_count": 2
+    },
+    {
+      "id": "mattress-center",
+      "type": "box",
+      "vertex_start": 24,
+      "vertex_count": 8,
+      "triangle_start": 12,
+      "triangle_count": 12
+    },
+    {
+      "id": "mattress-head",
+      "type": "box",
+      "vertex_start": 32,
+      "vertex_count": 8,
+      "triangle_start": 24,
+      "triangle_count": 12
+    },
+    {
+      "id": "mattress-foot",
+      "type": "box",
+      "vertex_start": 40,
+      "vertex_count": 8,
+      "triangle_start": 36,
+      "triangle_count": 12
+    },
+    {
+      "id": "mattress-cabinet-bolster",
+      "type": "box",
+      "vertex_start": 48,
+      "vertex_count": 8,
+      "triangle_start": 48,
+      "triangle_count": 12
+    },
+    {
+      "id": "mattress-aisle-bolster",
+      "type": "box",
+      "vertex_start": 56,
+      "vertex_count": 8,
+      "triangle_start": 60,
+      "triangle_count": 12
+    },
+    {
+      "id": "right-bench",
+      "type": "box",
+      "vertex_start": 64,
+      "vertex_count": 8,
+      "triangle_start": 72,
+      "triangle_count": 12
+    },
+    {
+      "id": "front-seat-back",
+      "type": "box",
+      "vertex_start": 72,
+      "vertex_count": 8,
+      "triangle_start": 84,
+      "triangle_count": 12
+    },
+    {
+      "id": "front-seat-cushion",
+      "type": "box",
+      "vertex_start": 80,
+      "vertex_count": 8,
+      "triangle_start": 96,
+      "triangle_count": 12
+    },
+    {
+      "id": "front-seat-pedestal",
+      "type": "box",
+      "vertex_start": 88,
+      "vertex_count": 8,
+      "triangle_start": 108,
+      "triangle_count": 12
+    }
+  ],
+  "source_config": "viewers/ambulance/bed-placement.json",
+  "source_config_sha256": "830ba88e63d3a4d3b82b7a9afbfb47aaf7b52b427f48d955bda4c49d6820332d",
+  "output_sha256": "7894803f7535eba7b965fae92ade09915c523f5ec4c5b104f0ab3667324ae6e5",
+  "bytes": 5328,
+  "world_vertices_baked": true,
+  "node_transforms_identity": true,
+  "limits": [
+    "Camera sphere/capsule queries use proxy surface triangles, not full captured equipment geometry.",
+    "Body checking additionally applies finite-plane half-spaces and shallow mattress support tolerance.",
+    "Scene units are not a verified metric calibration."
+  ]
+}
