@@ -1,14 +1,17 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>SuperSplat Viewer</title>
+        <title>Endotracheal Tube · 3DGS Health Scenes</title>
         <meta charset="UTF-8" />
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
         />
         <base href="" />
+        <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg" />
         <link rel="stylesheet" href="./index.css" />
+        <link rel="stylesheet" href="../shared/splat-header.css?v=1" />
+        <script defer src="../shared/site-header.js?v=1"></script>
 
         <!--
             Single injection seam. `renderViewerHtml` replaces the contents of this block to
@@ -81,6 +84,11 @@
         </script>
     </head>
     <body>
+        <header class="site-header">
+            <a class="brand" href="../../"><img src="../../assets/favicon.svg" alt=""><span>3DGS Health Scenes</span></a>
+            <span class="slash" aria-hidden="true">/</span>
+            <h1>Endotracheal Tube</h1>
+        </header>
         <canvas id="application-canvas"></canvas>
 
         <div id="ui">

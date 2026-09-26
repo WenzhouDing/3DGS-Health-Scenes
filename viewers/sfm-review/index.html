@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SfM Review — Ambulance</title>
-<link rel="icon" href="../../favicon.ico">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg?v=2">
 <style>
   :root {
     --bg: #f6f7f9;
@@ -36,20 +36,17 @@
     color: var(--text);
     font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
-  header {
+  .review-toolbar {
     flex: none;
     display: flex;
-    align-items: baseline;
-    gap: 0.85rem;
+    align-items: center;
+    gap: 0.4rem 0.75rem;
     flex-wrap: wrap;
-    padding: 0.7rem 1.1rem;
+    padding: 0.5rem 1.1rem;
     background: var(--card-bg);
     border-bottom: 1px solid var(--border);
   }
-  header a.back { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
-  header a.back:hover { color: var(--accent); }
-  header h1 { margin: 0; font-size: 1.05rem; letter-spacing: -0.01em; font-weight: 600; }
-  header .chips { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-left: auto; }
+  .review-toolbar .chips { display: flex; flex: 1 1 auto; gap: 0.4rem; flex-wrap: wrap; }
   .chip {
     background: var(--chip-bg); color: var(--muted);
     border-radius: 999px; padding: 0.13rem 0.6rem; font-size: 0.75rem; white-space: nowrap;
@@ -100,19 +97,23 @@
   #status.diag h2 { margin: 0 0 0.6rem; font-size: 1rem; color: #e8eaed; }
   #status.diag code { background: #262a30; padding: 0.05rem 0.3rem; border-radius: 3px; }
 </style>
+<link rel="stylesheet" href="../shared/site-header.css?v=1">
 </head>
 <body>
 
-<header>
-  <a class="back" href="../../">&larr; Gallery</a>
-  <h1>SfM Review &mdash; Ambulance</h1>
+<header class="site-header site-header--flow">
+  <a class="brand" href="../../"><img src="../../assets/favicon.svg" alt=""><span>3DGS Health Scenes</span></a>
+  <span class="slash" aria-hidden="true">/</span>
+  <h1>SfM Review</h1>
+</header>
+<div class="review-toolbar" role="region" aria-label="Ambulance capture statistics and guide">
   <div class="chips">
     <span class="chip">2027 posed cameras</span>
     <span class="chip">8075 registered images</span>
     <span class="chip">18 clips</span>
-    <button class="help" id="toggle-guide" aria-expanded="false">How to read this</button>
   </div>
-</header>
+  <button class="help" id="toggle-guide" aria-expanded="false" aria-controls="guide">How to read this</button>
+</div>
 
 <div id="guide">
   <div class="cols">

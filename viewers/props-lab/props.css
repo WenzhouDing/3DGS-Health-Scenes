@@ -1,10 +1,10 @@
 /* Props Lab overlay panel */
 #propsPanel {
     position: absolute;
-    top: max(12px, env(safe-area-inset-top));
+    top: calc(var(--site-header-height) + max(12px, env(safe-area-inset-top)));
     left: max(12px, env(safe-area-inset-left));
     width: 292px;
-    max-height: calc(100vh - 96px);
+    max-height: calc(100dvh - var(--site-header-height) - 96px);
     overflow-y: auto;
     background: rgba(16, 16, 20, 0.88);
     border: 1px solid rgba(255, 255, 255, 0.12);

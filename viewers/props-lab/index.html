@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Props Lab — SuperSplat Viewer</title>
+        <title>Props Lab · 3DGS Health Scenes</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
         <base href="">
         <link rel="stylesheet" href="../ambulance/index.css">
         <link rel="stylesheet" href="./props.css">
+        <link rel="stylesheet" href="../shared/splat-header.css?v=1">
+        <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg?v=2">
+        <script src="../shared/site-header.js?v=1" defer></script>
         <script type="module">
             import { ambulanceScene } from '../ambulance/scene-config.mjs';
 
@@ -68,6 +71,11 @@
         </script>
     </head>
     <body>
+        <header class="site-header">
+            <a class="brand" href="../../"><img src="../../assets/favicon.svg" alt=""><span>3DGS Health Scenes</span></a>
+            <span class="slash" aria-hidden="true">/</span>
+            <h1>Props Lab</h1>
+        </header>
         <canvas id="application-canvas"></canvas>
 
         <div id="ui">

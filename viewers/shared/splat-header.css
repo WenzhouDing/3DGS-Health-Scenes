@@ -1,0 +1,7 @@
+@import url('./site-header.css?v=1');
+
+/* Resize the canvas and its overlays together to keep picking aligned. */
+#application-canvas, #ui, #annotations, #annotationNav.touch, #infoPanel, #xrModal {
+    top: var(--site-header-height);
+    height: calc(100% - var(--site-header-height));
+}
