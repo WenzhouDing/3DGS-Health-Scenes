@@ -88,7 +88,7 @@
      content-based minimum height and thumbnails render ragged */
   .card a.thumb img { width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; display: block; }
   .card .body { padding: 0.9rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.45rem; flex: 1; }
-  .card .title-row { display: flex; align-items: baseline; gap: 0.6rem; }
+  .card .title-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.6rem; }
   .card h3 { margin: 0; font-size: 1.02rem; }
   .card .size { margin-left: auto; color: var(--muted); font-size: 0.78rem; white-space: nowrap; }
   .card p { margin: 0; color: var(--muted); font-size: 0.88rem; line-height: 1.5; flex: 1; }
@@ -100,6 +100,14 @@
     font-size: 0.9rem;
   }
   .card a.open:hover { text-decoration: underline; }
+  .card-links { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.35rem 1rem; }
+  .technical-link { color: var(--muted); font-size: 0.78rem; text-decoration: none; }
+  .technical-link:hover { color: var(--accent); text-decoration: underline; }
+  .card a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  @media (max-width: 620px) {
+    .grid { grid-template-columns: minmax(0, 1fr); }
+    header.site h1 { font-size: 1.4rem; }
+  }
 
   /* flip card: two captures of one scene sharing a single slot */
   .card.flip { background: none; border-color: transparent; overflow: visible; perspective: 1400px; }
@@ -187,9 +195,9 @@
               <button type="button" class="flip-btn" aria-label="Flip to the Insta360 capture">Insta360 &#8634;</button>
             </div>
             <div class="body">
-              <div class="title-row"><h3>Ambulance &mdash; iPhone</h3><span class="size">5.5M splats · 61 MB</span></div>
-              <p>A detailed iPhone scene with Insta360-guided ceiling and corner repairs, retaining captured materials, equipment and bedding.</p>
-              <a class="open" href="viewers/ambulance/?nomanikin" aria-label="Open Ambulance &mdash; iPhone">Open &rarr;</a>
+              <div class="title-row"><h3>Ambulance &mdash; iPhone</h3><span class="size">5.5M splats · 61 MiB</span></div>
+              <p>A detailed iPhone scan with selected Insta360 surface repairs, retaining captured materials, equipment and bedding.</p>
+              <div class="card-links"><a class="open" href="viewers/ambulance/?nomanikin" aria-label="Open Ambulance &mdash; iPhone">Open &rarr;</a><a class="technical-link" href="technical/#ambulance-iphone" aria-label="Capture &amp; training: Ambulance — iPhone">Capture &amp; training</a></div>
             </div>
           </div>
 
@@ -201,9 +209,9 @@
               <button type="button" class="flip-btn" aria-label="Flip to the iPhone capture">iPhone &#8634;</button>
             </div>
             <div class="body">
-              <div class="title-row"><h3>Ambulance &mdash; Insta360</h3><span class="size">1.0M splats · 16 MB</span></div>
-              <p>The same ambulance from a single Insta360 capture &mdash; smaller scene with view-dependent color, opening at the supply cabinet and attendant seat.</p>
-              <a class="open" href="viewers/ambulance-insta360/" aria-label="Open Ambulance &mdash; Insta360">Open &rarr;</a>
+              <div class="title-row"><h3>Ambulance &mdash; Insta360</h3><span class="size">1.0M splats · 16 MiB</span></div>
+              <p>The same ambulance reconstructed from Insta360 imagery, with view-dependent color and a smaller download.</p>
+              <div class="card-links"><a class="open" href="viewers/ambulance-insta360/" aria-label="Open Ambulance &mdash; Insta360">Open &rarr;</a><a class="technical-link" href="technical/#ambulance-insta360" aria-label="View-dependent color: Ambulance — Insta360">View-dependent color</a></div>
             </div>
           </div>
 
@@ -215,9 +223,9 @@
           <img src="assets/props-lab.jpg?v=4" alt="Equipment staged in the ambulance, beside a close-up library of placeable medical props" width="1280" height="720" loading="lazy">
         </a>
         <div class="body">
-          <div class="title-row"><h3>Props Lab</h3><span class="size">10 props · 33 MB</span></div>
+          <div class="title-row"><h3>Props Lab</h3><span class="size">10 props · 31 MiB</span></div>
           <p>Stage medical equipment in the cleaned ambulance &mdash; drop props onto modeled support surfaces, then export the layout.</p>
-          <a class="open" href="viewers/props-lab/?scene=ambulance" aria-label="Open Props Lab">Open &rarr;</a>
+          <div class="card-links"><a class="open" href="viewers/props-lab/?scene=ambulance" aria-label="Open Props Lab">Open &rarr;</a><a class="technical-link" href="technical/#props-lab" aria-label="Mesh placement &amp; support: Props Lab">Mesh placement &amp; support</a></div>
         </div>
       </div>
 
@@ -226,9 +234,9 @@
           <img src="assets/sfm-review.jpg" alt="Camera paths of the ambulance capture" loading="lazy">
         </a>
         <div class="body">
-          <div class="title-row"><h3>SfM Review</h3><span class="size">8,075 frames · 997K pts · 50 MB</span></div>
+          <div class="title-row"><h3>SfM Review</h3><span class="size">8,075 views · 18 clips</span></div>
           <p>The COLMAP solve behind the scene &mdash; scrub per-clip camera trajectories, frame-to-frame pose diagnostics, and floor/ceiling coverage grids.</p>
-          <a class="open" href="viewers/sfm-review/" aria-label="Open SfM Review">Open &rarr;</a>
+          <div class="card-links"><a class="open" href="viewers/sfm-review/" aria-label="Open SfM Review">Open &rarr;</a><a class="technical-link" href="technical/#sfm-review" aria-label="Camera paths &amp; coverage: SfM Review">Camera paths &amp; coverage</a></div>
         </div>
       </div>
     </div>
@@ -246,9 +254,9 @@
           <img src="assets/mannequin-interactive.jpg?v=5" alt="Front-facing manikin scan with smaller segmentation and raised-body pose views on the right" width="1280" height="720" loading="lazy">
         </a>
         <div class="body">
-          <div class="title-row"><h3>Interactive Manikin</h3><span class="size">11 movable joints &middot; 2.7M splats</span></div>
+          <div class="title-row"><h3>Interactive Manikin</h3><span class="size">11 movable joints · 2.7M splats</span></div>
           <p>Explore the fused scan, compare front and back captures, and see body segmentation. Try bed poses or rotate individual joints.</p>
-          <a class="open" href="viewers/mannequin/" aria-label="Open interactive training manikin">Interact &rarr;</a>
+          <div class="card-links"><a class="open" href="viewers/mannequin/" aria-label="Open interactive training manikin">Interact &rarr;</a><a class="technical-link" href="technical/#interactive-manikin" aria-label="Fusion &amp; articulation: Interactive Manikin">Fusion &amp; articulation</a></div>
         </div>
       </div>
       <div class="card">
@@ -256,9 +264,9 @@
           <img src="assets/ambulance-manikin.jpg?v=11" alt="Oblique view of the full manikin on the ambulance stretcher with interactive joint handles" width="1280" height="720" loading="lazy">
         </a>
         <div class="body">
-          <div class="title-row"><h3>Ambulance + Manikin</h3><span class="size">Collision checks &middot; Gravity</span></div>
+          <div class="title-row"><h3>Ambulance + Manikin</h3><span class="size">Collision checks · Gravity</span></div>
           <p>Pose the manikin on the ambulance stretcher. Hold and release its arms, test gravity, and explore the cabin with collision checks.</p>
-          <a class="open" href="viewers/ambulance/" aria-label="Open ambulance with articulated manikin">Interact &rarr;</a>
+          <div class="card-links"><a class="open" href="viewers/ambulance/" aria-label="Open ambulance with articulated manikin">Interact &rarr;</a><a class="technical-link" href="technical/#ambulance-manikin" aria-label="Contact checks &amp; gravity: Ambulance + Manikin">Contact checks &amp; gravity</a></div>
         </div>
       </div>
     </div>
@@ -276,7 +284,7 @@
           <img src="assets/laryngoscope.jpg" alt="Laryngoscope with curved blade" loading="lazy">
         </a>
         <div class="body">
-          <div class="title-row"><h3>Laryngoscope</h3><span class="size">577K splats &middot; 6.8 MB</span></div>
+          <div class="title-row"><h3>Laryngoscope</h3><span class="size">577K splats · 6.8 MiB</span></div>
           <p>A curved-blade laryngoscope scanned as a single object &mdash; chrome blade and knurled handle.</p>
           <a class="open" href="viewers/laryngoscope/" aria-label="Open Laryngoscope">Open &rarr;</a>
         </div>
@@ -287,7 +295,7 @@
           <img src="assets/endotracheal-tube.jpg" alt="Cuffed endotracheal tube" loading="lazy">
         </a>
         <div class="body">
-          <div class="title-row"><h3>Endotracheal Tube</h3><span class="size">70K splats &middot; 0.9 MB</span></div>
+          <div class="title-row"><h3>Endotracheal Tube</h3><span class="size">70K splats · 0.9 MiB</span></div>
           <p>A cuffed endotracheal tube with its connector and pilot balloon line.</p>
           <a class="open" href="viewers/endotracheal-tube/" aria-label="Open Endotracheal Tube">Open &rarr;</a>
         </div>
@@ -298,7 +306,7 @@
           <img src="assets/bag-valve-mask.jpg" alt="Bag valve mask with mask and reservoir bag" loading="lazy">
         </a>
         <div class="body">
-          <div class="title-row"><h3>Bag Valve Mask</h3><span class="size">80K splats &middot; 3.3 MB</span></div>
+          <div class="title-row"><h3>Bag Valve Mask</h3><span class="size">80K splats · 3.1 MiB</span></div>
           <p>A self-inflating bag valve mask with the face mask and reservoir bag attached.</p>
           <a class="open" href="viewers/bag-valve-mask/" aria-label="Open Bag Valve Mask">Open &rarr;</a>
         </div>
@@ -309,7 +317,7 @@
           <img src="assets/defibrillator.jpg?v=4" alt="Front-right view of the Zoll defibrillator with its screen, controls, and yellow side pouch visible" width="1280" height="720" loading="lazy">
         </a>
         <div class="body">
-          <div class="title-row"><h3>Zoll Defibrillator</h3><span class="size">768K splats &middot; 9.9 MB</span></div>
+          <div class="title-row"><h3>Zoll Defibrillator</h3><span class="size">768K splats · 9.5 MiB</span></div>
           <p>A Zoll defibrillator in its grey-and-yellow soft carry case, handle up.</p>
           <a class="open" href="viewers/defibrillator/" aria-label="Open Zoll Defibrillator">Open &rarr;</a>
         </div>
@@ -318,7 +326,7 @@
   </section>
 
   <footer>
-    Static scenes trained with <a href="https://github.com/nerfstudio-project/gsplat">gsplat</a>, packed to
+    Ambulance reconstructions use <a href="https://github.com/nerfstudio-project/gsplat">gsplat</a>. Static PLY assets are packed to
     <a href="https://developer.playcanvas.com/user-manual/gaussian-splatting/splat-formats/">SOG</a> with
     <a href="https://github.com/playcanvas/splat-transform">splat-transform</a>, rendered with
     <a href="https://github.com/playcanvas/supersplat-viewer">SuperSplat Viewer</a> (MIT).

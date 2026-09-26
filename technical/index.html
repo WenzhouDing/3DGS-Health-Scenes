@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Capture, representation, interaction methods and scope for the 3DGS Health Scenes gallery.">
+  <title>Technical notes · 3DGS Health Scenes</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../viewers/shared/site-header.css?v=1">
+  <style>
+    :root { color-scheme:light dark; --page-bg:#f8f9fb; --paper:#fff; --ink:#1a1d21; --muted:#636b76; --rule:#e2e5e9; --accent:#0e7c86; }
+    @media (prefers-color-scheme:dark) {
+      :root { --page-bg:#17191d; --paper:#1d2025; --ink:#e8eaed; --muted:#a1a8b2; --rule:#30353d; --accent:#5fc6cf; }
+    }
+    * { box-sizing:border-box; }
+    html { scroll-padding-top:var(--site-header-height); }
+    body { margin:0; background:var(--page-bg); color:var(--ink); font:16px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+    a { color:var(--accent); text-underline-offset:3px; }
+    a:hover { text-decoration-thickness:2px; }
+    a:focus-visible { outline:2px solid var(--accent); outline-offset:4px; border-radius:2px; }
+    .site-header { position:sticky; top:0; }
+    .site-header .header-title { min-width:0; font-size:15px; font-weight:500; }
+    .skip-link { position:absolute; z-index:50; top:-70px; left:20px; padding:8px 14px; background:var(--paper); }
+    .skip-link:focus { top:8px; }
+    .page-shell { display:grid; grid-template-columns:220px minmax(0,1fr); gap:48px; max-width:1064px; margin:0 auto; padding:48px 32px 64px; align-items:start; }
+    .contents { position:sticky; top:calc(var(--site-header-height) + 28px); }
+    .contents h2 { margin:4px 0 14px; color:var(--muted); font-size:12px; font-weight:650; letter-spacing:.09em; text-transform:uppercase; }
+    .contents ol { list-style:none; margin:0; padding:0; }
+    .contents li { margin:0; }
+    .contents a { display:block; padding:6px 0; color:var(--muted); font-size:14px; line-height:1.5; text-decoration:none; }
+    .contents a:hover { color:var(--accent); }
+    .contents .gallery-link { margin-top:22px; padding-top:18px; border-top:1px solid var(--rule); color:var(--accent); }
+    .page-intro { margin-bottom:42px; }
+    h1 { margin:0 0 12px; font-size:36px; font-weight:650; letter-spacing:-1px; line-height:1.2; }
+    .page-intro p { margin:0; color:var(--muted); font-size:17px; line-height:1.7; }
+    section { padding:32px 0 36px; border-top:1px solid var(--rule); scroll-margin-top:28px; }
+    section h2 { margin:0 0 7px; font-size:26px; line-height:1.3; font-weight:620; letter-spacing:-.55px; }
+    section:target h2 { color:var(--accent); }
+    .metadata { margin:0 0 20px; color:var(--muted); font-size:13px; font-variant-numeric:tabular-nums; }
+    section p { margin:0 0 18px; }
+    .summary { font-size:17px; line-height:1.7; }
+    section h3 { margin:23px 0 6px; font-size:15px; font-weight:650; line-height:1.5; }
+    .section-links { display:flex; flex-wrap:wrap; gap:12px 26px; margin-top:23px; font-size:14px; }
+    .section-links a { text-decoration:none; font-weight:550; }
+    .section-links a:hover { text-decoration:underline; }
+    .scope-note { margin-top:10px; padding:24px; background:var(--paper); border:1px solid var(--rule); border-radius:8px; color:var(--muted); }
+    .scope-note h2 { margin:0 0 8px; font-size:15px; color:var(--ink); font-weight:600; }
+    .scope-note p { margin:0; font-size:14px; line-height:1.7; }
+    @media (max-width:800px) {
+      .page-shell { grid-template-columns:1fr; gap:30px; padding:30px 24px 44px; }
+      .contents { position:static; padding-bottom:22px; border-bottom:1px solid var(--rule); }
+      .contents h2 { margin:0 0 10px; }
+      .contents ol { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:20px; }
+      .contents a { padding:5px 0; font-size:13px; }
+      .contents .gallery-link { margin-top:12px; padding-top:0; border:0; }
+      .page-intro { margin-bottom:28px; }
+      h1 { font-size:31px; }
+      section { padding:26px 0 30px; }
+    }
+    @media (max-width:460px) {
+      .page-shell { padding:25px 20px 36px; }
+      .site-header .header-title { font-size:12px; line-height:1.3; }
+      body { font-size:15px; }
+      .page-intro p,.summary { font-size:16px; }
+      section h2 { font-size:23px; }
+      .scope-note { padding:18px; }
+    }
+    @media print {
+      .site-header,.contents,.skip-link { display:none; }
+      .page-shell { display:block; max-width:none; padding:0; }
+      body { background:#fff; color:#111; font-size:11pt; }
+      .metadata,.page-intro p,.scope-note { color:#444; }
+      section { break-inside:avoid; }
+      .section-links { font-size:10pt; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#notes">Skip to technical notes</a>
+  <header class="site-header site-header--flow">
+    <a class="brand" href="../"><img src="../assets/favicon.svg" alt=""><span>3DGS Health Scenes</span></a>
+    <span class="slash" aria-hidden="true">/</span>
+    <span class="header-title">Technical notes</span>
+  </header>
+  <div class="page-shell">
+    <nav class="contents" aria-label="On this page">
+      <h2>On this page</h2>
+      <ol>
+          <li><a href="#ambulance-iphone">Ambulance &mdash; iPhone</a></li>
+          <li><a href="#ambulance-insta360">Ambulance &mdash; Insta360</a></li>
+          <li><a href="#props-lab">Props Lab</a></li>
+          <li><a href="#sfm-review">SfM Review</a></li>
+          <li><a href="#interactive-manikin">Interactive Manikin</a></li>
+          <li><a href="#ambulance-manikin">Ambulance + Manikin</a></li>
+          <li><a href="#laryngoscope">Laryngoscope</a></li>
+          <li><a href="#endotracheal-tube">Endotracheal Tube</a></li>
+          <li><a href="#bag-valve-mask">Bag Valve Mask</a></li>
+          <li><a href="#defibrillator">Zoll Defibrillator</a></li>
+      </ol>
+      <a class="gallery-link" href="../">← Back to gallery</a>
+    </nav>
+    <main id="notes">
+      <div class="page-intro">
+        <h1>Technical notes</h1>
+        <p>Capture, representation and interaction details for each gallery entry, with links to the implementation and source documentation.</p>
+      </div>
+        <section id="ambulance-iphone" aria-labelledby="ambulance-iphone-title">
+          <h2 id="ambulance-iphone-title">Ambulance &mdash; iPhone</h2>
+          <p class="metadata">5.53M splats · 60.75 MiB SOG</p>
+          <p class="summary">18 video passes &rarr; COLMAP reconstruction &rarr; targeted frame sampling and blur rejection &rarr; 120,000-step Gaussian training.</p>
+          <!-- Capture settings were checked with ffprobe on all 18 source MOVs in
+               the ambulance project's data/source-videos directory; clip roles
+               are recorded in data/ANNOTATION.md. The source SfM RRD matches that
+               project's archived reconstruction by SHA-256. Training provenance:
+               3DGS-Health commit 75c124576cb47c2e0d7e3d1365f94bb13b4eafaf,
+               docs/EXPERIMENTS.md and scripts/train_experiment.py;
+               gsplat submodule 77ab983, examples/simple_trainer.py. -->
+          <h3>Video capture</h3>
+          <p>The ambulance interior was recorded with an iPhone 16 Pro Max (24 mm camera) in Blackmagic Camera: 3840 &times; 2160 HEVC at 60 fps, with 1/120 s shutter, ISO 80 and 4060 K white balance. The 18 clips total 44 min 28 s, covering general cabin passes and closer views of the stretcher, doors, cabinets, benches and equipment.</p>
+          <h3>Frame extraction &amp; camera reconstruction</h3>
+          <p>Sampling the videos at 3 fps produced 8,012 base images. COLMAP used vocabulary-tree matching, a single shared OPENCV camera model and GPU bundle adjustment. The base reconstruction registered 7,995 images (99.8%), with a reported mean reprojection error of 1.40 pixels.</p>
+          <h3>Targeted sampling &amp; blur rejection</h3>
+          <p>A bootstrap pass sampled additional midpoint frames around weakly reconstructed views. Of 1,705 candidates, 1,560 passed the blur gate and were registered into the reconstruction. Base-frame sharpness was measured with variance of the Laplacian, divided by the rolling median over &plusmn;10 same-video neighbors. Frames with a ratio below 0.50 or a raw score below 20 were removed. This rejected 1,497 base frames; the combined dataset retained 8,075 registered images. Filtering removed frames from a copy of the COLMAP model without rerunning bundle adjustment.</p>
+          <h3>Gaussian training</h3>
+          <p>The production run, <code>exp11_boot_sharp</code>, used gsplat for 120,000 iterations, initialized from the SfM points and colors. The experiment ledger records per-image appearance optimization, MCMC relocation and densification with a 6.5-million-Gaussian cap, refinement through iteration 116,000, and an opacity regularization weight of 0.0005. Every eighth image in filename order was held out for validation, evaluated at native 4K resolution.</p>
+          <p>The pinned trainer optimizes Gaussian position, scale, rotation, opacity and appearance. Its default photometric loss is 0.8 &times; L1 + 0.2 &times; (1 &minus; SSIM), plus opacity and scale regularization. These loss details come from the training code; the run&rsquo;s full saved configuration is not included in the gallery records.</p>
+          <h3>Export &amp; gallery cleanup</h3>
+          <p>The PLY export baked neutral-appearance colors and was then pruned below 0.05 opacity, leaving 5,120,071 splats. Subsequent surface cleanup and selected, aligned Insta360 additions produced the gallery&rsquo;s 5,525,878-splat SOG asset.</p>
+          <div class="section-links"><a class="open" href="../viewers/ambulance/?nomanikin" aria-label="Open Ambulance &mdash; iPhone">Open &rarr;</a><a class="methods" href="https://github.com/WenzhouDing/3DGS-Health/blob/75c124576cb47c2e0d7e3d1365f94bb13b4eafaf/docs/EXPERIMENTS.md" target="_blank" rel="noopener">Training record &nearr;</a><a class="methods" href="https://github.com/WenzhouDing/3DGS-Health-Scenes/blob/main/tools/ambulance/README.md" target="_blank" rel="noopener">Cleanup methods &nearr;</a></div>
+        </section>
+
+        <section id="ambulance-insta360" aria-labelledby="ambulance-insta360-title">
+          <h2 id="ambulance-insta360-title">Ambulance &mdash; Insta360</h2>
+          <p class="metadata">999K splats · 15.77 MiB SOG</p>
+          <p class="summary">An independent reconstruction of the same ambulance, offering a second observation of the cabin and a reference for selected repairs in the iPhone scene.</p>
+          <h3>Representation</h3>
+          <p>The browser asset contains 999,410 Gaussians with degree-3 spherical harmonics for view-dependent color. The smaller SOG package preserves this color basis alongside position, scale, orientation and opacity.</p>
+          <h3>Role in the pipeline</h3>
+          <p>Stable cabin surfaces are registered to the iPhone reconstruction before reference regions are selected. This viewer shows the separate Insta360 scene, allowing its appearance and coverage to be inspected on their own.</p>
+          <h3>Inspection</h3>
+          <p>SuperSplat Viewer provides drone navigation and orbit inspection. Differences in detail or apparent coverage between captures are qualitative observations, rather than a measured accuracy comparison.</p>
+          <div class="section-links"><a class="open" href="../viewers/ambulance-insta360/" aria-label="Open Ambulance &mdash; Insta360">Open &rarr;</a><a class="methods" href="https://github.com/WenzhouDing/3DGS-Health-Scenes/blob/main/tools/ambulance/README.md" target="_blank" rel="noopener">Capture &amp; alignment &nearr;</a></div>
+        </section>
+
+        <section id="props-lab" aria-labelledby="props-lab-title">
+          <h2 id="props-lab-title">Props Lab</h2>
+          <p class="metadata">10 mesh props · 31.30 MiB catalog</p>
+          <p class="summary">A hybrid scene for arranging independently movable medical equipment inside the cleaned Gaussian ambulance reconstruction.</p>
+          <h3>Scene &amp; assets</h3>
+          <p>The environment is the same 5.53M-Gaussian ambulance. Ten Meshy-generated props are separate textured GLB meshes optimized with glTF Transform; they are distinct from the Gaussian object scans below.</p>
+          <h3>Placement &amp; support</h3>
+          <p>Each prop has editable translation, rotation and uniform scale, with click-to-place controls. A simple vertical drop uses modeled scene surfaces or a manual ground plane; it is not a general rigid-body or prop-to-prop contact solver.</p>
+          <h3>Reproducible layouts</h3>
+          <p>Layouts can be exported as JSON transforms. The default arrangement contains a cardiac monitor, suction unit and stethoscope; the catalog size excludes the 60.75 MiB ambulance scene and viewer runtime.</p>
+          <div class="section-links"><a class="open" href="../viewers/props-lab/?scene=ambulance" aria-label="Open Props Lab">Open &rarr;</a><a class="methods" href="https://github.com/WenzhouDing/3DGS-Health-Scenes/blob/main/viewers/props-lab/props.js" target="_blank" rel="noopener">Implementation &nearr;</a></div>
+        </section>
+
+        <section id="sfm-review" aria-labelledby="sfm-review-title">
+          <h2 id="sfm-review-title">SfM Review</h2>
+          <p class="metadata">8,075 camera centers · 18 clips</p>
+          <p class="summary">An interactive view of the COLMAP structure-from-motion reconstruction, camera trajectories and geometric coverage diagnostics behind the ambulance scene.</p>
+          <h3>Cameras &amp; frame</h3>
+          <p>All 8,075 registered camera centers are displayed; 2,027 strided cameras also have full poses and intrinsics. Dominant-plane RANSAC levels the reconstruction to +Z up, with the floor at zero in uncalibrated scene units.</p>
+          <h3>Trajectory diagnostics</h3>
+          <p>Per-clip paths and a moving frustum accompany step, turn, height and roll plots. Translation and rotation changes are normalized by frame gaps and typical motion to help inspect tracking discontinuities.</p>
+          <h3>Coverage estimates</h3>
+          <p>Floor and ceiling grids count in-frustum views below 75° incidence and summarize their angular spread. These use the posed subset and do not model occlusion. Rerun 0.36.3 displays the 9.32 MiB recording.</p>
+          <div class="section-links"><a class="open" href="../viewers/sfm-review/" aria-label="Open SfM Review">Open &rarr;</a><a class="methods" href="https://github.com/WenzhouDing/3DGS-Health-Scenes/blob/main/README.md#inspecting-the-sfm-result" target="_blank" rel="noopener">SfM methods &nearr;</a></div>
+        </section>
+
+        <section id="interactive-manikin" aria-labelledby="interactive-manikin-title">
+          <h2 id="interactive-manikin-title">Interactive Manikin</h2>
+          <p class="metadata">2.70M splats · 16 regions · 11 joints</p>
+          <p class="summary">A fused front-and-back Gaussian scan with segmented body regions that can be inspected and posed through an articulated hierarchy.</p>
+          <h3>Scan fusion</h3>
+          <p>Physical features—including shoulder pads, torso ports and joint hardware—guide part alignment at one shared scale. Complementary surface weighting and reviewed local cleanup produce 2,698,682 retained Gaussians across 16 body regions.</p>
+          <h3>Articulation</h3>
+          <p>Five ball joints, two axial arm swivels and four hinges provide 21 rotational axes, with a fixed waist. Each forearm, wrist pad and hand forms one rigid assembly. Part motion transforms Gaussian centers and orientations together.</p>
+          <h3>Interaction &amp; scope</h3>
+          <p>Compare source contributions, inspect segmentation, try three pose presets and export poses as JSON. Optional springs control angular response; this standalone page has no gravity or collision constraints, and rigid regions can expose seams.</p>
+          <div class="section-links"><a class="open" href="../viewers/mannequin/" aria-label="Open interactive training manikin">Interact &rarr;</a><a class="methods" href="https://github.com/WenzhouDing/3DGS-Health-Scenes/blob/main/viewers/mannequin-articulation/README.md" target="_blank" rel="noopener">Articulation methods &nearr;</a></div>
+        </section>
+
+        <section id="ambulance-manikin" aria-labelledby="ambulance-manikin-title">
+          <h2 id="ambulance-manikin-title">Ambulance + Manikin</h2>
+          <p class="metadata">2.70M manikin + 5.53M scene splats</p>
+          <p class="summary">The same articulated scan placed on the captured ambulance stretcher, with direct joint manipulation and approximate surface-contact checks.</p>
+          <h3>Integration &amp; contact</h3>
+          <p>Both Gaussian datasets render together. A fitted placement and separate cabin/stretcher proxies support contact queries from 11,513 sampled body representatives; joint sweeps stop at the last clear sampled pose.</p>
+          <h3>Hold, release &amp; drop</h3>
+          <p>Held arms are supported; releasing them enables gravitational torque, damping, joint limits and swept contact checks. A separate whole-body drop keeps the pose fixed and advances vertical motion in 1/120-second steps.</p>
+          <h3>Simulation scope</h3>
+          <p>Scale is fitted to the stretcher rather than calibrated in meters. Contacts and mass properties are approximate; this is an interaction prototype, without deformable tissue, mattress deformation or full ragdoll dynamics.</p>
+          <div class="section-links"><a class="open" href="../viewers/ambulance/" aria-label="Open ambulance with articulated manikin">Interact &rarr;</a><a class="methods" href="https://github.com/WenzhouDing/3DGS-Health-Scenes/blob/main/viewers/ambulance/README.md" target="_blank" rel="noopener">Interaction methods &nearr;</a></div>
+        </section>
+
+        <section id="laryngoscope" aria-labelledby="laryngoscope-title">
+          <h2 id="laryngoscope-title">Laryngoscope</h2>
+          <p class="metadata">576,554 splats · 6.83 MiB SOG</p>
+          <p class="summary">A rigid object reconstruction of a curved-blade laryngoscope, retaining the chrome blade, handle texture and overall silhouette.</p>
+          <h3>Gaussian model</h3>
+          <p>Anisotropic Gaussians store position, scale, orientation, opacity and a constant color per Gaussian. The source uses DC-only color (SH degree 0), without higher-order view-dependent coefficients.</p>
+          <h3>Web representation</h3>
+          <p>The PLY export is distributed as SOG v2, packed with splat-transform v3.4.2. Gaussian parameter data are compressed into WebP payloads rather than a polygon mesh or a conventional mesh texture atlas.</p>
+          <h3>Inspection</h3>
+          <p>Orbit, pan, zoom and focus picking support close inspection. The viewer uses a black background, linear tone mapping and a 50° initial field of view. The blade and handle remain a single static scanned object.</p>
+          <div class="section-links"><a class="open" href="../viewers/laryngoscope/" aria-label="Open Laryngoscope">Open &rarr;</a><a class="methods" href="https://github.com/WenzhouDing/3DGS-Health-Scenes/blob/main/viewers/laryngoscope/settings.json" target="_blank" rel="noopener">Viewer settings &nearr;</a></div>
+        </section>
+
+        <section id="endotracheal-tube" aria-labelledby="endotracheal-tube-title">
+          <h2 id="endotracheal-tube-title">Endotracheal Tube</h2>
+          <p class="metadata">69,875 splats · 0.88 MiB SOG</p>
+          <p class="summary">A compact reconstruction of a cuffed endotracheal tube, including its curved tube, connector and pilot balloon line.</p>
+          <h3>Gaussian model</h3>
+          <p>The object is represented by 69,875 anisotropic Gaussians with DC-only color (SH degree 0). Its appearance is carried by per-Gaussian color and opacity, with no higher-order spherical-harmonic coefficients.</p>
+          <h3>Web representation</h3>
+          <p>A SOG v2 package generated with splat-transform v3.4.2 stores compressed Gaussian parameters. The 0.88 MiB asset size describes the model payload, excluding the shared browser renderer and other page resources.</p>
+          <h3>Inspection</h3>
+          <p>Orbit, zoom, pan and focus picking expose the thin tubing from multiple angles. This viewer presents the captured shape as a static object; it does not add articulation or simulate bending of the tube.</p>
+          <div class="section-links"><a class="open" href="../viewers/endotracheal-tube/" aria-label="Open Endotracheal Tube">Open &rarr;</a><a class="methods" href="https://github.com/WenzhouDing/3DGS-Health-Scenes/blob/main/viewers/endotracheal-tube/settings.json" target="_blank" rel="noopener">Viewer settings &nearr;</a></div>
+        </section>
+
+        <section id="bag-valve-mask" aria-labelledby="bag-valve-mask-title">
+          <h2 id="bag-valve-mask-title">Bag Valve Mask</h2>
+          <p class="metadata">80,000 splats · 3.12 MiB SOG</p>
+          <p class="summary">A Gaussian reconstruction of a self-inflating ventilation bag, with the face mask and reservoir bag captured as one assembly.</p>
+          <h3>Source &amp; appearance</h3>
+          <p>The source PLY records a Brush export with degree-3 spherical harmonics. Its 80,000 Gaussians retain 16 color-basis coefficients per channel, allowing rendered appearance to vary with viewing direction.</p>
+          <h3>Web representation</h3>
+          <p>splat-transform v3.4.2 packages the model as SOG v2 with WebP-compressed parameter data. Higher-order color coefficients are retained, unlike the DC-only laryngoscope, tube and Zoll assets.</p>
+          <h3>Inspection</h3>
+          <p>The browser supports orbit, pan, zoom and focus picking with linear tone mapping. The bag, mask and reservoir remain a static captured assembly; compression or inflation is not part of the implemented interaction.</p>
+          <div class="section-links"><a class="open" href="../viewers/bag-valve-mask/" aria-label="Open Bag Valve Mask">Open &rarr;</a><a class="methods" href="https://github.com/WenzhouDing/3DGS-Health-Scenes/blob/main/viewers/bag-valve-mask/settings.json" target="_blank" rel="noopener">Viewer settings &nearr;</a></div>
+        </section>
+
+        <section id="defibrillator" aria-labelledby="defibrillator-title">
+          <h2 id="defibrillator-title">Zoll Defibrillator</h2>
+          <p class="metadata">767,799 splats · 9.47 MiB SOG</p>
+          <p class="summary">A rigid appearance reconstruction of the Zoll unit and its soft carry case, including the front display, controls, handle and side pouches.</p>
+          <h3>Gaussian model</h3>
+          <p>The asset contains 767,799 anisotropic Gaussians with position, scale, orientation, opacity and DC-only color (SH degree 0). It does not contain higher-order view-dependent color coefficients.</p>
+          <h3>Web representation</h3>
+          <p>The source PLY is packaged as SOG v2 by splat-transform v3.4.2. Compressed Gaussian parameter payloads preserve the scanned appearance for browser rendering without creating a textured polygon model.</p>
+          <h3>Inspection</h3>
+          <p>Orbit, pan, zoom and focus picking allow front, side and rear inspection. The screen and buttons are part of the captured appearance; they are not functional device controls or a simulated monitor interface.</p>
+          <div class="section-links"><a class="open" href="../viewers/defibrillator/" aria-label="Open Zoll Defibrillator">Open &rarr;</a><a class="methods" href="https://github.com/WenzhouDing/3DGS-Health-Scenes/blob/main/viewers/defibrillator/settings.json" target="_blank" rel="noopener">Viewer settings &nearr;</a></div>
+        </section>
+      <footer class="scope-note">
+        <h2>Measurement scope</h2>
+        <p>Technical notes describe the distributed assets and implemented interactions. Splat counts measure model size, not reconstruction accuracy. File sizes use MiB (2²⁰ bytes); SOG sizes exclude the viewer runtime.</p>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
