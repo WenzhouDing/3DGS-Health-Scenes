@@ -1,3 +1,5 @@
+import { createSceneFrame } from './scene-frame.mjs';
+
 const TRACEID_GPU_TIMINGS = "GpuTimings";
 
 const version$1 = "2.21.4";
@@ -81552,7 +81554,7 @@ class MeshCollision {
      * @param url - URL to the .glb file.
      * @returns A promise resolving to a MeshCollision.
      */
-    static fromGlb(app, url) {
+    static fromGlb(app, url, sceneFrame = createSceneFrame()) {
         return new Promise((resolve, reject) => {
             const asset = new Asset(url, 'container', { url });
             const cleanup = () => {
@@ -81593,7 +81595,7 @@ class MeshCollision {
                         const numVerts = vb.numVertices;
                         for (let v = 0; v < numVerts; v++) {
                             const base = v * stride + offset;
-                            allPositions.push(data[base], data[base + 1], data[base + 2]);
+                            allPositions.push(...sceneFrame.point([data[base], data[base + 1], data[base + 2]]));
                         }
                         const indexData = ib.format === INDEXFORMAT_UINT32
                             ? new Uint32Array(ib.storage)
@@ -92380,7 +92382,11 @@ const loadGsplat = async (app, config, progressCallback) => {
     return new Promise((resolve, reject) => {
         asset.on('load', () => {
             const entity = new Entity('gsplat');
-            entity.setLocalEulerAngles(0, 0, 180);
+            // Format conversion is the legacy Z180; leveling is a separate
+            // world-space rotation applied afterward, never to the asset bytes.
+            const frame = createSceneFrame(config.sceneRotation);
+            const rotation = frame.placement({position:[0,0,0], rotation:[0,0,1,0], scale:1}).rotation;
+            entity.setLocalRotation(...rotation);
             entity.addComponent('gsplat', {
                 unified: true,
                 asset
@@ -92518,6 +92524,15 @@ const initCanvas = (global) => {
     apply();
 };
 const main = async (canvas, settingsJson, config) => {
+    let sceneFrame = createSceneFrame(config.sceneRotation);
+    if (!sceneFrame.identity && config.collisionUrl && new URL(config.collisionUrl, location.href).pathname.split('.').pop()?.toLowerCase() !== 'glb') {
+        // Rotating a voxel grid needs a query adapter. Until one is provided,
+        // opt out for the ENTIRE scene, including overlays reading global.config.
+        console.warn('Scene leveling disabled: the selected voxel collider uses the source frame. Use a GLB collider to enable leveling.');
+        config = {...config, sceneRotation:[0,0,0,1]};
+        sceneFrame = createSceneFrame();
+    }
+    settingsJson = sceneFrame.settings(settingsJson);
     const { app, camera, renderer } = await createApp(canvas, config);
     // create events
     const events = new EventHandler();
@@ -92553,6 +92568,7 @@ const main = async (canvas, settingsJson, config) => {
         app,
         settings: importSettings(settingsJson),
         config,
+        sceneFrame,
         state,
         events,
         camera,
@@ -92590,7 +92606,7 @@ const main = async (canvas, settingsJson, config) => {
     if (config.collisionUrl) {
         const ext = new URL(config.collisionUrl, location.href).pathname.split('.').pop()?.toLowerCase();
         if (ext === 'glb') {
-            collisionLoad = MeshCollision.fromGlb(app, config.collisionUrl).catch((err) => {
+            collisionLoad = MeshCollision.fromGlb(app, config.collisionUrl, sceneFrame).catch((err) => {
                 console.warn('Failed to load mesh collision:', err);
                 return null;
             });

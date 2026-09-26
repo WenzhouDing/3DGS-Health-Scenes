@@ -1,8 +1,9 @@
 @import url('./manikin-interaction.css');
+.am-no-ui :is(.am-panel, .am-joint-overlay) { display:none!important; }
 body[data-manikin-mode="pose"] :is(#play,#orbitCamera,#flyCamera,#fpsCamera) { display:none!important; }
 .am-panel { position:fixed; left:18px; top:18px; z-index:30; width:280px; color:#f4f5f6; background:rgba(20,27,33,.94); border:1px solid #ffffff26; border-radius:14px; padding:16px; box-sizing:border-box; box-shadow:0 8px 40px #0005; font:13px/1.45 system-ui,sans-serif; max-height:calc(100dvh - 115px); overflow:auto; scrollbar-width:thin; scrollbar-color:#596773 transparent; color-scheme:dark; }
 .am-panel * { box-sizing:border-box; touch-action:pan-y; }
-.am-panel h1 { font-size:16px; font-weight:620; padding-right:20px; }
+.am-panel h2 { font-size:16px; font-weight:620; padding-right:20px; }
 .am-panel .am-subtitle { color:#aebac5; font-size:11px; margin:3px 0 12px; }
 .am-panel button,.am-panel select,.am-panel input[type=number] { font:inherit; color:inherit; background:#ffffff0d; border:1px solid #ffffff2b; border-radius:7px; padding:7px 9px; }
 .am-panel button { cursor:pointer; }

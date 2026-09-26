@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="../ambulance/index.css">
         <link rel="stylesheet" href="./props.css">
         <script type="module">
+            import { ambulanceScene } from '../ambulance/scene-config.mjs';
+
             const createImage = (url) => {
                 const img = new Image();
                 img.src = url;
@@ -19,9 +21,14 @@
             const posterUrl = url.searchParams.get('poster');
             const skyboxUrl = url.searchParams.get('skybox');
             const scene = url.searchParams.get('scene') || 'ambulance';
-            const collisionUrl = url.searchParams.get('collision') ?? url.searchParams.get('voxel') ?? `../${scene}/index.voxel.json`;
-            const settingsUrl = url.searchParams.has('settings') ? url.searchParams.get('settings') : `../${scene}/settings.json`;
-            const contentUrl = url.searchParams.has('content') ? url.searchParams.get('content') : `../${scene}/index.sog`;
+            const ambulance = scene === 'ambulance';
+            const customContent = url.searchParams.has('content');
+            // A custom capture needs its own explicitly requested collider.
+            // Keep the historical defaults for the other scene viewers.
+            const defaultCollision = ambulance ? (customContent ? null : ambulanceScene.collisionUrl) : `../${scene}/index.voxel.json`;
+            const collisionUrl = url.searchParams.get('collision') ?? url.searchParams.get('voxel') ?? defaultCollision;
+            const settingsUrl = url.searchParams.has('settings') ? url.searchParams.get('settings') : ambulance ? ambulanceScene.settingsUrl : `../${scene}/settings.json`;
+            const contentUrl = customContent ? url.searchParams.get('content') : ambulance ? ambulanceScene.contentUrl : `../${scene}/index.sog`;
 
             const renderer = url.searchParams.has('webgl') ? 'webgl' : 'webgpu';
 
@@ -48,6 +55,7 @@
                 debug: url.searchParams.has('debug'),
                 lang: url.searchParams.get('lang'),
                 scene,
+                sceneRotation: ambulance && !customContent ? ambulanceScene.rotation : undefined,
             };
 
             window.sse = {
@@ -575,7 +583,7 @@
 
         <!-- Application Script -->
         <script type="module">
-            import { main } from '../ambulance/index.js';
+            import { main } from '../ambulance/index.js?v=surface-frame-v2';
 
             const { config, settings } = window.sse;
             const { poster } = config;
@@ -603,7 +611,7 @@
                 const viewer = await main(canvas, settingsJson, config);
                 window.sseViewer = viewer;
                 try {
-                    const props = await import('./props.js');
+                    const props = await import('./props.js?v=surface-frame-v2');
                     window.propsLab = await props.initProps({ viewer, config, settings: settingsJson });
                 } catch (err) {
                     console.error('props-lab: failed to init props module', err);

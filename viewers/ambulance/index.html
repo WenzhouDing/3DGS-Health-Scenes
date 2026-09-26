@@ -8,8 +8,10 @@
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
         />
         <base href="" />
+        <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg?v=2" />
         <link rel="stylesheet" href="./index.css" />
-        <link rel="stylesheet" href="./manikin.css" />
+        <link rel="stylesheet" href="./manikin.css?v=site-header-v1" />
+        <link rel="stylesheet" href="./site-header.css?v=1" />
 
         <!--
             Single injection seam. `renderViewerHtml` replaces the contents of this block to
@@ -17,9 +19,11 @@
             viewer goes through that function rather than pattern-matching this document.
             Left as `null` for the standalone case.
         -->
-        <script type="application/json" id="sse-bootstrap">{"contentUrl":"index.sog","collisionUrl":"./scene-collision.glb"}</script>
+        <script type="application/json" id="sse-bootstrap">null</script>
 
         <script type="module">
+            import { ambulanceScene } from './scene-config.mjs';
+
             const createImage = (url) => {
                 const img = new Image();
                 img.src = url;
@@ -27,19 +31,30 @@
             };
 
             const url = new URL(location.href);
+            document.documentElement.classList.toggle('am-no-ui', url.searchParams.has('noui'));
+            const header = document.querySelector('.site-header');
+            // Header navigation must not also trigger scene input; keyup still clears held keys.
+            for (const type of ['keydown', 'pointerdown', 'wheel']) {
+                header.addEventListener(type, event => event.stopPropagation());
+            }
+            if (url.searchParams.has('nomanikin')) {
+                document.title = 'Ambulance · Cleaned iPhone capture';
+                document.getElementById('scene-title').textContent = 'Ambulance';
+            }
 
             // Embedder-supplied defaults. URL params take precedence over the asset urls below,
             // so an embed can still be overridden per-instance (e.g. `?skybox=` to preview a
             // different sky). Inline `settings` is the exception: it wins over `?settings=`, so a
             // published experience cannot be repointed at someone else's settings file.
             const bootstrap = JSON.parse(document.getElementById('sse-bootstrap').textContent) ?? {};
+            const defaultAmbulance = !url.searchParams.has('content') && !bootstrap.contentUrl;
 
             const posterUrl = url.searchParams.get('poster') ?? bootstrap.posterUrl ?? null;
             const skyboxUrl = url.searchParams.get('skybox') ?? bootstrap.skyboxUrl ?? null;
             const collisionUrl =
-                url.searchParams.get('collision') ?? url.searchParams.get('voxel') ?? bootstrap.collisionUrl ?? null;
-            const settingsUrl = url.searchParams.get('settings') ?? bootstrap.settingsUrl ?? './settings.json';
-            const contentUrl = url.searchParams.get('content') ?? bootstrap.contentUrl ?? './scene.compressed.ply';
+                url.searchParams.get('collision') ?? url.searchParams.get('voxel') ?? bootstrap.collisionUrl ?? (defaultAmbulance ? ambulanceScene.collisionUrl : null);
+            const settingsUrl = url.searchParams.get('settings') ?? bootstrap.settingsUrl ?? ambulanceScene.settingsUrl;
+            const contentUrl = url.searchParams.get('content') ?? bootstrap.contentUrl ?? ambulanceScene.contentUrl;
 
             // Names the bootstrap's contentUrl when the url itself has no usable name (a data:
             // uri, say) — the splat format is chosen by the name's extension. Ignored when a
@@ -57,6 +72,7 @@
                 collisionUrl,
                 contentUrl,
                 contentFilename,
+                sceneRotation: bootstrap.sceneRotation ?? (defaultAmbulance ? ambulanceScene.rotation : undefined),
                 contents: fetch(contentUrl),
                 noui: url.searchParams.has('noui'),
                 noanim: url.searchParams.has('noanim') || !url.searchParams.has('animate'),
@@ -82,6 +98,11 @@
         </script>
     </head>
     <body>
+        <header class="site-header">
+            <a class="brand" href="../../"><img src="../../assets/favicon.svg" alt=""><span>3DGS Health Scenes</span></a>
+            <span class="slash" aria-hidden="true">/</span>
+            <h1 id="scene-title">Ambulance + Manikin</h1>
+        </header>
         <canvas id="application-canvas"></canvas>
 
         <div id="ui">
@@ -675,7 +696,7 @@
 
         <!-- Application Script -->
         <script type="module">
-            import { main, sceneTools } from './index.js';
+            import { main, sceneTools } from './index.js?v=surface-frame-v2';
 
             const { config, settings } = window.sse;
             const { poster } = config;
@@ -696,7 +717,7 @@
                 const settingsJson = await settings;
                 const viewer = await main(canvas, settingsJson, config);
                 if (!new URL(location.href).searchParams.has('nomanikin')) {
-                    const { initManikin } = await import('./manikin.mjs');
+                    const { initManikin } = await import('./manikin.mjs?v=site-header-v1');
                     await initManikin({viewer, pc: sceneTools});
                 }
             });

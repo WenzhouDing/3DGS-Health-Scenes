@@ -8,9 +8,10 @@ import {createEditHistory} from './edit-history.mjs';
 import {createGravityTest} from './gravity-test.mjs';
 import {createArmGravity} from './arm-gravity.mjs';
 import {createBodyContactChecker} from './body-contact.mjs';
+import {createSceneFrame} from './scene-frame.mjs';
 
 const panelMarkup = `
-    <h1>Manikin on stretcher</h1>
+    <h2>Manikin on stretcher</h2>
     <button class="am-collapse" aria-label="Collapse manikin controls" aria-expanded="true">−</button>
     <p class="am-subtitle">Select a joint on the body to pose it</p>
     <div class="am-content">
@@ -62,6 +63,8 @@ function waitForScene(viewer) {
 }
 
 export async function initManikin({viewer, pc}) {
+    const viewParams = new URL(location.href).searchParams;
+    document.body.classList.toggle('am-no-ui', viewer.global.config.noui);
     const panel = document.createElement('section');
     panel.className = 'am-panel'; panel.setAttribute('aria-label', 'Ambulance manikin controls');
     panel.innerHTML = panelMarkup; document.body.append(panel);
@@ -81,7 +84,10 @@ export async function initManikin({viewer, pc}) {
     try {
         const configResponse = await fetch(new URL('./bed-placement.json', import.meta.url), {cache: 'no-store'});
         if (!configResponse.ok) throw new Error('The stretcher placement could not be loaded.');
-        const config = await configResponse.json();
+        const sourceConfig = await configResponse.json();
+        const frame = createSceneFrame(viewer.global.config.sceneRotation);
+        const config = {...sourceConfig, placement:frame.placement(sourceConfig.placement),
+            cameras:Object.fromEntries(Object.entries(sourceConfig.cameras ?? {}).map(([name,camera]) => [name,frame.camera(camera)]))};
         if (config.schema !== 'ambulance-manikin-placement' || config.version !== 1 || config.manikin?.applyPresentation !== false) {
             throw new Error('The stretcher placement has an unsupported coordinate frame or version.');
         }
@@ -92,7 +98,7 @@ export async function initManikin({viewer, pc}) {
             throw new Error('The fused scan changed; refit its placement before using the stretcher.');
         }
         const motion = createMotion(scan.annotations, scan.manifest);
-        const checker = createContactChecker(config.collision);
+        const checker = frame.wrapContactChecker(createContactChecker(config.collision));
         const restSamples = scan.getCollisionSamples(new Map(), {position:[0,0,0],rotation:[0,0,0,1],scale:1});
         const fittedTargets = {...buildPreset('lying', motion, scan.manifest).targets, ...config.jointOverrides};
         for (const [id,angles] of Object.entries(fittedTargets)) motion.setTarget(id,angles,{immediate:true});
@@ -424,13 +430,13 @@ export async function initManikin({viewer, pc}) {
                     return;
                 }
             }
-            if (mode !== 'pose' || event.target.closest?.('.am-panel, .am-joint-overlay') || event.metaKey || event.ctrlKey || event.altKey) return;
+            if (mode !== 'pose' || event.target.closest?.('.am-panel, .am-joint-overlay, .site-header') || event.metaKey || event.ctrlKey || event.altKey) return;
             if (['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyE','KeyG','KeyR','KeyF','Digit1','Digit2','Digit3','ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Space'].includes(event.code)) {event.preventDefault(); event.stopImmediatePropagation();}
         };
         const endSlider = () => finishSlider();
         window.addEventListener('keydown', poseKeys, true); window.addEventListener('pointerup',endSlider); window.addEventListener('blur',cancelSlider);
         reset({record:false});
-        if (viewer.global.config.noanim) viewCamera('bed');
+        if (viewer.global.config.noanim) viewCamera(Object.hasOwn(config.cameras ?? {}, viewParams.get('view')) ? viewParams.get('view') : 'bed');
         else {setMode('explore'); if (state.hasAnimation) {state.cameraMode = 'anim'; state.animationPaused = false;}}
         panel.dataset.ready = 'true';
         window.addEventListener('pagehide', () => {app.off('update',gravityUpdate); window.removeEventListener('blur',pauseGravity); document.removeEventListener('visibilitychange',visibilityGravity); gravity.stop('cancelled'); armGravity.reset(); cancelSlider(); window.removeEventListener('keydown',poseKeys,true); window.removeEventListener('pointerup',endSlider); window.removeEventListener('blur',cancelSlider); interaction.dispose(); scan.dispose();}, {once: true});

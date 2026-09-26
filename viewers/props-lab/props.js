@@ -1,13 +1,15 @@
 /**
- * Props Lab — local-only overlay for the SuperSplat viewer.
+ * Props Lab — browser-local prop editing in the shared SuperSplat viewer.
  *
  * Loads GLB props (raw/mesh) into the gsplat scene, with manual
  * position/rotation/scale controls, plus simple gravity + ground-plane
  * collision ("Drop"). Layouts persist to localStorage per scene and can be
  * exported as JSON.
  *
- * Not part of the published site. No changes to the SuperSplat bundle.
+ * Uses the shared ambulance engine and accepted scene/collision assets.
+ * Layout edits stay in this browser until exported as JSON.
  */
+import { sceneTools } from '../ambulance/index.js?v=surface-frame-v2';
 
 const GRAVITY = -9.81;      // m/s^2, world -Y
 const RESTITUTION = 0.25;   // bounce energy retained on floor hit
@@ -36,6 +38,16 @@ export const initProps = async ({ viewer, config }) => {
     const scene = config?.scene ?? 'ambulance';
     const storageKey = `propsLab:${scene}`;
 
+    // Saved layouts remain in the capture's source frame. A common parent
+    // rotates their full transforms with the leveled scene, without decomposing
+    // the stored Euler angles. Picking, gravity and position controls use world
+    // coordinates through Entity.getPosition/setPosition as before.
+    const sourceFrame = new sceneTools.Entity('Props Lab source frame');
+    const sceneRotation = viewer.global?.config?.sceneRotation ?? null;
+    const hasSceneRotation = sceneRotation && sceneRotation.slice(0, 3).some(value => Math.abs(value) > 1e-12);
+    if (sceneRotation) sourceFrame.setLocalRotation(...sceneRotation);
+    app.root.addChild(sourceFrame);
+
     const requestRender = () => { app.renderNextFrame = true; };
 
     // ---- manifest ---------------------------------------------------------
@@ -57,16 +69,16 @@ export const initProps = async ({ viewer, config }) => {
         nextUid: 1
     };
 
-    // voxel/mesh collision the viewer loaded for this scene (null until the
-    // splat finishes loading, or when no index.voxel.json exists)
+    // Voxel/mesh collision loaded by the viewer. The cleaned ambulance uses
+    // its shared measured mesh; other scenes and URL overrides keep their own.
     const getCollision = () => viewer.inputController?.collision ?? null;
 
-    // First voxel surface below a point, skipping a thin phantom slab (fuzz
-    // voxelizes as ~1-voxel floating sheets above real surfaces) when a real
-    // surface lies just beneath it.
-    const voxelSurfaceBelow = (col, x, y, z, maxDist) => {
+    // Keep the first measured mesh hit. Only voxel occupancy can contain the
+    // thin phantom slabs for which the legacy skip heuristic was designed.
+    const sceneSurfaceBelow = (col, x, y, z, maxDist) => {
         const hit = col.queryRay(x, y, z, 0, -1, 0, maxDist);
         if (!hit) return null;
+        if (col.triangles) return hit;
         if (col.isFreeAt && col.isFreeAt(x, hit.y - 0.08, z)) {
             const below = col.queryRay(x, hit.y - 0.08, z, 0, -1, 0, 0.35);
             if (below) return below;
@@ -83,12 +95,14 @@ export const initProps = async ({ viewer, config }) => {
     const calibrateDropBias = async (p) => {
         try {
             const col = getCollision();
-            if (!col || !viewer.picker) return 0;
+            // A measured collider is already the intended support surface.
+            // Recalibrating it against Gaussian haze would move that surface.
+            if (!col || col.triangles || !viewer.picker) return 0;
             const aabb = worldAabb(p.entity);
             if (!aabb) return 0;
             const cx = (aabb.min.x + aabb.max.x) / 2;
             const cz = (aabb.min.z + aabb.max.z) / 2;
-            const vhit = voxelSurfaceBelow(col, cx, aabb.min.y + RAY_LIFT, cz, 5);
+            const vhit = sceneSurfaceBelow(col, cx, aabb.min.y + RAY_LIFT, cz, 5);
             if (!vhit) return 0;
             const cam = viewer.global?.camera?.camera;
             if (!cam) return 0;
@@ -180,7 +194,7 @@ export const initProps = async ({ viewer, config }) => {
         groundY: state.groundY,
         props: [
             ...state.props.map((p) => {
-                const pos = p.entity.getPosition();
+                const pos = p.entity.getLocalPosition();
                 return {
                     id: p.id,
                     name: p.name,
@@ -243,7 +257,7 @@ export const initProps = async ({ viewer, config }) => {
         if (myEpoch !== epoch) return null;   // cleared while loading
         const entity = asset.resource.instantiateRenderEntity();
         entity.name = `prop:${def.id}`;
-        app.root.addChild(entity);
+        sourceFrame.addChild(entity);
 
         const prop = {
             uid: state.nextUid++,
@@ -261,13 +275,18 @@ export const initProps = async ({ viewer, config }) => {
             prop.scale = restore.scale ?? 1;
             entity.setLocalScale(prop.scale, prop.scale, prop.scale);
             const [px, py, pz] = restore.position ?? [0, 0, 0];
-            entity.setPosition(px, py, pz);
+            entity.setLocalPosition(px, py, pz);
             prop.euler = (restore.eulerAngles ?? [0, 0, 0]).slice();
-            entity.setEulerAngles(...prop.euler);
+            entity.setLocalEulerAngles(...prop.euler);
             entity.enabled = restore.visible !== false;
         } else {
             const pos = spawnPose();
             entity.setPosition(pos.x, pos.y, pos.z);
+            if (hasSceneRotation) {
+                entity.setEulerAngles(0, 0, 0);
+                const local = entity.getLocalEulerAngles();
+                prop.euler = [local.x, local.y, local.z];
+            }
         }
 
         state.props.push(prop);
@@ -290,7 +309,7 @@ export const initProps = async ({ viewer, config }) => {
         requestRender();
     };
 
-    // ---- gravity + collision (scene voxels first, manual plane fallback) ---
+    // ---- gravity + collision (scene surfaces, manual plane fallback) -------
     app.on('update', (rawDt) => {
         const dt = Math.min(rawDt, MAX_DT);
         let active = false;
@@ -341,7 +360,7 @@ export const initProps = async ({ viewer, config }) => {
                 // the prop floating mid-air).
                 const landBias = p.landBias ?? 0;
                 const castDown = (ox, oz) => {
-                    const hit = voxelSurfaceBelow(col, ox, bottom + RAY_LIFT, oz, RAY_LIFT + 3);
+                    const hit = sceneSurfaceBelow(col, ox, bottom + RAY_LIFT, oz, RAY_LIFT + 3);
                     if (!hit) return null;
                     const surfaceY = hit.y + landBias;
                     return surfaceY <= bottom + SNAP_UP ? surfaceY : null;
@@ -390,6 +409,7 @@ export const initProps = async ({ viewer, config }) => {
     // ---- UI ---------------------------------------------------------------
     const panel = document.createElement('div');
     panel.id = 'propsPanel';
+    if (config?.noui) panel.style.display = 'none';
 
     // Keep panel interaction away from the viewer's camera / hotkey handlers.
     // 'keyup' is deliberately NOT stopped: if a movement key was pressed over the
@@ -452,7 +472,7 @@ export const initProps = async ({ viewer, config }) => {
         p.dropStart = null;
         p.entity.setPosition(+inX.value || 0, +inY.value || 0, +inZ.value || 0);
         p.euler = [+inRX.value || 0, +inRY.value || 0, +inRZ.value || 0];
-        p.entity.setEulerAngles(...p.euler);
+        p.entity.setLocalEulerAngles(...p.euler);
         const s = Math.max(0.001, +inScale.value || 1);
         p.scale = s;
         p.entity.setLocalScale(s, s, s);
@@ -489,7 +509,7 @@ export const initProps = async ({ viewer, config }) => {
         const i = { x: 0, y: 1, z: 2 }[axis];
         const norm = (v) => ((v + 180) % 360 + 360) % 360 - 180;
         p.euler[i] = norm(p.euler[i] + 15 * dir);
-        p.entity.setEulerAngles(...p.euler);
+        p.entity.setLocalEulerAngles(...p.euler);
         refreshTransformInputs();
         saveLayout();
         requestRender();
@@ -753,7 +773,7 @@ export const initProps = async ({ viewer, config }) => {
         ),
         el('div', { class: 'pl-section' },
             el('div', { class: 'pl-section-title', text: 'Gravity / collision' }),
-            el('div', { class: 'pl-hint', text: 'Drop lands on the scene itself (voxel collision). Ground Y is an optional override plane — leave it on "auto".' }),
+            el('div', { class: 'pl-hint', text: 'Drop lands on the scene’s collision surfaces. Ground Y is an optional override plane — leave it on "auto".' }),
             el('div', { class: 'pl-row' }, el('label', { text: 'ground Y' }), groundInput),
             el('div', { class: 'pl-row' }, groundPickBtn, groundFromPropBtn),
             el('div', { class: 'pl-row' }, dropBtn)

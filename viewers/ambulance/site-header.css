@@ -1,0 +1,87 @@
+/* Match the Interactive Manikin header without changing the viewer controls. */
+:root {
+    --site-header-height: 64px;
+    --header-bg: #fff;
+    --header-text: #1a1d21;
+    --header-border: #e2e5e9;
+    --header-accent: #0e7c86;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --header-bg: #1d2025;
+        --header-text: #e8eaed;
+        --header-border: #2b2f36;
+        --header-accent: #5fc6cf;
+    }
+}
+
+.site-header {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 40;
+    height: var(--site-header-height);
+    padding: 0 24px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 1px solid var(--header-border);
+    background: var(--header-bg);
+    color: var(--header-text);
+    font: 13px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.site-header .brand {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 10px;
+    color: inherit;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: -.2px;
+}
+
+.site-header .brand img { width: 29px; height: 29px; border-radius: 7px; }
+.site-header .brand:hover { color: var(--header-accent); }
+.site-header .brand:focus-visible { outline: 2px solid var(--header-accent); outline-offset: 3px; }
+.site-header .slash { color: var(--header-border); font-size: 21px; }
+.site-header h1 { margin: 0; min-width: 0; font-size: 15px; font-weight: 500; }
+
+/* Resize the actual canvas, so its projection and joint hit targets stay aligned. */
+#application-canvas, #ui, #annotations, #annotationNav.touch, #infoPanel, #xrModal {
+    top: var(--site-header-height);
+    height: calc(100% - var(--site-header-height));
+}
+.am-panel {
+    top: calc(var(--site-header-height) + 18px);
+    max-height: calc(100dvh - var(--site-header-height) - 115px);
+}
+
+@media (max-width: 800px) {
+    .site-header { padding: 0 17px; gap: 12px; }
+    .site-header .brand { font-size: 12px; }
+    .site-header .brand img { width: 26px; height: 26px; }
+}
+@media (max-width: 640px) {
+    .am-panel {
+        top: calc(var(--site-header-height) + 10px);
+        max-height: calc(100dvh - var(--site-header-height) - 100px);
+    }
+}
+@media (max-width: 620px) {
+    :root { --site-header-height: 58px; }
+    .site-header .slash { display: none; }
+    .site-header h1 { font-size: 13px; margin-left: 2px; line-height: 1.3; }
+}
+@media (max-width: 380px) {
+    .site-header { padding: 0 12px; gap: 9px; }
+    .site-header .brand { gap: 7px; font-size: 11px; }
+    .site-header h1 { font-size: 12px; }
+}
+
+/* UI-free captures keep the original full-frame composition. */
+html.am-no-ui { --site-header-height: 0px; }
+.am-no-ui .site-header { display: none; }
