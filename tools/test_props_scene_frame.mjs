@@ -7,7 +7,7 @@ import vm from 'node:vm';
 import {readFile} from 'node:fs/promises';
 import {ambulanceScene} from '../viewers/ambulance/scene-config.mjs';
 import {createSceneFrame} from '../viewers/ambulance/scene-frame.mjs';
-import {sceneTools} from '../viewers/ambulance/index.js?v=surface-frame-v2';
+import {sceneTools} from '../viewers/ambulance/index.js?v=surface-frame-v3';
 
 const file = path => new URL(`../${path}`, import.meta.url);
 const html = await readFile(file('viewers/props-lab/index.html'), 'utf8');
@@ -97,7 +97,7 @@ assert.ok(Math.abs(restored.getRotation().w) > 1 - 1e-6);
 engineRoot.destroy();
 
 assert.match(js, /if \(config\?\.noui\) panel\.style\.display = 'none';/);
-assert.match(html, /index\.js\?v=surface-frame-v2/);
-assert.match(js, /index\.js\?v=surface-frame-v2/);
-assert.match(html, /props\.js\?v=surface-frame-v2/);
+assert.match(html, /index\.js\?v=surface-frame-v3/);
+assert.match(js, /index\.js\?v=surface-frame-v3/);
+assert.match(html, /props\.js\?v=surface-frame-v3/);
 console.log('Props Lab checks passed: shared assets and overrides, mesh/voxel support, saved source transforms, world-Y motion, upright new props, noui and module revisions.');

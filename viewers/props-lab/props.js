@@ -9,7 +9,7 @@
  * Uses the shared ambulance engine and accepted scene/collision assets.
  * Layout edits stay in this browser until exported as JSON.
  */
-import { sceneTools } from '../ambulance/index.js?v=surface-frame-v2';
+import { sceneTools } from '../ambulance/index.js?v=surface-frame-v3';
 
 const GRAVITY = -9.81;      // m/s^2, world -Y
 const RESTITUTION = 0.25;   // bounce energy retained on floor hit

@@ -42,7 +42,7 @@
                 contentUrl,
                 contents: fetch(contentUrl),
                 noui: url.searchParams.has('noui'),
-                noanim: url.searchParams.has('noanim'),
+                noanim: url.searchParams.has('noanim') || !url.searchParams.has('animate'),
                 nofx: url.searchParams.has('nofx'),
                 hpr: url.searchParams.has('hpr') ? ['', '1', 'true', 'enable'].includes(url.searchParams.get('hpr')) : undefined,
                 ministats: url.searchParams.has('ministats'),
@@ -583,7 +583,7 @@
 
         <!-- Application Script -->
         <script type="module">
-            import { main } from '../ambulance/index.js?v=surface-frame-v2';
+            import { main } from '../ambulance/index.js?v=surface-frame-v3';
 
             const { config, settings } = window.sse;
             const { poster } = config;
@@ -611,7 +611,7 @@
                 const viewer = await main(canvas, settingsJson, config);
                 window.sseViewer = viewer;
                 try {
-                    const props = await import('./props.js?v=surface-frame-v2');
+                    const props = await import('./props.js?v=surface-frame-v3');
                     window.propsLab = await props.initProps({ viewer, config, settings: settingsJson });
                 } catch (err) {
                     console.error('props-lab: failed to init props module', err);

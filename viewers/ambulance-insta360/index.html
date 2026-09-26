@@ -33,7 +33,7 @@
                 contentUrl,
                 contents: fetch("index.sog"),
                 noui: url.searchParams.has('noui'),
-                noanim: url.searchParams.has('noanim'),
+                noanim: url.searchParams.has('noanim') || !url.searchParams.has('animate'),
                 nofx: url.searchParams.has('nofx'),
                 hpr: url.searchParams.has('hpr') ? ['', '1', 'true', 'enable'].includes(url.searchParams.get('hpr')) : undefined,
                 ministats: url.searchParams.has('ministats'),
@@ -569,7 +569,7 @@
 
         <!-- Application Script -->
         <script type="module">
-            import { main } from './index.js';
+            import { main } from './index.js?v=drone-default-v1';
 
             const { config, settings } = window.sse;
             const { poster } = config;

@@ -86619,12 +86619,12 @@ class CameraManager {
         // set the global animation flag
         state.hasAnimation = !!controllers.anim;
         state.animationDuration = controllers.anim ? controllers.anim.animState.cursor.duration : 0;
-        // initialize camera mode and initial camera position
-        state.cameraMode = state.hasAnimation ? 'anim' : isObjectExperience ? 'orbit' : walkAllowed ? 'walk' : 'fly';
+        // Interior scenes start in drone mode; walking is an explicit opt-in.
+        const defaultMode = isObjectExperience ? 'orbit' : 'fly';
+        state.cameraMode = state.hasAnimation && !global.config.noanim ? 'anim' : defaultMode;
         this.camera.copy(resetCamera);
         const target = new Camera(this.camera); // the active controller updates this
         const from = new Camera(this.camera); // stores the previous camera state during transition
-        const defaultMode = isObjectExperience ? 'orbit' : walkAllowed ? 'walk' : 'fly';
         let fromMode = defaultMode;
         // tracks the mode to restore when exiting walk
         let preWalkMode = isObjectExperience ? 'orbit' : 'fly';
